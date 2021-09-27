@@ -35,16 +35,16 @@ import {
  * @param {Object} conn web3 Connection object
  * @param {Object} wallet
  * @param {String} mintAddress Mint Address of the Vault
+ * @param {String} authorityTokenAccount
  * @param {String|Number} value Amount to deposit
  *
  * @returns {Promise}
  */
-const depositToVault = async (conn, wallet, mintAddress, value) => {
+const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, value) => {
   const { decimals, symbol: assetSymbol } =
     getFarmByMintAddress(mintAddress) || {};
 
-  const { tokenAccounts } = getStore('WalletStore'),
-    provider = new anchor.Provider(conn, wallet, {
+  const provider = new anchor.Provider(conn, wallet, {
       skipPreflight: true,
       preflightCommitment: commitment
     }),
@@ -58,9 +58,6 @@ const depositToVault = async (conn, wallet, mintAddress, value) => {
   const vaultProgram = new anchor.Program(idl, vaultProgramId);
 
   const txn = new anchor.web3.Transaction();
-
-  const authorityTokenAccount =
-    tokenAccounts[getFarmLpMintAddress(assetSymbol)].tokenAccountAddress;
 
   const [userBalanceAccount, userBalanceAccountNonce] =
     await anchor.web3.PublicKey.findProgramAddress(
@@ -223,14 +220,14 @@ const depositToVault = async (conn, wallet, mintAddress, value) => {
  * @param {Object} conn web3 Connection object
  * @param {Object} wallet
  * @param {String} mintAddress Mint Address of the Vault
+ * @param {String} authorityTokenAccount
  * @param {String|Number} value Amount to withdraw
  *
  * @returns {Promise}
  */
-const withdrawFromVault = async (conn, wallet, mintAddress, value) => {
+const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccount, value) => {
   const { decimals, symbol: assetSymbol } = getFarmByMintAddress(mintAddress) || {};
 
-  const { tokenAccounts } = getStore('WalletStore');
   const provider = new anchor.Provider(conn, wallet, {
     skipPreflight: true,
     preflightCommitment: commitment
@@ -257,9 +254,6 @@ const withdrawFromVault = async (conn, wallet, mintAddress, value) => {
       ],
       vaultProgramId
     );
-
-  let authorityTokenAccount =
-    tokenAccounts[getFarmLpMintAddress(assetSymbol)].tokenAccountAddress;
 
   const [userBalanceMetadataAccount, userBalanceMetadataAccountNonce] =
     await anchor.web3.PublicKey.findProgramAddress(

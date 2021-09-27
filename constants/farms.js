@@ -1,5 +1,4 @@
-import { NATIVE_SOL, TOKENS } from "./tokens";
-import { FARM_PLATFORMS } from '../constants/farmConstants';
+import { NATIVE_SOL, TOKENS } from './tokens';
 
 export const FARMS = [
   {
@@ -12,7 +11,6 @@ export const FARMS = [
 
     mintAddress: 'A8ZYmnZ1vwxUa4wpJVUaJgegsuTEz5TKy5CiJXffvmpt',
     decimals: TOKENS.GRAPE.decimals,
-    logos: [grapeLogo, usdcLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
@@ -21,9 +19,7 @@ export const FARMS = [
     marginIndex: 1111,
     slippageWarning: false,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=vVXfY15WdPsCmLvbiP4hWWECPFeAvPTuPNq3Q4BXfhy',
-    rewardEndSlot: 93847628,
-    platform: FARM_PLATFORMS.RAYDIUM,
+    rewardEndSlot: 93847628
   },
   {
     symbol: 'ATLAS-USDC',
@@ -35,7 +31,6 @@ export const FARMS = [
 
     mintAddress: '9shGU9f1EsxAbiR567MYZ78WUiS6ZNCYbHe53WUULQ7n',
     decimals: TOKENS.ATLAS.decimals,
-    logos: [atlasLogo, usdcLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
@@ -44,9 +39,7 @@ export const FARMS = [
     marginIndex: 19,
     slippageWarning: false,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=2bnZ1edbvK3CK3LTNZ5jH9anvXYCmzPR4W2HQ6Ngsv5K',
-    rewardEndSlot: 93847628,
-    platform: FARM_PLATFORMS.RAYDIUM,
+    rewardEndSlot: 93847628
   },
   {
     symbol: 'POLIS-USDC',
@@ -58,7 +51,6 @@ export const FARMS = [
 
     mintAddress: '8MbKSBpyXs8fVneKgt71jfHrn5SWtX8n4wMLpiVfF9So',
     decimals: TOKENS.POLIS.decimals,
-    logos: [polisLogo, usdcLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
@@ -67,9 +59,7 @@ export const FARMS = [
     marginIndex: 21,
     slippageWarning: false,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=9xyCzsHi1wUWva7t5Z8eAvZDRmUCVhRrbaFfm3VbU4Mf',
-    rewardEndSlot: 93847628,
-    platform: FARM_PLATFORMS.RAYDIUM,
+    rewardEndSlot: 93847628
   },
   {
     symbol: 'ATLAS-RAY',
@@ -81,7 +71,6 @@ export const FARMS = [
 
     mintAddress: '418MFhkaYQtbn529wmjLLqL6uKxDz7j4eZBaV1cobkyd',
     decimals: TOKENS.ATLAS.decimals,
-    logos: [atlasLogo, rayLogo],
     dualYield: true,
     liquidityMining: false,
     totalTulipEmission: 0,
@@ -90,9 +79,7 @@ export const FARMS = [
     marginIndex: 20,
     slippageWarning: false,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=F73euqPynBwrgcZn3fNSEneSnYasDQohPM5aZazW9hp2',
-    rewardEndSlot: 93847628,
-    platform: FARM_PLATFORMS.RAYDIUM,
+    rewardEndSlot: 93847628
   },
   {
     symbol: 'POLIS-RAY',
@@ -104,7 +91,6 @@ export const FARMS = [
 
     mintAddress: '9ysGKUH6WqzjQEUT4dxqYCUaFNVK9QFEa24pGzjFq8xg',
     decimals: TOKENS.POLIS.decimals,
-    logos: [polisLogo, rayLogo],
     dualYield: true,
     liquidityMining: false,
     totalTulipEmission: 0,
@@ -113,9 +99,7 @@ export const FARMS = [
     marginIndex: 22,
     slippageWarning: false,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=5tho4By9RsqTF1rbm9Akiepik3kZBT7ffUzGg8bL1mD',
-    rewardEndSlot: 93847628,
-    platform: FARM_PLATFORMS.RAYDIUM,
+    rewardEndSlot: 93847628
   },
   {
     symbol: 'TULIP-USDC',
@@ -127,18 +111,15 @@ export const FARMS = [
 
     mintAddress: '2doeZGLJyACtaG9DCUyqMLtswesfje1hjNA11hMdj6YU',
     decimals: TOKENS.TULIP.decimals,
-    logos: [tulipLogo, usdcLogo],
     dualYield: false,
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.TULIP, TOKENS.USDC],
     marginIndex: 11,
     slippageWarning: true,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=96hPvuJ3SRT82m7BAc7G1AUVPVcoj8DABAa5gT7wjgzX',
-    rewardEndSlot: 93847628,
+    rewardEndSlot: 93847628
   },
   {
     symbol: 'RAY',
@@ -148,16 +129,13 @@ export const FARMS = [
     mintAddress: '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R',
     decimals: 6,
     referrer: '33XpMmMQRf6tSPpmYyzpwU4uXpZHkFwCZsusD9dMYkjy',
-    logos: [rayLogo, emptyLogo],
     singleStake: true,
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, TOKENS.RAY],
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/staking/',
-    rewardEndSlot: 94284986,
+    rewardEndSlot: 94284986
   },
   {
     symbol: 'RAY-USDT',
@@ -168,17 +146,13 @@ export const FARMS = [
 
     mintAddress: 'C3sT1R3nsw4AVdepvLTLKr5Gvszr7jufyBWUCvy4TUvT',
     decimals: TOKENS.RAY.decimals,
-    logos: [rayLogo, usdtLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, TOKENS.USDT],
     marginIndex: 2,
     maxPositionLimitInUsd: 300000,
-    link: 'https://raydium.io/liquidity/?ammId=DVa7Qmb5ct9RCpaU7UTpSaf3GVMYz17vNVU67XpdCRut',
-    rewardEndSlot: 94284901,
-    platform: FARM_PLATFORMS.RAYDIUM,
+    rewardEndSlot: 94284901
   },
   {
     symbol: 'RAY-USDC',
@@ -189,19 +163,16 @@ export const FARMS = [
 
     mintAddress: 'FbC6K13MzHvN42bXrtGaWsvZY9fxrackRSZcBGfjPc7m',
     decimals: TOKENS.RAY.decimals,
-    logos: [rayLogo, usdcLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, TOKENS.USDC],
     marginIndex: 0,
     whitelisted: false,
     disabled: false,
     maxPositionLimitInUsd: 300000,
-    link: 'https://raydium.io/liquidity/?ammId=6UmmUiYoBjSrhakAobJw8BvkmJtDVxaeBtbt7rxWo1mg',
     migrated: true,
-    rewardEndSlot: 94285165,
+    rewardEndSlot: 94285165
   },
   {
     symbol: 'RAY-SRM',
@@ -212,19 +183,16 @@ export const FARMS = [
 
     mintAddress: '7P5Thr9Egi2rvMmEuQkLn8x8e8Qro7u2U7yLD2tU2Hbe',
     decimals: TOKENS.RAY.decimals,
-    logos: [rayLogo, srmLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, TOKENS.SRM],
     marginIndex: 3,
     whitelisted: false,
     disabled: false,
     maxPositionLimitInUsd: 300000,
-    link: 'https://raydium.io/liquidity/?ammId=GaqgfieVmnmY4ZsZHHA6L5RSVzCGL3sKx4UgHBaYNy8m',
     migrated: true,
-    rewardEndSlot: 94284925,
+    rewardEndSlot: 94284925
   },
   {
     symbol: 'RAY-SOL',
@@ -235,19 +203,16 @@ export const FARMS = [
 
     mintAddress: '89ZKE4aoyfLBe2RuV6jM3JGNhaV18Nxh8eNtjRcndBip',
     decimals: TOKENS.RAY.decimals,
-    logos: [rayLogo, solLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, NATIVE_SOL],
     marginIndex: 1,
     whitelisted: false,
     disabled: false,
     maxPositionLimitInUsd: 300000,
-    link: 'https://raydium.io/liquidity/?ammId=AVs9TA4nWDzfPJE9gGVNJMVhcQy3V9PGazuz33BfG2RA',
     migrated: true,
-    rewardEndSlot: 94284942,
+    rewardEndSlot: 94284942
   },
   {
     symbol: 'RAY-ETH',
@@ -258,19 +223,16 @@ export const FARMS = [
 
     mintAddress: 'mjQH33MqZv5aKAbKHi8dG3g3qXeRQqq1GFcXceZkNSr',
     decimals: TOKENS.RAY.decimals,
-    logos: [rayLogo, ethLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, TOKENS.ETH],
     whitelisted: false,
     disabled: false,
     marginIndex: 7,
     maxPositionLimitInUsd: 300000,
-    link: 'https://raydium.io/liquidity/?ammId=8iQFhWyceGREsWnLM8NkG9GC8DvZunGZyMzuyUScgkMK',
     migrated: true,
-    rewardEndSlot: 94284954,
+    rewardEndSlot: 94284954
   },
   {
     symbol: 'MEDIA-USDC',
@@ -282,16 +244,13 @@ export const FARMS = [
 
     mintAddress: 'A5zanvgtioZGiJMdEyaKN4XQmJsp1p7uVxaq2696REvQ',
     decimals: TOKENS.MEDIA.decimals,
-    logos: [mediaLogo, usdcLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.MEDIA, TOKENS.USDC],
     marginIndex: 5,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=94CQopiGxxUXf2avyMZhAFaBdNatd62ttYGoTVQBRGdi',
-    rewardEndSlot: 94284801,
+    rewardEndSlot: 94284801
   },
   {
     symbol: 'COPE-USDC',
@@ -303,17 +262,14 @@ export const FARMS = [
 
     mintAddress: 'Cz1kUvHw98imKkrqqu95GQB9h1frY8RikxPojMwWKGXf',
     decimals: TOKENS.COPE.decimals,
-    logos: [copeLogo, usdcLogo],
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.COPE, TOKENS.USDC],
     marginIndex: 6,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=DiWxV1SPXPNJRCt5Ao1mJRAxjw97hJVyj8qGzZwFbAFb',
     slippageWarning: true,
-    rewardEndSlot: 94284813,
+    rewardEndSlot: 94284813
   },
   {
     symbol: 'MER-USDC',
@@ -325,16 +281,13 @@ export const FARMS = [
 
     mintAddress: '3H9NxvaZoxMZZDZcbBDdWMKbrfNj7PCF5sbRwDr7SdDW',
     decimals: TOKENS.MER.decimals,
-    logos: [merLogo, usdcLogo],
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.MER, TOKENS.USDC],
     marginIndex: 4,
     maxPositionLimitInUsd: 0,
-    link: 'https://raydium.io/liquidity/?ammId=BkfGDk676QFtTiGxn7TtEpHayJZRr6LgNk9uTV2MH4bR',
-    rewardEndSlot: 94284972,
+    rewardEndSlot: 94284972
   },
   {
     symbol: 'ROPE-USDC',
@@ -346,16 +299,13 @@ export const FARMS = [
 
     mintAddress: 'Cq4HyW5xia37tKejPF2XfZeXQoPYW6KfbPvxvw5eRoUE',
     decimals: TOKENS.ROPE.decimals,
-    logos: [ropeLogo, usdcLogo],
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.ROPE, TOKENS.USDC],
     marginIndex: 9,
     maxPositionLimitInUsd: 0,
-    link: 'https://raydium.io/liquidity/?ammId=BuS4ScFcZjEBixF1ceCTiXs4rqt4WDfXLoth7VcM2Eoj',
-    rewardEndSlot: 94284962,
+    rewardEndSlot: 94284962
   },
   {
     symbol: 'ALEPH-USDC',
@@ -367,18 +317,15 @@ export const FARMS = [
 
     mintAddress: 'iUDasAP2nXm5wvTukAHEKSdSXn8vQkRtaiShs9ceGB7',
     decimals: TOKENS.ALEPH.decimals,
-    logos: [alephLogo, usdcLogo],
     dualYield: false,
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.ALEPH, TOKENS.USDC],
     marginIndex: 10,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=GDHXjn9wF2zxW35DBkCegWQdoTfFBC9LXt7D5ovJxQ5B',
     slippageWarning: true,
-    rewardEndSlot: 94134929,
+    rewardEndSlot: 94134929
   },
   {
     symbol: 'SNY-USDC',
@@ -390,18 +337,15 @@ export const FARMS = [
 
     mintAddress: 'G8qcfeFqxwbCqpxv5LpLWxUCd1PyMB5nWb5e5YyxLMKg',
     decimals: TOKENS.SNY.decimals,
-    logos: [snyLogo, usdcLogo],
     dualYield: false,
     liquidityMining: true,
     totalTulipEmission: 450000 / 810,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.SNY, TOKENS.USDC],
     marginIndex: 12,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=5TgJXpv6H3KJhHCuP7KoDLSCmi8sM8nABizP7CmYAKm1',
     slippageWarning: true,
-    rewardEndSlot: 93252854,
+    rewardEndSlot: 93252854
   },
   {
     symbol: 'SLRS-USDC',
@@ -413,18 +357,15 @@ export const FARMS = [
 
     mintAddress: '2Xxbm1hdv5wPeen5ponDSMT3VqhGMTQ7mH9stNXm9shU',
     decimals: TOKENS.SLRS.decimals,
-    logos: [slrsLogo, usdcLogo],
     dualYield: false,
     liquidityMining: true,
-    totalTulipEmission: 0, //450000 / 810
+    totalTulipEmission: 0, // 450000 / 810
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.SLRS, TOKENS.USDC],
     marginIndex: 14,
     slippageWarning: true,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=7XXKU8oGDbeGrkPyK5yHKzdsrMJtB7J2TMugjbrXEhB5',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'MNGO-USDC',
@@ -436,17 +377,14 @@ export const FARMS = [
 
     mintAddress: 'DkiqCQ792n743xjWQVCbBUaVtkdiuvQeYndM53ReWnCC',
     decimals: TOKENS.MNGO.decimals,
-    logos: [mngoLogo, usdcLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.MNGO, TOKENS.USDC],
     marginIndex: 200,
     maxPositionLimitInUsd: 0,
-    link: 'https://raydium.io/liquidity/?ammId=34tFULRrRwh4bMcBLPtJaNqqe5pVgGZACi5sR8Xz95KC',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'LIKE-USDC',
@@ -458,17 +396,14 @@ export const FARMS = [
 
     mintAddress: 'cjZmbt8sJgaoyWYUttomAu5LJYU44ZrcKTbzTSEPDVw',
     decimals: TOKENS.LIKE.decimals,
-    logos: [likeLogo, usdcLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.LIKE, TOKENS.USDC],
     marginIndex: 16,
     maxPositionLimitInUsd: 100000,
-    link: 'https://raydium.io/liquidity/?ammId=GmaDNMWsTYWjaXVBjJTHNmCWAKU6cn5hhtWWYEZt4odoq',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'BOP-RAY',
@@ -480,15 +415,12 @@ export const FARMS = [
 
     mintAddress: '9nQPYJvysyfnXhQ6nkK5V7sZG26hmDgusfdNQijRk5LD',
     decimals: TOKENS.BOP.decimals,
-    logos: [bopLogo, rayLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.BOP, TOKENS.RAY],
-    link: 'https://raydium.io/liquidity/?ammId=SJmR8rJgzzCi4sPjGnrNsqY4akQb3jn5nsxZBhyEifC',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'SAMO-RAY',
@@ -500,15 +432,12 @@ export const FARMS = [
 
     mintAddress: 'HwzkXyX8B45LsaHXwY8su92NoRBS5GQC32HzjQRDqPnr',
     decimals: TOKENS.SAMO.decimals,
-    logos: [samoLogo, rayLogo],
     dualYield: false,
     liquidityMining: false,
     totalTulipEmission: 0,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.SAMO, TOKENS.RAY],
-    link: 'https://raydium.io/liquidity/?ammId=EyDgEU9BdG7m6ZK4bYERxbN4NCJ129WzPtv23dBkfsLg',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'RAY-SRM-DUAL',
@@ -520,20 +449,17 @@ export const FARMS = [
 
     mintAddress: '7P5Thr9Egi2rvMmEuQkLn8x8e8Qro7u2U7yLD2tU2Hbe',
     decimals: TOKENS.RAY.decimals,
-    logos: [rayLogo, srmLogo],
     liquidityMining: false,
     totalTulipEmission: 0,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.RAY, TOKENS.SRM],
     marginIndex: 666,
     whitelisted: false,
     disabled: true,
     maxPositionLimitInUsd: 0,
-    link: 'https://raydium.io/liquidity/?ammId=GaqgfieVmnmY4ZsZHHA6L5RSVzCGL3sKx4UgHBaYNy8m',
     migrated: false,
     dualYield: true,
-    rewardEndSlot: 0,
+    rewardEndSlot: 0
   },
   {
     symbol: 'STEP-USDC',
@@ -545,17 +471,14 @@ export const FARMS = [
 
     mintAddress: '3k8BDobgihmk72jVmXYLE168bxxQUhqqyESW4dQVktqC',
     decimals: TOKENS.STEP.decimals,
-    logos: [stepLogo, usdcLogo],
     liquidityMining: true,
     totalTulipEmission: 750000 / 630,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.STEP, TOKENS.USDC],
     marginIndex: 8,
     disabled: true,
     maxPositionLimitInUsd: 0,
-    link: 'https://raydium.io/liquidity/?ammId=4Sx1NLrQiK4b9FdLKe2DhQ9FHvRzJhzKN3LoD6BrEPnf',
-    rewardEndSlot: 94285155,
+    rewardEndSlot: 94285155
   },
   {
     symbol: 'KIN-RAY',
@@ -567,16 +490,13 @@ export const FARMS = [
 
     mintAddress: 'CHT8sft3h3gpLYbCcZ9o27mT5s3Z6VifBVbUiDvprHPW',
     decimals: 6,
-    logos: [kinLogo, rayLogo],
     dualYield: true,
     liquidityMining: true,
     totalTulipEmission: 0,
     disabled: true,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.KIN, TOKENS.RAY],
-    link: 'https://raydium.io/liquidity/?ammId=6kmMMacvoCKBkBrqssLEdFuEZu2wqtLdNQxh9VjtzfwT',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'FIDA-RAY',
@@ -588,16 +508,13 @@ export const FARMS = [
 
     mintAddress: 'DsBuznXRTmzvEdb36Dx3aVLVo1XmH7r1PRZUFugLPTFv',
     decimals: TOKENS.FIDA.decimals,
-    logos: [fidaLogo, rayLogo],
     dualYield: true,
     liquidityMining: true,
     totalTulipEmission: 0,
     disabled: true,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.FIDA, TOKENS.RAY],
-    link: 'https://raydium.io/liquidity/?ammId=2dRNngAm729NzLbb1pzgHtfHvPqR4XHFmFyYK78EfEeX',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'OXY-RAY',
@@ -609,16 +526,13 @@ export const FARMS = [
 
     mintAddress: 'FwaX9W7iThTZH5MFeasxdLpxTVxRcM7ZHieTCnYog8Yb',
     decimals: TOKENS.OXY.decimals,
-    logos: [oxyLogo, rayLogo],
     dualYield: true,
     liquidityMining: true,
     totalTulipEmission: 0,
     disabled: true,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.OXY, TOKENS.RAY],
-    link: 'https://raydium.io/liquidity/?ammId=B5ZguAWAGC3GXVtJZVfoMtzvEvDnDKBPCevsUKMy4DTZ',
-    rewardEndSlot: 93040503,
+    rewardEndSlot: 93040503
   },
   {
     symbol: 'MAPS-RAY',
@@ -630,15 +544,12 @@ export const FARMS = [
 
     mintAddress: 'CcKK8srfVdTSsFGV3VLBb2YDbzF4T4NM2C3UEjC39RLP',
     decimals: TOKENS.MAPS.decimals,
-    logos: [mapsLogo, rayLogo],
     dualYield: true,
     liquidityMining: true,
     totalTulipEmission: 0,
     disabled: true,
     saber: false,
-    platform: FARM_PLATFORMS.RAYDIUM,
     coins: [TOKENS.MAPS, TOKENS.RAY],
-    link: 'https://raydium.io/liquidity/?ammId=5VyLSjUvaRxsubirbvbfJMbrKZRx1b7JZzuCAfyqgimf',
-    rewardEndSlot: 93040503,
-  },
+    rewardEndSlot: 93040503
+  }
 ];
