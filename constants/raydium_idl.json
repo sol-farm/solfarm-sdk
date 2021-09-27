@@ -1,0 +1,3508 @@
+{
+  "version": "0.0.0",
+  "name": "vault",
+  "instructions": [
+    {
+      "name": "createVaultMetadata",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultMetadataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammOpenOrders",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammQuantitiesOrTargetOrders",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumBids",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumAsks",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumEventQueue",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumCoinVaultAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumPcVaultAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumVaultSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpMintAddress",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "swapOrLiquidityProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "slippage",
+          "type": "u64"
+        },
+        {
+          "name": "rayPoolVersion",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "applyVaultMetadata",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultMetadataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammOpenOrders",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammQuantitiesOrTargetOrders",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumBids",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumAsks",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumEventQueue",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumCoinVaultAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumPcVaultAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumVaultSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpMintAddress",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardTokenaccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "swapOrLiquidityProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "slippage",
+          "type": "u64"
+        },
+        {
+          "name": "rayPoolVersion",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "applyVaultUpdate",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardAAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardBAccount",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "VaultUpdateArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "createVault",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultMetadataAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardMintA",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardMintB",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "infoAccountPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardAccountPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardBAccountPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "swapToPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "swapToMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "dexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "openOrdersAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultArgs",
+          "type": {
+            "defined": "NewVaultArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "createDualVault",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultMetadataAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardMintA",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardMintB",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "infoAccountPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardAccountPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardBAccountPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "swapToPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "swapToMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "dexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "openOrdersAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultArgs",
+          "type": {
+            "defined": "NewVaultArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "depositVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "authorityTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceMetadata",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "depositArgs",
+          "type": {
+            "defined": "DepositVaultArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "harvestMigrateTulips",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTulipRewardMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTulipTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTulipTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "oldUserBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "oldUserBalanceMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "oldUserTulipRewardMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "harvestArgs",
+          "type": {
+            "defined": "HarvestMigrateTulipsArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "harvestTulips",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTulipRewardMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTulipTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTulipTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "harvestArgs",
+          "type": {
+            "defined": "HarvestTulipsArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "withdrawVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authorityTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userBalanceMeta",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "withdrawArgs",
+          "type": {
+            "defined": "WithdrawVaultArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "withdrawTulips",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawTulipTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTulipTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountToWithdraw",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "harvestVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "swapVaultRewards",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "swapOrLiquidityProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammQuantitiesOrTargetOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumBids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumAsks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumEventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumCoinVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumPcVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumVaultSigner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "swapToAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "feeRecipient",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "swapDualVaultRewards",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "swapOrLiquidityProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammQuantitiesOrTargetOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumBids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumAsks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumEventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumCoinVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumPcVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumVaultSigner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinRewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcRewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "coinFeeRecipient",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcFeeRecipient",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "AddLiquidityArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "addLiquidity",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "liquidityProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammQuantitiesOrTargetOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpMintAddress",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultCoinTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPcTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultLpTokenaccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "AddLiquidityArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "depositFarm",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "single",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "serumSwapOrder",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "openOrdersAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "marketBids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "marketAsks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "orderPayer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "openOrdersAccountOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "splTokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "dexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultSigner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "metadataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeRecipient",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "orderPayerMint",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "SerumSwapArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "serumSwapSettle",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "openOrdersAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "requestQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "marketBids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "marketAsks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "orderPayer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "openOrdersAccountOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "splTokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "dexProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultSigner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "metadataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeRecipient",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "orderPayerMint",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "setVaultFees",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "SetVaultFeesArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "setVaultAuthorities",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "SetVaultAuthoritiesArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "setVaultPrecisionFactor",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpMintAddress",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "setVaultCompoundInterval",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "SetVaultCompoundIntervalArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "setVaultLastCompound",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "setVaultRewards",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "SetVaultRewardsArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "updateMigratedVaults",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "oldInfoAccount",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "beginMigration",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "v4InfoAccountPda",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "BeginMigrationArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "stepMigrateFarm",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardBMint",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "EndMigrationArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "endMigration",
+      "accounts": [
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardBMint",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "EndMigrationArgs"
+          }
+        }
+      ]
+    },
+    {
+      "name": "cancelMigration",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vaultPdaAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardATokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolRewardBTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "single",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "state": {
+    "struct": {
+      "name": "Management",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "whitelist",
+            "type": {
+              "vec": {
+                "defined": "WhitelistEntry"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "methods": [
+      {
+        "name": "new",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          }
+        ]
+      },
+      {
+        "name": "setManagementAuthority",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": [
+          {
+            "name": "newAuthority",
+            "type": "publicKey"
+          }
+        ]
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "name": "VaultMetadata",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "ammId",
+            "type": "publicKey"
+          },
+          {
+            "name": "ammAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "ammOpenOrders",
+            "type": "publicKey"
+          },
+          {
+            "name": "ammQuantitiesOrTargetOrders",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolCoinTokenaccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolPcTokenaccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumProgramId",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumMarket",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumBids",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumAsks",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumEventQueue",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumCoinVaultAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumPcVaultAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "serumVaultSigner",
+            "type": "publicKey"
+          },
+          {
+            "name": "lpMintAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolId",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolLpTokenaccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolRewardTokenaccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "swapOrLiquidityProgramId",
+            "type": "publicKey"
+          },
+          {
+            "name": "rayPoolVersion",
+            "type": "u64"
+          },
+          {
+            "name": "slippage",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vault",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenProgram",
+            "type": "publicKey"
+          },
+          {
+            "name": "pdaTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "pda",
+            "type": "publicKey"
+          },
+          {
+            "name": "nonce",
+            "type": "u8"
+          },
+          {
+            "name": "infoNonce",
+            "type": "u8"
+          },
+          {
+            "name": "rewardANonce",
+            "type": "u8"
+          },
+          {
+            "name": "rewardBNonce",
+            "type": "u8"
+          },
+          {
+            "name": "swapToNonce",
+            "type": "u8"
+          },
+          {
+            "name": "totalVaultBalance",
+            "type": "u64"
+          },
+          {
+            "name": "infoAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "lpTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "lpTokenMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "rewardAAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "rewardBAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "swapToAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalVlpShares",
+            "type": "u64"
+          },
+          {
+            "name": "poolId",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolLpTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolRewardATokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolRewardBTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakeProgramId",
+            "type": "publicKey"
+          },
+          {
+            "name": "dualReward",
+            "type": "bool"
+          },
+          {
+            "name": "metadataAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "openOrdersAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "controllerFee",
+            "type": "u64"
+          },
+          {
+            "name": "platformFee",
+            "type": "u64"
+          },
+          {
+            "name": "vaultFee",
+            "type": "u64"
+          },
+          {
+            "name": "entranceFee",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawalFee",
+            "type": "u64"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "publicKey"
+          },
+          {
+            "name": "feeAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "compoundAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "precisionFactor",
+            "type": "u64"
+          },
+          {
+            "name": "lastCompoundTime",
+            "type": "i64"
+          },
+          {
+            "name": "compoundInterval",
+            "type": "i64"
+          },
+          {
+            "name": "dualFeeRecipient",
+            "type": "publicKey"
+          },
+          {
+            "name": "tulipRewardPerSlot",
+            "type": "u64"
+          },
+          {
+            "name": "tulipRewardPerShare",
+            "type": "u128"
+          },
+          {
+            "name": "tulipRewardEndSlot",
+            "type": "u64"
+          },
+          {
+            "name": "lastInteractionSlot",
+            "type": "u64"
+          },
+          {
+            "name": "stakingStateRefreshed",
+            "type": "bool"
+          },
+          {
+            "name": "disabled",
+            "type": "bool"
+          },
+          {
+            "name": "migrated",
+            "type": "bool"
+          },
+          {
+            "name": "oldUserInfoAccount",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultBalanceAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultBalanceMetadata",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "lastDepositTime",
+            "type": "i64"
+          },
+          {
+            "name": "totalLpTokens",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultTulipRewardMetadata",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "lastPendingReward",
+            "type": "u64"
+          },
+          {
+            "name": "rewardPerSharePaid",
+            "type": "u128"
+          },
+          {
+            "name": "buffer",
+            "type": {
+              "array": [
+                "publicKey",
+                5
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "SetVaultRewardsArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tulipRewardPerSlot",
+            "type": "u64"
+          },
+          {
+            "name": "tulipRewardEndSlot",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetVaultCompoundIntervalArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "interval",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WhitelistEntry",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NewVaultArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vaultAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "nonce",
+            "type": "u8"
+          },
+          {
+            "name": "rewardNonce",
+            "type": "u8"
+          },
+          {
+            "name": "rewardBNonce",
+            "type": "u8"
+          },
+          {
+            "name": "infoNonce",
+            "type": "u8"
+          },
+          {
+            "name": "swapToNonce",
+            "type": "u8"
+          },
+          {
+            "name": "dualReward",
+            "type": "bool"
+          },
+          {
+            "name": "controllerFee",
+            "type": "u64"
+          },
+          {
+            "name": "platformFee",
+            "type": "u64"
+          },
+          {
+            "name": "vaultFee",
+            "type": "u64"
+          },
+          {
+            "name": "entranceFee",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawalFee",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DepositVaultArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "nonce",
+            "type": "u8"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "metaNonce",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HarvestMigrateTulipsArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "oldNonce",
+            "type": "u8"
+          },
+          {
+            "name": "oldMetaNonce",
+            "type": "u8"
+          },
+          {
+            "name": "oldRewardNonce",
+            "type": "u8"
+          },
+          {
+            "name": "nonce",
+            "type": "u8"
+          },
+          {
+            "name": "metaNonce",
+            "type": "u8"
+          },
+          {
+            "name": "rewardNonce",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HarvestTulipsArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "nonce",
+            "type": "u8"
+          },
+          {
+            "name": "metaNonce",
+            "type": "u8"
+          },
+          {
+            "name": "rewardNonce",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawVaultArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "metaNonce",
+            "type": "u8"
+          },
+          {
+            "name": "nonce",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SerumSwapArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "side",
+            "type": "u8"
+          },
+          {
+            "name": "orderType",
+            "type": "u8"
+          },
+          {
+            "name": "clientOrderId",
+            "type": "u64"
+          },
+          {
+            "name": "selfTradeBehavior",
+            "type": "u8"
+          },
+          {
+            "name": "slippage",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AddLiquidityArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "coinOpenLiquidity",
+            "type": "u64"
+          },
+          {
+            "name": "pcOpenLiquidity",
+            "type": "u64"
+          },
+          {
+            "name": "coinTakepnl",
+            "type": "u64"
+          },
+          {
+            "name": "pcTakepnl",
+            "type": "u64"
+          },
+          {
+            "name": "dualYield",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetVaultFeesArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "controllerFee",
+            "type": "u64"
+          },
+          {
+            "name": "platformFee",
+            "type": "u64"
+          },
+          {
+            "name": "vaultFee",
+            "type": "u64"
+          },
+          {
+            "name": "entranceFee",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawalFee",
+            "type": "u64"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "publicKey"
+          },
+          {
+            "name": "dualFeeRecipient",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetVaultAuthoritiesArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "feeAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "compoundAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultAuthority",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BeginMigrationArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "infoNonce",
+            "type": "u8"
+          },
+          {
+            "name": "debug",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EndMigrationArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "infoNonce",
+            "type": "u8"
+          },
+          {
+            "name": "infoAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolId",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolLpTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolRewardATokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolRewardBTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "enableDualReward",
+            "type": "bool"
+          },
+          {
+            "name": "createDualRewardAccount",
+            "type": "bool"
+          },
+          {
+            "name": "dualFeeRecipient",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultUpdateArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "aNonce",
+            "type": "u8"
+          },
+          {
+            "name": "bNonce",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 100,
+      "name": "Unauthorized",
+      "msg": "must be an authorized caller"
+    },
+    {
+      "code": 101,
+      "name": "InvalidNonce",
+      "msg": "nonce given produced invalid address"
+    },
+    {
+      "code": 102,
+      "name": "InvalidTokenProgram",
+      "msg": "given token program is invalid"
+    },
+    {
+      "code": 103,
+      "name": "VaultBalanceTooLow",
+      "msg": "vault total token balance is too low"
+    },
+    {
+      "code": 104,
+      "name": "UserBalanceTooLow",
+      "msg": "users balance for this vault is too low"
+    },
+    {
+      "code": 105,
+      "name": "InvalidTokenAccount",
+      "msg": "token account given is invalid"
+    },
+    {
+      "code": 106,
+      "name": "InvalidInfoAccount",
+      "msg": "token account given is invalid"
+    },
+    {
+      "code": 107,
+      "name": "InvalidPdaAccount",
+      "msg": "pda account given is invalid"
+    },
+    {
+      "code": 108,
+      "name": "InvalidRewardAccount",
+      "msg": "reward account given is invalid"
+    },
+    {
+      "code": 109,
+      "name": "InvalidPoolId",
+      "msg": "pool id given is invalid"
+    },
+    {
+      "code": 110,
+      "name": "InvalidPoolAuthority",
+      "msg": "pool authority given is invalid"
+    },
+    {
+      "code": 111,
+      "name": "InvalidStakeProgram",
+      "msg": "stake program is invalid"
+    },
+    {
+      "code": 112,
+      "name": "EmptyOrderBookState",
+      "msg": "failed to find asks or bids in orderbook"
+    },
+    {
+      "code": 113,
+      "name": "InvalidVaultMetadataAccount",
+      "msg": "invalid vault metadata account"
+    },
+    {
+      "code": 114,
+      "name": "InvalidSerumOpenOrdersAccount",
+      "msg": "invalid serum open orders account"
+    },
+    {
+      "code": 115,
+      "name": "InvalidSerumMarket",
+      "msg": "invalid serum market"
+    },
+    {
+      "code": 116,
+      "name": "InvalidSerumEventQueue",
+      "msg": "invalid serum event queue"
+    },
+    {
+      "code": 117,
+      "name": "InvalidSerumMarketBids",
+      "msg": "invalid serum market bids"
+    },
+    {
+      "code": 118,
+      "name": "InvalidSerumMarketAsks",
+      "msg": "invlaid serum market asks"
+    },
+    {
+      "code": 119,
+      "name": "InvalidSerumCoinVault",
+      "msg": "invalid serum coin (base) vault"
+    },
+    {
+      "code": 120,
+      "name": "InvalidSerumPCVault",
+      "msg": "invalid serum pc (quote) vault"
+    },
+    {
+      "code": 121,
+      "name": "InvalidCoinWallet",
+      "msg": "invalid coin (base) wallet"
+    },
+    {
+      "code": 122,
+      "name": "InvalidPCWallet",
+      "msg": "invalid pc (quote) wallet"
+    },
+    {
+      "code": 123,
+      "name": "InvalidAmmId",
+      "msg": "invalid amm id"
+    },
+    {
+      "code": 124,
+      "name": "InvalidSwapToAccount",
+      "msg": "invalid swap to account"
+    },
+    {
+      "code": 125,
+      "name": "InvalidSerumVaultSigner",
+      "msg": "invalid serum vault signer"
+    },
+    {
+      "code": 126,
+      "name": "InvalidSerumProgramId",
+      "msg": "invalid serum program id"
+    },
+    {
+      "code": 127,
+      "name": "InvalidPoolPcTokenAccount",
+      "msg": "invalid pool pc token account"
+    },
+    {
+      "code": 128,
+      "name": "InvalidPoolCoinTokenAccount",
+      "msg": "invalid coin token account"
+    },
+    {
+      "code": 129,
+      "name": "InvalidAmmQuantitiesOrTargetOrders",
+      "msg": "invalid amm quantities or target orders"
+    },
+    {
+      "code": 130,
+      "name": "InvalidAmmOpenOrders",
+      "msg": "invalid amm open orders"
+    },
+    {
+      "code": 131,
+      "name": "InvalidAmmAuthority",
+      "msg": "invalid amm authority"
+    },
+    {
+      "code": 132,
+      "name": "InvalidSwapProgramId",
+      "msg": "invalid swap program id"
+    },
+    {
+      "code": 133,
+      "name": "InvalidVaultLptokenAccount",
+      "msg": "invalid vault lp token account"
+    },
+    {
+      "code": 134,
+      "name": "InvalidLpMintAddress",
+      "msg": "invalid lp mint address"
+    },
+    {
+      "code": 135,
+      "name": "InvalidLiquidityProgramId",
+      "msg": "invalid liquidity program id"
+    },
+    {
+      "code": 136,
+      "name": "InvalidPoolType",
+      "msg": "invalid pool type"
+    },
+    {
+      "code": 137,
+      "name": "InvalidFeeRecipient",
+      "msg": "invalid fee recipient"
+    },
+    {
+      "code": 138,
+      "name": "InvalidAuthority",
+      "msg": "invalid authority given"
+    },
+    {
+      "code": 139,
+      "name": "PrecisionFactorNotSet",
+      "msg": "precison factor not set"
+    },
+    {
+      "code": 140,
+      "name": "PrecisionFactorAlreadySet",
+      "msg": "precison factor already set"
+    },
+    {
+      "code": 141,
+      "name": "AmountBelowMinimumLotSize",
+      "msg": "given token amount is below the minimum lot size"
+    },
+    {
+      "code": 142,
+      "name": "InsufficientFunds",
+      "msg": "account has too little balance for the specified operation"
+    },
+    {
+      "code": 143,
+      "name": "InvalidCompoundInterval",
+      "msg": "invalid compound interval"
+    },
+    {
+      "code": 144,
+      "name": "InvalidInteractionSlot",
+      "msg": "invalid interaction slot"
+    },
+    {
+      "code": 145,
+      "name": "InvalidClaimDepositAmount",
+      "msg": "invalid deposit amount for claim"
+    },
+    {
+      "code": 146,
+      "name": "InvalidUserBalanceAccount",
+      "msg": "invalid user balance account"
+    },
+    {
+      "code": 147,
+      "name": "InvalidTulipRewardMetadataAccount",
+      "msg": "invalid tulip reward metadata account"
+    },
+    {
+      "code": 148,
+      "name": "StakingStateNotRefreshed",
+      "msg": "staking state not refreshed"
+    },
+    {
+      "code": 149,
+      "name": "VaultDisabled",
+      "msg": "vault disabled"
+    },
+    {
+      "code": 150,
+      "name": "InvalidMigrationState",
+      "msg": "invalid migration state"
+    }
+  ]
+}
