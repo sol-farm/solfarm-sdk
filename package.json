@@ -19,5 +19,12 @@
   "dependencies": {
     "@project-serum/anchor": "^0.6.0",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jsdoc": "^36.1.0",
+    "eslint-plugin-lodash": "^7.3.0",
+    "eslint-plugin-security": "^1.4.0"
   }
 }
