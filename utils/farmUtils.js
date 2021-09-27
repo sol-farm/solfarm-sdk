@@ -1,11 +1,11 @@
-import { concat, find } from 'lodash';
+import { find } from 'lodash';
 import { FARMS } from '../constants/farms';
 
-export const ALL_FARMS = concat(FARMS);
+export const ALL_FARMS = FARMS;
 
-export const ALL_VAULT_FARMS = concat(FARMS);
+export const ALL_VAULT_FARMS = FARMS;
 
-export const LEVERAGE_FARMS = concat(FARMS);
+export const LEVERAGE_FARMS = FARMS;
 
 export const getFarmBySymbol = (symbol) => {
   return find(ALL_FARMS, (farm) => {

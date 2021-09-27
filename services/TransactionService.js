@@ -35,11 +35,11 @@ import {
  * @param {Object} wallet
  * @param {String} mintAddress Mint Address of the Vault
  * @param {String} authorityTokenAccount
- * @param {String|Number} value Amount to deposit
+ * @param {String|Number} amount Amount to deposit
  *
  * @returns {Promise}
  */
-const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, value) => {
+const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, amount) => {
   const { decimals, symbol: assetSymbol } =
     getFarmByMintAddress(mintAddress) || {};
 
@@ -201,7 +201,7 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
     vaultProgram.instruction.depositVault(
       {
         nonce: userBalanceAccountNonce,
-        amount: new anchor.BN(Number(value) * Math.pow(10, Number(decimals))),
+        amount: new anchor.BN(Number(amount) * Math.pow(10, Number(decimals))),
         metaNonce: userBalanceMetadataAccountNonce,
         rewardNonce: tulipRewardMetadataNonce
       },
@@ -220,11 +220,11 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
  * @param {Object} wallet
  * @param {String} mintAddress Mint Address of the Vault
  * @param {String} authorityTokenAccount
- * @param {String|Number} value Amount to withdraw
+ * @param {String|Number} amount Amount to withdraw
  *
  * @returns {Promise}
  */
-const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccount, value) => {
+const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccount, amount) => {
   const { decimals, symbol: assetSymbol } = getFarmByMintAddress(mintAddress) || {};
 
   const provider = new anchor.Provider(conn, wallet, {
@@ -272,7 +272,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
   );
   const { totalVaultBalance, totalVlpShares } = vault || {};
 
-  const userInputValue = new anchor.BN(value * Math.pow(10, decimals));
+  const userInputValue = new anchor.BN(amount * Math.pow(10, decimals));
 
   const withdrawAmount = userInputValue.mul(totalVlpShares).div(totalVaultBalance);
 
