@@ -18,6 +18,9 @@
   "homepage": "https://github.com/sol-farm/solfarm-sdk#readme",
   "dependencies": {
     "@project-serum/anchor": "^0.6.0",
+    "@project-serum/associated-token": "^0.1.1",
+    "@project-serum/serum": "^0.13.60",
+    "@solana/web3.js": "^1.29.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

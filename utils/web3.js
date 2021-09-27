@@ -1,20 +1,39 @@
-export async function signTransaction(connection, wallet, transaction, signers = []) {
-  transaction.recentBlockhash = (await connection.getRecentBlockhash(commitment)).blockhash;
-  transaction.setSigners(wallet.publicKey, ...signers.map((s) => s.publicKey));
+export const commitment = 'confirmed';
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} wallet
+ * @param {*} transaction
+ * @param {*} signers
+ * @returns
+ */
+export async function signTransaction (connection,
+  wallet,
+  transaction,
+  signers = []) {
+  transaction.recentBlockhash = (
+    await connection.getRecentBlockhash(commitment)
+  ).blockhash;
+  transaction.setSigners(wallet.publicKey,
+    ...signers.map((s) => {
+      return s.publicKey;
+    }));
 
   if (signers.length > 0) {
     transaction.partialSign(...signers);
   }
 
-  return await wallet.signTransaction(transaction);
+  return wallet.signTransaction(transaction);
 }
-  
-export async function sendTransaction(connection, wallet, transaction, signers) {
-  const signedTransaction = await signTransaction(connection, wallet, transaction, signers)
-  return await sendSignedTransaction(connection, signedTransaction);
-}
-  
-export async function sendSignedTransaction(connection, signedTransaction) {
+
+/**
+ *
+ * @param {Object} connection
+ * @param {Object} signedTransaction
+ * @returns
+ */
+export async function sendSignedTransaction (connection, signedTransaction) {
   const rawTransaction = signedTransaction.serialize();
 
   const txid = await connection.sendRawTransaction(rawTransaction, {
@@ -23,4 +42,24 @@ export async function sendSignedTransaction(connection, signedTransaction) {
   });
 
   return txid;
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} wallet
+ * @param {*} transaction
+ * @param {*} signers
+ * @returns {Promise}
+ */
+export async function sendTransaction (connection,
+  wallet,
+  transaction,
+  signers) {
+  const signedTransaction = await signTransaction(connection,
+    wallet,
+    transaction,
+    signers);
+
+  return sendSignedTransaction(connection, signedTransaction);
 }

@@ -3,7 +3,7 @@ export const NATIVE_SOL = {
   name: 'Native Solana',
   mintAddress: '11111111111111111111111111111111',
   decimals: 9
-}
+};
 
 export const TOKENS = {
   WSOL: {
@@ -39,7 +39,7 @@ export const TOKENS = {
     name: 'renBTC',
     mintAddress: 'CDJWUqTcYTVAKXAVXoQZFes5JUFc7owSeq7eMQcDSbo5',
     decimals: 8,
-    referrer: '7rr64uygy3o5RKVeNv12JGDUFMXVdr2YHvA3NTxzbZT6',
+    referrer: '7rr64uygy3o5RKVeNv12JGDUFMXVdr2YHvA3NTxzbZT6'
   },
   ETH: {
     symbol: 'ETH',
@@ -227,49 +227,49 @@ export const TOKENS = {
     name: 'SNY',
     mintAddress: '4dmKkXNHdgYsXqBHCuMikNQWwVomZURhYvkkX5c4pQ7y',
     decimals: 6,
-    referrer: 'G7gyaTNn2hgjF67SWs4Ee9PEaFU2xadhtXL8HmkJ2cNL',
+    referrer: 'G7gyaTNn2hgjF67SWs4Ee9PEaFU2xadhtXL8HmkJ2cNL'
   },
   SLRS: {
     symbol: 'SLRS',
     name: 'SLRS',
     mintAddress: 'SLRSSpSLUTP7okbCUBYStWCo1vUgyt775faPqz8HUMr',
     decimals: 6,
-    referrer: 'AmqeHgTdm6kBzy5ewZFKuMAfbynZmhve1GQxbJzQFLbP',
+    referrer: 'AmqeHgTdm6kBzy5ewZFKuMAfbynZmhve1GQxbJzQFLbP'
   },
   MNGO: {
     symbol: 'MNGO',
     name: 'Mango',
     mintAddress: 'MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac',
     decimals: 6,
-    referrer: 'CijuvE6qDpxZ5WqdEQEe7mS11fXEKiiHc7RR8wRiGzjY',
+    referrer: 'CijuvE6qDpxZ5WqdEQEe7mS11fXEKiiHc7RR8wRiGzjY'
   },
   LIKE: {
     symbol: 'LIKE',
     name: 'LIKE',
     mintAddress: '3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR',
     decimals: 9,
-    referrer: '2rnVeVGfM88XqyNyBzGWEb7JViYKqncFzjWq5h1ujS9A',
+    referrer: '2rnVeVGfM88XqyNyBzGWEb7JViYKqncFzjWq5h1ujS9A'
   },
   ORCA: {
     symbol: 'ORCA',
     name: 'ORCA',
     mintAddress: 'orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE',
     decimals: 6,
-    referrer: '',
+    referrer: ''
   },
   BOP: {
     symbol: 'BOP',
     name: 'Boring Protocol',
     mintAddress: 'BLwTnYKqf7u4qjgZrrsKeNs2EzWkMLqVCu6j8iHyrNA3',
     decimals: 8,
-    referrer: 'FWxBZmNsvNckx8DnaL2NuyMtiQmT1x529WwV4e1UWiGk',
+    referrer: 'FWxBZmNsvNckx8DnaL2NuyMtiQmT1x529WwV4e1UWiGk'
   },
   SAMO: {
     symbol: 'SAMO',
     name: 'Samoyed Coin',
     mintAddress: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
     decimals: 9,
-    referrer: 'FnMDNFL9t8EpbADSU3hLWBtx7SuwRBB6NM84U3PzSkUu',
+    referrer: 'FnMDNFL9t8EpbADSU3hLWBtx7SuwRBB6NM84U3PzSkUu'
   },
   SXP: {
     symbol: 'SXP',
@@ -468,21 +468,21 @@ export const TOKENS = {
     name: 'MEDIA',
     mintAddress: 'ETAtLmCmsoiEEKfNrHKJ2kYy3MoABhU6NQvpSfij5tDs',
     decimals: 6,
-    referrer: 'DiLuXdZ5TbQ1jUNEF6tNstHNqXJ3mTCrsVrM6DeX18Mh',
+    referrer: 'DiLuXdZ5TbQ1jUNEF6tNstHNqXJ3mTCrsVrM6DeX18Mh'
   },
   MER: {
     symbol: 'MER',
     name: 'Mercurial',
     mintAddress: 'MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K',
     decimals: 6,
-    referrer: '36F4ryvqaNW2yKQsAry4ZHCZ3j7tz3gtEz7NEwv7pSRu',
+    referrer: '36F4ryvqaNW2yKQsAry4ZHCZ3j7tz3gtEz7NEwv7pSRu'
   },
   ROPE: {
     symbol: 'ROPE',
     name: 'ROPE',
     mintAddress: '8PMHT4swUMtBzgHnh5U564N5sjPSiUz2cjEQzFnnP1Fo',
     decimals: 9,
-    referrer: '5sGVVniBSPLTwRHDETShovq7STRH2rJwbvdvvH3NcVTF',
+    referrer: '5sGVVniBSPLTwRHDETShovq7STRH2rJwbvdvvH3NcVTF'
   },
   TULIP: {
     symbol: 'TULIP',
@@ -506,9 +506,9 @@ export const TOKENS = {
     symbol: 'GRAPE',
     name: 'Grape',
     mintAddress: '8upjSpvjcdpuzhfR1zriwg5NXkwDruejqNE9WNbPRtyA',
-    decimals: 6,
-  },
-}
+    decimals: 6
+  }
+};
 
 export const LP_TOKENS = {
   'RAY-WUSDT': {
@@ -900,4 +900,4 @@ export const LP_TOKENS = {
     mintAddress: 'AKJHspCwDhABucCxNLXUSfEzb7Ny62RqFtC9uNjJi4fq',
     decimals: TOKENS.SRM.decimals
   }
-}
+};

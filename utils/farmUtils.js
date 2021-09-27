@@ -7,6 +7,14 @@ export const ALL_VAULT_FARMS = concat(FARMS);
 
 export const LEVERAGE_FARMS = concat(FARMS);
 
-export const getFarmBySymbol = (symbol) => find(ALL_FARMS, (farm) => farm.symbol === symbol);
+export const getFarmBySymbol = (symbol) => {
+  return find(ALL_FARMS, (farm) => {
+    return farm.symbol === symbol;
+  });
+};
 
-export const getFarmByMintAddress = (mintAddress) => find(ALL_FARMS, (farm) => farm.mintAddress === mintAddress);
+export const getFarmByMintAddress = (mintAddress) => {
+  return find(ALL_FARMS, (farm) => {
+    return farm.mintAddress === mintAddress;
+  });
+};

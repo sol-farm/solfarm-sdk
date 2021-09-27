@@ -2856,10 +2856,7 @@
           {
             "name": "buffer",
             "type": {
-              "array": [
-                "publicKey",
-                5
-              ]
+              "array": ["publicKey", 5]
             }
           }
         ]
