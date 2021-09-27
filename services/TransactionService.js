@@ -20,7 +20,6 @@ import {
   getVaultPdaAccount,
   getFarmPoolLpTokenAccount,
   getVaultProgramId,
-  getFarmLpMintAddress,
   getVaultRewardAccountA,
   getVaultRewardAccountB,
   getFarmPoolRewardATokenAccount,
@@ -242,8 +241,6 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
 
   const txn = new anchor.web3.Transaction();
 
-  const { migrateAccount } =
-    getStore('FarmStore').getFarm(getFarmLpMintAddress(assetSymbol)) || {};
   const [userBalanceAccount, userBalanceAccountNonce] =
     await anchor.web3.PublicKey.findProgramAddress(
       [
@@ -334,114 +331,42 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
       tulipPubKey
     );
 
-  let harvestAccounts;
+  const harvestAccounts = {
+    authority: provider.wallet.publicKey,
+    vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
+    vaultPdaAccount: new anchor.web3.PublicKey(
+      getVaultPdaAccount(assetSymbol)
+    ),
+    userInfoAccount: new anchor.web3.PublicKey(
+      getVaultInfoAccount(assetSymbol)
+    ),
+    userBalanceAccount: userBalanceAccount,
+    userBalanceMetadata: userBalanceMetadataAccount,
+    userTulipRewardMetadata: tulipRewardMetadataAccount,
+    userTulipTokenAccount: tulipRewardTokenAccount,
+    vaultTulipTokenAccount: new anchor.web3.PublicKey(
+      getVaultTulipTokenAccount(assetSymbol)
+    ),
+    tokenProgramId: serum.TokenInstructions.TOKEN_PROGRAM_ID,
+    clock: SYSVAR_CLOCK_PUBKEY,
+    rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+    systemProgram: new anchor.web3.PublicKey(
+      '11111111111111111111111111111111'
+    )
+  };
 
-  if (migrateAccount) {
-    const [newUserBalanceAccount, newUserBalanceAccountNonce] =
-      await anchor.web3.PublicKey.findProgramAddress(
-        [
-          new anchor.web3.PublicKey(getVaultInfoAccount(assetSymbol)).toBytes(),
-          provider.wallet.publicKey.toBytes()
-        ],
-        vaultProgramId
-      );
-
-    const [newUserBalanceMetadataAccount, newUserBalanceMetadataAccountNonce] =
-      await anchor.web3.PublicKey.findProgramAddress(
-        [newUserBalanceAccount.toBuffer(), provider.wallet.publicKey.toBytes()],
-        vaultProgramId
-      );
-
-    const [newTulipRewardMetadataAccount, newTulipRewardMetadataNonce] =
-      await anchor.web3.PublicKey.findProgramAddress(
-        [
-          newUserBalanceMetadataAccount.toBytes(),
-          provider.wallet.publicKey.toBytes()
-        ],
-        vaultProgramId
-      );
-
-    harvestAccounts = {
-      authority: provider.wallet.publicKey,
-      vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
-      vaultPdaAccount: new anchor.web3.PublicKey(
-        getVaultPdaAccount(assetSymbol)
-      ),
-      userInfoAccount: new anchor.web3.PublicKey(
-        getVaultInfoAccount(assetSymbol)
-      ),
-      userBalanceAccount: newUserBalanceAccount,
-      userBalanceMetadata: newUserBalanceMetadataAccount,
-      userTulipRewardMetadata: newTulipRewardMetadataAccount,
-      oldUserBalanceAccount: userBalanceAccount,
-      oldUserBalanceMetadata: userBalanceMetadataAccount,
-      oldUserTulipRewardMetadata: tulipRewardMetadataAccount,
-      userTulipTokenAccount: tulipRewardTokenAccount,
-      vaultTulipTokenAccount: new anchor.web3.PublicKey(
-        getVaultTulipTokenAccount(assetSymbol)
-      ),
-      tokenProgramId: serum.TokenInstructions.TOKEN_PROGRAM_ID,
-      clock: SYSVAR_CLOCK_PUBKEY,
-      rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-      systemProgram: new anchor.web3.PublicKey(
-        '11111111111111111111111111111111'
-      )
-    };
-
-    txn.add(
-      vaultProgram.instruction.harvestMigrateTulips(
-        {
-          nonce: newUserBalanceAccountNonce,
-          metaNonce: newUserBalanceMetadataAccountNonce,
-          rewardNonce: newTulipRewardMetadataNonce,
-          oldNonce: userBalanceAccountNonce,
-          oldMetaNonce: userBalanceMetadataAccountNonce,
-          oldRewardNonce: tulipRewardMetadataNonce
-        },
-        {
-          accounts: harvestAccounts
-        }
-      )
-    );
-  }
-  else {
-    harvestAccounts = {
-      authority: provider.wallet.publicKey,
-      vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
-      vaultPdaAccount: new anchor.web3.PublicKey(
-        getVaultPdaAccount(assetSymbol)
-      ),
-      userInfoAccount: new anchor.web3.PublicKey(
-        getVaultInfoAccount(assetSymbol)
-      ),
-      userBalanceAccount: userBalanceAccount,
-      userBalanceMetadata: userBalanceMetadataAccount,
-      userTulipRewardMetadata: tulipRewardMetadataAccount,
-      userTulipTokenAccount: tulipRewardTokenAccount,
-      vaultTulipTokenAccount: new anchor.web3.PublicKey(
-        getVaultTulipTokenAccount(assetSymbol)
-      ),
-      tokenProgramId: serum.TokenInstructions.TOKEN_PROGRAM_ID,
-      clock: SYSVAR_CLOCK_PUBKEY,
-      rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-      systemProgram: new anchor.web3.PublicKey(
-        '11111111111111111111111111111111'
-      )
-    };
-
-    txn.add(
-      vaultProgram.instruction.harvestTulips(
-        {
-          nonce: userBalanceAccountNonce,
-          metaNonce: userBalanceMetadataAccountNonce,
-          rewardNonce: tulipRewardMetadataNonce
-        },
-        {
-          accounts: harvestAccounts
-        }
-      )
-    );
-  }
+  txn.add(
+    vaultProgram.instruction.harvestTulips(
+      {
+        nonce: userBalanceAccountNonce,
+        metaNonce: userBalanceMetadataAccountNonce,
+        rewardNonce: tulipRewardMetadataNonce
+      },
+      {
+        accounts: harvestAccounts
+      }
+    )
+  );
 
   // Add withdraw instruction
   txn.add(

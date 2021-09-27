@@ -99,18 +99,18 @@ export const getVaultSerumVaultSigner = (name) => {
   return vaultAccount?.serumVaultSigner;
 };
 
+export const isVersionFourOrFive = (name) => {
+  const vaultVersion = getVaultVersion(name);
+
+  return ['4', '5'].includes(vaultVersion);
+};
+
 export const getVaultStakeLayout = (name) => {
   return isVersionFourOrFive(name) ? STAKE_INFO_LAYOUT_V4 : STAKE_INFO_LAYOUT;
 };
 
 export const getVaultAmmLayout = (name) => {
   return isVersionFourOrFive(name) ? AMM_INFO_LAYOUT_V4 : AMM_INFO_LAYOUT_V3;
-};
-
-export const isVersionFourOrFive = (name) => {
-  const vaultVersion = getVaultVersion(name);
-
-  return ['4', '5'].includes(vaultVersion);
 };
 // #endregion
 
