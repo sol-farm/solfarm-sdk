@@ -386,7 +386,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
   return sendTransaction(conn, wallet, txn, []);
 };
 
-export default {
+export {
   depositToVault,
   withdrawFromVault
 };
