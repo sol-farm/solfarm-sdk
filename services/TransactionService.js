@@ -32,9 +32,9 @@ import {
 /**
  *
  * @param {Object} conn web3 Connection object
- * @param {Object} wallet
+ * @param {Object} wallet Wallet object
  * @param {String} mintAddress Mint Address of the Vault
- * @param {String} authorityTokenAccount
+ * @param {String} authorityTokenAccount Token account address of the user corresponding to the vault
  * @param {String|Number} amount Amount to deposit
  *
  * @returns {Promise}
@@ -217,9 +217,9 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
 /**
  *
  * @param {Object} conn web3 Connection object
- * @param {Object} wallet
+ * @param {Object} wallet Wallet object
  * @param {String} mintAddress Mint Address of the Vault
- * @param {String} authorityTokenAccount
+ * @param {String} authorityTokenAccount Token account address of the user corresponding to the vault
  * @param {String|Number} amount Amount to withdraw
  *
  * @returns {Promise}
