@@ -108,7 +108,7 @@ Withdraw from Raydium Vault
 ### Returns
 `Promise<transactionId: String>`
 
-Example:
+### Example:
 ```javascript
 import { withdrawFromVault } from 'solfarm-sdk';
 import { Connection } from '@solana/web3.js';
