@@ -33,7 +33,6 @@ import {
  * @param {String} mintAddress Mint Address of the Vault
  * @param {String} authorityTokenAccount Token account address of the user corresponding to the vault
  * @param {String|Number} amount Amount to deposit
- * @param {Object} opts
  *
  * @returns {Promise}
  */
