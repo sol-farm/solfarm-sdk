@@ -8,7 +8,6 @@ import { TOKENS } from '../constants/tokens';
 import idl from '../constants/raydium_idl.json';
 
 // Utils
-import { commitment, sendTransaction } from '../utils/web3';
 import { getFarmByMintAddress } from '../utils/farmUtils';
 import {
   getFarmPoolAuthority,
@@ -30,26 +29,19 @@ import {
 } from '../utils/config';
 
 /**
- *
- * @param {Object} conn web3 Connection object
- * @param {Object} wallet Wallet object
+ * @param {PublicKey} userAddress - Public key of the user
  * @param {String} mintAddress Mint Address of the Vault
  * @param {String} authorityTokenAccount Token account address of the user corresponding to the vault
  * @param {String|Number} amount Amount to deposit
+ * @param {Object} opts
  *
  * @returns {Promise}
  */
-const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, amount) => {
+const depositToVault = async (userAddress, mintAddress, authorityTokenAccount, amount) => {
   const { decimals, symbol: assetSymbol } =
     getFarmByMintAddress(mintAddress) || {};
 
-  const provider = new anchor.Provider(conn, wallet, {
-      skipPreflight: true,
-      preflightCommitment: commitment
-    }),
-    tulipPubKey = new anchor.web3.PublicKey(TOKENS.TULIP.mintAddress);
-
-  anchor.setProvider(provider);
+  const tulipPubKey = new anchor.web3.PublicKey(TOKENS.TULIP.mintAddress);
 
   // Address of the deployed program.
   const vaultProgramId = new anchor.web3.PublicKey(getVaultProgramId());
@@ -64,14 +56,14 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
         new anchor.web3.PublicKey(
           getVaultOldInfoAccount(assetSymbol)
         ).toBytes(),
-        provider.wallet.publicKey.toBytes()
+        userAddress.toBytes()
       ],
       vaultProgramId
     );
 
   const [userBalanceMetadataAccount, userBalanceMetadataAccountNonce] =
     await anchor.web3.PublicKey.findProgramAddress(
-      [userBalanceAccount.toBuffer(), provider.wallet.publicKey.toBytes()],
+      [userBalanceAccount.toBuffer(), userAddress.toBytes()],
       vaultProgramId
     );
 
@@ -79,14 +71,14 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
     await anchor.web3.PublicKey.findProgramAddress(
       [
         userBalanceMetadataAccount.toBytes(),
-        provider.wallet.publicKey.toBytes()
+        userAddress.toBytes()
       ],
       vaultProgramId
     );
 
   const tulipRewardTokenAccount =
     await serumAssoToken.getAssociatedTokenAddress(
-      wallet.publicKey,
+      userAddress,
       tulipPubKey
     );
 
@@ -96,7 +88,7 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
       getVaultLpTokenAccount(assetSymbol)
     ),
     authorityTokenAccount: new anchor.web3.PublicKey(authorityTokenAccount),
-    authority: provider.wallet.publicKey,
+    authority: userAddress,
     stakeProgramId: new anchor.web3.PublicKey(getFarmProgramId(assetSymbol)),
     vaultPdaAccount: new anchor.web3.PublicKey(getVaultPdaAccount(assetSymbol)),
     poolId: new anchor.web3.PublicKey(getFarmPoolId(assetSymbol)),
@@ -149,10 +141,10 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
     txn.add(
       await serumAssoToken.createAssociatedTokenAccount(
         // who will pay for the account creation
-        wallet.publicKey,
+        userAddress,
 
         // who is the account getting created for
-        wallet.publicKey,
+        userAddress,
 
         // what mint address token is being created
         tulipPubKey
@@ -162,7 +154,7 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
 
   // Add tulip harvest instruction
   const harvestAccounts = {
-    authority: provider.wallet.publicKey,
+    authority: userAddress,
     vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
     vaultPdaAccount: new anchor.web3.PublicKey(getVaultPdaAccount(assetSymbol)),
     userInfoAccount: new anchor.web3.PublicKey(
@@ -211,28 +203,19 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
     )
   );
 
-  return sendTransaction(conn, wallet, txn, []);
+  return txn;
 };
 
 /**
- *
- * @param {Object} conn web3 Connection object
- * @param {Object} wallet Wallet object
+ * @param {PublicKey} userAddress - Public key of the user
  * @param {String} mintAddress Mint Address of the Vault
  * @param {String} authorityTokenAccount Token account address of the user corresponding to the vault
  * @param {String|Number} amount Amount to withdraw
  *
  * @returns {Promise}
  */
-const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccount, amount) => {
+const withdrawFromVault = async (userAddress, mintAddress, authorityTokenAccount, amount) => {
   const { decimals, symbol: assetSymbol } = getFarmByMintAddress(mintAddress) || {};
-
-  const provider = new anchor.Provider(conn, wallet, {
-    skipPreflight: true,
-    preflightCommitment: commitment
-  });
-
-  anchor.setProvider(provider);
 
   // Address of the deployed program.
   const vaultProgramId = new anchor.web3.PublicKey(getVaultProgramId());
@@ -247,14 +230,14 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
         new anchor.web3.PublicKey(
           getVaultOldInfoAccount(assetSymbol)
         ).toBytes(),
-        provider.wallet.publicKey.toBytes()
+        userAddress.toBytes()
       ],
       vaultProgramId
     );
 
   const [userBalanceMetadataAccount, userBalanceMetadataAccountNonce] =
     await anchor.web3.PublicKey.findProgramAddress(
-      [userBalanceAccount.toBuffer(), provider.wallet.publicKey.toBytes()],
+      [userBalanceAccount.toBuffer(), userAddress.toBytes()],
       vaultProgramId
     );
 
@@ -262,7 +245,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
     await anchor.web3.PublicKey.findProgramAddress(
       [
         userBalanceMetadataAccount.toBytes(),
-        provider.wallet.publicKey.toBytes()
+        userAddress.toBytes()
       ],
       vaultProgramId
     );
@@ -282,7 +265,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
       getVaultLpTokenAccount(assetSymbol)
     ),
     authorityTokenAccount: new anchor.web3.PublicKey(authorityTokenAccount),
-    authority: provider.wallet.publicKey,
+    authority: userAddress,
     stakeProgramId: new anchor.web3.PublicKey(getFarmProgramId(assetSymbol)),
     vaultPdaAccount: new anchor.web3.PublicKey(getVaultPdaAccount(assetSymbol)),
     poolId: new anchor.web3.PublicKey(getFarmPoolId(assetSymbol)),
@@ -327,12 +310,12 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
 
   const tulipRewardTokenAccount =
     await serumAssoToken.getAssociatedTokenAddress(
-      wallet.publicKey,
+      userAddress,
       tulipPubKey
     );
 
   const harvestAccounts = {
-    authority: provider.wallet.publicKey,
+    authority: userAddress,
     vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
     vaultPdaAccount: new anchor.web3.PublicKey(
       getVaultPdaAccount(assetSymbol)
@@ -383,7 +366,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
     )
   );
 
-  return sendTransaction(conn, wallet, txn, []);
+  return txn;
 };
 
 export {

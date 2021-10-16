@@ -12,24 +12,21 @@ npm install --save https://github.com/sol-farm/solfarm-sdk.git
 ## `depositToVault`
 Deposit to Raydium Vault
 
-`depositToVault(conn: Connection, wallet: SolanaWalletAdapter | Object, mintAddress: String, authorityTokenAccount: PublicKey, amount: String | Number)`
+`depositToVault(userAddress: PublicKey, mintAddress: String, authorityTokenAccount: PublicKey, amount: String | Number)`
 
 ### Parameters
-- `conn: Connection` - web3 Connection object
-- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `userAddress: PublicKey` - Public key of the user
 - `mintAddress: String` - Mint Address of the Vault
 - `authorityTokenAccount: PublicKey` - Token account address of the user corresponding to the vault
 - `amount: String | Number` - Amount to deposit
 
 ### Returns
-`Promise<transactionId: String>`
+`Promise<transaction: Object>`
 
 ### Example
 
 ```javascript
 import { depositToVault } from 'solfarm-sdk';
-import { Connection } from '@solana/web3.js';
-import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
 
 // Boilerplate setup for web3 connection
@@ -80,39 +77,36 @@ const depositToSolfarm = async () => {
   // For example, let's hardcode the `amount` to '0.01'
   const amountToDeposit = '0.01';
   const authorityTokenAccount = tokenAccounts[farmMintAddress].tokenAccountAddress;
+  const userAddress = new anchor.web3.PublicKey(wallet.publicKey.toBase58())
 
-  const transactionId = await depositToVault(
-    conn,
-    wallet,
+  const transaction = await depositToVault(
+    userAddress
     farmMintAddress,
     authorityTokenAccount,
     amountToDeposit
   );
 
-  return transactionId;
+  // Execute the `transaction` using the connection for the user's wallet
 };
 ```
 
 ## `withdrawFromVault`
 Withdraw from Raydium Vault
 
-`withdrawFromVault(conn: Connection, wallet: SolanaWalletAdapter | Object, mintAddress: String, authorityTokenAccount: PublicKey, amount: String | Number)`
+`withdrawFromVault(userAddress: PublicKey, mintAddress: String, authorityTokenAccount: PublicKey, amount: String | Number)`
 
 ### Parameters
-- `conn: Connection` - web3 Connection object
-- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `userAddress: PublicKey` - Public key of the user
 - `mintAddress: String` - Mint Address of the Vault
 - `authorityTokenAccount: PublicKey` - Token account address of the user corresponding to the vault
 - `amount: String | Number` - Amount to deposit
 
 ### Returns
-`Promise<transactionId: String>`
+`Promise<transaction: Object>`
 
 ### Example:
 ```javascript
 import { withdrawFromVault } from 'solfarm-sdk';
-import { Connection } from '@solana/web3.js';
-import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
 
 // Boilerplate setup for web3 connection
@@ -163,15 +157,15 @@ const withdrawFromSolfarm = async () => {
   // For example, let's hardcode the `amount` to '0.01'
   const amountToWithdraw = '0.01';
   const authorityTokenAccount = tokenAccounts[farmMintAddress].tokenAccountAddress;
+  const userAddress = new anchor.web3.PublicKey(wallet.publicKey.toBase58())
 
-  const transactionId = await withdrawFromVault(
-    conn,
-    wallet,
+  const transaction = await withdrawFromVault(
+    userAddress,
     farmMintAddress,
     authorityTokenAccount,
     amountToWithdraw
   );
 
-  return transactionId;
+  // Execute the `transaction` using the connection for the user's wallet
 };
 ```
