@@ -211,7 +211,7 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
     )
   );
 
-  return sendTransaction(conn, wallet, txn, []);
+  return txn;
 };
 
 /**
@@ -383,7 +383,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
     )
   );
 
-  return sendTransaction(conn, wallet, txn, []);
+  return txn;
 };
 
 export {
