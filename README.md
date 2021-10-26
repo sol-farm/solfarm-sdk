@@ -1,6 +1,6 @@
-# SolFarm SDK
+# Tulip SDK
 
-Hello, we are glad to introduce SolFarm SDK to fellow Solana Developers! You can use this SDK to easily integrate SolFarm's Vaults into your product. Cheers 🍻
+Hello, we are glad to introduce Tulip SDK to fellow Solana Developers! You can use this SDK to easily integrate Tulip Protocol's Vaults into your product. Cheers 🍻
 
 # Installation
 ```
@@ -69,14 +69,14 @@ const tokenAccounts = {};
     });
 })();
 
-// Inputs taken by SolFarm SDK's `depositToVault`
+// Inputs taken by Tulip SDK's `depositToVault`
 const conn = new Connection(endpoint, { commitment });
 const wallet = new SolanaWalletAdapter('', endpoint);
 
 // For example, this is the `mintAddress` of TULIP-USDC
 const farmMintAddress = '2doeZGLJyACtaG9DCUyqMLtswesfje1hjNA11hMdj6YU';
 
-const depositToSolfarm = async () => {
+const depositToTulipProtocol = async () => {
   // For example, let's hardcode the `amount` to '0.01'
   const amountToDeposit = '0.01';
   const authorityTokenAccount = tokenAccounts[farmMintAddress].tokenAccountAddress;
@@ -152,14 +152,14 @@ const tokenAccounts = {};
     });
 })();
 
-// Inputs taken by SolFarm SDK's `withdrawFromVault`
+// Inputs taken by Tulip SDK's `withdrawFromVault`
 const conn = new Connection(endpoint, { commitment });
 const wallet = new SolanaWalletAdapter('', endpoint);
 
 // For example, this is the `mintAddress` of TULIP-USDC
 const farmMintAddress = '2doeZGLJyACtaG9DCUyqMLtswesfje1hjNA11hMdj6YU';
 
-const withdrawFromSolfarm = async () => {
+const withdrawFromTulipProtocol = async () => {
   // For example, let's hardcode the `amount` to '0.01'
   const amountToWithdraw = '0.01';
   const authorityTokenAccount = tokenAccounts[farmMintAddress].tokenAccountAddress;
@@ -175,3 +175,50 @@ const withdrawFromSolfarm = async () => {
   return transactionId;
 };
 ```
+
+
+## `getBalanceForVault`
+Get Balance for a user in a Vault
+
+`getBalanceForVault(conn: Connection, wallet: SolanaWalletAdapter | Object, mintAddress: String)`
+
+### Parameters
+- `conn: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `mintAddress: String` - Mint Address of the Vault
+
+### Returns
+`Promise<{ lastDepositTime: BN, depositedAmount: BN, rewardsSinceLastDeposit: BN }>`
+
+### Example:
+```javascript
+import { getBalanceForVault } from 'solfarm-sdk';
+import { Connection } from '@solana/web3.js';
+import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `getBalanceForVault`
+const conn = new Connection(endpoint, { commitment });
+const wallet = new SolanaWalletAdapter('', endpoint);
+
+// For example, this is the `mintAddress` of TULIP-USDC
+const farmMintAddress = '2doeZGLJyACtaG9DCUyqMLtswesfje1hjNA11hMdj6YU';
+
+const getUserBalanceForTulipProtocol = async () => {
+  const {
+    lastDepositTime,
+    depositedAmount,
+    rewardsSinceLastDeposit
+  } = await getBalanceForVault(conn, wallet, farmMintAddress);
+
+  return {
+    lastDepositTime,
+    depositedAmount,
+    rewardsSinceLastDeposit
+  };
+};
+```
+
