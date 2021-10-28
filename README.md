@@ -188,7 +188,7 @@ Get Balance for a user in a Vault
 - `mintAddress: String` - Mint Address of the Vault
 
 ### Returns
-`Promise<{ lastDepositTime: BN, depositedAmount: BN, rewardsSinceLastDeposit: BN }>`
+`Promise<{ lastDepositTime: BigNumber, depositedAmount: BigNumber, rewardsSinceLastDeposit: BigNumber }>`
 
 ### Example:
 ```javascript
