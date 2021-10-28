@@ -11,6 +11,7 @@ import {
   getVaultProgramId,
   getVaultOldInfoAccount
 } from '../utils/config';
+import BigNumber from 'bignumber.js';
 
 /**
  *
@@ -69,16 +70,22 @@ const getBalanceForVault = async (conn, wallet, mintAddress) => {
   const { totalVaultBalance, totalVlpShares } = vaultAccountData || {};
   const userShares = userBalanceAccountData.amount;
   const totalLpTokens = userBalanceMetadataAccountData?.totalLpTokens;
-  const farmDecimals = new anchor.BN(Math.pow(10, farm.decimals));
-  const depositedAmount = userShares.mul(totalVaultBalance).div(totalVlpShares).div(farmDecimals);
-  const lastDepositedAmount = totalLpTokens.div(farmDecimals);
+  const depositedAmount = userShares.mul(totalVaultBalance).div(totalVlpShares);
+  const lastDepositedAmount = totalLpTokens;
   const lastDepositTime = userBalanceMetadataAccountData?.lastDepositTime;
   const rewardsSinceLastDeposit = depositedAmount.sub(lastDepositedAmount);
+  const farmDecimals = Math.pow(10, farm.decimals);
 
+  // BigNumber types
+  const depositedAmountBN = new BigNumber(depositedAmount.toString()).dividedBy(farmDecimals);
+  const rewardsSinceLastDepositBN = new BigNumber(rewardsSinceLastDeposit.toString()).dividedBy(farmDecimals);
+  const lastDepositTimeBN = new BigNumber(lastDepositTime.toString());
+
+  // eslint-disable-next-line object-shorthand
   return {
-    lastDepositTime,
-    depositedAmount,
-    rewardsSinceLastDeposit
+    depositedAmount: depositedAmountBN,
+    rewardsSinceLastDeposit: rewardsSinceLastDepositBN,
+    lastDepositTime: lastDepositTimeBN
   };
 };
 
