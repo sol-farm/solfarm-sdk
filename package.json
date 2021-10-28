@@ -21,7 +21,7 @@
     "@project-serum/associated-token": "^0.1.1",
     "@project-serum/serum": "^0.13.33",
     "@solana/web3.js": "^1.4.0",
-    "superstruct": "^0.14.2",
+    "superstruct": "0.8.4",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
