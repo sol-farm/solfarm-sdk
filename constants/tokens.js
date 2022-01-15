@@ -6,6 +6,38 @@ export const NATIVE_SOL = {
 };
 
 export const TOKENS = {
+  RUN: {
+    symbol: 'RUN',
+    name: 'RUN',
+    mintAddress: '6F9XriABHfWhit6zmMUYAQBSy6XK5VF1cHXuW5LDpRtC',
+    decimals: 9
+  },
+  REAL: {
+    symbol: 'REAL',
+    name: 'REAL',
+    mintAddress: 'AD27ov5fVU2XzwsbvnFvb1JpCBaCB5dRXrczV9CqSVGb',
+    decimals: 9
+  },
+  CRWNY: {
+    symbol: 'CRWNY',
+    name: 'CRWNY',
+    mintAddress: 'CRWNYkqdgvhGGae9CKfNka58j6QQkaD5bLhKXvUYqnc1',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  XTAG: {
+    symbol: 'XTAG',
+    name: 'XTAG',
+    mintAddress: '5gs8nf4wojB5EXgDUWNLwXpknzgV2YWDhveAeBZpVLbp',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  TTT: {
+    symbol: 'TTT',
+    name: 'TabTrader',
+    mintAddress: 'FNFKRV3V8DtA3gVJN6UshMiLGYA8izxFwkNWmJbFjmRj',
+    decimals: 6
+  },
   FRKT: {
     symbol: 'FRKT',
     name: 'FRKT',
@@ -61,7 +93,7 @@ export const TOKENS = {
     name: 'renBTC',
     mintAddress: 'CDJWUqTcYTVAKXAVXoQZFes5JUFc7owSeq7eMQcDSbo5',
     decimals: 8,
-    referrer: '7rr64uygy3o5RKVeNv12JGDUFMXVdr2YHvA3NTxzbZT6',
+    referrer: '7rr64uygy3o5RKVeNv12JGDUFMXVdr2YHvA3NTxzbZT6'
   },
   ETH: {
     symbol: 'ETH',
@@ -286,6 +318,83 @@ export const TOKENS = {
     decimals: 6,
     tags: ['raydium']
   },
+  BLOCK: {
+    symbol: 'BLOCK',
+    name: 'BLOCK',
+    mintAddress: 'NFTUkR4u7wKxy9QLaX2TGvd9oZSWoMo4jqSJqdMb7Nk',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  SOLAR: {
+    symbol: 'SOLAR',
+    name: 'SOLAR',
+    mintAddress: '2wmKXX1xsxLfrvjEPrt2UHiqj8Gbzwxvffr9qmNjsw8g',
+    decimals: 9,
+    tags: ['raydium']
+  },
+  BASIS: {
+    symbol: 'BASIS',
+    name: 'BASIS',
+    mintAddress: 'Basis9oJw9j8cw53oMV7iqsgo6ihi9ALw4QR31rcjUJa',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  SOLX: {
+    symbol: 'SOLX',
+    name: 'SOLX',
+    mintAddress: 'CH74tuRLTYcxG7qNJCsV9rghfLXJCQJbsu7i52a8F1Gn',
+    decimals: 9,
+    tags: ['raydium']
+  },
+  CHICKS: {
+    symbol: 'CHICKS',
+    name: 'CHICKS',
+    mintAddress: 'cxxShYRVcepDudXhe7U62QHvw8uBJoKFifmzggGKVC2',
+    decimals: 9,
+    tags: ['raydium']
+  },
+  GST: {
+    symbol: 'GST',
+    name: 'GST',
+    mintAddress: 'AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB',
+    decimals: 9,
+    tags: ['raydium']
+  },
+  MEAN: {
+    symbol: 'MEAN',
+    name: 'MEAN',
+    mintAddress: 'MEANeD3XDdUmNMsRGjASkSWdC8prLYsoRJ61pPeHctD',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  MBS: {
+    symbol: 'MBS',
+    name: 'MBS',
+    mintAddress: 'Fm9rHUTF5v3hwMLbStjZXqNBBoZyGriQaFM6sTFz3K8A',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  SVT: {
+    symbol: 'SVT',
+    name: 'SVT',
+    mintAddress: 'svtMpL5eQzdmB3uqK9NXaQkq8prGZoKQFNVJghdWCkV',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  SLC: {
+    symbol: 'SLC',
+    name: 'SLC',
+    mintAddress: 'METAmTMXwdb8gYzyCPfXXFmZZw4rUsXX58PNsDg7zjL',
+    decimals: 6,
+    tags: ['raydium']
+  },
+  PRISM: {
+    symbol: 'PRISM',
+    name: 'PRISM',
+    mintAddress: 'PRSMNsEPqhGVCH1TtWiJqPjJyh2cKrLostPZTNy1o5x',
+    decimals: 6,
+    tags: ['raydium']
+  },
   YFI: {
     symbol: 'YFI',
     name: 'Wrapped YFI',
@@ -326,49 +435,56 @@ export const TOKENS = {
     name: 'SNY',
     mintAddress: '4dmKkXNHdgYsXqBHCuMikNQWwVomZURhYvkkX5c4pQ7y',
     decimals: 6,
-    referrer: 'G7gyaTNn2hgjF67SWs4Ee9PEaFU2xadhtXL8HmkJ2cNL',
+    referrer: 'G7gyaTNn2hgjF67SWs4Ee9PEaFU2xadhtXL8HmkJ2cNL'
   },
   SLRS: {
     symbol: 'SLRS',
     name: 'SLRS',
     mintAddress: 'SLRSSpSLUTP7okbCUBYStWCo1vUgyt775faPqz8HUMr',
     decimals: 6,
-    referrer: 'AmqeHgTdm6kBzy5ewZFKuMAfbynZmhve1GQxbJzQFLbP',
+    referrer: 'AmqeHgTdm6kBzy5ewZFKuMAfbynZmhve1GQxbJzQFLbP'
   },
   MNGO: {
     symbol: 'MNGO',
     name: 'Mango',
     mintAddress: 'MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac',
     decimals: 6,
-    referrer: 'CijuvE6qDpxZ5WqdEQEe7mS11fXEKiiHc7RR8wRiGzjY',
+    referrer: 'CijuvE6qDpxZ5WqdEQEe7mS11fXEKiiHc7RR8wRiGzjY'
   },
   LIKE: {
     symbol: 'LIKE',
     name: 'LIKE',
     mintAddress: '3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR',
     decimals: 9,
-    referrer: '2rnVeVGfM88XqyNyBzGWEb7JViYKqncFzjWq5h1ujS9A',
+    referrer: '2rnVeVGfM88XqyNyBzGWEb7JViYKqncFzjWq5h1ujS9A'
   },
   ORCA: {
     symbol: 'ORCA',
     name: 'ORCA',
     mintAddress: 'orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE',
     decimals: 6,
-    referrer: '',
+    referrer: ''
+  },
+  SHDW: {
+    symbol: 'SHDW',
+    name: 'SHDW',
+    mintAddress: 'SHDWyBxihqiCj6YekG2GUr7wqKLeLAMK1gHZck9pL6y',
+    decimals: 9,
+    referrer: ''
   },
   BOP: {
     symbol: 'BOP',
     name: 'Boring Protocol',
     mintAddress: 'BLwTnYKqf7u4qjgZrrsKeNs2EzWkMLqVCu6j8iHyrNA3',
     decimals: 8,
-    referrer: 'FWxBZmNsvNckx8DnaL2NuyMtiQmT1x529WwV4e1UWiGk',
+    referrer: 'FWxBZmNsvNckx8DnaL2NuyMtiQmT1x529WwV4e1UWiGk'
   },
   SAMO: {
     symbol: 'SAMO',
     name: 'Samoyed Coin',
     mintAddress: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
     decimals: 9,
-    referrer: 'FnMDNFL9t8EpbADSU3hLWBtx7SuwRBB6NM84U3PzSkUu',
+    referrer: 'FnMDNFL9t8EpbADSU3hLWBtx7SuwRBB6NM84U3PzSkUu'
   },
   SXP: {
     symbol: 'SXP',
@@ -474,11 +590,13 @@ export const TOKENS = {
     mintAddress: 'DFL1zNkaGPWm1BqAVqRjCZvHmwTFrEaJtbzJWgseoNJh',
     decimals: 9,
 
-    detailLink: 'https://raydium.medium.com/defi-land-is-launching-on-acceleraytor-8aa06caecc3c',
+    detailLink:
+      'https://raydium.medium.com/defi-land-is-launching-on-acceleraytor-8aa06caecc3c',
     details:
-        'DeFi Land is a multi-chain agriculture simulation web game created to gamify decentralized finance. The game will have all the features that traditional platforms have, but it will be gathered all in one place. DeFi Land gamifies decentralized finance by turning investment activities into games.',
+      'DeFi Land is a multi-chain agriculture simulation web game created to gamify decentralized finance. The game will have all the features that traditional platforms have, but it will be gathered all in one place. DeFi Land gamifies decentralized finance by turning investment activities into games.',
     docs: {
       website: 'https://defiland.app/'
+
       // whitepaper: ''
     },
     socials: {
@@ -614,6 +732,7 @@ export const TOKENS = {
     symbol: 'RAY',
     name: 'Raydium',
     mintAddress: '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R',
+
     // mintAddress: '5rNx2ZpFy8qUW4SziDxfR9vnUABmhxMe5roPEy6w6HGR',
     decimals: 6,
     referrer: '33XpMmMQRf6tSPpmYyzpwU4uXpZHkFwCZsusD9dMYkjy'
@@ -658,21 +777,21 @@ export const TOKENS = {
     name: 'MEDIA',
     mintAddress: 'ETAtLmCmsoiEEKfNrHKJ2kYy3MoABhU6NQvpSfij5tDs',
     decimals: 6,
-    referrer: 'DiLuXdZ5TbQ1jUNEF6tNstHNqXJ3mTCrsVrM6DeX18Mh',
+    referrer: 'DiLuXdZ5TbQ1jUNEF6tNstHNqXJ3mTCrsVrM6DeX18Mh'
   },
   MER: {
     symbol: 'MER',
     name: 'Mercurial',
     mintAddress: 'MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K',
     decimals: 6,
-    referrer: '36F4ryvqaNW2yKQsAry4ZHCZ3j7tz3gtEz7NEwv7pSRu',
+    referrer: '36F4ryvqaNW2yKQsAry4ZHCZ3j7tz3gtEz7NEwv7pSRu'
   },
   ROPE: {
     symbol: 'ROPE',
     name: 'ROPE',
     mintAddress: '8PMHT4swUMtBzgHnh5U564N5sjPSiUz2cjEQzFnnP1Fo',
     decimals: 9,
-    referrer: '5sGVVniBSPLTwRHDETShovq7STRH2rJwbvdvvH3NcVTF',
+    referrer: '5sGVVniBSPLTwRHDETShovq7STRH2rJwbvdvvH3NcVTF'
   },
   TULIP: {
     symbol: 'TULIP',
@@ -696,13 +815,13 @@ export const TOKENS = {
     symbol: 'GRAPE',
     name: 'Grape',
     mintAddress: '8upjSpvjcdpuzhfR1zriwg5NXkwDruejqNE9WNbPRtyA',
-    decimals: 6,
+    decimals: 6
   },
   LARIX: {
     symbol: 'LARIX',
     name: 'Larix',
     mintAddress: 'Lrxqnh6ZHKbGy3dcrCED43nsoLkM1LTzU2jRfWe8qUC',
-    decimals: 6,
+    decimals: 6
   },
   WOOF: {
     symbol: 'WOOF',
@@ -724,5 +843,5 @@ export const TOKENS = {
     mintAddress: 'HCgybxq5Upy8Mccihrp7EsmwwFqYZtrHrsmsKwtGXLgW',
     decimals: 6,
     tags: ['raydium']
-  },
-}
+  }
+};
