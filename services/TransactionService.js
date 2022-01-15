@@ -8,7 +8,7 @@ import { TOKENS } from '../constants/tokens';
 import idl from '../constants/raydium_idl.json';
 
 // Utils
-import { commitment, sendTransaction } from '../utils/web3';
+import { commitment } from '../utils/web3';
 import { getFarmByMintAddress } from '../utils/farmUtils';
 import {
   getFarmPoolAuthority,
