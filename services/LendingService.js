@@ -331,7 +331,7 @@ const withdrawFromLendingReserve = async (
     authorityTokenAccountInfo,
     collateralTokenAccountInfo,
     reserveAccountInfo
-  ] = getMultipleAccounts(
+  ] = await getMultipleAccounts(
     conn,
     [
       new PublicKey(authorityTokenAccount),
