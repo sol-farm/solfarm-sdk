@@ -341,9 +341,11 @@ const withdrawFromLendingReserve = async (
     commitment
   );
 
-  const decodedAuthorityTokenAccountInfo = authorityTokenAccountInfo;
+  const decodedAuthorityTokenAccountInfo = ACCOUNT_LAYOUT.decode(
+    authorityTokenAccountInfo.account.data
+  );
   const decodedCollateralTokenAccountInfo = MINT_LAYOUT.decode(
-    collateralTokenAccountInfo
+    collateralTokenAccountInfo.account.data
   );
   const decodedReserveAccountInfo = LENDING_RESERVE_LAYOUT.decode(
     reserveAccountInfo.account.data
