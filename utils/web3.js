@@ -165,7 +165,6 @@ export async function getMultipleAccounts (connection, publicKeys, commitment) {
 
         // assert(data[1] === 'base64')
 
-        // eslint-disable-next-line object-shorthand
         value = {
           executable,
           owner: new PublicKey(owner),
@@ -190,7 +189,6 @@ export async function getMultipleAccounts (connection, publicKeys, commitment) {
       return null;
     }
 
-    // eslint-disable-next-line object-shorthand
     return {
       publicKey: publicKeys[idx],
       account

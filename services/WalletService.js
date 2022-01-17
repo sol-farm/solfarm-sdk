@@ -30,18 +30,18 @@ const getBalanceForVault = async (conn, wallet, mintAddress) => {
   const vaultProgramId = new anchor.web3.PublicKey(getVaultProgramId()),
     [userBalanceAccount] = await anchor.web3.PublicKey.findProgramAddress(
       [
-        new anchor.web3.PublicKey(getVaultOldInfoAccount(farm.symbol)).toBytes(),
+        new anchor.web3.PublicKey(
+          getVaultOldInfoAccount(farm.symbol)
+        ).toBytes(),
         provider.wallet.publicKey.toBytes()
       ],
       vaultProgramId
     ),
-    [userBalanceMetadataAccount] = await anchor.web3.PublicKey.findProgramAddress(
-      [
-        userBalanceAccount.toBuffer(),
-        provider.wallet.publicKey.toBytes()
-      ],
-      vaultProgramId
-    );
+    [userBalanceMetadataAccount] =
+      await anchor.web3.PublicKey.findProgramAddress(
+        [userBalanceAccount.toBuffer(), provider.wallet.publicKey.toBytes()],
+        vaultProgramId
+      );
 
   const vaultProgram = new anchor.Program(idl, vaultProgramId, provider);
 
@@ -58,13 +58,16 @@ const getBalanceForVault = async (conn, wallet, mintAddress) => {
   ] = await getMultipleAccounts(conn, publicKeys, commitment);
 
   const userBalanceAccountData = vaultProgram.coder.accounts.decode(
-      'VaultBalanceAccount', Buffer.from(userBalanceAccountInfo.account.data)
+      'VaultBalanceAccount',
+      Buffer.from(userBalanceAccountInfo.account.data)
     ),
     userBalanceMetadataAccountData = vaultProgram.coder.accounts.decode(
-      'VaultBalanceMetadata', Buffer.from(userBalanceMetadataAccountInfo.account.data)
+      'VaultBalanceMetadata',
+      Buffer.from(userBalanceMetadataAccountInfo.account.data)
     ),
     vaultAccountData = vaultProgram.coder.accounts.decode(
-      'Vault', Buffer.from(vaultAccountInfo.account.data)
+      'Vault',
+      Buffer.from(vaultAccountInfo.account.data)
     );
 
   const { totalVaultBalance, totalVlpShares } = vaultAccountData || {};
@@ -77,11 +80,14 @@ const getBalanceForVault = async (conn, wallet, mintAddress) => {
   const farmDecimals = Math.pow(10, farm.decimals);
 
   // BigNumber types
-  const depositedAmountBN = new BigNumber(depositedAmount.toString()).dividedBy(farmDecimals);
-  const rewardsSinceLastDepositBN = new BigNumber(rewardsSinceLastDeposit.toString()).dividedBy(farmDecimals);
+  const depositedAmountBN = new BigNumber(depositedAmount.toString()).dividedBy(
+    farmDecimals
+  );
+  const rewardsSinceLastDepositBN = new BigNumber(
+    rewardsSinceLastDeposit.toString()
+  ).dividedBy(farmDecimals);
   const lastDepositTimeBN = new BigNumber(lastDepositTime.toString());
 
-  // eslint-disable-next-line object-shorthand
   return {
     depositedAmount: depositedAmountBN,
     rewardsSinceLastDeposit: rewardsSinceLastDepositBN,
@@ -89,6 +95,4 @@ const getBalanceForVault = async (conn, wallet, mintAddress) => {
   };
 };
 
-export {
-  getBalanceForVault
-};
+export { getBalanceForVault };

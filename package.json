@@ -1,25 +1,19 @@
 {
-  "name": "solfarm-sdk",
-  "version": "1.0.0",
-  "description": "SolFarm SDK",
+  "name": "@tulip-protocol/platform-sdk",
+  "version": "1.0.2",
+  "description": "Tulip Protocol SDK",
   "main": "index.js",
   "typings": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sol-farm/solfarm-sdk.git"
-  },
-  "author": "SolFarm",
+  "author": "Tulip Protocol",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sol-farm/solfarm-sdk/issues"
-  },
-  "homepage": "https://github.com/sol-farm/solfarm-sdk#readme",
+  "homepage": "https://tulip.garden/",
   "dependencies": {
     "@project-serum/anchor": "^0.6.0",
     "@project-serum/associated-token": "^0.1.1",
+    "@project-serum/borsh": "^0.1.1",
     "@project-serum/serum": "^0.13.33",
     "@solana/web3.js": "^1.4.0",
     "bignumber.js": "^9.0.1",

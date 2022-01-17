@@ -17,6 +17,9 @@
     "browser": true,
     "es6": true
   },
+  "globals": {
+    "Buffer": true
+  },
   "rules": {
     "for-direction": "error",
     "getter-return": "error",
@@ -419,10 +422,7 @@
     "no-useless-constructor": "error",
     "no-useless-rename": "error",
     "no-var": "off",
-    "object-shorthand": [
-        "error",
-        "consistent"
-    ],
+    "object-shorthand": "off",
     "prefer-arrow-callback": "off",
     "prefer-const": "off",
     "prefer-destructuring": "off",

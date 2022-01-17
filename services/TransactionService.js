@@ -8,7 +8,7 @@ import { TOKENS } from '../constants/tokens';
 import idl from '../constants/raydium_idl.json';
 
 // Utils
-import { commitment, sendTransaction } from '../utils/web3';
+import { commitment } from '../utils/web3';
 import { getFarmByMintAddress } from '../utils/farmUtils';
 import {
   getFarmPoolAuthority,
@@ -39,7 +39,13 @@ import {
  *
  * @returns {Promise}
  */
-const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, amount) => {
+const depositToVault = async (
+  conn,
+  wallet,
+  mintAddress,
+  authorityTokenAccount,
+  amount
+) => {
   const { decimals, symbol: assetSymbol } =
     getFarmByMintAddress(mintAddress) || {};
 
@@ -224,8 +230,15 @@ const depositToVault = async (conn, wallet, mintAddress, authorityTokenAccount, 
  *
  * @returns {Promise}
  */
-const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccount, amount) => {
-  const { decimals, symbol: assetSymbol } = getFarmByMintAddress(mintAddress) || {};
+const withdrawFromVault = async (
+  conn,
+  wallet,
+  mintAddress,
+  authorityTokenAccount,
+  amount
+) => {
+  const { decimals, symbol: assetSymbol } =
+    getFarmByMintAddress(mintAddress) || {};
 
   const provider = new anchor.Provider(conn, wallet, {
     skipPreflight: true,
@@ -274,7 +287,9 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
 
   const userInputValue = new anchor.BN(amount * Math.pow(10, decimals));
 
-  const withdrawAmount = userInputValue.mul(totalVlpShares).div(totalVaultBalance);
+  const withdrawAmount = userInputValue
+    .mul(totalVlpShares)
+    .div(totalVaultBalance);
 
   const withdrawAccounts = {
     vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
@@ -334,9 +349,7 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
   const harvestAccounts = {
     authority: provider.wallet.publicKey,
     vault: new anchor.web3.PublicKey(getVaultAccount(assetSymbol)),
-    vaultPdaAccount: new anchor.web3.PublicKey(
-      getVaultPdaAccount(assetSymbol)
-    ),
+    vaultPdaAccount: new anchor.web3.PublicKey(getVaultPdaAccount(assetSymbol)),
     userInfoAccount: new anchor.web3.PublicKey(
       getVaultInfoAccount(assetSymbol)
     ),
@@ -386,7 +399,4 @@ const withdrawFromVault = async (conn, wallet, mintAddress, authorityTokenAccoun
   return txn;
 };
 
-export {
-  depositToVault,
-  withdrawFromVault
-};
+export { depositToVault, withdrawFromVault };
