@@ -1,7 +1,7 @@
 {
-  "name": "solfarm-sdk",
-  "version": "1.0.0",
-  "description": "SolFarm SDK",
+  "name": "@tulip-protocol/platform-sdk",
+  "version": "1.0.1",
+  "description": "Tulip Protocol SDK",
   "main": "index.js",
   "typings": "types/index.d.ts",
   "scripts": {
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/sol-farm/solfarm-sdk.git"
   },
-  "author": "SolFarm",
+  "author": "Tulip Protocol",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sol-farm/solfarm-sdk/issues"

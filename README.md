@@ -1,10 +1,11 @@
-# Tulip SDK
+# Platform SDK
 
-Hello, we are glad to introduce Tulip SDK to fellow Solana Developers! You can use this SDK to easily integrate Tulip Protocol's Vaults into your product. Cheers 🍻
+Hello, we are glad to introduce Tulip Protocol's Platform SDK to fellow Solana Developers!\
+You can use this SDK to easily integrate Tulip Protocol's Vaults into your product. Cheers 🍻
 
 # Installation
 ```
-npm install --save https://github.com/sol-farm/solfarm-sdk.git
+npm install --save @tulip-protocol/platform-sdk
 ```
 
 # Usage
@@ -36,7 +37,7 @@ Deposit to Raydium Vault
 ### Example
 
 ```javascript
-import { depositToVault } from 'solfarm-sdk';
+import { depositToVault } from '@tulip-protocol/platform-sdk';
 import { Connection } from '@solana/web3.js';
 import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
@@ -124,7 +125,7 @@ Withdraw from Raydium Vault
 
 ### Example:
 ```javascript
-import { withdrawFromVault } from 'solfarm-sdk';
+import { withdrawFromVault } from '@tulip-protocol/platform-sdk';
 import { Connection } from '@solana/web3.js';
 import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
@@ -211,7 +212,7 @@ Get Balance for a user in a Vault
 
 ### Example:
 ```javascript
-import { getBalanceForVault } from 'solfarm-sdk';
+import { getBalanceForVault } from '@tulip-protocol/platform-sdk';
 import { Connection } from '@solana/web3.js';
 import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 
@@ -260,7 +261,7 @@ Deposit to a Lending Reserve
 ### Example
 
 ```javascript
-import { depositToLendingReserve } from 'solfarm-sdk';
+import { depositToLendingReserve } from '@tulip-protocol/platform-sdk';
 import { Connection } from '@solana/web3.js';
 import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
@@ -348,7 +349,7 @@ Withdraw from a Lending Reserve
 
 ### Example:
 ```javascript
-import { withdrawFromLendingReserve } from 'solfarm-sdk';
+import { withdrawFromLendingReserve } from '@tulip-protocol/platform-sdk';
 import { Connection } from '@solana/web3.js';
 import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
