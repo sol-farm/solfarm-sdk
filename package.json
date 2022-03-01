@@ -12,6 +12,7 @@
   "homepage": "https://tulip.garden/",
   "dependencies": {
     "@project-serum/anchor": "^0.6.0",
+    "anchor18": "npm:@project-serum/anchor@^0.18.0",
     "@project-serum/associated-token": "^0.1.1",
     "@project-serum/borsh": "^0.1.1",
     "@project-serum/serum": "^0.13.33",
