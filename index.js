@@ -7,11 +7,15 @@ import {
   depositToLendingReserve,
   withdrawFromLendingReserve
 } from './services/LendingService';
+import {
+  getBalancesForAutoVaults
+} from './services/VaultService';
 
 export {
   depositToVault,
   withdrawFromVault,
   getBalanceForVault,
   depositToLendingReserve,
-  withdrawFromLendingReserve
+  withdrawFromLendingReserve,
+  getBalancesForAutoVaults
 };

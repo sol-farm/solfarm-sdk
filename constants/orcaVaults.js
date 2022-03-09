@@ -1,5 +1,6 @@
 import { NATIVE_SOL, TOKENS } from './tokens';
 import { FARM_PLATFORMS } from './farms';
+import { toUpper } from 'lodash';
 
 export const ORCA_VAULTS = [
   {
@@ -174,3 +175,11 @@ export const ORCA_VAULTS = [
     maxPositionLimitInUsd: 9000000
   }
 ];
+
+export const getOrcaVaultBySymbol = (symbol) => {
+  return find(ORCA_VAULTS, (vault) => { return toUpper(vault.symbol) === toUpper(symbol); });
+};
+
+export const getOrcaVaultByMintAddress = (mintAddress) => {
+  return find(ORCA_VAULTS, (vault) => { return vault.mintAddress === mintAddress; });
+};

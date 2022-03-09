@@ -1,5 +1,6 @@
 import { TOKENS } from './tokens';
 import { FARM_PLATFORMS } from './farms';
+import { toUpper } from 'lodash';
 
 export const SABER_VAULTS = [
   {
@@ -155,3 +156,11 @@ export const SABER_VAULTS = [
     totalSunnyEmission: 250000
   }
 ];
+
+export const getSaberVaultBySymbol = (symbol) => {
+  return find(SABER_VAULTS, (vault) => { return toUpper(vault.symbol) === toUpper(symbol); });
+};
+
+export const getSaberVaultByMintAddress = (mintAddress) => {
+  return find(SABER_VAULTS, (vault) => { return vault.mintAddress === mintAddress; });
+};
