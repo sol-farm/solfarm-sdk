@@ -33,8 +33,16 @@ import {
 
 import { getSaberVaultByMintAddress } from '../constants/saberVaults';
 
-export const getVaultV2ProgramId = () => { return config.programs.vault.id; };
+export const getAutoVaultsProgramId = () => { return config.programs.vault.id; };
 
+/**
+ * @description Gets the balances for auto vaults
+ *
+ * @param {Object} conn
+ * @param {Object} wallet
+ * @param {Object} query
+ * @returns Object vaults and their user balances
+ */
 export async function getBalancesForAutoVaults (conn, wallet, query) {
   const provider = new anchor.Provider(conn, wallet, {
     skipPreflight: false,
@@ -71,7 +79,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query) {
   anchor.setProvider(provider);
 
   // Generate the program client from IDL.
-  const programId = new anchor.web3.PublicKey(getVaultV2ProgramId());
+  const programId = new anchor.web3.PublicKey(getAutoVaultsProgramId());
   const program = new anchor.Program(idl, programId);
 
   // All vaults data
