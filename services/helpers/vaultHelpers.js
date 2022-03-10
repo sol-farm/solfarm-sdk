@@ -505,5 +505,5 @@ export function getTotalDeposited ({ tokenAccounts, sharesMint, decimals, totalD
     decimals: decimals
   });
 
-  return depositedAmount + Number(deposited);
+  return depositedAmount + (Number(deposited) * Math.pow(10, decimals));
 }

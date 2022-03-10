@@ -448,7 +448,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
       return {
         symbol: vault.uiConfigData.symbol,
-        balance: balance
+        balance: balance / Math.pow(10, vault.uiConfigData.decimals)
       };
     });
   }
@@ -481,7 +481,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
         queriedVaults[platform].push({
           symbol: vault.uiConfigData.symbol,
-          balance: balance
+          balance: balance / Math.pow(10, vault.uiConfigData.decimals)
         });
       });
 
@@ -512,7 +512,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
       queriedVaults.vaults.push({
         symbol: vault.uiConfigData.symbol,
-        balance: balance
+        balance: balance / Math.pow(10, vault.uiConfigData.decimals)
       });
     });
   }
