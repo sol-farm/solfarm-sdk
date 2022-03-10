@@ -435,7 +435,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query) {
   const allVaults = Array.from(vaultsData.values());
 
   // Return all vault balances if no query has been provided
-  if (!query.platforms || !query.vaults) {
+  if (!query.platforms && !query.vaults) {
     return allVaults;
   }
 
