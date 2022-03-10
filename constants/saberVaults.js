@@ -1,6 +1,6 @@
 import { TOKENS } from './tokens';
 import { FARM_PLATFORMS } from './farms';
-import { toUpper } from 'lodash';
+import { toUpper, find } from 'lodash';
 
 export const SABER_VAULTS = [
   {

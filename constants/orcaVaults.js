@@ -1,6 +1,6 @@
 import { NATIVE_SOL, TOKENS } from './tokens';
 import { FARM_PLATFORMS } from './farms';
-import { toUpper } from 'lodash';
+import { toUpper, find } from 'lodash';
 
 export const ORCA_VAULTS = [
   {
