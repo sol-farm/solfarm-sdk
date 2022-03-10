@@ -490,7 +490,7 @@ export function isSupportedV2Platform (platform) {
  * @returns {Number} totalDepositedAmount
  */
 export function getTotalDeposited ({ tokenAccounts, sharesMint, decimals, totalDepositedBalance, totalShares, deposited }) {
-  const sharesMintBalance = Number(tokenAccounts[sharesMint]?.balance?.fixed()) * Math.pow(10, decimals) || 0;
+  const sharesMintBalance = Number(tokenAccounts[sharesMint]?.balance) * Math.pow(10, decimals) || 0;
 
   let depositedAmount = 0;
 

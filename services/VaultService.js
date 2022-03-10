@@ -454,10 +454,12 @@ export async function getBalancesForAutoVaults (conn, wallet, query) {
           return null;
         }
 
+        const decimals = vault.uiConfigData.decimals;
+
         const balance = getTotalDeposited({
           tokenAccounts,
           sharesMint: vault.sharesMint,
-          decimals: vault.uiConfigData.decimals,
+          decimals,
           totalDepositedBalance: vault.totalDepositedBalance,
           totalShares: vault.shares,
           deposited: vault.deposited
@@ -465,7 +467,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query) {
 
         queriedVaults[platform].push({
           symbol: vault.uiConfigData.symbol,
-          balance
+          balance: balance / Math.pow(10, decimals)
         });
       });
 
@@ -483,6 +485,8 @@ export async function getBalancesForAutoVaults (conn, wallet, query) {
         return null;
       }
 
+      const decimals = vault.uiConfigData.decimals;
+
       const balance = getTotalDeposited({
         tokenAccounts,
         sharesMint: vault.sharesMint,
@@ -494,7 +498,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query) {
 
       queriedVaults.vaults.push({
         symbol: vault.uiConfigData.symbol,
-        balance
+        balance: balance / Math.pow(10, decimals)
       });
     });
   }
