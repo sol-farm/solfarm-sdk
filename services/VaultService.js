@@ -43,7 +43,7 @@ export const getAutoVaultsProgramId = () => { return config.programs.vault.id; }
  * @param {Object} query
  * @returns Object vaults and their user balances
  */
-export async function getBalancesForAutoVaults (conn, wallet, query) {
+export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   const provider = new anchor.Provider(conn, wallet, {
     skipPreflight: false,
     preflightCommitment: commitment
