@@ -436,7 +436,21 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
   // Return all vault balances if no query has been provided
   if (!query.platforms && !query.vaults) {
-    return allVaults;
+    return allVaults.map((vault) => {
+      const balance = getTotalDeposited({
+        tokenAccounts,
+        sharesMint: vault.sharesMint,
+        decimals: vault.uiConfigData.decimals,
+        totalDepositedBalance: vault.totalDepositedBalance,
+        totalShares: vault.totalShares,
+        deposited: vault.deposited
+      });
+
+      return {
+        symbol: vault.uiConfigData.symbol,
+        balance: balance
+      };
+    });
   }
 
   if (query.platforms) {
@@ -461,13 +475,13 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
           sharesMint: vault.sharesMint,
           decimals,
           totalDepositedBalance: vault.totalDepositedBalance,
-          totalShares: vault.shares,
+          totalShares: vault.totalShares,
           deposited: vault.deposited
         });
 
         queriedVaults[platform].push({
           symbol: vault.uiConfigData.symbol,
-          balance: balance / Math.pow(10, decimals)
+          balance: balance
         });
       });
 
@@ -492,13 +506,13 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
         sharesMint: vault.sharesMint,
         decimals: vault.uiConfigData.decimals,
         totalDepositedBalance: vault.totalDepositedBalance,
-        totalShares: vault.shares,
+        totalShares: vault.totalShares,
         deposited: vault.deposited
       });
 
       queriedVaults.vaults.push({
         symbol: vault.uiConfigData.symbol,
-        balance: balance / Math.pow(10, decimals)
+        balance: balance
       });
     });
   }
