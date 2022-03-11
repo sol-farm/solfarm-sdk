@@ -14,6 +14,7 @@ import {
 import BigNumber from 'bignumber.js';
 
 /**
+ * Get Balance for a Raydium Vault (V1)
  *
  * @param {Object} conn web3 Connection object
  * @param {Object} wallet Wallet object

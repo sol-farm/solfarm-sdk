@@ -11,7 +11,7 @@ export const FARMS = [
 
     mintAddress: 'HXLkojxGWSUwjagzRXMFRgmnNxkcKrFHvq4ZCZeNvBJL',
     decimals: TOKENS.SVT.decimals,
-    coins: [TOKENS.SVT, TOKENS.USDC],
+    coins: [TOKENS.SVT, TOKENS.USDC]
   },
   {
     symbol: 'SLC-USDC',
@@ -23,7 +23,7 @@ export const FARMS = [
 
     mintAddress: '4A3kqZBJu581eFePXL1dTLfxEkjZPWJFgj4tJmP6mQQp',
     decimals: TOKENS.SLC.decimals,
-    coins: [TOKENS.SLC, TOKENS.USDC],
+    coins: [TOKENS.SLC, TOKENS.USDC]
   },
   {
     symbol: 'MBS-USDC',
@@ -35,7 +35,7 @@ export const FARMS = [
 
     mintAddress: 'BAgSWaPZpsQKyZJdvB5KyvmCNj6hzczzentt5FhDCVHb',
     decimals: TOKENS.MBS.decimals,
-    coins: [TOKENS.MBS, TOKENS.USDC],
+    coins: [TOKENS.MBS, TOKENS.USDC]
   },
   {
     symbol: 'PRISM-USDC',
@@ -47,7 +47,7 @@ export const FARMS = [
 
     mintAddress: '3baYkTcudvSFMe25UpZcBfdp4FA5kL2E4pfaeJ8AiYJB',
     decimals: TOKENS.PRISM.decimals,
-    coins: [TOKENS.PRISM, TOKENS.USDC],
+    coins: [TOKENS.PRISM, TOKENS.USDC]
   },
   {
     symbol: 'CHICKS-USDC',
@@ -59,7 +59,7 @@ export const FARMS = [
 
     mintAddress: 'CPzmcw81a6PDasSXhVLfDRKuTJXZPUqocS9VFf5zCFhs',
     decimals: TOKENS.CHICKS.decimals,
-    coins: [TOKENS.CHICKS, TOKENS.USDC],
+    coins: [TOKENS.CHICKS, TOKENS.USDC]
   },
   {
     symbol: 'MEAN-RAY',
@@ -71,7 +71,7 @@ export const FARMS = [
 
     mintAddress: 'H9wUyrxpAErmdNVPitpHSXgwoomoh91ggJKPWtQQoCn1',
     decimals: TOKENS.MEAN.decimals,
-    coins: [TOKENS.MEAN, TOKENS.RAY],
+    coins: [TOKENS.MEAN, TOKENS.RAY]
   },
   {
     symbol: 'REAL-USDC',
@@ -83,7 +83,7 @@ export const FARMS = [
 
     mintAddress: 'EN43tp8xdkcM8RYSJ4msFHMPTJRXKhUteVYBDJLwTvr3',
     decimals: TOKENS.REAL.decimals,
-    coins: [TOKENS.REAL, TOKENS.USDC],
+    coins: [TOKENS.REAL, TOKENS.USDC]
   },
   {
     symbol: 'CRWNY-USDC',
@@ -95,7 +95,7 @@ export const FARMS = [
 
     mintAddress: 'H3D9Gyi4frRLW6bS9vBthDVDJyzyRJ6XhhpP6PJGWaDC',
     decimals: TOKENS.CRWNY.decimals,
-    coins: [TOKENS.CRWNY, TOKENS.USDC],
+    coins: [TOKENS.CRWNY, TOKENS.USDC]
   },
   {
     symbol: 'CRWNY-RAY',
@@ -107,7 +107,7 @@ export const FARMS = [
 
     mintAddress: '5Cz9wGStNjiUg81q8t6sJJeckuT2C14CYSfyQbtYirSX',
     decimals: TOKENS.CRWNY.decimals,
-    coins: [TOKENS.CRWNY, TOKENS.RAY],
+    coins: [TOKENS.CRWNY, TOKENS.RAY]
   },
   {
     symbol: 'RUN-USDC',
@@ -119,7 +119,7 @@ export const FARMS = [
 
     mintAddress: 'CjTLvvKSQdEujcSzeZRYgk4w1DpuXBbMppLHaxZyz11Y',
     decimals: TOKENS.RUN.decimals,
-    coins: [TOKENS.RUN, TOKENS.USDC],
+    coins: [TOKENS.RUN, TOKENS.USDC]
   },
   {
     symbol: 'TTT-USDC',
@@ -131,7 +131,7 @@ export const FARMS = [
 
     mintAddress: '84fmrerHGohoRf4iLPDQ1KG4CjSjCRksYWGzjWfCRM8a',
     decimals: TOKENS.TTT.decimals,
-    coins: [TOKENS.TTT, TOKENS.USDC],
+    coins: [TOKENS.TTT, TOKENS.USDC]
   },
   {
     symbol: 'BOKU-USDC',
@@ -143,7 +143,7 @@ export const FARMS = [
 
     mintAddress: '8jjQn5Yagb6Nm2WGAxPW1bcGqrTWpg5adf6QukXEarcP',
     decimals: TOKENS.BOKU.decimals,
-    coins: [TOKENS.BOKU, TOKENS.USDC],
+    coins: [TOKENS.BOKU, TOKENS.USDC]
   },
   {
     symbol: 'XTAG-USDC',
@@ -155,7 +155,7 @@ export const FARMS = [
 
     mintAddress: 'GCEQbLg4ik5YJ4CMcbtuVqEc4sjLdSGy34rFk1CtGjdg',
     decimals: TOKENS.XTAG.decimals,
-    coins: [TOKENS.XTAG, TOKENS.USDC],
+    coins: [TOKENS.XTAG, TOKENS.USDC]
   },
   {
     symbol: 'SRM-USDC',
@@ -892,3 +892,12 @@ export const FARMS = [
     coins: [TOKENS.ROPE, TOKENS.USDC]
   }
 ];
+
+export const FARM_PLATFORMS = {
+  RAYDIUM: 'raydium',
+  SABER: 'saber',
+  ORCA: 'orca',
+  TULIP: 'tulip',
+  SOLEND: 'solend',
+  MANGO: 'mango'
+};

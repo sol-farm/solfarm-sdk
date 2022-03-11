@@ -7,11 +7,19 @@ import {
   depositToLendingReserve,
   withdrawFromLendingReserve
 } from './services/LendingService';
+import {
+  getBalancesForAutoVaults
+} from './services/VaultService';
+import { FARM_PLATFORMS } from './constants/farmConstants';
+import { VAULTS } from './constants/vaults';
 
 export {
   depositToVault,
   withdrawFromVault,
   getBalanceForVault,
   depositToLendingReserve,
-  withdrawFromLendingReserve
+  withdrawFromLendingReserve,
+  getBalancesForAutoVaults,
+  FARM_PLATFORMS,
+  VAULTS
 };

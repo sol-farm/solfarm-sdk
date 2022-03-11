@@ -1,5 +1,6 @@
 import { struct } from 'superstruct';
 import { PublicKey } from '@solana/web3.js';
+import { slice } from 'lodash';
 
 export const commitment = 'confirmed';
 
@@ -107,7 +108,7 @@ const GetMultipleAccountsAndContextRpcResult = jsonRpcResultAndContext(
 );
 
 /**
- * 
+ *
  * @param {Object} connection web3 Connection object
  * @param {Array} publicKeys Array of Public Keys
  * @param {String} commitment
@@ -194,4 +195,44 @@ export async function getMultipleAccounts (connection, publicKeys, commitment) {
       account
     };
   });
+}
+
+/**
+ * Get multiple accounts for grouped public keys (in arrays).
+ *
+ * @param {Object} connection - web3 connection
+ * @param {Array[]} publicKeyGroupedArray - Array of array of public keys
+ * @param {String} commitment
+ *
+ * @returns {Array[]}
+ */
+export async function getMultipleAccountsGrouped (
+  connection,
+  publicKeyGroupedArray,
+  commitment
+) {
+  let dataToFetch = [],
+    responseToReturn = [];
+
+  publicKeyGroupedArray.forEach((publicKeyArray) => {
+    dataToFetch = dataToFetch.concat(publicKeyArray);
+  });
+
+  const dataFetched = await getMultipleAccounts(
+    connection,
+    dataToFetch,
+    commitment
+  );
+
+  let lastIndex = 0;
+
+  publicKeyGroupedArray.forEach((publicKeyArray) => {
+    responseToReturn.push(
+      slice(dataFetched, lastIndex, lastIndex + publicKeyArray.length)
+    );
+
+    lastIndex += publicKeyArray.length;
+  });
+
+  return responseToReturn;
 }
