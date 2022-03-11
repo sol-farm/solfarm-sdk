@@ -419,3 +419,55 @@ const withdrawFromTulipProtocol = async () => {
   return sendTransaction(conn, wallet, transaction);
 };
 ```
+
+
+
+## `getBalancesForAutoVaults`
+Fetch the total deposited balance of V2 autovaults
+
+`getBalancesForAutoVaults(conn: Connection, wallet: SolanaWalletAdapter | Object, query: Object)`
+
+### Parameters
+- `conn: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `query` - Query object [OPTIONAL]
+- `query.platforms` - Could be any of ['raydium', 'saber', 'orca']
+- `query.vaults` - Any supported vault symbol
+
+### Returns
+`Promise<object: Object>`
+
+### Example:
+```javascript
+import { FARM_PLATFORMS, VAULTS, getBalancesForAutoVaults } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
+import { PublicKey } from '@solana/web3.js';
+
+// Create a util to send transactions
+import { sendTransaction } from 'utils/web3';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+const TOKEN_PROGRAM_ID = new PublicKey(
+  'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+);
+
+// Inputs taken by Tulip SDK's `withdrawFromLendingReserve`
+const conn = new Connection(endpoint, { commitment });
+const wallet = new SolanaWalletAdapter('', endpoint);
+
+const getBalanceForV2Vaults = async () => {
+  // Let's say we want to fetch all the balances for all raydium and saber vaults
+  // and we only need the balance for ORCA-USDC separately, then we can create the following query:
+  const query = {
+    platforms: [FARM_PLATFORMS.RAYDIUM, FARM_PLATFORMS.SABER],
+    vaults: [VAULTS.ORCA.ATLAS_USDC]
+  };
+
+  const vaults = await getBalancesForAutoVaults(window.$web3, getStore('WalletStore').wallet, query);
+
+  return vaults;
+};
+``

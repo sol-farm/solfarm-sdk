@@ -25,7 +25,7 @@ import {
 // // IDL
 import idl from '../constants/vaults_v2_idl.json';
 import config from '../constants/vaults_v2_config.json';
-import { assign } from 'lodash';
+import { assign, find } from 'lodash';
 import {
   getOrcaVaultByMintAddress,
   getOrcaVaultBySymbol
@@ -436,7 +436,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
   // Return all vault balances if no query has been provided
   if (!query.platforms && !query.vaults) {
-    return allVaults.map((vault) => {
+    const vaultsData = allVaults.map((vault) => {
       const balance = getTotalDeposited({
         tokenAccounts,
         sharesMint: vault.sharesMint,
@@ -447,10 +447,15 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
       });
 
       return {
+        platform: vault.uiConfigData.platform,
         symbol: vault.uiConfigData.symbol,
         balance: balance / Math.pow(10, vault.uiConfigData.decimals)
       };
     });
+
+    return {
+      vaults: vaultsData
+    };
   }
 
   if (query.platforms) {
@@ -459,8 +464,8 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
         return null;
       }
 
-      if (!queriedVaults[platform]) {
-        queriedVaults[platform] = [];
+      if (!queriedVaults.platforms[platform]) {
+        queriedVaults.platforms[platform] = [];
       }
 
       allVaults.forEach((vault) => {
@@ -479,7 +484,8 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
           deposited: vault.deposited
         });
 
-        queriedVaults[platform].push({
+        queriedVaults.platforms[platform].push({
+          platform: vault.uiConfigData.platform,
           symbol: vault.uiConfigData.symbol,
           balance: balance / Math.pow(10, vault.uiConfigData.decimals)
         });
@@ -493,9 +499,9 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
     queriedVaults.vaults = [];
 
     allVaults.forEach((vault) => {
-      const symbol = vault.uiConfigData.symbol;
+      const mintAddress = vault.uiConfigData.mintAddress;
 
-      if (!query.vaults.includes(symbol)) {
+      if (!find(query.vaults, { mintAddress })) {
         return null;
       }
 
@@ -511,6 +517,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
       });
 
       queriedVaults.vaults.push({
+        platform: vault.uiConfigData.platform,
         symbol: vault.uiConfigData.symbol,
         balance: balance / Math.pow(10, vault.uiConfigData.decimals)
       });
