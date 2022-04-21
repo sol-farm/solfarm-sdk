@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 // Solana Modules
-import * as anchor from 'anchorupdated';
+import * as anchor from 'anchor18';
 import * as splToken from '@solana/spl-token';
 
 // Utils
