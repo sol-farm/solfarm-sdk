@@ -27,5 +27,32 @@ export const TULIP_VAULTS = [
     platform: FARM_PLATFORMS.TULIP,
     coins: [TOKENS.RAY, TOKENS.RAY],
     tag: 'rayv1'
+  },
+  {
+    symbol: 'USDT',
+    name: 'USDT',
+    reward: { ...TOKENS.USDT },
+    rewardB: { ...TOKENS.USDT },
+
+    mintAddress: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
+    decimals: TOKENS.USDT.decimals,
+    singleStake: true,
+    platform: FARM_PLATFORMS.TULIP,
+    coins: [TOKENS.USDT, TOKENS.USDT],
+    tag: 'usdtv1'
+  },
+  {
+    symbol: 'SOL',
+    name: 'SOL',
+    reward: { ...TOKENS.SOL },
+    rewardB: { ...TOKENS.SOL },
+
+    mintAddress: 'So11111111111111111111111111111111111111112',
+    decimals: TOKENS.SOL.decimals,
+    singleStake: true,
+    platform: FARM_PLATFORMS.TULIP,
+    coins: [TOKENS.SOL, TOKENS.SOL],
+    tags: [],
+    tag: 'solv1'
   }
 ];

@@ -25,13 +25,14 @@ import {
 // // IDL
 import idl from '../constants/vaults_v2_idl.json';
 import config from '../constants/vaults_v2_config.json';
-import { assign, find } from 'lodash';
+import { assign, find, transform } from 'lodash';
 import {
   getOrcaVaultByMintAddress,
   getOrcaVaultBySymbol
 } from '../constants/orcaVaults';
 
 import { getSaberVaultByMintAddress } from '../constants/saberVaults';
+import { getTulipVaultBySymbol } from '../utils/farmUtils';
 
 export const getAutoVaultsProgramId = () => { return config.programs.vault.id; };
 
@@ -85,11 +86,13 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   // All vaults data
   const allRaydiumVaults = getAllVaultsByPlatform(FARM_PLATFORMS.RAYDIUM);
   const allOrcaVaults = getAllVaultsByPlatform(FARM_PLATFORMS.ORCA);
+  const allTulipVaults = getAllVaultsByPlatform(FARM_PLATFORMS.TULIP);
   const allSaberVaults = getAllVaultsByPlatform(FARM_PLATFORMS.SABER);
 
   // All vault accounts
   const allRaydiumVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.RAYDIUM);
   const allOrcaVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.ORCA);
+  const allTulipVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.TULIP);
   const allSaberVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.SABER);
 
   const raydiumVaultAccountPublicKeys = allRaydiumVaultAccounts.map(
@@ -132,6 +135,23 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
     })
   );
 
+  const tulipVaultAccountPublicKeys = allTulipVaultAccounts.map((account) => {
+    return new anchor.web3.PublicKey(account);
+  });
+
+  // Deposit tracking accounts for raydium vaults
+  const tulipDepositTrackingAccounts = await Promise.all(
+    tulipVaultAccountPublicKeys.map(async (vaultAccountPublicKey) => {
+      const [depositTrackingAccount] = await deriveTrackingAddress(
+        programId,
+        vaultAccountPublicKey,
+        provider.wallet.publicKey
+      );
+
+      return depositTrackingAccount;
+    })
+  );
+
   // Deposit tracking accounts for raydium vaults
   const saberDepositTrackingAccounts = await Promise.all(
     saberVaultAccountPublicKeys.map(async (vaultAccountPublicKey) => {
@@ -154,6 +174,10 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
     orcaDepositTrackingAccounts,
     orcaVaultAccountPublicKeys,
 
+    // Tulip vaults
+    tulipDepositTrackingAccounts,
+    tulipVaultAccountPublicKeys,
+
     // Saber vaults
     saberVaultAccountPublicKeys,
     saberDepositTrackingAccounts
@@ -166,6 +190,9 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
     orcaUserBalanceAccounts,
     orcaAccounts,
 
+    tulipUserBalanceAccounts,
+    tulipAccounts,
+
     saberAccounts,
     saberUserBalanceAccounts
   ] = await getMultipleAccountsGrouped(window.$web3, publicKeys, commitment);
@@ -176,7 +203,8 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   [
     ...allRaydiumVaultAccounts,
     ...allOrcaVaultAccounts,
-    ...allSaberVaultAccounts
+    ...allSaberVaultAccounts,
+    ...allTulipVaultAccounts
   ].forEach((account) => {
     vaultsData.set(account, {});
   });
@@ -257,6 +285,86 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
           deposited: depositedAmount
         })
       );
+    }
+    catch (e) {
+      console.error({ e });
+    }
+  }
+
+  // #endregion
+
+  // #region - TULIP VAULTS
+  for (const [index, userBalanceAccount] of tulipUserBalanceAccounts.entries()) {
+    try {
+      const account = allTulipVaultAccounts[index];
+
+      let decodedUserAccountInfo = {};
+
+      if (userBalanceAccount?.account?.data) {
+        decodedUserAccountInfo = program?.coder?.accounts?.decode(
+          'DepositTrackingV1',
+          userBalanceAccount?.account?.data
+        );
+      }
+
+      vaultsData.set(account, {
+        mintAddress: allTulipVaults[index]?.base?.underlying_mint,
+        sharesMint: allTulipVaults[index]?.base?.shares_mint,
+        symbol: allTulipVaults[index]?.symbol,
+        name: allTulipVaults[index]?.name,
+        depositedBalance: decodedUserAccountInfo?.depositedBalance,
+        deposited: decodedUserAccountInfo?.depositedBalance,
+        shares: decodedUserAccountInfo?.shares,
+        lastDepositTime: decodedUserAccountInfo?.lastDepositTime
+      });
+    }
+    catch (e) {
+      console.error({ e });
+    }
+  }
+
+  for (const [index, tulipAccount] of tulipAccounts.entries()) {
+    try {
+      const account = allTulipVaultAccounts[index];
+
+      let decodedTulipAccountInfo = {};
+
+      if (tulipAccount?.account?.data) {
+        decodedTulipAccountInfo = program.coder.accounts.decode('MultiDepositOptimizerV1', tulipAccount?.account?.data);
+      }
+
+      const {
+        totalDepositedBalance,
+        totalShares
+      } = decodedTulipAccountInfo?.base || {};
+
+      const tulipVaultData = getTulipVaultBySymbol(vaultsData.get(account)?.symbol) || {};
+
+      const shares = vaultsData.get(account)?.shares;
+
+      let depositedAmount = getDepositedAmountForShares({
+        totalDepositedBalance,
+        totalShares,
+        sharesBalance: shares,
+        decimals: tulipVaultData?.decimals
+      });
+
+      const standaloneVaults = transform(decodedTulipAccountInfo?.standaloneVaults,
+        (vaults, { vaultAddress, depositedBalance }) => {
+          vaults[vaultAddress] = { depositedBalance };
+
+          return vaults;
+        }, {});
+
+      const vaultData = vaultsData.get(account);
+
+      vaultsData.set(account, assign({}, vaultData, {
+        uiConfigData: tulipVaultData,
+        totalShares,
+        totalDepositedBalance,
+        deposited: depositedAmount,
+        standaloneVaults
+      }));
     }
     catch (e) {
       console.error({ e });
@@ -504,8 +612,6 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
       if (!find(query.vaults, { mintAddress })) {
         return null;
       }
-
-      const decimals = vault.uiConfigData.decimals;
 
       const balance = getTotalDeposited({
         tokenAccounts,
