@@ -5280,6 +5280,532 @@
         "quarry": null
       },
       {
+        "tag": "solend",
+        "farm_type": [
+          1,
+          65539
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": {
+          "account": "4YmXxV6C6MQs3TrZjpH5bw4qTtgZZhVRNfkWEteVXcWX",
+          "available_programs": [
+            {
+              "config_data_account": "A7mxsEKDVYgSgp9n13qbKNAKNxcLF8Df9Rpea3gCzh9p",
+              "information_account": "4bwpyxZh67UqjgqcK9rxDL7vZwcpe1S6EEZJc59P6bXd",
+              "program_id": "So1endDq2YkqhipRh3WViPa8hdiSpxWy6z3Z6tMCpAo",
+              "mangov3": null,
+              "port": null,
+              "solend": {
+                "collateral_mint": "BTsbZDV7aCMRJ3VNy9ygV4Q2UeEo9GpR8D6VvmMZzNr8",
+                "lending_market_account": "4UpD2fh7xH3VP9QQaXtsS1YY3bxzWhtfpks7FatyKvdY",
+                "lending_market_authority": "DdZR6zRFiUt4S5mg7AV1uKB2z1f1WzcNYCaTEEWPAuby",
+                "oracle_keys": [
+                  "3vxLXJqLqF3JG5TCbYycbKWRBbCJQLxQmBGCkyqEEefL",
+                  "5mp8kbkTYwWWCsKSte8rURjTuyinsqBpJ9xAQsewPDD"
+                ],
+                "oracle_programs": [
+                  "FsJ3A3u2vn5cTVofAjvy6y5kwABJAqYWpe4975bi2epH",
+                  "DtmE9D2CSB4L5D6A15mraeEjrGMm6auWVzgaD8hK2tZM"
+                ],
+                "reserve_account": "8K9WC8xoh2rtQNY7iEGXtPvfbDCi563SdWhCAhuMP2xE",
+                "reserve_liquidity_account": "3CdpSW5dxM7RTxBgxeyt8nnnjqoDbZe48tsBs9QUrmuN",
+                "vault_collateral_token_account": "8DPzi8QSpREME7hsFs3Pcf7Uzgi5Ranxe1HvUt8L8jBg"
+              },
+              "tulip": null
+            }
+          ],
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 255,
+            "pda": "GZqAKKd7pApvbe2abgTZs9X7heJxqkYEig5c9CgJCHYD",
+            "pda_nonce": 255,
+            "shares_mint": "HYXLSi4xA4GtcUkm5zjRSBf6vVwebYfMfEMjgQiLbYeW",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "Fxhy5ShwJq5hXkB8Ch9TFowwuMpW7QA9yMDMvTv7iZJZ",
+            "underlying_deposit_queue": "AFdRMvwdLfsyLTxGbGYRLYh4Mhqx2bEyYQm9K3wYkFpX",
+            "underlying_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+            "underlying_mint_decimals": 6,
+            "underlying_withdraw_queue": "87beLgLgD1fdJwBxrL5h9Fb9bjq9bGBJwEMxLss9mwaa"
+          },
+          "name": "LENDING-USDT",
+          "symbol": "USDT"
+        },
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "tulip",
+        "farm_type": [
+          1,
+          65539
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": {
+          "account": "HC3ah2Z1VNBHjavM3o9uCWnPniy5g9VgHSzbuuBvTMzT",
+          "available_programs": [
+            {
+              "config_data_account": "H6vGDBUBtydhDTCzqaGeenZEZVx1goR4Poq1MRAgSfgB",
+              "information_account": "DpR4xJSoqE1BW7i2bmEkGPhtYpFF4McgM8V6oAgzgBxE",
+              "program_id": "4bcFeLv4nydFrsZqV5CgwCVrPhkQKsXtzfy2KyMz7ozM",
+              "mangov3": null,
+              "port": null,
+              "solend": null,
+              "tulip": {
+                "collateral_mint": "gLhY2arqFpmVGkpbBbTi3TeWbsWevA8dqrwbKacK3vJ",
+                "lending_market_account": "D1cqtVThyebK9KXKGXrCEuiqaNf5L4UfM1vHgCqiJxym",
+                "lending_market_authority": "8gEGZbUfVE1poBq71VHKX9LU7ca4x8wTUyZgcbyQe51s",
+                "oracle_keys": [
+                  "uo3MK2mD9KogjNLxTWVaB5XqA9Hg4mx4QuRm9SRtKdE"
+                ],
+                "oracle_programs": [
+                  "5JQ8Mhdp2wv3HWcfjq9Ts8kwzCAeBADFBDAgBznzRsE4"
+                ],
+                "reserve_account": "Csn3exasdhDzxYApmnci3d8Khb629VmgK4NQqdeyZBNt",
+                "reserve_liquidity_account": "124J21csiR1FdDywteXa8LhAmeqBXZRvozhoE7zq9znc",
+                "vault_collateral_token_account": "BD7AHG6GwNRj4xaTr9RZgJTpWfMJtZsARMzgnFvNYffm"
+              }
+            }
+          ],
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 252,
+            "pda": "GFFHxCNUB3EVUQt73N6E6icaqJUwRLSxHcYpvLvrDry",
+            "pda_nonce": 254,
+            "shares_mint": "FNQDs4ub4wFRnspu3JGcH79R2icxCggYm4BRAcc6Mnwp",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "Axa64R5SyuQdEkZ9xvAMzrWz5Kf88aPchKAhZQHbCpJG",
+            "underlying_deposit_queue": "7dJHyjD5MZ2EBZRbe4PdRyKSHj4BuH7nLkV1fjgwU9za",
+            "underlying_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+            "underlying_mint_decimals": 6,
+            "underlying_withdraw_queue": "BehWgvqQoLdPDB1siPedWjDKgMX8mVrmvESM1bR5oGv4"
+          },
+          "name": "LENDING-USDT",
+          "symbol": "USDT"
+        },
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "mango",
+        "farm_type": [
+          1,
+          65539
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": {
+          "account": "3Y9yqi2K4E4zsthNj2YP4sip59azSHA4qhwMkLxtokFZ",
+          "available_programs": [
+            {
+              "config_data_account": "2T4fsgXC58v6j45no7SHG3Lfv41EkWyjx7VaMDEcftAK",
+              "information_account": "3ouKmRBzRiemgHULi13sUxq9unNksHtinUa97g3tJX5c",
+              "program_id": "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68",
+              "mangov3": {
+                "cache": "EBDRoayCDDUvDgCimta45ajQeXbexv7aKqJubruqpyvu",
+                "group": "98pjRuQjK3qA6gXts96PqZT4Ze5QmnCmt3QYjhbUSPue",
+                "group_signer": "9BVcYqEQxyccuwznvxXqDkSJFavvTyheiTYk231T1A8S",
+                "group_token_account": "GZGmwCc3CWrS2guzfTrvQNhiWcW4TVwSPo9Y8VVRxVXY",
+                "node_bank": "FYFJ4YHDEJnX7yVPoejUTAcKstnovTZpLq5zWAM7c6Uz",
+                "optimizer_mango_account": "FhLkZ4krKGzjLzJhMQHJt94gPpWdGNUkqYZKwtUGZFW",
+                "root_bank": "4GYDmgvMpBx2n2iSmaS1xhZnwebR2gJ5V7UYUBA1PkJi"
+              },
+              "port": null,
+              "solend": null,
+              "tulip": null
+            }
+          ],
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 255,
+            "pda": "FQDN8oEuY5umdCjTRFwcxETwCiN9Zw2B92m9DEcvC8Hg",
+            "pda_nonce": 255,
+            "shares_mint": "56xxyq9Yi4kmy2WxvsHAKjLudMUorTbpcgQe1Uemt3oJ",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "BYamJDsGk6AWoA4z8D4myDNfZeiAqMsJ6B35GG4E6vFy",
+            "underlying_deposit_queue": "G4EkAvPDjgWRWvweLRx5WJtCbQ5UmJD1JALADUwUNSsW",
+            "underlying_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+            "underlying_mint_decimals": 6,
+            "underlying_withdraw_queue": "ESMmJBo93jeeyPAcDRrSbLnNwccnyatqh5yV5VuwgpF5"
+          },
+          "name": "LENDING-USDT",
+          "symbol": "USDT"
+        },
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "usdtv1",
+        "farm_type": [
+          1,
+          65537
+        ],
+        "multi_deposit_optimizer": {
+          "account": "BBRkN5paHbHLku4KrZMN8Mc5U3Ygasd4v2FtxdwG7F8F",
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 0,
+              "deposit_fee": 0,
+              "multiplier": 0,
+              "platform_fee": 0,
+              "withdraw_fee": 0
+            },
+            "nonce": 255,
+            "pda": "DkP2YsqzjiAhnURstef1AmB2EDzRpigbJQuLyNtFcH3Y",
+            "pda_nonce": 255,
+            "shares_mint": "AHV6CBjuT7M2HMMKDa5gRSEoBcJGWVjURCBhpgMbyESX",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "E8E1Bdhp67tanf4UonTUnAervkhSmYkYkQo2DkxpdVc9",
+            "underlying_deposit_queue": "2WxVfyi9ps7Ym1jhK43HKVetuxpJwDpaok6AU9T5KKuP",
+            "underlying_mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+            "underlying_mint_decimals": 6,
+            "underlying_withdraw_queue": "4RQC5TorXks2zU7cznQe3FAmdntHkbjoeWW9y5A9WoW4"
+          },
+          "name": "LENDING-MULTI_DEPOSIT",
+          "symbol": "USDT",
+          "rebalance_state_transition": "7NFyTU8NnwQ3TWxeLXmHNSbqwP4cF7Tpb5BRgfa5B5MC",
+          "rebalance_state_transition_underlying": "B126PNhYa7AgnktVcsvpikXHqdAA3yUDUc5eRgnzLGd",
+          "minimum_rebalance_amount": 100.0,
+          "standalone_vaults": [
+            {
+              "asset": "USDT",
+              "farm_name": "LENDING-USDT",
+              "optimizer_shares_account": "9vtcrGjfzYkf3R2PNLaayjdTazxAQ7tx6fgSQjXWUkD",
+              "program_address": "4bcFeLv4nydFrsZqV5CgwCVrPhkQKsXtzfy2KyMz7ozM",
+              "program_type": "SplUnmodified",
+              "tag": "tulip",
+              "vault_address": "HC3ah2Z1VNBHjavM3o9uCWnPniy5g9VgHSzbuuBvTMzT"
+            },
+            {
+              "asset": "USDT",
+              "farm_name": "LENDING-USDT",
+              "optimizer_shares_account": "5LhLY4tKxeVeqV5P3BdNZvHRePCZxqCM9DgqAEhofjzG",
+              "program_address": "So1endDq2YkqhipRh3WViPa8hdiSpxWy6z3Z6tMCpAo",
+              "program_type": "SplModifiedSolend",
+              "tag": "solend",
+              "vault_address": "4YmXxV6C6MQs3TrZjpH5bw4qTtgZZhVRNfkWEteVXcWX"
+            },
+            {
+              "asset": "USDT",
+              "farm_name": "LENDING-USDT",
+              "optimizer_shares_account": "5ai771C6H16dAEXywGz7AyVSXkbaJ5qYA2wfvpLPabn",
+              "program_address": "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68",
+              "program_type": "MangoV3",
+              "tag": "mango",
+              "vault_address": "3Y9yqi2K4E4zsthNj2YP4sip59azSHA4qhwMkLxtokFZ"
+            },
+            {
+              "asset": "",
+              "farm_name": "",
+              "optimizer_shares_account": "",
+              "program_address": "",
+              "program_type": "",
+              "tag": "",
+              "vault_address": ""
+            },
+            {
+              "asset": "",
+              "farm_name": "",
+              "optimizer_shares_account": "",
+              "program_address": "",
+              "program_type": "",
+              "tag": "",
+              "vault_address": ""
+            }
+          ]
+        },
+        "lending_optimizer": null,
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "solend",
+        "farm_type": [
+          1,
+          65540
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": {
+          "account": "2DPDpyd8pUoNDux8E7ZbzCgQtvyyVv8gPHUAzHDRXiWN",
+          "available_programs": [
+            {
+              "config_data_account": "7sqrzaBWTf7apr5z2VmAb61g6CbzFr5mzjWcYur8arcA",
+              "information_account": "5vCZXDNn8NTFrvQvNGGRhNAEf5tHqXq83xnmjJMJSFmE",
+              "program_id": "So1endDq2YkqhipRh3WViPa8hdiSpxWy6z3Z6tMCpAo",
+              "mangov3": null,
+              "port": null,
+              "solend": {
+                "collateral_mint": "5h6ssFpeDeRbzsEHDbTQNH7nVGgsKrZydxdSTnLm6QdV",
+                "lending_market_account": "4UpD2fh7xH3VP9QQaXtsS1YY3bxzWhtfpks7FatyKvdY",
+                "lending_market_authority": "DdZR6zRFiUt4S5mg7AV1uKB2z1f1WzcNYCaTEEWPAuby",
+                "oracle_keys": [
+                  "H6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG",
+                  "AdtRGGhmqvom3Jemp5YNrxd9q9unX36BZk1pujkkXijL"
+                ],
+                "oracle_programs": [
+                  "FsJ3A3u2vn5cTVofAjvy6y5kwABJAqYWpe4975bi2epH",
+                  "DtmE9D2CSB4L5D6A15mraeEjrGMm6auWVzgaD8hK2tZM"
+                ],
+                "reserve_account": "8PbodeaosQP19SjYFx855UMqWxH2HynZLdBXmsrbac36",
+                "reserve_liquidity_account": "8UviNr47S8eL6J3WfDxMRa3hvLta1VDJwNWqsDgtN3Cv",
+                "vault_collateral_token_account": "4bKoFNye8HxwkK2jfq3XHaLmfcKWZtd1fAA6DsMYqx3f"
+              },
+              "tulip": null
+            }
+          ],
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 253,
+            "pda": "9ftmG873yFyybF51v85QjrvYfYZTu83mSgQo6wHtEqTh",
+            "pda_nonce": 255,
+            "shares_mint": "934f2qngiJN2XnCjqMkEJjECgMGzCBfJF6SCBqzRYBKw",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "7q6UP1BhkAxbzkK9HSTbUU8GE3YgGnFTvL4sApMgN9Yt",
+            "underlying_deposit_queue": "57V8aNbjFzZHLs7TrzqgMDvLxuaaMzouLapi3eawytoB",
+            "underlying_mint": "So11111111111111111111111111111111111111112",
+            "underlying_mint_decimals": 9,
+            "underlying_withdraw_queue": "GKXUBegwfoVBrTJmEbsUZ8sxRtx6Pk54rgerYNvVPP63"
+          },
+          "name": "LENDING-SOL",
+          "symbol": "SOL"
+        },
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "tulip",
+        "farm_type": [
+          1,
+          65540
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": {
+          "account": "5KrsibBDuJyifhFMnpKhicZxpdjse8o4M3viXgqyduoH",
+          "available_programs": [
+            {
+              "config_data_account": "Hv7bo9Y1jXRYs3gV9BJz8vYG3Gandw2NofPxrdKJ7ps5",
+              "information_account": "5j8x3giFz4fJfjKZAWELUP5DXHwjdn6xtch59od7EHxj",
+              "program_id": "4bcFeLv4nydFrsZqV5CgwCVrPhkQKsXtzfy2KyMz7ozM",
+              "mangov3": null,
+              "port": null,
+              "solend": null,
+              "tulip": {
+                "collateral_mint": "H4Q3hDbuMUw8Bu72Ph8oV2xMQ7BFNbekpfQZKS2xF7jW",
+                "lending_market_account": "D1cqtVThyebK9KXKGXrCEuiqaNf5L4UfM1vHgCqiJxym",
+                "lending_market_authority": "8gEGZbUfVE1poBq71VHKX9LU7ca4x8wTUyZgcbyQe51s",
+                "oracle_keys": [
+                  "DQAcms41gjYzidRooXRE9GQM1jAauPXDcEpMbVh4FEc7"
+                ],
+                "oracle_programs": [
+                  "5JQ8Mhdp2wv3HWcfjq9Ts8kwzCAeBADFBDAgBznzRsE4"
+                ],
+                "reserve_account": "FzbfXR7sopQL29Ubu312tkqWMxSre4dYSrFyYAjUYiC4",
+                "reserve_liquidity_account": "CPs1jJ5XAjhcAJsmTToWksAiPEqoLwKMbb1Z83rzaaaU",
+                "vault_collateral_token_account": "DrB1QrmkdrTN4BfrZUpKzHMG1h7MkBrnMwz5HRHDiiSo"
+              }
+            }
+          ],
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 253,
+            "pda": "3xk85iPpM4ni7WaiioCbLeq29KRXVVkx7myJgKHQ1v2S",
+            "pda_nonce": 255,
+            "shares_mint": "DVumpNbQZNXvTpK8oY31DrQ9gNdK5hHRqhs7oApPF9Qo",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "CbgZWaX2R2etnvb2xz86ehWf97ZaFWqGVSV3qLJAhNpV",
+            "underlying_deposit_queue": "67FuierfDeYa1eru2rFh3EKxmrziYWaPS4uKnpW3fUoh",
+            "underlying_mint": "So11111111111111111111111111111111111111112",
+            "underlying_mint_decimals": 9,
+            "underlying_withdraw_queue": "DSgsM43L563zHaioGHAzAysVdT89EPLZyzAbBN83QyxT"
+          },
+          "name": "LENDING-SOL",
+          "symbol": "SOL"
+        },
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "mango",
+        "farm_type": [
+          1,
+          65540
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": {
+          "account": "4oJXs6Gx4Sj1YBY4DndMaB97RqUXzkW21t8YZGerEAvt",
+          "available_programs": [
+            {
+              "config_data_account": "6tGs1Yfejxo8pcyRiCovDkH5wvUAD5TsErpouQenPjfx",
+              "information_account": "CGfAEaUSv1soa8Z3XMNpdnstGwRM46c1E5WxuRkpBFRw",
+              "program_id": "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68",
+              "mangov3": {
+                "cache": "EBDRoayCDDUvDgCimta45ajQeXbexv7aKqJubruqpyvu",
+                "group": "98pjRuQjK3qA6gXts96PqZT4Ze5QmnCmt3QYjhbUSPue",
+                "group_signer": "9BVcYqEQxyccuwznvxXqDkSJFavvTyheiTYk231T1A8S",
+                "group_token_account": "8Vw25ZackDzaJzzBBqcgcpDsCsDfRSkMGgwFQ3gbReWF",
+                "node_bank": "2bqJYcA1A8gw4qJFjyE2G4akiUunpd9rP6QzfnxHqSqr",
+                "optimizer_mango_account": "7Ch4sYW3BmxG6FayQ7ojv8gdvjokkaiTfPqsQ5X1r4vR",
+                "root_bank": "7jH1uLmiB2zbHNe6juZZYjQCrvquakTwd3yMaQpeP8rR"
+              },
+              "port": null,
+              "solend": null,
+              "tulip": null
+            }
+          ],
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 254,
+            "pda": "BodRnr1TUSbzENAWEXr3QWbrPSFo1ahyWbsxZZd8TTP",
+            "pda_nonce": 250,
+            "shares_mint": "4jpVgQaLL3aDPxo2q1NoaWVLp6TfcH6ZVeUMKKDFph22",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "Dp4dE9n2DRNyLurBg9VP4xby9yUYLw28hqExopFe4rEd",
+            "underlying_deposit_queue": "CGv35EfXdUxddZoWbKApZ7XRgHmyVt9XXydjT4ZfuCs6",
+            "underlying_mint": "So11111111111111111111111111111111111111112",
+            "underlying_mint_decimals": 9,
+            "underlying_withdraw_queue": "Aty8vpK1gHm5YoLJBSegwxpCY2QmoebFQXkUd3xq1f4w"
+          },
+          "name": "LENDING-SOL",
+          "symbol": "SOL"
+        },
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
+        "tag": "solv1",
+        "farm_type": [
+          1,
+          65537
+        ],
+        "multi_deposit_optimizer": {
+          "account": "2WNw7tW2G54UCXN726S5tR9XutSEDeMf7xamidQtWszK",
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 254,
+            "pda": "FzSwmSA7ZsKsfCRZGnfxb13HYX4nZpMQfBjqpg5bjT5V",
+            "pda_nonce": 255,
+            "shares_mint": "DgnaQdr5VkNbH7n8qN471Hgsw19hUbMBhUs1N3MQKgtu",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "637PczfBDWSRX5d55M8punyQEzdx3G3htMwhrD6cVcAk",
+            "underlying_deposit_queue": "8HjBSJvQQwaC81gY1sND1ekNwjEvewYvrJeEh4Be6nQQ",
+            "underlying_mint": "So11111111111111111111111111111111111111112",
+            "underlying_mint_decimals": 9,
+            "underlying_withdraw_queue": "9k8MUkfjNDH1XPRNhSia57aAb7HGneP1jREQRPc3XZh7"
+          },
+          "name": "LENDING-MULTI_DEPOSIT",
+          "symbol": "SOL",
+          "rebalance_state_transition": "7VrQy2dzGBff69rwz7XxfF9FB5Pvgi9UQFNGwept4dzt",
+          "rebalance_state_transition_underlying": "GrDw6ChbbA119r694Wvtnc9dYuBi2BbT1mHJLT5ovuB9",
+          "minimum_rebalance_amount": 100.0,
+          "standalone_vaults": [
+            {
+              "asset": "SOL",
+              "farm_name": "LENDING-SOL",
+              "optimizer_shares_account": "qv1gRK7rQkuzyewtg4Xbqgmr8J99FnDhELYtsjCUuws",
+              "program_address": "4bcFeLv4nydFrsZqV5CgwCVrPhkQKsXtzfy2KyMz7ozM",
+              "program_type": "SplUnmodified",
+              "tag": "tulip",
+              "vault_address": "5KrsibBDuJyifhFMnpKhicZxpdjse8o4M3viXgqyduoH"
+            },
+            {
+              "asset": "SOL",
+              "farm_name": "LENDING-SOL",
+              "optimizer_shares_account": "96jC6s6whzjxov8E8pL6t6jJsPPXkeKWQx1CZzLQiahp",
+              "program_address": "So1endDq2YkqhipRh3WViPa8hdiSpxWy6z3Z6tMCpAo",
+              "program_type": "SplModifiedSolend",
+              "tag": "solend",
+              "vault_address": "2DPDpyd8pUoNDux8E7ZbzCgQtvyyVv8gPHUAzHDRXiWN"
+            },
+            {
+              "asset": "SOL",
+              "farm_name": "LENDING-SOL",
+              "optimizer_shares_account": "7XdtJRhMYg5DS5uueCjpWHAxRYFaDUFu2MkG5AWE4Ywx",
+              "program_address": "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68",
+              "program_type": "MangoV3",
+              "tag": "mango",
+              "vault_address": "4oJXs6Gx4Sj1YBY4DndMaB97RqUXzkW21t8YZGerEAvt"
+            },
+            {
+              "asset": "",
+              "farm_name": "",
+              "optimizer_shares_account": "",
+              "program_address": "",
+              "program_type": "",
+              "tag": "",
+              "vault_address": ""
+            },
+            {
+              "asset": "",
+              "farm_name": "",
+              "optimizer_shares_account": "",
+              "program_address": "",
+              "program_type": "",
+              "tag": "",
+              "vault_address": ""
+            }
+          ]
+        },
+        "lending_optimizer": null,
+        "raydium": null,
+        "orca": null,
+        "quarry": null
+      },
+      {
         "tag": "",
         "farm_type": [
           0,
@@ -5412,6 +5938,133 @@
           "intermediary_token_mints": [],
           "name": "ORCA-ORCA-USDC",
           "symbol": "ORCA-USDC"
+        },
+        "quarry": null
+      },
+      {
+        "tag": "",
+        "farm_type": [
+          2,
+          12
+        ],
+        "multi_deposit_optimizer": null,
+        "lending_optimizer": null,
+        "raydium": null,
+        "orca": {
+          "account": "C4QPNt5wZrQS1hywhTbw86rtsoxCM4QvSaYuhn8RN1ea",
+          "base": {
+            "compound_interval": 600,
+            "fees": {
+              "controller_fee": 200,
+              "deposit_fee": 0,
+              "multiplier": 10,
+              "platform_fee": 200,
+              "withdraw_fee": 0
+            },
+            "nonce": 255,
+            "pda": "7UxCh5xN7VmLQGiWtPtrS5GoK4aGQzswVZwiXfp6V5eY",
+            "pda_nonce": 254,
+            "shares_mint": "D1mDeRNmspPcFoFapw4d3aKVMNa2sfeV2HuE3Fu6n7YK",
+            "slippage_tolerance": 25,
+            "underlying_compound_queue": "37SPbxP3kyxGvJTLANYKXTTABBt3dQ8uUMP7gZf1CP6M",
+            "underlying_deposit_queue": "77eboBynDgJA8cEnJeLgtbT3CFyKD6BK6AB1uELxTw5D",
+            "underlying_mint": "HTZd53fYwYQRyAjiaPsZy9Gf41gobFdqkF4oKe3XLi95",
+            "underlying_mint_decimals": 6,
+            "underlying_withdraw_queue": "989Ct6Z7c47HEHrUtjJZkUUAs1HUckpCcxjjfFGru9k8"
+          },
+          "dd_farm_data": {
+            "config_data": {
+              "user_farm_address": "Bpq3jKMALxoWakjjkZM3LgQgCMu3sU4zHgWaMAEeJmZm",
+              "vault_swap_token_a": "3YTjSWDejrXtTBAMrq1hJfL4V2gYNirV5gnqCGsGpgwr",
+              "vault_swap_token_b": "FyqPVc79hdkznYCRhBagD2dE8BSD4FU1yB8iWg6pyRor",
+              "pool_swap_token_a": "GFso9SAGakm8ZFa3rmuonuerbcQ8ZbACNZN7idkKR5nw",
+              "pool_swap_token_b": "EZ7pJskN2a4pDknrdkLzGDHpzjbfgdBj3Tt594K9HZbL",
+              "pool_swap_account": "9F3J6RY7PTkDb3SUUpg725uXyCceBGCpZrtmYGJwgMwF",
+              "pool_swap_token_account": "",
+              "pool_fee_account": "5rCbmppxMBHwBjCkLUP6fireQ12cL8LRa26QRUimoxN6",
+              "vault_reward_token_account": "HY6XQiGbBwaLbShXb6oYHBab7QVcgtHutrQmZUc5vQYV",
+              "vault_farm_token_account": "HiAvoit3Pdu9czjYBt9QoPsZyzbNXwViDSEi2zL3h1QF",
+              "vault_swap_token_account": "J13zYq8ULragbE39DqEN6GyR8NmqWCQcVaX1oe7Ynj76",
+              "global_base_token_mint": "3Q44iV4URXdbS4Tk1PGs5VdWQoCxHB7zdcdMnemo8jfH",
+              "global_base_token_vault": "9AznnrVmheoiJ2zDwgtmEaxzvj9kU4QJMvt8szZwqitV",
+              "global_reward_token_mint": "HZRCwxP2Vq9PCpPXooayhJ2bxTpo5xfpQrwB1svh332p",
+              "global_reward_token_vault": "9q9GJtWVcDseWg6ACyPdkShxACprXeZN8angkE1DAcNJ",
+              "global_farm": "CXbiLWJoYcVmV7GcF9xSwwMPSgHh5rHRLJB84F54R4qU",
+              "convert_authority": "EQn9JfRjpHunU3nGcnizPUphCi8UoT844ZFcGsQ7ZVb2",
+              "pool_swap_authority": "wJydc21tAMxYDif8uvy5rWNGWDFNZnPPmqCvegyZRod",
+              "farm_token_mint": "DxiftFoeRxHk15N4rDYzpwtGhfK3LqSn4gWDCaEkMksE",
+              "reward_token_mint": "HZRCwxP2Vq9PCpPXooayhJ2bxTpo5xfpQrwB1svh332p",
+              "swap_pool_mint": "HTZd53fYwYQRyAjiaPsZy9Gf41gobFdqkF4oKe3XLi95",
+              "token_a_mint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+              "token_b_mint": "9vMJfxuKxXBoEa7rM12mYLMwTacLMLDJqHozw96WQL8i",
+              "fee_collector_token_account": "BpF3tbXYeHutvNLprhEjNEQgi8x4BzFZEg9ua82wspee",
+              "swap_markets": [
+                "2p7nYbtPBgtmY69NsE8DAW6szpRJn7tQvDnqvoEWQvjY",
+                "9F3J6RY7PTkDb3SUUpg725uXyCceBGCpZrtmYGJwgMwF",
+                "CqwyVxWeaiikQ3VhvEZSEmupmG1Wmc2FeaUjsCV492Sx"
+              ],
+              "compound_swap_routes": [
+                {
+                  "market_name": "stSOL-wLDO",
+                  "platform": "Orca",
+                  "stable": false,
+                  "aquafarm": true,
+                  "takes_fee": false,
+                  "full_amount": true,
+                  "check_swap_skip": false,
+                  "swap_direction": "AToB"
+                }
+              ]
+            },
+            "compound_queue_account": "355HehPqvFDZ4h8XzA6R91pWb5oig5HvdfPTA6e7kXkm",
+            "withdraw_queue_account": "BmDvFPkeoa2FZk9zqLG7PEU4KT4S4MsBrJaKSKczSvrs"
+          },
+          "double_dip": true,
+          "farm_data": {
+            "user_farm_address": "FcihWxeKp1w8PgVwx1MnrDmC16MaZTFq39N6ZgZpvRDu",
+            "vault_swap_token_a": "3YTjSWDejrXtTBAMrq1hJfL4V2gYNirV5gnqCGsGpgwr",
+            "vault_swap_token_b": "FyqPVc79hdkznYCRhBagD2dE8BSD4FU1yB8iWg6pyRor",
+            "pool_swap_token_a": "GFso9SAGakm8ZFa3rmuonuerbcQ8ZbACNZN7idkKR5nw",
+            "pool_swap_token_b": "EZ7pJskN2a4pDknrdkLzGDHpzjbfgdBj3Tt594K9HZbL",
+            "pool_swap_account": "9F3J6RY7PTkDb3SUUpg725uXyCceBGCpZrtmYGJwgMwF",
+            "pool_swap_token_account": "",
+            "pool_fee_account": "5rCbmppxMBHwBjCkLUP6fireQ12cL8LRa26QRUimoxN6",
+            "vault_reward_token_account": "3975N184HEDdvoPxY3oHECCCu3hyz4qiCzH2PF8QQQtK",
+            "vault_farm_token_account": "J13zYq8ULragbE39DqEN6GyR8NmqWCQcVaX1oe7Ynj76",
+            "vault_swap_token_account": "77eboBynDgJA8cEnJeLgtbT3CFyKD6BK6AB1uELxTw5D",
+            "global_base_token_mint": "HTZd53fYwYQRyAjiaPsZy9Gf41gobFdqkF4oKe3XLi95",
+            "global_base_token_vault": "EQBy5YqWkLxr1xx1CZh2dDdX57XR9Ata4jNJebtuR61h",
+            "global_reward_token_mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+            "global_reward_token_vault": "FFjuVr4FYdRGkPwaQREVQWHsBFGwQ1LH6VkmVSJL5Vva",
+            "global_farm": "GxhewC22S6wsXT156yC9SARvDnijoc3YEYyLVcQFDUCx",
+            "convert_authority": "8za7LwVuYbP2PivS3KbeohpUkSmRqLdTDxhrVzsHyFZf",
+            "pool_swap_authority": "wJydc21tAMxYDif8uvy5rWNGWDFNZnPPmqCvegyZRod",
+            "farm_token_mint": "3Q44iV4URXdbS4Tk1PGs5VdWQoCxHB7zdcdMnemo8jfH",
+            "reward_token_mint": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+            "swap_pool_mint": "HTZd53fYwYQRyAjiaPsZy9Gf41gobFdqkF4oKe3XLi95",
+            "token_a_mint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+            "token_b_mint": "9vMJfxuKxXBoEa7rM12mYLMwTacLMLDJqHozw96WQL8i",
+            "fee_collector_token_account": "4ZDfFTKU4CaAUidHP6vRnb7EYrTJvzAe2aJwZ4ZTqrkG",
+            "swap_markets": [
+              "2p7nYbtPBgtmY69NsE8DAW6szpRJn7tQvDnqvoEWQvjY",
+              "9F3J6RY7PTkDb3SUUpg725uXyCceBGCpZrtmYGJwgMwF"
+            ],
+            "compound_swap_routes": [
+              {
+                "market_name": "ORCA-USDC",
+                "platform": "Orca",
+                "stable": false,
+                "aquafarm": true,
+                "takes_fee": true,
+                "full_amount": true,
+                "check_swap_skip": false,
+                "swap_direction": "AToB"
+              }
+            ]
+          },
+          "intermediary_token_mints": [],
+          "name": "ORCA-stSOL-wUST",
+          "symbol": "stSOL-wUST"
         },
         "quarry": null
       },
@@ -7383,94 +8036,6 @@
           },
           "swap_markets": [],
           "symbol": "USDC-USDT",
-          "variant": "Sunny"
-        }
-      },
-      {
-        "tag": "2",
-        "farm_type": [
-          3,
-          2
-        ],
-        "multi_deposit_optimizer": null,
-        "lending_optimizer": null,
-        "raydium": null,
-        "orca": null,
-        "quarry": {
-          "account": "7p8j9oi24GKgzsC6qqcVRXMCCkDf7Vc9LZuNba84xzPJ",
-          "base": {
-            "compound_interval": 600,
-            "fees": {
-              "controller_fee": 200,
-              "deposit_fee": 0,
-              "multiplier": 10,
-              "platform_fee": 200,
-              "withdraw_fee": 0
-            },
-            "nonce": 251,
-            "pda": "3NnjFZ4FkLquv2s8gmRS6PpNTRtXEfZpYqwmorGDdZjM",
-            "pda_nonce": 252,
-            "shares_mint": "8Hk1ViCBcQ5bcKzeXNhLtnxuSUyfwGq6n9UYm64kznDL",
-            "slippage_tolerance": 25,
-            "underlying_compound_queue": "HiPReH9ne3NFiXh5tGK5d7zqwL1Zd77Pyra1rPsLEDNv",
-            "underlying_deposit_queue": "952gWAwJKFJs3vf3RPDQw8vue3Xf2bg4R9cBJH6gSyaR",
-            "underlying_mint": "CLPKiHjoU5HwpPK5L6MBXHKqFsuzPr47dM1w4An3Lnvv",
-            "underlying_mint_decimals": 6,
-            "underlying_withdraw_queue": "FtfhfaPdgSjj34xcsf3tkkY1h6pHCgiMAmVjjj2cumLK"
-          },
-          "claim_fee_token_account": "",
-          "compound_swap_routes": [],
-          "config_data_account": "BB3ySTPpa4aDn8Lqnb6iDu3oj3fePG2Jeo2mvYNHpEH4",
-          "decimal_wrap": null,
-          "intermediary_token_mints": [],
-          "miner": "C5DZg1unFFj5gRFDZCRRfZWHdrrh5iV4B6GLmSBhbfPM",
-          "miner_token_account": "5SxCbJkafDtFdMQA5p8AgRjmrSXAw3GGo7EYQep32oVG",
-          "mint_wrapper": "EVVDA3ZiAjTizemLGXNUN3gb6cffQFEYkFjFZokPmUPz",
-          "minter": "GEoTC3gN12qHDniaDD7Zxvd5xtcZyEKkTPy42B44s82y",
-          "name": "QUARRY-SUNNY",
-          "quarry": "3esh4Uq1WMpdYSgBmK92C9eLVRU5MzcNPm2PJyG72Fqo",
-          "redeem_fee_token_account": "4h2NwSB2pLU7TpxDQCnXUccdZsmPoNqFLYpbAx9vFgdU",
-          "reward_token_account": "8NKKejTchyfTtTFLi6UpzMr5LzxifLgxb63dwxyZ3Wr9",
-          "reward_token_mint": "Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1",
-          "rewarder": "rXhAofQCT7NN9TUqigyEAUzV1uLL4boeD8CRkNBSkYk",
-          "saber_config": {
-            "mint_proxy_state": "9qRjwMQYrkd5JvsENaYYxSCgwEuVhK4qAo5kCFHSmdmL",
-            "proxy_mint_authority": "GyktbGXbH9kvxP8RGfWsnFtuRgC7QCQo2WBqpo3ryk7L",
-            "redeemer": "CL9wkGFT3SZRRNa9dgaovuRV7jrVVigBUZ6DjcgySsCU",
-            "redemption_mint": "Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1",
-            "redemption_minter": "846wNVmi9FgvpZ5wazeJNof5rSTjGR2wFHMmpH5BwWHu",
-            "redemption_vault": "5vnPNFuemK5LAYaHpxH4GzttyyEDkoNJ6c547Par9rWx",
-            "vault_redemption_token_account": "8NKKejTchyfTtTFLi6UpzMr5LzxifLgxb63dwxyZ3Wr9"
-          },
-          "sunny_config": {
-            "claim_fee_token_account": "4BF6M8M5V3yVQNfYLAAiunvazWBamcA6NQircUuEHCEa",
-            "harvest_mint_wrapper": "9AMTd87fjLQzVt2fM9fdm2h4RNWHBVv9QR1UvYt8fVHP",
-            "harvest_minter": "C5z6oQDhXbPDrn8DSZXhvnnLb4JuZaEKop9QxQCvhDPr",
-            "harvest_saber_fee_token_account": "4h2NwSB2pLU7TpxDQCnXUccdZsmPoNqFLYpbAx9vFgdU",
-            "harvest_sunny_fee_token_account": "7xDSTQ9YQUmTm6zaajx3xPQ2bbL8VLXZ5wRPqqfLFEZy",
-            "miner": "HUA8pempdP8GiCwqVvCXrTiovWBFJnQvATrEV4N2DJiV",
-            "miner_token_account": "5RbgPSsRYpt7Ks1s2U4MucJKdWNwn69K11A6LSiZkLhZ",
-            "redeem_fee_token_account": "7xDSTQ9YQUmTm6zaajx3xPQ2bbL8VLXZ5wRPqqfLFEZy",
-            "redeemer": "C8Lz145NvmaJe9fHyVGNoieyb9cU9jHEVtgBF7QNn51x",
-            "redemption_mint": "SUNNYWgPQmFxe9wTZzNK7iPnJ3vYDrkgnxJRJm1s3ag",
-            "redemption_mint_wrapper": "7cz5g4tv9PjQZpkWYZqUeEG2NuMo6MJwuoLKFfH6djA7",
-            "redemption_minter": "846wNVmi9FgvpZ5wazeJNof5rSTjGR2wFHMmpH5BwWHu",
-            "redemption_vault": "5vnPNFuemK5LAYaHpxH4GzttyyEDkoNJ6c547Par9rWx",
-            "rewarder": "97PmYbGpSHSrKrUkQX793mjpA2EA9rrQKkHsQuvenU44",
-            "sunny_internal_token_mint": "CnxwJAg5oroTFDr3NJtEoM954EYH2bNgiswnJcUUa1Vn",
-            "sunny_pool": "EBSEehvHWmeujhgXbXoSvgVSJZSe3kaw7qR8RTaEhr1P",
-            "sunny_quarry": "3rKH1WSPjzyRfbXYyww5Gct1FKPbpuCZXDsuRjipuWAr",
-            "sunny_tvault": "HW86RDZrofqCT7iqRmDNYGhrfwSe6WT2zVpvr5rmuEcX",
-            "sunny_tvault_internal_token_account": "39zxtDLEhpsbersseN25fMj1x7GFjfBk8MSDkZjYecyY",
-            "sunny_tvault_saber_reward_token_account": "GHe16HJwi7rjdAnvrDkx48P6fiWiSMWueEfD2RFMo8LQ",
-            "sunny_tvault_sunny_reward_token_account": "EJRMMqwevEnqij2wfKDmNLAnWqkwC1aNis5k52uqLc94",
-            "sunny_tvault_vendor_token_account": "6WYGK8ZVDb927ULy8RfmHG4iG2eYBcU1SQAcvdrohVum",
-            "vault_redemption_token_account": "FxVU3wFEWM8M9MSp3dJhGAFSsgRaXyYAtZB5PfrUMdT",
-            "vault_reward_token_account": "FYbJRiYnN4hG1dD98szQFMJL2o1rw5Qq9xf4W7Q9XVFq",
-            "withdraw_fee_destination": "A1NbuoVdGRZbdqK8rt9KFv9JoA4GHMeCicSLjcnUGwub"
-          },
-          "swap_markets": [],
-          "symbol": "CASH-USDC",
           "variant": "Sunny"
         }
       },
