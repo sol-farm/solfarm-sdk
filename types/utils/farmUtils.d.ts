@@ -6,6 +6,57 @@ export const ALL_FARMS: ({
         name: string;
         mintAddress: string;
         decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
     };
     pc: {
         symbol: string;
@@ -29,29 +80,649 @@ export const ALL_FARMS: ({
     };
     mintAddress: string;
     decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
     }[];
-    marginIndex: number;
-    slippageWarning: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
     referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    decimals?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
 } | {
     symbol: string;
     name: string;
     reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
         symbol: string;
         name: string;
         mintAddress: string;
@@ -61,10 +732,6 @@ export const ALL_FARMS: ({
     mintAddress: string;
     decimals: number;
     referrer: string;
-    singleStake: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
@@ -72,630 +739,12 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
     coin?: undefined;
     pc?: undefined;
-    rewardB?: undefined;
     dualYield?: undefined;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    dualYield: boolean;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
 })[];
 export const ALL_VAULT_FARMS: ({
     symbol: string;
@@ -705,6 +754,57 @@ export const ALL_VAULT_FARMS: ({
         name: string;
         mintAddress: string;
         decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
     };
     pc: {
         symbol: string;
@@ -728,29 +828,649 @@ export const ALL_VAULT_FARMS: ({
     };
     mintAddress: string;
     decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
     }[];
-    marginIndex: number;
-    slippageWarning: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
     referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    decimals?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
 } | {
     symbol: string;
     name: string;
     reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
         symbol: string;
         name: string;
         mintAddress: string;
@@ -760,10 +1480,6 @@ export const ALL_VAULT_FARMS: ({
     mintAddress: string;
     decimals: number;
     referrer: string;
-    singleStake: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
@@ -771,630 +1487,12 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
     coin?: undefined;
     pc?: undefined;
-    rewardB?: undefined;
     dualYield?: undefined;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    dualYield: boolean;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
 })[];
 export const LEVERAGE_FARMS: ({
     symbol: string;
@@ -1404,6 +1502,57 @@ export const LEVERAGE_FARMS: ({
         name: string;
         mintAddress: string;
         decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
     };
     pc: {
         symbol: string;
@@ -1427,29 +1576,649 @@ export const LEVERAGE_FARMS: ({
     };
     mintAddress: string;
     decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
     }[];
-    marginIndex: number;
-    slippageWarning: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
     referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    decimals?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
 } | {
     symbol: string;
     name: string;
     reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
         symbol: string;
         name: string;
         mintAddress: string;
@@ -1459,10 +2228,6 @@ export const LEVERAGE_FARMS: ({
     mintAddress: string;
     decimals: number;
     referrer: string;
-    singleStake: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
@@ -1470,630 +2235,12 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
     coin?: undefined;
     pc?: undefined;
-    rewardB?: undefined;
     dualYield?: undefined;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    dualYield: boolean;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
 })[];
 export function getFarmBySymbol(symbol: any): {
     symbol: string;
@@ -2103,6 +2250,57 @@ export function getFarmBySymbol(symbol: any): {
         name: string;
         mintAddress: string;
         decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
     };
     pc: {
         symbol: string;
@@ -2126,29 +2324,649 @@ export function getFarmBySymbol(symbol: any): {
     };
     mintAddress: string;
     decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
     }[];
-    marginIndex: number;
-    slippageWarning: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
     referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    decimals?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
 } | {
     symbol: string;
     name: string;
     reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
         symbol: string;
         name: string;
         mintAddress: string;
@@ -2158,10 +2976,6 @@ export function getFarmBySymbol(symbol: any): {
     mintAddress: string;
     decimals: number;
     referrer: string;
-    singleStake: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
@@ -2169,630 +2983,12 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     }[];
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
     coin?: undefined;
     pc?: undefined;
-    rewardB?: undefined;
     dualYield?: undefined;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
-    rewardEndSlot: number;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    dualYield: boolean;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    disabled: boolean;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
 };
 export function getFarmByMintAddress(mintAddress: any): {
     symbol: string;
@@ -2802,6 +2998,57 @@ export function getFarmByMintAddress(mintAddress: any): {
         name: string;
         mintAddress: string;
         decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
     };
     pc: {
         symbol: string;
@@ -2825,29 +3072,649 @@ export function getFarmByMintAddress(mintAddress: any): {
     };
     mintAddress: string;
     decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
     }[];
-    marginIndex: number;
-    slippageWarning: boolean;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
     referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        detailLink: string;
+        details: string;
+        docs: {
+            website: string;
+        };
+        socials: {
+            Discord: string;
+            Medium: string;
+            Twitter: string;
+            Telegram: string;
+        };
+        tags: string[];
+    })[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    link: string;
+    coins?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    decimals?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+        tags: string[];
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
 } | {
     symbol: string;
     name: string;
     reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
         symbol: string;
         name: string;
         mintAddress: string;
@@ -2857,10 +3724,6 @@ export function getFarmByMintAddress(mintAddress: any): {
     mintAddress: string;
     decimals: number;
     referrer: string;
-    singleStake: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
     coins: {
         symbol: string;
         name: string;
@@ -2868,165 +3731,22 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     }[];
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
     coin?: undefined;
     pc?: undefined;
-    rewardB?: undefined;
     dualYield?: undefined;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+};
+export function getRaydiumVaultBySymbol(symbol: any): {
     symbol: string;
     name: string;
+    configName: string;
     coin: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-    }[];
-    marginIndex: number;
-    whitelisted: boolean;
-    disabled: boolean;
-    maxPositionLimitInUsd: number;
-    migrated: boolean;
-    rewardEndSlot: number;
-    rewardB?: undefined;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
     };
     pc: {
         symbol: string;
@@ -3047,242 +3767,30 @@ export function getFarmByMintAddress(mintAddress: any): {
         name: string;
         mintAddress: string;
         decimals: number;
-        referrer: string;
     };
     mintAddress: string;
     decimals: number;
+    dualYield: boolean;
     liquidityMining: boolean;
     totalTulipEmission: number;
     saber: boolean;
+    hidden: boolean;
+    platform: string;
     coins: {
         symbol: string;
         name: string;
         mintAddress: string;
         decimals: number;
-        referrer: string;
     }[];
     marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
     slippageWarning: boolean;
-    rewardEndSlot: number;
-    dualYield?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
     maxPositionLimitInUsd: number;
-    slippageWarning: boolean;
+    link: string;
     rewardEndSlot: number;
-    referrer?: undefined;
-    singleStake?: undefined;
     whitelisted?: undefined;
     disabled?: undefined;
     migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    marginIndex: number;
-    maxPositionLimitInUsd: number;
-    rewardEndSlot: number;
-    slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
-} | {
-    symbol: string;
-    name: string;
-    coin: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    pc: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    reward: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    rewardB: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    };
-    mintAddress: string;
-    decimals: number;
-    dualYield: boolean;
-    liquidityMining: boolean;
-    totalTulipEmission: number;
-    saber: boolean;
-    coins: {
-        symbol: string;
-        name: string;
-        mintAddress: string;
-        decimals: number;
-        referrer: string;
-    }[];
-    rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    disabled?: undefined;
-    migrated?: undefined;
+    highLiquidity?: undefined;
 } | {
     symbol: string;
     name: string;
@@ -3319,6 +3827,7 @@ export function getFarmByMintAddress(mintAddress: any): {
     liquidityMining: boolean;
     totalTulipEmission: number;
     saber: boolean;
+    platform: string;
     coins: {
         symbol: string;
         name: string;
@@ -3330,12 +3839,67 @@ export function getFarmByMintAddress(mintAddress: any): {
     whitelisted: boolean;
     disabled: boolean;
     maxPositionLimitInUsd: number;
+    link: string;
     migrated: boolean;
-    dualYield: boolean;
     rewardEndSlot: number;
+    highLiquidity: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    hidden?: undefined;
     slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    marginIndex: number;
+    slippageWarning: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    rewardEndSlot: number;
+    platform: string;
+    configName?: undefined;
+    hidden?: undefined;
+    whitelisted?: undefined;
+    disabled?: undefined;
+    migrated?: undefined;
+    highLiquidity?: undefined;
 } | {
     symbol: string;
     name: string;
@@ -3372,6 +3936,7 @@ export function getFarmByMintAddress(mintAddress: any): {
     liquidityMining: boolean;
     totalTulipEmission: number;
     saber: boolean;
+    platform: string;
     coins: {
         symbol: string;
         name: string;
@@ -3380,15 +3945,294 @@ export function getFarmByMintAddress(mintAddress: any): {
         referrer: string;
     }[];
     marginIndex: number;
+    maxPositionLimitInUsd: number;
+    link: string;
+    rewardEndSlot: number;
+    configName?: undefined;
+    dualYield?: undefined;
+    hidden?: undefined;
+    slippageWarning?: undefined;
+    whitelisted?: undefined;
+    disabled?: undefined;
+    migrated?: undefined;
+    highLiquidity?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    marginIndex: number;
+    whitelisted: boolean;
     disabled: boolean;
     maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
     rewardEndSlot: number;
+    configName?: undefined;
+    dualYield?: undefined;
+    hidden?: undefined;
+    slippageWarning?: undefined;
+    highLiquidity?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    marginIndex: number;
+    whitelisted: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    rewardEndSlot: number;
+    highLiquidity: boolean;
+    configName?: undefined;
     dualYield?: undefined;
     slippageWarning?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
+    disabled?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    marginIndex: number;
+    whitelisted: boolean;
+    disabled: boolean;
+    hidden: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    rewardEndSlot: number;
+    highLiquidity: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    slippageWarning?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    })[];
+    marginIndex: number;
+    whitelisted: boolean;
+    disabled: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    slippageWarning?: undefined;
+    rewardEndSlot?: undefined;
+    highLiquidity?: undefined;
+};
+export function getRaydiumVaultByMintAddress(mintAddress: any): {
+    symbol: string;
+    name: string;
+    configName: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    hidden: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    marginIndex: number;
+    slippageWarning: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    rewardEndSlot: number;
     whitelisted?: undefined;
+    disabled?: undefined;
     migrated?: undefined;
+    highLiquidity?: undefined;
 } | {
     symbol: string;
     name: string;
@@ -3422,11 +4266,10 @@ export function getFarmByMintAddress(mintAddress: any): {
     };
     mintAddress: string;
     decimals: number;
-    dualYield: boolean;
     liquidityMining: boolean;
     totalTulipEmission: number;
-    disabled: boolean;
     saber: boolean;
+    platform: string;
     coins: {
         symbol: string;
         name: string;
@@ -3434,14 +4277,18 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     }[];
+    marginIndex: number;
+    whitelisted: boolean;
+    disabled: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
     rewardEndSlot: number;
-    marginIndex?: undefined;
+    highLiquidity: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    hidden?: undefined;
     slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
-    whitelisted?: undefined;
-    migrated?: undefined;
 } | {
     symbol: string;
     name: string;
@@ -3476,7 +4323,6 @@ export function getFarmByMintAddress(mintAddress: any): {
     dualYield: boolean;
     liquidityMining: boolean;
     totalTulipEmission: number;
-    disabled: boolean;
     saber: boolean;
     coins: {
         symbol: string;
@@ -3484,12 +4330,1137 @@ export function getFarmByMintAddress(mintAddress: any): {
         mintAddress: string;
         decimals: number;
     }[];
+    marginIndex: number;
+    slippageWarning: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
     rewardEndSlot: number;
-    marginIndex?: undefined;
-    slippageWarning?: undefined;
-    maxPositionLimitInUsd?: undefined;
-    referrer?: undefined;
-    singleStake?: undefined;
+    platform: string;
+    configName?: undefined;
+    hidden?: undefined;
     whitelisted?: undefined;
+    disabled?: undefined;
     migrated?: undefined;
+    highLiquidity?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    link: string;
+    rewardEndSlot: number;
+    configName?: undefined;
+    dualYield?: undefined;
+    hidden?: undefined;
+    slippageWarning?: undefined;
+    whitelisted?: undefined;
+    disabled?: undefined;
+    migrated?: undefined;
+    highLiquidity?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    marginIndex: number;
+    whitelisted: boolean;
+    disabled: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    rewardEndSlot: number;
+    configName?: undefined;
+    dualYield?: undefined;
+    hidden?: undefined;
+    slippageWarning?: undefined;
+    highLiquidity?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    marginIndex: number;
+    whitelisted: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    rewardEndSlot: number;
+    highLiquidity: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    slippageWarning?: undefined;
+    disabled?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    marginIndex: number;
+    whitelisted: boolean;
+    disabled: boolean;
+    hidden: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    rewardEndSlot: number;
+    highLiquidity: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    slippageWarning?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    totalTulipEmission: number;
+    saber: boolean;
+    platform: string;
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    })[];
+    marginIndex: number;
+    whitelisted: boolean;
+    disabled: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    migrated: boolean;
+    configName?: undefined;
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    slippageWarning?: undefined;
+    rewardEndSlot?: undefined;
+    highLiquidity?: undefined;
+};
+export function getSaberVaultBySymbol(symbol: any): {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    })[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    sunnyPlatform: string;
+    link: string;
+    totalSBREmission: number;
+    totalSunnyEmission: number;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    sunnyPlatform: string;
+    link: string;
+    totalSBREmission: number;
+    totalSunnyEmission: number;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    sunnyPlatform: string;
+    link: string;
+    totalSBREmission: number;
+    totalSunnyEmission: number;
+};
+export function getSaberVaultByMintAddress(mintAddress: any): {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    })[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    sunnyPlatform: string;
+    link: string;
+    totalSBREmission: number;
+    totalSunnyEmission: number;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    sunnyPlatform: string;
+    link: string;
+    totalSBREmission: number;
+    totalSunnyEmission: number;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddres: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    sunnyPlatform: string;
+    link: string;
+    totalSBREmission: number;
+    totalSunnyEmission: number;
+};
+export function getOrcaVaultBySymbol(symbol: any): {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    hidden?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    hidden?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    hidden?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+};
+export function getOrcaVaultByMintAddress(mintAddress: any): {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    hidden?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: ({
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    } | {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    })[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        tags: string[];
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    hidden?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+    hidden?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    }[];
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+    };
+    hidden: boolean;
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    totalTulipEmission: number;
+    platform: string;
+    marginIndex: number;
+    maxPositionLimitInUsd: number;
+};
+export function getTulipVaultBySymbol(symbol: any): {
+    symbol: string;
+    name: string;
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    singleStake: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    tag: string;
+    tags?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    reward: any;
+    rewardB: any;
+    mintAddress: string;
+    decimals: any;
+    singleStake: boolean;
+    platform: string;
+    coins: any[];
+    tags: any[];
+    tag: string;
+};
+export function getTulipVaultByMintAddress(mintAddress: any): {
+    symbol: string;
+    name: string;
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    singleStake: boolean;
+    platform: string;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    tag: string;
+    tags?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    reward: any;
+    rewardB: any;
+    mintAddress: string;
+    decimals: any;
+    singleStake: boolean;
+    platform: string;
+    coins: any[];
+    tags: any[];
+    tag: string;
 };
