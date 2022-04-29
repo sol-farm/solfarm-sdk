@@ -5,7 +5,9 @@ import {
 import { getBalanceForVault } from './services/WalletService';
 import {
   depositToLendingReserve,
-  withdrawFromLendingReserve
+  depositToLendingReserveV2,
+  withdrawFromLendingReserve,
+  withdrawFromLendingReserveV2
 } from './services/LendingService';
 import {
   getBalancesForAutoVaults
@@ -18,7 +20,9 @@ export {
   withdrawFromVault,
   getBalanceForVault,
   depositToLendingReserve,
+  depositToLendingReserveV2,
   withdrawFromLendingReserve,
+  withdrawFromLendingReserveV2,
   getBalancesForAutoVaults,
   FARM_PLATFORMS,
   VAULTS
