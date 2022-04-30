@@ -26,7 +26,7 @@ import {
   WAD
 } from '../utils/layouts';
 import { TokenAmount } from '../utils/safe-math';
-import { isFunction, some } from 'lodash';
+import { some } from 'lodash';
 
 const LendingInstruction = {
   InitLendingMarket: 0,
@@ -721,10 +721,6 @@ const withdrawLendingReserve = async ({
       );
 
       some(parsedTokenAccounts.value, (tokenAccountInfo) => {
-        if (!isFunction(tokenAccountInfo?.pubkey?.toBase58)) {
-          return false;
-        }
-
         // `tokenAccountAddress` is same as `authorityTokenAccount`
         // (used in input to `depositToVault`)
         const tokenAccountAddress = tokenAccountInfo.pubkey.toBase58(),
