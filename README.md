@@ -15,8 +15,10 @@ npm install --save @tulip-protocol/platform-sdk
   - [withdrawFromVault](#withdrawfromvault)
   - [getBalanceForVault](#getbalanceforvault)
 - [Lending](#lending)
-  - [depositToLendingReserve](#deposittolendingreserve)
-  - [withdrawFromLendingReserve](#withdrawfromlendingreserve)
+  - [depositLendingReserve](#depositlendingreserve)
+  - [withdrawLendingReserve](#withdrawlendingreserve)
+  - [depositToLendingReserve - OLD](#deposittolendingreserve)
+  - [withdrawFromLendingReserve - OLD](#withdrawfromlendingreserve)
 
 ## Vaults
 ## `depositToVault`
@@ -243,8 +245,152 @@ const getUserBalanceForTulipProtocol = async () => {
 ```
 
 ## Lending
-## `depositToLendingReserve`
-Deposit to a Lending Reserve
+## `depositLendingReserve`
+Deposit to a Lending Reserve.
+
+The function accepts a single object as an argument with the following properties.
+```
+depositToLendingReserve({
+  connection: Connection,
+  wallet: SolanaWalletAdapter | Object,
+  reserve: String,
+  amount: String | Number,
+  authorityTokenAccount?: PublicKey
+})
+```
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `reserve: String` - Symbol or mint address of the reserve for example `USDC` or `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`
+- `amount: String | Number` - Amount to deposit
+- `authorityTokenAccount?: PublicKey` - [Optional] Token account address of the user corresponding to the reserve, if not provided
+  then will automatically be fetched by the SDK
+
+### Returns
+`Promise<transaction: Transaction>`
+
+### Example
+
+```javascript
+import { depositLendingReserve } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+
+// You can have any wallet adapter you may want, we're taking Phantom as an example here.
+// More info can be found here: https://github.com/solana-labs/wallet-adapter#wallets
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
+
+// Create a util to send transactions
+import { sendTransaction } from 'utils/web3';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `depositLendingReserve`
+const connection = new Connection(endpoint, { commitment });
+const wallet = new PhantomWalletAdapter();
+
+/**
+ * Now you need the lending reserve for which you'd want to deposit funds.
+ * Refer: https://tulip.garden/lend to find the lending reserve symbol you want.
+ * The reserve's symbol or mint address can be provided as the value.
+ * For example, this is the symbol of `TULIP`
+ */
+const reserve = 'TULIP';
+
+const depositToTulipProtocol = async () => {
+  // Let's take the hardcoded amount for the example
+  const amount = '145';
+
+  const transaction = await depositLendingReserve({
+    connection,
+    wallet,
+    reserve,
+    amount
+  });
+
+  // Let's assume this is how the function signature of
+  // your custom `sendTransaction` looks like
+  return sendTransaction(connection, wallet, transaction);
+};
+```
+
+## `withdrawLendingReserve`
+Withdraw from a Lending Reserve.
+
+The function accepts a single object as an argument with the following properties.
+```
+withdrawLendingReserve({
+  connection: Connection,
+  wallet: SolanaWalletAdapter | Object,
+  reserve: String,
+  amount: String | Number,
+  authorityTokenAccount?: PublicKey
+})
+```
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `reserve: String` - Symbol or mint address of the reserve for example `USDC` or `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`
+- `amount: String | Number` - Amount to withdraw
+- `authorityTokenAccount?: PublicKey` - [Optional] Token account address of the user corresponding to the reserve, if not provided
+  then will automatically be fetched by the SDK
+
+### Returns
+`Promise<transaction: Transaction>`
+
+### Example
+
+```javascript
+import { withdrawLendingReserve } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+
+// You can have any wallet adapter you may want, we're taking Phantom as an example here.
+// More info can be found here: https://github.com/solana-labs/wallet-adapter#wallets
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
+
+// Create a util to send transactions
+import { sendTransaction } from 'utils/web3';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `depositLendingReserve`
+const connection = new Connection(endpoint, { commitment });
+const wallet = new PhantomWalletAdapter();
+
+/**
+ * Now you need the lending reserve for which you'd want to withdraw funds from.
+ * Refer: https://tulip.garden/lend to find the lending reserve symbol you want.
+ * The reserve's symbol or mint address can be provided as the value.
+ * For example, this is the symbol of `TULIP`
+ */
+const reserve = 'TULIP';
+
+const withdrawFromTulipProtocol = async () => {
+  // Let's take the hardcoded amount for the example
+  const amount = '145';
+
+  const transaction = await withdrawLendingReserve({
+    connection,
+    wallet,
+    reserve,
+    amount
+  });
+
+  // Let's assume this is how the function signature of
+  // your custom `sendTransaction` looks like
+  return sendTransaction(connection, wallet, transaction);
+};
+```
+
+## `depositToLendingReserve` [OLD]
+Deposit to a Lending Reserve.
+We recommend using the `depositLendingReserve` function instead, since it has been updated
+with automatic authorityToken finding and can accept a reserve symbol etc.
 
 `depositToLendingReserve(conn: Connection, wallet: SolanaWalletAdapter | Object, mintAddress: String, authorityTokenAccount: PublicKey, amount: String | Number)`
 
@@ -332,8 +478,10 @@ const depositToTulipProtocol = async () => {
 };
 ```
 
-## `withdrawFromLendingReserve`
+## `withdrawFromLendingReserve` [OLD]
 Withdraw from a Lending Reserve
+We recommend using the `withdrawLendingReserve` function instead, since it has been updated
+with automatic authorityToken finding and can accept a reserve symbol etc.
 
 `withdrawFromLendingReserve(conn: Connection, wallet: SolanaWalletAdapter | Object, mintAddress: String, authorityTokenAccount: PublicKey, amount: String | Number)`
 
