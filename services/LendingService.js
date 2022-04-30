@@ -305,7 +305,7 @@ const depositToLendingReserve = async (
  *
  * @returns {Promise}
  */
-const depositToLendingReserveV2 = async ({
+const depositLendingReserve = async ({
   connection,
   wallet,
   reserve,
@@ -676,7 +676,7 @@ const withdrawFromLendingReserve = async (
  *
  * @returns {Promise}
  */
-const withdrawFromLendingReserveV2 = async ({
+const withdrawLendingReserve = async ({
   connection,
   wallet,
   reserve,
@@ -909,6 +909,6 @@ const withdrawFromLendingReserveV2 = async ({
 export {
   depositToLendingReserve,
   withdrawFromLendingReserve,
-  depositToLendingReserveV2,
-  withdrawFromLendingReserveV2
+  depositLendingReserve,
+  withdrawLendingReserve
 };
