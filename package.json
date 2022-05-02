@@ -1,6 +1,6 @@
 {
   "name": "@tulip-protocol/platform-sdk",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Tulip Protocol SDK",
   "main": "index.js",
   "typings": "types/index.d.ts",
