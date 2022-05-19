@@ -5,6 +5,8 @@ import { RAYDIUM_VAULTS } from '../constants/raydiumVaults';
 import { SABER_VAULTS } from '../constants/saberVaults';
 import { ORCA_VAULTS } from '../constants/orcaVaults';
 import { TULIP_VAULTS } from '../constants/tulipVaults';
+import { TokenAmount } from './safe-math';
+import { TOKEN_PROGRAM_ID } from '../constants/ids';
 
 export const ALL_FARMS = FARMS;
 
@@ -82,3 +84,46 @@ export const getTulipVaultByMintAddress = (mintAddress) => {
   });
 };
 // #endregion
+
+export async function getTokenAccounts ({
+  connection,
+  wallet
+}) {
+  // Set token accounts
+  const parsedTokenAccounts = await connection.getParsedTokenAccountsByOwner(
+    wallet.publicKey,
+    {
+      programId: TOKEN_PROGRAM_ID
+    },
+    'processed'
+  );
+
+  const tokenAccounts = {};
+
+  parsedTokenAccounts.value.forEach((tokenAccountInfo) => {
+    const tokenAccountAddress = tokenAccountInfo.pubkey.toBase58(),
+      parsedInfo = tokenAccountInfo.account.data.parsed.info,
+      mintAddress = parsedInfo.mint,
+      balance = new TokenAmount(
+        parsedInfo.tokenAmount.amount,
+        parsedInfo.tokenAmount.decimals
+      );
+
+    if (
+      Object.prototype.hasOwnProperty.call(tokenAccounts, mintAddress)
+    ) {
+      if (tokenAccounts[mintAddress].balance.isNullOrZero()) {
+        tokenAccounts[mintAddress] = {
+          tokenAccountAddress,
+          balance
+        };
+      }
+      else {
+        tokenAccounts[mintAddress] = {
+          tokenAccountAddress,
+          balance
+        };
+      }
+    }
+  });
+}

@@ -1,12 +1,23 @@
 import { concat, find } from 'lodash';
 import config from '../constants/info.json';
 import lendConfig from '../constants/lending_info.json';
+import saberConfig from '../constants/saber_idl.json';
+import orcaConfig from '../constants/orca_idl.json';
 
 export const getVaultProgramId = () => {
   return config.programId;
 };
+
 export const getTokenProgramId = () => {
   return config.rayTokenProgramId;
+};
+
+export const getSaberVaultProgramId = () => {
+  return saberConfig.programs.vault.id;
+};
+
+export const getOrcaVaultProgramId = () => {
+  return orcaConfig.programs.vault.id;
 };
 
 const vaultAccounts = concat(config.vault.accounts);
