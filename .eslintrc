@@ -398,10 +398,7 @@
     "template-tag-spacing": "error",
     "unicode-bom": "error",
     "wrap-regex": "error",
-    "arrow-body-style": [
-        "error",
-        "always"
-    ],
+    "arrow-body-style": "off",
     "arrow-parens": [
         "error",
         "always"

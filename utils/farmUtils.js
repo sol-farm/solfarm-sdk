@@ -126,4 +126,10 @@ export async function getTokenAccounts ({
       }
     }
   });
+
+  return tokenAccounts;
+}
+
+export function isMintAddressExisting (tokenAccounts, mintAddress) {
+  return tokenAccounts?.hasOwnProperty[mintAddress];
 }

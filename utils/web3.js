@@ -4,6 +4,113 @@ import { slice } from 'lodash';
 
 export const commitment = 'confirmed';
 
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} signedTransactions
+ * @param {*} transactions
+ * @param {*} parentResolve
+ * @param {*} resolve
+ * @param {*} onError
+ * @returns
+ */
+ export async function signTransactionsSynchronously (
+  connection,
+  signedTransactions,
+  transactions,
+  onError,
+  opts
+) {
+let transactionIds = [];
+
+  for (let signedTransaction of signedTransactions) {
+    transactionIds.push(await sendWithRetry(connection, signedTransaction));
+
+    // console.log('tx confirmed');
+  }
+
+  return Promise.resolve(transactionIds);
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} wallet
+ * @param {*} transactions
+ * @param {*} signers
+ * @param {*} extraSigners
+ * @returns
+ */
+ export async function sendAllTransactions (
+  connection,
+  wallet,
+  transactions,
+  signers,
+  extraSigners,
+  opts
+) {
+  const signedTransactions = await signAllTransactions(
+    connection,
+    wallet,
+    transactions,
+    signers,
+    extraSigners
+  );
+
+  return await sendAllSignedTransactions(connection, signedTransactions, opts);
+}
+
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} signedTransactions
+ * @returns
+ */
+export function sendAllSignedTransactions (
+  connection,
+  signedTransactions,
+  opts = {}
+) {
+  const transactions = [];
+
+  // for (let signedTransaction of signedTransactions) {
+  //   const rawTransaction = signedTransaction.serialize();
+  //   const txId = await connection.sendRawTransaction(rawTransaction, {
+  //     skipPreflight: true,
+  //     preflightCommitment: 'confirmed'
+  //   });
+
+  //   // console.log('Sending transaction ID:', txId);
+
+  //   transactions.push(txId);
+  //   await delay(2000);
+
+  //   const signatureStatus = await window.$web3.getSignatureStatus(txId, {searchTransactionHistory: true});
+
+  //   if (signatureStatus.value?.err) {
+  //     throw new Error('Transaction not completed successfully. Please retry.');
+  //   }
+  // }
+
+  // return transactions
+
+  const executeTransaction = () => {
+
+    return signTransactionsSynchronously(
+      connection,
+      signedTransactions,
+      transactions,
+      signedTransactions.length,
+      opts
+    );
+  };
+
+  return Promise.race([executeTransaction(), transactionsTimeout()]);
+}
+
+
 /**
  *
  * @param {*} connection

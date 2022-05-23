@@ -306,3 +306,200 @@ export const getLendingReserveByAccount = (account) => {
 };
 
 // #endregion
+
+export const getOrcaFarmPoolCoinTokenaccount = (name) => {
+  const farm = find(orcaConfig.farms, (farm) => {
+    return farm.name === name;
+  });
+
+  return farm?.poolCoinTokenaccount;
+};
+
+export const getOrcaFarmPoolPcTokenaccount = (name) => {
+  const farm = find(orcaConfig.farms, (farm) => {
+    return farm.name === name;
+  });
+
+  return farm?.poolPcTokenaccount;
+};
+
+export const getOrcaLpMintAddress = (name) => {
+  const farm = find(orcaConfig.farms, (farm) => {
+    return farm.name === name;
+  });
+
+  return farm?.lpMintAddress;
+};
+
+export const getOrcaFarmDoubleDip = (name) => {
+  const farm = find(orcaConfig.farms, (farm) => {
+    return farm.name === name;
+  });
+
+  return farm?.doubleDip;
+};
+
+export const getOrcaVaultAccount = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.account;
+};
+
+export const getOrcaVaultLpAccount = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.farm_token_account;
+};
+
+export const getOrcaVaultFarmMint = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.farm_token_mint;
+};
+
+export const getOrcaVaultDdFarmMint = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.dd_farm_token_mint;
+};
+
+export const getOrcaVaultGlobalBaseTokenVault = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.global_base_token_vault;
+};
+
+export const getOrcaVaultGlobalDdBaseTokenVault = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.global_base_token_vault_dd;
+};
+
+export const getOrcaVaultGlobalFarm = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.global_farm;
+};
+
+export const getOrcaVaultGlobalFarmDd = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.global_farm_dd;
+};
+
+export const getOrcaVaultGlobalRewardTokenVault = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.global_reward_token_vault;
+};
+
+export const getOrcaVaultGlobalRewardTokenVaultDd = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.global_reward_token_vault_dd;
+};
+
+export const getOrcaVaultConvertAuthority = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.convert_authority;
+};
+
+export const getOrcaVaultConvertAuthorityDd = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.convert_authority_dd;
+};
+
+export const getOrcaVaultLpMint = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.swap_pool_token_mint;
+};
+
+export const getOrcaVaultSwapPoolTokenAccount = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.swap_pool_token_account;
+};
+
+export const getOrcaVaultRewardMint = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.reward_token_mint;
+};
+
+export const getOrcaVaultDdRewardMint = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.dd_reward_token_mint;
+};
+
+export const getOrcaVaultFeeAccount = (name) => {
+  const vaultAccount = find(
+    orcaConfig.vault.accounts,
+    (account) => account.name === name
+  );
+
+  return vaultAccount?.orca_fee_account;
+};
+
+export const getOrcaFarmPoolId = (name) => {
+  const farm = find(orcaConfig.farms, (farm) => farm.name === name);
+
+  return farm?.poolId;
+};
+
+export const getOrcaFarmPoolLpTokenAccount = (name) => {
+  const farm = find(orcaConfig.farms, (farm) => farm.name === name);
+
+  return farm?.poolLpTokenAccount;
+};
