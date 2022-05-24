@@ -6,6 +6,7 @@ export const NATIVE_SOL = {
 };
 
 export const TOKENS = {
+  SOL: NATIVE_SOL,
   RUN: {
     symbol: 'RUN',
     name: 'RUN',

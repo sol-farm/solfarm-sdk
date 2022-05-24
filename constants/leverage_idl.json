@@ -1454,6 +1454,150 @@
       "args": []
     },
     {
+      "name": "withdrawOrcaVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "vaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultUserAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userFarmOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTransferAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userBaseTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userFarmTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalBaseTokenVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "farmTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalFarm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "orcaUserFarm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalRewardTokenVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "convertAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "aquaFarmProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "receivingTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "leveragedUserFarm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "leveragedFarm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solfarmVaultProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "obligationVaultAddress",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "obligationIndex",
+          "type": "u8"
+        },
+        {
+          "name": "withdrawPercent",
+          "type": "u8"
+        },
+        {
+          "name": "closeMethod",
+          "type": "u8"
+        }
+      ]
+    },
+    {
       "name": "withdrawOrcaVaultClose",
       "accounts": [
         {
@@ -5425,6 +5569,131 @@
           "type": "u64"
         }
       ]
+    },
+    {
+      "name": "directDebtRepayment",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userFarm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userFarmObligation",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "leveragedFarm",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "coinSourceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinDestinationTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcSourceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcDestinationTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "coinReserveAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pcReserveAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lendingMarketAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "derivedLendingMarketAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lendingProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpPythPriceAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "coinPriceAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pcPriceAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "positionInfoAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "reserves",
+          "type": {
+            "vec": "publicKey"
+          }
+        },
+        {
+          "name": "obligationIndex",
+          "type": "u8"
+        },
+        {
+          "name": "coinRepayAmount",
+          "type": "u64"
+        },
+        {
+          "name": "pcRepayAmount",
+          "type": "u64"
+        }
+      ]
     }
   ],
   "state": {
@@ -6172,6 +6441,24 @@
             "name": "SlcUsdcRayVault"
           },
           {
+            "name": "HbbUsdhRayVault"
+          },
+          {
+            "name": "UsdhUsdcRayVault"
+          },
+          {
+            "name": "sRlySolOrcaVault"
+          },
+          {
+            "name": "HawkUsdcRayVault"
+          },
+          {
+            "name": "GmtUsdcOrcaVault"
+          },
+          {
+            "name": "RaywhEthRayVault"
+          },
+          {
             "name": "Unknown"
           }
         ]
@@ -6247,6 +6534,15 @@
           },
           {
             "name": "RepaidForLiquidation"
+          },
+          {
+            "name": "DDPulledForLiquidation"
+          },
+          {
+            "name": "LPPulledForLiquidation"
+          },
+          {
+            "name": "RemovedLiquidityForLiquidation"
           }
         ]
       }

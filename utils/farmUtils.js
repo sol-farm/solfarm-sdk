@@ -98,7 +98,7 @@ export async function getTokenAccounts ({
     'processed'
   );
 
-  const tokenAccounts = {};
+  let tokenAccounts = {};
 
   parsedTokenAccounts.value.forEach((tokenAccountInfo) => {
     const tokenAccountAddress = tokenAccountInfo.pubkey.toBase58(),
@@ -118,12 +118,12 @@ export async function getTokenAccounts ({
           balance
         };
       }
-      else {
-        tokenAccounts[mintAddress] = {
-          tokenAccountAddress,
-          balance
-        };
-      }
+    }
+    else {
+      tokenAccounts[mintAddress] = {
+        tokenAccountAddress,
+        balance
+      };
     }
   });
 

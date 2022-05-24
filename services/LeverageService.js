@@ -37,10 +37,16 @@ import {
   getOrcaLpMintAddress,
   getOrcaVaultAccount,
   getOrcaVaultConvertAuthority,
+  getOrcaVaultConvertAuthorityDd,
+  getOrcaVaultDdFarmMint,
+  getOrcaVaultDdRewardMint,
   getOrcaVaultFarmMint,
   getOrcaVaultGlobalBaseTokenVault,
+  getOrcaVaultGlobalDdBaseTokenVault,
   getOrcaVaultGlobalFarm,
+  getOrcaVaultGlobalFarmDd,
   getOrcaVaultGlobalRewardTokenVault,
+  getOrcaVaultGlobalRewardTokenVaultDd,
   getOrcaVaultLpMint,
   getOrcaVaultProgramId,
   getOrcaVaultRewardMint,
@@ -59,7 +65,7 @@ import { ACCOUNT_LAYOUT } from '../utils/layouts';
 import { getReserveByName } from '../utils/lendingUtils';
 import leverageIdl from '../constants/leverage_idl.json';
 import { findIndex } from 'lodash';
-import { commitment, getMultipleAccounts, sendAllTransactions } from '../utils/web3';
+import { commitment, getMultipleAccounts, sendAllTransactions, createAssociatedTokenAccount } from '../utils/web3';
 import { TOKENS } from '../constants/tokens';
 import { getFarmBySymbol, getTokenAccounts, isMintAddressExisting } from '../utils/farmUtils';
 import { FARM_PLATFORMS } from '../constants/farms';
@@ -216,7 +222,8 @@ async function _createUserFarm ({
 
   const tulipTokenAccount =
     tokenAccounts[TOKENS.TULIP.mintAddress]?.tokenAccountAddress;
-  const derivedTulipTokenAccount = await serumAssoToken.getAssociatedTokenAddress(
+  const derivedTulipTokenAccount = await createAssociatedTokenAccount(
+    provider,
     provider.wallet.publicKey,
     new anchor.web3.PublicKey(TOKENS.TULIP.mintAddress)
   );
@@ -655,9 +662,9 @@ async function _depositBorrow ({
 
   if (
     baseToken.symbol !== 'SOL' &&
-    !isMintAddressExisting(baseToken.mintAddress)
+    !isMintAddressExisting(tokenAccounts, baseToken.mintAddress)
   ) {
-    coinSourceTokenAccount = await await serumAssoToken.createAssociatedTokenAccount(
+    coinSourceTokenAccount = await createAssociatedTokenAccount(
       provider,
       provider.wallet.publicKey,
       new anchor.web3.PublicKey(baseToken.mintAddress)
@@ -671,9 +678,9 @@ async function _depositBorrow ({
 
   if (
     quoteToken.symbol !== 'SOL' &&
-    !isMintAddressExisting(quoteToken.mintAddress)
+    !isMintAddressExisting(tokenAccounts, quoteToken.mintAddress)
   ) {
-    pcSourceTokenAccount = await await serumAssoToken.createAssociatedTokenAccount(
+    pcSourceTokenAccount = await createAssociatedTokenAccount(
       provider,
       provider.wallet.publicKey,
       new anchor.web3.PublicKey(quoteToken.mintAddress)
@@ -1229,7 +1236,7 @@ async function _addLiquidity ({
       new anchor.web3.PublicKey(getLendingFarmProgramId())
     );
 
-  const obligationLpTokenAccount = await serumAssoToken.createAssociatedTokenAccount(
+  const obligationLpTokenAccount = await createAssociatedTokenAccount(
     provider,
     obligationVaultAccount,
     new anchor.web3.PublicKey(farm.mintAddress)
@@ -1336,8 +1343,7 @@ async function _addLiquidity ({
 async function _depositMarginLpTokens ({
   wallet,
   assetSymbol,
-  obligationIdx,
-  userFarmInfo
+  obligationIdx
 }) {
   let anchor = anchorold;
 
@@ -1414,7 +1420,7 @@ async function _depositMarginLpTokens ({
       lendingProgramId
     );
 
-  const userFarmManagerLpTokenAccount = await serumAssoToken.createAssociatedTokenAccount(
+  const userFarmManagerLpTokenAccount = await createAssociatedTokenAccount(
     provider,
     obligationVaultAccount,
     new anchor.web3.PublicKey(farm.mintAddress)
@@ -1428,7 +1434,7 @@ async function _depositMarginLpTokens ({
         getVaultInfoAccount(assetSymbol)
       );
 
-      const vaultLpTokenAccount = await serumAssoToken.createAssociatedTokenAccount(
+      const vaultLpTokenAccount = await createAssociatedTokenAccount(
         provider,
         vaultPdaAccount,
         new anchor.web3.PublicKey(
@@ -1663,6 +1669,372 @@ async function _depositMarginLpTokens ({
   return txn;
 }
 
+async function _depositOrcaWithoutShares ({
+  assetSymbol,
+  obligationIdx,
+  wallet
+}) {
+  let anchor = anchorold;
+
+  const walletToInitialize = {
+      signTransaction: wallet.signTransaction,
+      signAllTransactions: wallet.signAllTransactions,
+      publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
+    },
+    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+      skipPreflight: true,
+      preflightCommitment: commitment
+    });
+
+  anchor.setProvider(provider);
+
+  // Address of the deployed program.
+  const vaultProgramId = new anchor.web3.PublicKey(getLendingFarmProgramId());
+
+  // Generate the program client from IDL.
+  const vaultProgram = new anchor.Program(leverageIdl, vaultProgramId);
+
+  const farm = getFarmBySymbol(assetSymbol);
+
+  let [userFarm] = await findUserFarmAddress(
+    provider.wallet.publicKey,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()), // lending_info.json -> programs -> farm -> id
+    new anchor.BN(0),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  let [obligationVaultAccount] = await findObligationVaultAddress(
+    userFarm,
+    new anchor.BN(obligationIdx), // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+    new anchor.web3.PublicKey(getLendingFarmProgramId())
+  );
+
+  let [userObligationAcct1] = await findUserFarmObligationAddress(
+    provider.wallet.publicKey,
+    userFarm,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+  );
+
+  const vaultAccount = new anchor.web3.PublicKey(
+    getVaultAccount(assetSymbol)
+  );
+  const vaultPdaAccount = new anchor.web3.PublicKey(
+    getVaultPdaAccount(assetSymbol)
+  );
+
+  const solfarmVaultProgramId = new anchor.web3.PublicKey(
+    farm.platform === FARM_PLATFORMS.ORCA ?
+      getOrcaVaultProgramId() : getVaultProgramId()
+  );
+
+  const lendingProgramId = new anchor.web3.PublicKey(getLendingProgramId());
+
+  const [leveragedFarm] = await findLeveragedFarmAddress(
+    solfarmVaultProgramId,
+    new anchor.web3.PublicKey(
+      getLendingFarmAccount(assetSymbol).serum_market
+    ),
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  const lendingMarketAccount = new anchor.web3.PublicKey(
+    getLendingMarketAccount()
+  );
+
+  const [derivedLendingMarketAuthority] =
+    await anchor.web3.PublicKey.findProgramAddress(
+      [lendingMarketAccount.toBytes()],
+      lendingProgramId
+    );
+
+  const userFarmManagerLpTokenAccount = await createAssociatedTokenAccount(
+    provider,
+    obligationVaultAccount,
+    new anchor.web3.PublicKey(farm.mintAddress)
+  );
+
+  let txn;
+
+  let [orcaVaultUserAccountAddress, orcaVaultUserAccountNonce] =
+    await deriveVaultUserAccount(
+      new anchor.web3.PublicKey(getOrcaVaultAccount(assetSymbol)),
+      obligationVaultAccount,
+      solfarmVaultProgramId
+    );
+
+  let vaultBaseTokenAccount = await serumAssoToken.getAssociatedTokenAddress(
+    vaultPdaAccount,
+    new anchor.web3.PublicKey(getOrcaVaultLpMint(assetSymbol))
+  );
+  let vaultFarmTokenAccount = await serumAssoToken.getAssociatedTokenAddress(
+    vaultPdaAccount,
+    new anchor.web3.PublicKey(getOrcaVaultFarmMint(assetSymbol))
+  );
+  let vaultRewardTokenAccount =
+    await serumAssoToken.getAssociatedTokenAddress(
+      vaultPdaAccount,
+      new anchor.web3.PublicKey(getOrcaVaultRewardMint(assetSymbol))
+    );
+
+  let orcaGlobalFarm = new anchor.web3.PublicKey(
+    getOrcaVaultGlobalFarm(assetSymbol)
+  );
+
+  let [orcaUserFarm] = await findOrcaUserFarmAddress(
+    orcaGlobalFarm,
+    vaultPdaAccount,
+    TOKEN_PROGRAM_ID,
+    AQUAFARM_PROGRAM_ID
+  );
+  const depositAccounts = {
+    authority: provider.wallet.publicKey,
+    vaultAccount: vaultAccount,
+    vaultUserAccount: orcaVaultUserAccountAddress,
+    tokenProgram: serum.TokenInstructions.TOKEN_PROGRAM_ID,
+    rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+    vaultPda: vaultPdaAccount,
+    systemProgram: new anchor.web3.PublicKey(
+      '11111111111111111111111111111111'
+    ),
+    userFarmOwner: vaultPdaAccount,
+    userTransferAuthority: vaultPdaAccount,
+    userBaseTokenAccount: vaultBaseTokenAccount,
+    userFarmTokenAccount: vaultFarmTokenAccount,
+    userRewardTokenAccount: vaultRewardTokenAccount,
+    globalBaseTokenVault: new anchor.web3.PublicKey(
+      getOrcaVaultGlobalBaseTokenVault(assetSymbol)
+    ),
+    farmTokenMint: new anchor.web3.PublicKey(
+      getOrcaVaultFarmMint(assetSymbol)
+    ),
+    globalFarm: orcaGlobalFarm,
+    orcaUserFarm: orcaUserFarm,
+    globalRewardTokenVault: new anchor.web3.PublicKey(
+      getOrcaVaultGlobalRewardTokenVault(assetSymbol)
+    ),
+    convertAuthority: new anchor.web3.PublicKey(
+      getOrcaVaultConvertAuthority(assetSymbol)
+    ),
+    aquaFarmProgram: AQUAFARM_PROGRAM_ID,
+    fundingTokenAccount: userFarmManagerLpTokenAccount,
+    solfarmVaultProgram: solfarmVaultProgramId,
+    leveragedFarm: leveragedFarm,
+    clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
+    obligationVaultAddress: obligationVaultAccount,
+    leveragedUserFarm: userFarm
+  };
+
+  txn = await vaultProgram.transaction.depositOrcaVaultWithoutShares(
+    {
+      accountNonce: orcaVaultUserAccountNonce
+    },
+    new anchor.BN(obligationIdx),
+    {
+      accounts: depositAccounts,
+      remainingAccounts: [
+        { pubkey: lendingMarketAccount, isWritable: true, isSigner: false },
+        { pubkey: userObligationAcct1, isWritable: true, isSigner: false },
+        {
+          pubkey: derivedLendingMarketAuthority,
+          isWritable: true,
+          isSigner: false
+        },
+        { pubkey: lendingProgramId, isWritable: false, isSigner: false }
+      ]
+    }
+  );
+
+  return txn;
+}
+
+async function _depositOrcaDoubleDip ({
+  assetSymbol,
+  obligationIdx,
+  wallet
+}) {
+  let anchor = anchorold;
+
+  const walletToInitialize = {
+      signTransaction: wallet.signTransaction,
+      signAllTransactions: wallet.signAllTransactions,
+      publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
+    },
+    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+      skipPreflight: true,
+      preflightCommitment: commitment
+    });
+
+  anchor.setProvider(provider);
+
+  // Address of the deployed program.
+  const vaultProgramId = new anchor.web3.PublicKey(getLendingFarmProgramId());
+
+  // Generate the program client from IDL.
+  const vaultProgram = new anchor.Program(leverageIdl, vaultProgramId);
+
+  const farm = getFarmBySymbol(assetSymbol);
+
+  let [userFarm] = await findUserFarmAddress(
+    provider.wallet.publicKey,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()), // lending_info.json -> programs -> farm -> id
+    new anchor.BN(0),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  let [obligationVaultAccount] = await findObligationVaultAddress(
+    userFarm,
+    new anchor.BN(obligationIdx), // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+    new anchor.web3.PublicKey(getLendingFarmProgramId())
+  );
+
+  let [userObligationAcct1] = await findUserFarmObligationAddress(
+    provider.wallet.publicKey,
+    userFarm,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+  );
+
+  // console.log("user farm: ", userFarm.toString());
+  // console.log("user farm obligation (0): ", userObligationAcct1.toString());
+  // console.log("user farm obligation (0) vault account: ", obligationVaultAccount.toString());
+
+  const vaultAccount = new anchor.web3.PublicKey(
+    getVaultAccount(assetSymbol)
+  );
+  const vaultPdaAccount = new anchor.web3.PublicKey(
+    getVaultPdaAccount(assetSymbol)
+  );
+
+  const solfarmVaultProgramId = new anchor.web3.PublicKey(
+    farm.platform === FARM_PLATFORMS.ORCA ?
+      getOrcaVaultProgramId() : getVaultProgramId()
+  );
+
+  const lendingProgramId = new anchor.web3.PublicKey(getLendingProgramId());
+
+  const [leveragedFarm] = await findLeveragedFarmAddress(
+    solfarmVaultProgramId,
+    new anchor.web3.PublicKey(
+      getLendingFarmAccount(assetSymbol).serum_market
+    ),
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  const lendingMarketAccount = new anchor.web3.PublicKey(
+    getLendingMarketAccount()
+  );
+
+  const [derivedLendingMarketAuthority] =
+    await anchor.web3.PublicKey.findProgramAddress(
+      [lendingMarketAccount.toBytes()],
+      lendingProgramId
+    );
+
+  let txn;
+
+  let [orcaVaultUserAccountAddress, orcaVaultUserAccountNonce] =
+    await deriveVaultUserAccount(
+      new anchor.web3.PublicKey(getOrcaVaultAccount(assetSymbol)),
+      obligationVaultAccount,
+      solfarmVaultProgramId
+    );
+
+  let vaultFarmTokenAccount = await serumAssoToken.getAssociatedTokenAddress(
+    vaultPdaAccount,
+    new anchor.web3.PublicKey(getOrcaVaultFarmMint(assetSymbol))
+  );
+  let vaultFarmDdTokenAccount =
+    await serumAssoToken.getAssociatedTokenAddress(
+      vaultPdaAccount,
+      new anchor.web3.PublicKey(getOrcaVaultDdFarmMint(assetSymbol))
+    );
+  let vaultRewardTokenAccount =
+    await serumAssoToken.getAssociatedTokenAddress(
+      vaultPdaAccount,
+      new anchor.web3.PublicKey(getOrcaVaultRewardMint(assetSymbol))
+    );
+
+  let orcaGlobalFarmDd = new anchor.web3.PublicKey(
+    getOrcaVaultGlobalFarmDd(assetSymbol)
+  );
+
+  let [orcaUserFarmDd] = await findOrcaUserFarmAddress(
+    orcaGlobalFarmDd,
+    vaultPdaAccount,
+    TOKEN_PROGRAM_ID,
+    AQUAFARM_PROGRAM_ID
+  );
+  const depositAccounts = {
+    authority: provider.wallet.publicKey,
+    vaultAccount: vaultAccount,
+    vaultUserAccount: orcaVaultUserAccountAddress,
+    tokenProgram: serum.TokenInstructions.TOKEN_PROGRAM_ID,
+    rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+    vaultPda: vaultPdaAccount,
+    systemProgram: new anchor.web3.PublicKey(
+      '11111111111111111111111111111111'
+    ),
+    userFarmTokenAccount: vaultFarmTokenAccount,
+    userFarmDdTokenAccount: vaultFarmDdTokenAccount,
+    userRewardTokenAccount: vaultRewardTokenAccount,
+    userRewardDdTokenAccount: await serumAssoToken.getAssociatedTokenAddress(
+      vaultPdaAccount,
+      new anchor.web3.PublicKey(getOrcaVaultDdRewardMint(assetSymbol))
+    ),
+    globalBaseTokenVault: new anchor.web3.PublicKey(
+      getOrcaVaultGlobalBaseTokenVault(assetSymbol)
+    ),
+    globalBaseDdTokenVault: new anchor.web3.PublicKey(
+      getOrcaVaultGlobalDdBaseTokenVault(assetSymbol)
+    ),
+    farmTokenMint: new anchor.web3.PublicKey(
+      getOrcaVaultFarmMint(assetSymbol)
+    ),
+    farmDdTokenMint: new anchor.web3.PublicKey(
+      getOrcaVaultDdFarmMint(assetSymbol)
+    ),
+    globalFarmDd: orcaGlobalFarmDd,
+    userFarmDd: orcaUserFarmDd,
+    globalRewardDdTokenVault: new anchor.web3.PublicKey(
+      getOrcaVaultGlobalRewardTokenVaultDd(assetSymbol)
+    ),
+    convertAuthorityDd: new anchor.web3.PublicKey(
+      getOrcaVaultConvertAuthorityDd(assetSymbol)
+    ),
+    aquaFarmProgram: AQUAFARM_PROGRAM_ID,
+    solfarmVaultProgram: solfarmVaultProgramId,
+    obligationVaultAddress: obligationVaultAccount,
+    leveragedFarm: leveragedFarm,
+    leveragedUserFarm: userFarm
+  };
+
+  // console.log("$$ orca accounts", depositAccounts);
+  txn = await vaultProgram.transaction.depositOrcaVaultDd(
+    {
+      accountNonce: orcaVaultUserAccountNonce
+    },
+    new anchor.BN(obligationIdx),
+    {
+      accounts: depositAccounts,
+      remainingAccounts: [
+        { pubkey: lendingMarketAccount, isWritable: true, isSigner: false },
+        { pubkey: userObligationAcct1, isWritable: true, isSigner: false },
+        {
+          pubkey: derivedLendingMarketAuthority,
+          isWritable: true,
+          isSigner: false
+        },
+        { pubkey: lendingProgramId, isWritable: false, isSigner: false }
+      ]
+    }
+  );
+
+  return txn;
+}
+
 const openMarginPosition = async ({
   connection,
   wallet,
@@ -1671,7 +2043,8 @@ const openMarginPosition = async ({
   pcBorrowAmount,
   baseTokenAmount,
   quoteTokenAmount,
-  obligationIndex = -2
+  obligationIndex = -2,
+  onSendTransactions = sendAllTransactions
 }) => {
   let anchor = anchorold;
 
@@ -1700,9 +2073,9 @@ const openMarginPosition = async ({
   const farmProgram = new anchor.Program(leverageIdl, farmProgramId, provider);
 
   // 3. Decode userFarm
-  const { userFarmInfo } = farmProgram.coder.accounts.decode(
+  const userFarmInfo = farmProgram.coder.accounts.decode(
     'UserFarm',
-    userFarmData?.account?.data
+    userFarmData?.data
   );
 
   const { obligations } = userFarmInfo || {};
@@ -1731,7 +2104,8 @@ const openMarginPosition = async ({
     obligationPositionState = obligations[obligationIdx].positionState;
   }
 
-  const { isUserFarmValid } = farmDetails || {};
+  const isUserFarmValid = Boolean(userFarmInfo);
+
   let createAccounts = false;
   let extraSigners = [];
 
@@ -1742,6 +2116,7 @@ const openMarginPosition = async ({
     obligationIdx = 0;
 
     const createUserFarmManagerTxn = _createUserFarm({
+      wallet,
       tokenAccounts,
       obligationIdx,
       assetSymbol: symbol
@@ -1812,6 +2187,7 @@ const openMarginPosition = async ({
       quoteTokenAmount,
       obligationIdx,
       wallet,
+      tokenAccounts,
       connection,
       userFarmInfo
     });
@@ -1823,6 +2199,7 @@ const openMarginPosition = async ({
   if (obligationProgress > 0 && obligationProgress < 3) {
     transactions.push(_swapTokens({
       wallet,
+      tokenAccounts,
       obligationIdx,
       assetSymbol: symbol
     }));
@@ -1833,6 +2210,7 @@ const openMarginPosition = async ({
   if (obligationProgress > 0 && obligationProgress < 4) {
     transactions.push(_addLiquidity({
       wallet,
+      tokenAccounts,
       obligationIdx,
       assetSymbol: symbol
     }));
@@ -1841,21 +2219,29 @@ const openMarginPosition = async ({
   }
 
   if (getOrcaFarmDoubleDip(symbol)) {
-    // @TODO: t0uristx to fix this by adding the orca functions back again.
-    //
-    // if (obligationProgress > 0 && obligationProgress < 5) {
-    //   transactions.push(
-    //     this.depositOrcaWithoutShares(assetSymbol, obligationIdx)
-    //   );
-    //   extraSigners.push([]);
-    // }
+    if (obligationProgress > 0 && obligationProgress < 5) {
+      transactions.push(
+        _depositOrcaWithoutShares({
+          wallet,
+          tokenAccounts,
+          assetSymbol: symbol,
+          obligationIdx
+        })
+      );
+      extraSigners.push([]);
+    }
 
-    // if (obligationProgress > 0 && obligationProgress < 6) {
-    //   transactions.push(
-    //     this.depositOrcaDoubleDip(assetSymbol, obligationIdx)
-    //   );
-    //   extraSigners.push([]);
-    // }
+    if (obligationProgress > 0 && obligationProgress < 6) {
+      transactions.push(
+        _depositOrcaDoubleDip({
+          wallet,
+          tokenAccounts,
+          assetSymbol: symbol,
+          obligationIdx
+        })
+      );
+      extraSigners.push([]);
+    }
   }
   else if (obligationProgress > 0 && obligationProgress < 5) {
     transactions.push(
@@ -1871,20 +2257,16 @@ const openMarginPosition = async ({
   }
 
   return Promise.all(transactions).then((fulfilledTransactions) => {
-    // Temporary Internal ID, make sure to generate a unique one
-    const opts = {
-      internalId: `${Date.now()}${Math.round(Math.random() * 1000)}`
-    };
-
-    return sendAllTransactions(
-      window.$web3,
+    return onSendTransactions(
+      connection,
       wallet,
       fulfilledTransactions,
       [],
-      extraSigners,
-      opts
+      extraSigners
     );
   });
 };
 
-export { openMarginPosition };
+export {
+  openMarginPosition
+};
