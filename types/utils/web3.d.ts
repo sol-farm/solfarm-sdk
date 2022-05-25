@@ -31,5 +31,15 @@ export function sendTransaction(connection: any, wallet: any, transaction: any, 
  * @returns {Promise}
  */
 export function getMultipleAccounts(connection: any, publicKeys: any[], commitment: string): Promise<any>;
+/**
+ * Get multiple accounts for grouped public keys (in arrays).
+ *
+ * @param {Object} connection - web3 connection
+ * @param {Array[]} publicKeyGroupedArray - Array of array of public keys
+ * @param {String} commitment
+ *
+ * @returns {Array[]}
+ */
+export function getMultipleAccountsGrouped(connection: any, publicKeyGroupedArray: any[][], commitment: string): any[][];
 export const commitment: "confirmed";
 export const AccountInfoResult: any;
