@@ -76,7 +76,8 @@ async function _createUserFarm ({
   wallet,
   tokenAccounts,
   assetSymbol,
-  obligationIdx
+  obligationIdx,
+  connection
 }) {
   let anchor = anchorold;
 
@@ -85,7 +86,7 @@ async function _createUserFarm ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     }),
@@ -155,7 +156,7 @@ async function _createUserFarm ({
     );
   const [obligationLPTokenAccountInfo, obligationTulipTokenAccountInfo] =
     await getMultipleAccounts(
-      window.$web3,
+      connection,
       [obligationLPTokenAccount, obligationTulipTokenAccount],
       commitment
     );
@@ -281,6 +282,7 @@ async function _createUserFarm ({
 }
 
 async function _createUserFarmObligation ({
+  connection,
   wallet,
   tokenAccounts,
   assetSymbol,
@@ -294,7 +296,7 @@ async function _createUserFarmObligation ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     }),
@@ -363,7 +365,7 @@ async function _createUserFarmObligation ({
     );
   const [obligationLPTokenAccountInfo, obligationTulipTokenAccountInfo] =
     await getMultipleAccounts(
-      window.$web3,
+      connection,
       [obligationLPTokenAccount, obligationTulipTokenAccount],
       commitment
     );
@@ -453,6 +455,7 @@ async function _createUserFarmObligation ({
 }
 
 async function _createOpenOrdersAccount ({
+  connection,
   wallet,
   tokenAccounts,
   assetSymbol,
@@ -465,7 +468,7 @@ async function _createOpenOrdersAccount ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     }),
@@ -496,7 +499,7 @@ async function _createOpenOrdersAccount ({
     );
 
   const [obligationLPTokenAccountInfo] = await getMultipleAccounts(
-    window.$web3,
+    connection,
     [obligationLPTokenAccount],
     commitment
   );
@@ -557,6 +560,7 @@ async function _createOpenOrdersAccount ({
 }
 
 async function _depositBorrow ({
+  connection,
   assetSymbol,
   coinBorrowAmount,
   pcBorrowAmount,
@@ -573,7 +577,7 @@ async function _depositBorrow ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     }),
@@ -696,7 +700,7 @@ async function _depositBorrow ({
 
   if (baseToken.symbol === 'SOL') {
     const lamportsToCreateAccount =
-      await window.$web3.getMinimumBalanceForRentExemption(
+      await connection.getMinimumBalanceForRentExemption(
         ACCOUNT_LAYOUT.span,
         commitment
       );
@@ -730,7 +734,7 @@ async function _depositBorrow ({
 
   if (quoteToken.symbol === 'SOL') {
     const lamportsToCreateAccount =
-      await window.$web3.getMinimumBalanceForRentExemption(
+      await connection.getMinimumBalanceForRentExemption(
         ACCOUNT_LAYOUT.span,
         commitment
       );
@@ -894,6 +898,7 @@ async function _depositBorrow ({
 }
 
 async function _swapTokens ({
+  connection,
   assetSymbol,
   obligationIdx,
   wallet
@@ -905,7 +910,7 @@ async function _swapTokens ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -1151,6 +1156,7 @@ async function _swapTokens ({
 }
 
 async function _addLiquidity ({
+  connection,
   assetSymbol,
   obligationIdx,
   checkLpTokenAccount = false,
@@ -1163,7 +1169,7 @@ async function _addLiquidity ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -1250,7 +1256,7 @@ async function _addLiquidity ({
 
   if (checkLpTokenAccount) {
     const [obligationLPTokenAccountInfo] = await getMultipleAccounts(
-      window.$web3,
+      connection,
       [obligationLpTokenAccount],
       commitment
     );
@@ -1341,6 +1347,7 @@ async function _addLiquidity ({
 }
 
 async function _depositMarginLpTokens ({
+  connection,
   wallet,
   assetSymbol,
   obligationIdx
@@ -1352,7 +1359,7 @@ async function _depositMarginLpTokens ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -1670,6 +1677,7 @@ async function _depositMarginLpTokens ({
 }
 
 async function _depositOrcaWithoutShares ({
+  connection,
   assetSymbol,
   obligationIdx,
   wallet
@@ -1681,7 +1689,7 @@ async function _depositOrcaWithoutShares ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -1850,6 +1858,7 @@ async function _depositOrcaWithoutShares ({
 }
 
 async function _depositOrcaDoubleDip ({
+  connection,
   assetSymbol,
   obligationIdx,
   wallet
@@ -1861,7 +1870,7 @@ async function _depositOrcaDoubleDip ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -2122,19 +2131,28 @@ const openMarginPosition = async ({
       assetSymbol: symbol
     });
 
+    // DEBUG
+    console.log({ createUserFarmManagerTxn: await createUserFarmManagerTxn });
+
     transactions.push(createUserFarmManagerTxn);
     extraSigners.push([]);
   }
   else if (obligations[obligationIdx].obligationAccount.toBase58() === '11111111111111111111111111111111') {
     createAccounts = true;
 
+    // DEBUG
+    const m = await _createUserFarmObligation({
+      connection,
+      obligationIdx,
+      wallet,
+      tokenAccounts,
+      assetSymbol: symbol
+    });
+
+    console.log({ createUserFarmObligation: m });
+
     transactions.push(
-      _createUserFarmObligation({
-        obligationIdx,
-        wallet,
-        tokenAccounts,
-        assetSymbol: symbol
-      })
+      m
     );
 
     extraSigners.push([]);
@@ -2167,19 +2185,23 @@ const openMarginPosition = async ({
 
   // console.log("$$$ progress", obligationProgress);
   if (!createAccounts && obligationProgress < 4) {
-    // console.log("$$$ create open orders");
+    const y = await _createOpenOrdersAccount({
+      connection,
+      assetSymbol: symbol,
+      obligationIdx,
+      wallet,
+      tokenAccounts
+    });
+
+    console.log({ createOpenAccount: y });
     transactions.push(
-      _createOpenOrdersAccount({
-        assetSymbol: symbol,
-        obligationIdx,
-        wallet,
-        tokenAccounts
-      })
+      y
     );
     extraSigners.push([]);
   }
   if (obligationProgress > 0 && obligationProgress < 2) {
     const [depositBorrowTxn, signer] = await _depositBorrow({
+      connection,
       assetSymbol: symbol,
       coinBorrowAmount,
       pcBorrowAmount,
@@ -2188,7 +2210,6 @@ const openMarginPosition = async ({
       obligationIdx,
       wallet,
       tokenAccounts,
-      connection,
       userFarmInfo
     });
 
@@ -2198,6 +2219,7 @@ const openMarginPosition = async ({
 
   if (obligationProgress > 0 && obligationProgress < 3) {
     transactions.push(_swapTokens({
+      connection,
       wallet,
       tokenAccounts,
       obligationIdx,
@@ -2209,6 +2231,7 @@ const openMarginPosition = async ({
 
   if (obligationProgress > 0 && obligationProgress < 4) {
     transactions.push(_addLiquidity({
+      connection,
       wallet,
       tokenAccounts,
       obligationIdx,
@@ -2222,6 +2245,7 @@ const openMarginPosition = async ({
     if (obligationProgress > 0 && obligationProgress < 5) {
       transactions.push(
         _depositOrcaWithoutShares({
+          connection,
           wallet,
           tokenAccounts,
           assetSymbol: symbol,
@@ -2234,6 +2258,7 @@ const openMarginPosition = async ({
     if (obligationProgress > 0 && obligationProgress < 6) {
       transactions.push(
         _depositOrcaDoubleDip({
+          connection,
           wallet,
           tokenAccounts,
           assetSymbol: symbol,
@@ -2246,6 +2271,7 @@ const openMarginPosition = async ({
   else if (obligationProgress > 0 && obligationProgress < 5) {
     transactions.push(
       _depositMarginLpTokens({
+        connection,
         assetSymbol: symbol,
         obligationIdx,
         wallet,
