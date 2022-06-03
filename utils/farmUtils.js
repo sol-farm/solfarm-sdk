@@ -7,6 +7,7 @@ import { ORCA_VAULTS } from '../constants/orcaVaults';
 import { TULIP_VAULTS } from '../constants/tulipVaults';
 import { TokenAmount } from './safe-math';
 import { TOKEN_PROGRAM_ID } from '../constants/ids';
+import { COMPOUNDING_CYCLES } from '../constants/farmConstants';
 
 export const ALL_FARMS = FARMS;
 
@@ -84,6 +85,12 @@ export const getTulipVaultByMintAddress = (mintAddress) => {
   });
 };
 // #endregion
+
+export const getAPY = (dailyPeriodicRate, numberOfPeriods) => {
+  const periodicRate = dailyPeriodicRate / COMPOUNDING_CYCLES.DAILY;
+
+  return 100 * (Math.pow(1 + periodicRate / 100, numberOfPeriods) - 1);
+};
 
 export async function getTokenAccounts ({
   connection,
