@@ -131,5 +131,5 @@ export async function getTokenAccounts ({
 }
 
 export function isMintAddressExisting (tokenAccounts, mintAddress) {
-  return tokenAccounts?.hasOwnProperty[mintAddress];
+  return tokenAccounts?.hasOwnProperty(mintAddress);
 }

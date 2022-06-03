@@ -2149,6 +2149,7 @@ const openMarginPosition = async ({
       assetSymbol: symbol
     });
 
+    // DEBUG
     console.log({ createUserFarmObligation: m });
 
     transactions.push(
@@ -2193,7 +2194,7 @@ const openMarginPosition = async ({
       tokenAccounts
     });
 
-    console.log({ createOpenAccount: y });
+    console.log({ _createOpenOrdersAccount: y });
     transactions.push(
       y
     );
