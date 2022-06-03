@@ -15,6 +15,8 @@ npm install --save @tulip-protocol/platform-sdk
   - [withdrawFromVault](#withdrawfromvault)
   - [getBalanceForVault](#getbalanceforvault)
 - [Lending](#lending)
+  - [getAPYForLendingReserves](#getapyforlendingreserves)
+  - [getBalanceForLendingReserves](#getbalanceforlendingreserves)
   - [depositLendingReserve](#depositlendingreserve)
   - [withdrawLendingReserve](#withdrawlendingreserve)
   - [depositToLendingReserve - OLD](#deposittolendingreserve)
@@ -245,6 +247,109 @@ const getUserBalanceForTulipProtocol = async () => {
 ```
 
 ## Lending
+
+## `getAPYForLendingReserves`
+Get APYs for lending reserves.
+
+The function accepts a single object as an argument with the following properties.
+```
+getBalanceForLendingReserves({
+  connection: Connection,
+  reserves: Array<String>
+})
+```
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `reserves: Array<String>` - Symbol or mint address of the reserves for example [`USDC`, `TULIP`] or [`EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`]
+
+### Returns
+`Promise<reserveData: Array<Object>>`
+
+### Example
+
+```javascript
+import { getAPYForLendingReserves } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `getAPYForLendingReserves`
+const connection = new Connection(endpoint, { commitment });
+
+const getTulipProtocolLendingReserveAPYs = async (reserves) => {
+  const reserveData = await getAPYForLendingReserves({
+    connection,
+    reserves
+  });
+
+  // Map over it if needed to take out just the `name` and `lendAPY` property
+  return reserveData.map((reserve) => {
+    return {
+      name: reserve.name,
+      lendAPY: reserve.lendAPY
+    };
+  });
+};
+```
+
+## `getBalanceForLendingReserves`
+Get user's balance for lending reserves.
+
+The function accepts a single object as an argument with the following properties.
+```
+getBalanceForLendingReserves({
+  connection: Connection,
+  wallet: SolanaWalletAdapter | Object,
+  reserves: Array<String>
+})
+```
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `reserves: Array<String>` - Symbol or mint address of the reserves for example [`USDC`, `TULIP`] or [`EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`]
+
+### Returns
+`Promise<reserveData: Array<Object>>`
+
+### Example
+
+```javascript
+import { getBalanceForLendingReserves } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+
+// You can have any wallet adapter you may want, we're taking Phantom as an example here.
+// More info can be found here: https://github.com/solana-labs/wallet-adapter#wallets
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `getBalanceForLendingReserves`
+const connection = new Connection(endpoint, { commitment });
+const wallet = new PhantomWalletAdapter();
+
+const getTulipProtocolLendingReserveBalances = async (reserves) => {
+  const reserveData = await getBalanceForLendingReserves({
+    connection,
+    wallet,
+    reserves
+  });
+
+  // Map over it if needed to take out just the `name` and `deposited` property
+  return reserveData.map((reserve) => {
+    return {
+      name: reserve.name,
+      deposited: reserve.deposited
+    };
+  });
+};
+```
+
 ## `depositLendingReserve`
 Deposit to a Lending Reserve.
 
