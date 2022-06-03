@@ -26,7 +26,10 @@ import {
   WAD
 } from '../utils/layouts';
 import { TokenAmount } from '../utils/safe-math';
-import { some } from 'lodash';
+import { compact, concat, isEmpty, map, slice, some } from 'lodash';
+import { LENDING_RESERVES } from '../constants/lendingReserves';
+import { getAPY, getTokenAccounts } from '../utils/farmUtils';
+import { COMPOUNDING_CYCLES } from '../constants/farmConstants';
 
 const LendingInstruction = {
   InitLendingMarket: 0,
@@ -45,6 +48,56 @@ const LendingInstruction = {
   FlashLoan: 13,
   UpdatePseudoDeposits: 14
 };
+
+/**
+ * @private
+ *
+ * @description Calculates the borrow APR for the reserve
+ *
+ * @param {Number} currentUtilization
+ * @param {*} ray
+ * @param {*} higherMax
+ *
+ * @returns borrowAPR
+ */
+function _calculateBorrowAPR (currentUtilization, ray, higherMax) {
+  const optimalUtilization = 50;
+  const degenUtilization = 90;
+  const minBorrowRate = 0;
+  const optimalBorrowRate = 15;
+  const degenBorrowRate = ray ? 35 : 25;
+  let maxBorrowRate = higherMax ? 150 : 100;
+
+  let borrowAPR;
+
+  if (currentUtilization <= optimalUtilization) {
+    const normalizedFactor = currentUtilization / optimalUtilization;
+
+    borrowAPR =
+      normalizedFactor * (optimalBorrowRate - minBorrowRate) + minBorrowRate;
+  }
+  else if (
+    currentUtilization > optimalUtilization &&
+    currentUtilization <= degenUtilization
+  ) {
+    const normalizedFactor =
+      (currentUtilization - optimalUtilization) /
+      (degenUtilization - optimalUtilization);
+
+    borrowAPR =
+      normalizedFactor * (degenBorrowRate - optimalBorrowRate) +
+      optimalBorrowRate;
+  }
+  else if (currentUtilization > degenUtilization) {
+    const normalizedFactor =
+      (currentUtilization - degenUtilization) / (100 - degenUtilization);
+
+    borrowAPR =
+      normalizedFactor * (maxBorrowRate - degenBorrowRate) + degenBorrowRate;
+  }
+
+  return borrowAPR;
+}
 
 const depositInstruction = ({
   liquidityAmount,
@@ -902,9 +955,254 @@ const withdrawLendingReserve = async ({
   }
 };
 
+/**
+ * @description Fetch the lending APY for the lending reserves
+ * Refer https://tulip.garden/lend to find the reserve name.
+ *
+ * @param {Object} data
+ * @param {Object} data.connection web3 Connection object
+ * @param {Array<String>} data.reserves reserve symbols or mint addresses
+ */
+const getAPYForLendingReserves = async ({
+  connection,
+  reserves = []
+}) => {
+  if (!connection) {
+    throw new Error('TulipProtocol-SDK~getBalanceForLendingReserves: connection parameter is missing');
+  }
+
+  if (isEmpty(reserves)) {
+    throw new Error(`TulipProtocol-SDK~getBalanceForLendingReserves:
+     reserve symbols/mintAddresses array is missing`);
+  }
+
+  const _reserves = compact(map(reserves, (reserve) => {
+    return getReserveByName(reserve) || getReserveByMintAddress(reserve);
+  }));
+
+  const reserveAccounts = map(
+    _reserves,
+    (reserve) => { return new anchor.web3.PublicKey(reserve.account); }
+  );
+
+  const mintAddresses = map(
+    _reserves,
+    (reserve) => { return new anchor.web3.PublicKey(reserve.collateralTokenMint); }
+  );
+
+  const accountDetailsToFetch = concat(reserveAccounts, mintAddresses);
+  const accountDetails = await getMultipleAccounts(
+    window.$web3,
+    accountDetailsToFetch,
+    commitment
+  );
+  const reserveAccountDetails = slice(
+    accountDetails,
+    0,
+    _reserves.length
+  );
+
+  return reserveAccountDetails.map((reserveAccount, index) => {
+    const reserve = _reserves[index];
+    const decodedData = LENDING_RESERVE_LAYOUT.decode(
+      reserveAccount.account.data
+    );
+
+    const {
+      availableAmount,
+      platformAmountWads,
+      borrowedAmount: borrowedAmountWads
+    } = decodedData?.liquidity || {};
+
+    const borrowedAmount = new TokenAmount(
+      borrowedAmountWads.div(WAD),
+      reserve.decimals
+    );
+
+    const platformAmount = new TokenAmount(
+      platformAmountWads.div(WAD),
+      reserve.decimals
+    );
+
+    const availableAmountWei = new TokenAmount(
+      availableAmount,
+      reserve.decimals
+    );
+
+    let totalSupply = availableAmountWei.wei
+      .plus(borrowedAmount.wei)
+      .minus(platformAmount.wei);
+
+    let totalBorrow = borrowedAmount.wei;
+
+    if (totalBorrow.gt(totalSupply)) {
+      totalBorrow = totalSupply;
+    }
+
+    const utilization = totalBorrow.div(totalSupply);
+    const utilizationRate = utilization.times(100);
+
+    const borrowAPR = _calculateBorrowAPR(
+      utilizationRate.toFixed(2),
+      reserve.name === 'RAY',
+      reserve.name === 'ORCA' ||
+        reserve.name === 'whETH' ||
+        reserve.name === 'mSOL' ||
+        reserve.name === 'BTC' ||
+        reserve.name === 'GENE' ||
+        reserve.name === 'SAMO' ||
+        reserve.name === 'DFL' ||
+        reserve.name === 'CAVE' ||
+        reserve.name === 'REAL' ||
+        reserve.name === 'wbWBNB' ||
+        reserve.name === 'MBS' ||
+        reserve.name === 'SHDW' ||
+        reserve.name === 'BASIS' ||
+        reserve.name === 'ZBC' ||
+        reserve.name === 'wALEPH' ||
+        reserve.name === 'SLCL' ||
+        reserve.name === 'GST' ||
+        reserve.name === 'GMT' ||
+        reserve.name === 'PRISM' ||
+        reserve.name === 'sRLY'
+    );
+
+    const dailyBorrowAPR = borrowAPR / 365;
+    const dailyLendAPR = dailyBorrowAPR * utilization.toNumber();
+
+    const lendAPY = getAPY(dailyLendAPR, COMPOUNDING_CYCLES.YEARLY);
+
+    return {
+      name: reserve.name,
+      mintAddress: reserve.mintAddress,
+      lendAPY
+    };
+  });
+};
+
+/**
+ * @description Fetch the user balances for the lending reserves
+ * Refer https://tulip.garden/lend to find the reserve name.
+ *
+ * @param {Object} data
+ * @param {Object} data.connection web3 Connection object
+ * @param {Object} data.wallet wallet object (@solana/web3 version >= 1.4.0)
+ * @param {Array<String>} data.reserves reserve symbols or mint addresses
+ */
+const getBalanceForLendingReserves = async ({
+  wallet,
+  connection,
+  reserves = []
+}) => {
+  if (!connection) {
+    throw new Error('TulipProtocol-SDK~getBalanceForLendingReserves: connection parameter is missing');
+  }
+
+  if (!wallet) {
+    throw new Error('TulipProtocol-SDK~getBalanceForLendingReserves: wallet parameter is missing');
+  }
+
+  if (isEmpty(reserves)) {
+    throw new Error(`TulipProtocol-SDK~getBalanceForLendingReserves:
+     reserve symbols/mintAddresses array is missing`);
+  }
+
+  const _reserves = compact(map(reserves, (reserve) => {
+    return getReserveByName(reserve) || getReserveByMintAddress(reserve);
+  }));
+
+  const tokenAccounts = await getTokenAccounts({ connection, wallet });
+
+  const reserveAccounts = map(
+    _reserves,
+    (reserve) => { return new anchor.web3.PublicKey(reserve.account); }
+  );
+
+  const mintAddresses = map(
+    _reserves,
+    (reserve) => { return new anchor.web3.PublicKey(reserve.collateralTokenMint); }
+  );
+
+  const accountDetailsToFetch = concat(reserveAccounts, mintAddresses);
+  const accountDetails = await getMultipleAccounts(
+    window.$web3,
+    accountDetailsToFetch,
+    commitment
+  );
+  const reserveAccountDetails = slice(
+    accountDetails,
+    0,
+    _reserves.length
+  );
+  const tokenSupplyForAllReserves = slice(
+    accountDetails,
+    _reserves.length,
+    _reserves.length * 2
+  );
+
+  return reserveAccountDetails.map((reserveAccount, index) => {
+    const reserve = _reserves[index];
+    const decodedData = LENDING_RESERVE_LAYOUT.decode(
+      reserveAccount.account.data
+    );
+
+    const {
+      availableAmount,
+      platformAmountWads,
+      borrowedAmount: borrowedAmountWads
+    } = decodedData?.liquidity || {};
+
+    const borrowedAmount = new TokenAmount(
+      borrowedAmountWads.div(WAD),
+      reserve.decimals
+    );
+
+    const platformAmount = new TokenAmount(
+      platformAmountWads.div(WAD),
+      reserve.decimals
+    );
+
+    const availableAmountWei = new TokenAmount(
+      availableAmount,
+      reserve.decimals
+    );
+
+    const decimals = new anchor.BN(Math.pow(10, reserve.decimals));
+
+    let totalSupply = availableAmountWei.wei
+      .plus(borrowedAmount.wei)
+      .minus(platformAmount.wei);
+
+    let totalBorrow = borrowedAmount.wei;
+
+    if (totalBorrow.gt(totalSupply)) {
+      totalBorrow = totalSupply;
+    }
+
+    const decodedTokenData = MINT_LAYOUT.decode(
+      tokenSupplyForAllReserves[index]?.account?.data
+    );
+
+    const _totalSupply = totalSupply.div(decimals).toNumber();
+    const uiAmount = decodedTokenData.supply / Math.pow(10, decodedTokenData.decimals);
+
+    const deposited =
+      (Number(tokenAccounts[reserve.collateralTokenMint]?.balance?.fixed()) *
+        Number(_totalSupply)) / uiAmount;
+
+    return {
+      name: reserve.name,
+      mintAddress: reserve.mintAddress,
+      deposited
+    };
+  });
+};
+
 export {
   depositToLendingReserve,
   withdrawFromLendingReserve,
   depositLendingReserve,
-  withdrawLendingReserve
+  withdrawLendingReserve,
+  getBalanceForLendingReserves,
+  getAPYForLendingReserves
 };
