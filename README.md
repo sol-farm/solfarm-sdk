@@ -253,7 +253,7 @@ Get APYs for lending reserves.
 
 The function accepts a single object as an argument with the following properties.
 ```
-getBalanceForLendingReserves({
+getAPYForLendingReserves({
   connection: Connection,
   reserves: Array<String>
 })
