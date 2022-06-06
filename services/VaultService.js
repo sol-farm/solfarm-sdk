@@ -195,7 +195,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
     saberAccounts,
     saberUserBalanceAccounts
-  ] = await getMultipleAccountsGrouped(window.$web3, publicKeys, commitment);
+  ] = await getMultipleAccountsGrouped(connection, publicKeys, commitment);
 
   // This will store all the data for the vaults and used to update the VaultStore
   const vaultsData = new Map();

@@ -719,7 +719,7 @@ const getBalanceForV2Vaults = async () => {
     vaults: [VAULTS.ORCA.ATLAS_USDC]
   };
 
-  const vaults = await getBalancesForAutoVaults(window.$web3, getStore('WalletStore').wallet, query);
+  const vaults = await getBalancesForAutoVaults(connection, getStore('WalletStore').wallet, query);
 
   return vaults;
 };

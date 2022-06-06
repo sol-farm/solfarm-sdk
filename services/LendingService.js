@@ -992,7 +992,7 @@ const getAPYForLendingReserves = async ({
 
   const accountDetailsToFetch = concat(reserveAccounts, mintAddresses);
   const accountDetails = await getMultipleAccounts(
-    window.$web3,
+    connection,
     accountDetailsToFetch,
     commitment
   );
@@ -1125,7 +1125,7 @@ const getBalanceForLendingReserves = async ({
 
   const accountDetailsToFetch = concat(reserveAccounts, mintAddresses);
   const accountDetails = await getMultipleAccounts(
-    window.$web3,
+    connection,
     accountDetailsToFetch,
     commitment
   );
