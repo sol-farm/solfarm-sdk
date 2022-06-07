@@ -147,3 +147,12 @@ export function findOrcaUserFarmAddress (
 
   return anchor.web3.PublicKey.findProgramAddress(seeds, aquaFarmProgramId);
 }
+
+export const getObligationId = ({
+  farmMintAddress,
+  userFarmIndex = 0,
+  obligationIdx
+}) => {
+  return `${farmMintAddress}-${userFarmIndex}-${obligationIdx}`;
+};
+

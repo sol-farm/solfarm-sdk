@@ -15,7 +15,8 @@ import {
   getBalancesForAutoVaults
 } from './services/VaultService';
 import {
-  openMarginPosition
+  openMarginPosition,
+  closeMarginPosition
 } from './services/LeverageService';
 import { FARM_PLATFORMS } from './constants/farmConstants';
 import { VAULTS } from './constants/vaults';
@@ -23,6 +24,7 @@ import { VAULTS } from './constants/vaults';
 export {
   // Leverage
   openMarginPosition,
+  closeMarginPosition,
 
   // Vaults
   depositToVault,
