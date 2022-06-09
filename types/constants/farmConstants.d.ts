@@ -23,3 +23,12 @@ export namespace DEPOSIT_TYPES {
 export namespace TAGS {
     const STABLE: string;
 }
+export namespace COMPOUNDING_CYCLES {
+    export { NUMBER_OF_COMPOUNDING_CYCLES_IN_A_DAY as DAILY };
+    export { NUMBER_OF_PERIODS_IN_A_WEEK as WEEKLY };
+    export { NUMBER_OF_PERIODS_IN_A_YEAR as YEARLY };
+}
+declare const NUMBER_OF_COMPOUNDING_CYCLES_IN_A_DAY: number;
+declare const NUMBER_OF_PERIODS_IN_A_WEEK: number;
+declare const NUMBER_OF_PERIODS_IN_A_YEAR: number;
+export {};

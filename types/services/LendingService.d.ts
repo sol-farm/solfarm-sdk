@@ -52,3 +52,37 @@ export function depositLendingReserve({ connection, wallet, reserve, amount, aut
  * @returns {Promise}
  */
 export function withdrawLendingReserve({ connection, wallet, reserve, amount, authorityTokenAccount }: any): Promise<any>;
+/**
+ * @description Fetch the user balances for the lending reserves
+ * Refer https://tulip.garden/lend to find the reserve name.
+ *
+ * @param {Object} data
+ * @param {Object} data.connection web3 Connection object
+ * @param {Object} data.wallet wallet object (@solana/web3 version >= 1.4.0)
+ * @param {Array<String>} data.reserves reserve symbols or mint addresses
+ */
+export function getBalanceForLendingReserves({ wallet, connection, reserves }: {
+    connection: any;
+    wallet: any;
+    reserves: Array<string>;
+}): Promise<{
+    name: string;
+    mintAddress: string;
+    deposited: number;
+}[]>;
+/**
+ * @description Fetch the lending APY for the lending reserves
+ * Refer https://tulip.garden/lend to find the reserve name.
+ *
+ * @param {Object} data
+ * @param {Object} data.connection web3 Connection object
+ * @param {Array<String>} data.reserves reserve symbols or mint addresses
+ */
+export function getAPYForLendingReserves({ connection, reserves }: {
+    connection: any;
+    reserves: Array<string>;
+}): Promise<{
+    name: string;
+    mintAddress: string;
+    lendAPY: number;
+}[]>;

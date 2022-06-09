@@ -9,6 +9,7 @@ export function getReserveByName(name: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
+    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -22,21 +23,9 @@ export function getReserveByName(name: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
+    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
-} | {
-    name: string;
-    account: string;
-    mintAddress: string;
-    liquiditySupplyTokenAccount: string;
-    liquidityFeeReceiver: string;
-    collateralTokenSupply: string;
-    destinationCollateralTokenAccount: string;
-    quoteTokenMint: string;
-    decimals: number;
-    visible: boolean;
-    collateralTokenMint?: undefined;
-    borrowDisabled?: undefined;
 };
 export function getReserveByMintAddress(mintAddress: any): {
     name: string;
@@ -49,6 +38,7 @@ export function getReserveByMintAddress(mintAddress: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
+    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -62,21 +52,9 @@ export function getReserveByMintAddress(mintAddress: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
+    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
-} | {
-    name: string;
-    account: string;
-    mintAddress: string;
-    liquiditySupplyTokenAccount: string;
-    liquidityFeeReceiver: string;
-    collateralTokenSupply: string;
-    destinationCollateralTokenAccount: string;
-    quoteTokenMint: string;
-    decimals: number;
-    visible: boolean;
-    collateralTokenMint?: undefined;
-    borrowDisabled?: undefined;
 };
 export function getReserveByCollateralTokenMint(collateralTokenMint: any): {
     name: string;
@@ -89,6 +67,7 @@ export function getReserveByCollateralTokenMint(collateralTokenMint: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
+    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -102,19 +81,7 @@ export function getReserveByCollateralTokenMint(collateralTokenMint: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
+    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
-} | {
-    name: string;
-    account: string;
-    mintAddress: string;
-    liquiditySupplyTokenAccount: string;
-    liquidityFeeReceiver: string;
-    collateralTokenSupply: string;
-    destinationCollateralTokenAccount: string;
-    quoteTokenMint: string;
-    decimals: number;
-    visible: boolean;
-    collateralTokenMint?: undefined;
-    borrowDisabled?: undefined;
 };

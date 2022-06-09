@@ -5,7 +5,8 @@ export namespace NATIVE_SOL {
     const decimals: number;
 }
 export namespace TOKENS {
-    namespace RUN {
+    export { NATIVE_SOL as SOL };
+    export namespace RUN {
         const symbol_1: string;
         export { symbol_1 as symbol };
         const name_1: string;
@@ -15,7 +16,7 @@ export namespace TOKENS {
         const decimals_1: number;
         export { decimals_1 as decimals };
     }
-    namespace REAL {
+    export namespace REAL {
         const symbol_2: string;
         export { symbol_2 as symbol };
         const name_2: string;
@@ -25,7 +26,7 @@ export namespace TOKENS {
         const decimals_2: number;
         export { decimals_2 as decimals };
     }
-    namespace CRWNY {
+    export namespace CRWNY {
         const symbol_3: string;
         export { symbol_3 as symbol };
         const name_3: string;
@@ -36,7 +37,7 @@ export namespace TOKENS {
         export { decimals_3 as decimals };
         export const tags: string[];
     }
-    namespace XTAG {
+    export namespace XTAG {
         const symbol_4: string;
         export { symbol_4 as symbol };
         const name_4: string;
@@ -48,7 +49,7 @@ export namespace TOKENS {
         const tags_1: string[];
         export { tags_1 as tags };
     }
-    namespace TTT {
+    export namespace TTT {
         const symbol_5: string;
         export { symbol_5 as symbol };
         const name_5: string;
@@ -58,7 +59,7 @@ export namespace TOKENS {
         const decimals_5: number;
         export { decimals_5 as decimals };
     }
-    namespace FRKT {
+    export namespace FRKT {
         const symbol_6: string;
         export { symbol_6 as symbol };
         const name_6: string;
@@ -70,7 +71,7 @@ export namespace TOKENS {
         const tags_2: string[];
         export { tags_2 as tags };
     }
-    namespace WSOL {
+    export namespace WSOL {
         const symbol_7: string;
         export { symbol_7 as symbol };
         const name_7: string;
@@ -81,7 +82,7 @@ export namespace TOKENS {
         export { decimals_7 as decimals };
         export const referrer: string;
     }
-    namespace MSOL {
+    export namespace MSOL {
         const symbol_8: string;
         export { symbol_8 as symbol };
         const name_8: string;
@@ -93,7 +94,7 @@ export namespace TOKENS {
         const referrer_1: string;
         export { referrer_1 as referrer };
     }
-    namespace daoSOL {
+    export namespace daoSOL {
         const symbol_9: string;
         export { symbol_9 as symbol };
         const name_9: string;
@@ -103,7 +104,7 @@ export namespace TOKENS {
         const decimals_9: number;
         export { decimals_9 as decimals };
     }
-    namespace MSOLRAYDIUM {
+    export namespace MSOLRAYDIUM {
         const symbol_10: string;
         export { symbol_10 as symbol };
         const name_10: string;
@@ -117,7 +118,7 @@ export namespace TOKENS {
         const tags_3: string[];
         export { tags_3 as tags };
     }
-    namespace MSOLORCA {
+    export namespace MSOLORCA {
         const symbol_11: string;
         export { symbol_11 as symbol };
         const name_11: string;
@@ -129,7 +130,7 @@ export namespace TOKENS {
         const referrer_3: string;
         export { referrer_3 as referrer };
     }
-    namespace BTC {
+    export namespace BTC {
         const symbol_12: string;
         export { symbol_12 as symbol };
         const name_12: string;
@@ -141,7 +142,7 @@ export namespace TOKENS {
         const referrer_4: string;
         export { referrer_4 as referrer };
     }
-    namespace saberBTC {
+    export namespace saberBTC {
         const symbol_13: string;
         export { symbol_13 as symbol };
         const name_13: string;
@@ -153,7 +154,7 @@ export namespace TOKENS {
         const referrer_5: string;
         export { referrer_5 as referrer };
     }
-    namespace renBTC {
+    export namespace renBTC {
         const symbol_14: string;
         export { symbol_14 as symbol };
         const name_14: string;
@@ -165,7 +166,7 @@ export namespace TOKENS {
         const referrer_6: string;
         export { referrer_6 as referrer };
     }
-    namespace ETH {
+    export namespace ETH {
         const symbol_15: string;
         export { symbol_15 as symbol };
         const name_15: string;
@@ -177,7 +178,7 @@ export namespace TOKENS {
         const referrer_7: string;
         export { referrer_7 as referrer };
     }
-    namespace whETH {
+    export namespace whETH {
         const symbol_16: string;
         export { symbol_16 as symbol };
         const name_16: string;
@@ -189,7 +190,7 @@ export namespace TOKENS {
         const referrer_8: string;
         export { referrer_8 as referrer };
     }
-    namespace LIQ {
+    export namespace LIQ {
         const symbol_17: string;
         export { symbol_17 as symbol };
         const name_17: string;
@@ -201,7 +202,7 @@ export namespace TOKENS {
         const tags_4: string[];
         export { tags_4 as tags };
     }
-    namespace USDT {
+    export namespace USDT {
         const symbol_18: string;
         export { symbol_18 as symbol };
         const name_18: string;
@@ -213,7 +214,7 @@ export namespace TOKENS {
         const referrer_9: string;
         export { referrer_9 as referrer };
     }
-    namespace UST {
+    export namespace UST {
         const symbol_19: string;
         export { symbol_19 as symbol };
         const name_19: string;
@@ -225,7 +226,7 @@ export namespace TOKENS {
         const referrer_10: string;
         export { referrer_10 as referrer };
     }
-    namespace saberUSDC {
+    export namespace saberUSDC {
         const symbol_20: string;
         export { symbol_20 as symbol };
         const name_20: string;
@@ -237,7 +238,7 @@ export namespace TOKENS {
         const referrer_11: string;
         export { referrer_11 as referrer };
     }
-    namespace wHUSD {
+    export namespace wHUSD {
         const symbol_21: string;
         export { symbol_21 as symbol };
         const name_21: string;
@@ -249,7 +250,7 @@ export namespace TOKENS {
         const referrer_12: string;
         export { referrer_12 as referrer };
     }
-    namespace SYP {
+    export namespace SYP {
         const symbol_22: string;
         export { symbol_22 as symbol };
         const name_22: string;
@@ -261,7 +262,7 @@ export namespace TOKENS {
         const tags_5: string[];
         export { tags_5 as tags };
     }
-    namespace apUSDC {
+    export namespace apUSDC {
         const symbol_23: string;
         export { symbol_23 as symbol };
         const name_23: string;
@@ -273,7 +274,7 @@ export namespace TOKENS {
         const referrer_13: string;
         export { referrer_13 as referrer };
     }
-    namespace apUSDT {
+    export namespace apUSDT {
         const symbol_24: string;
         export { symbol_24 as symbol };
         const name_24: string;
@@ -285,7 +286,7 @@ export namespace TOKENS {
         const referrer_14: string;
         export { referrer_14 as referrer };
     }
-    namespace prtSOL {
+    export namespace prtSOL {
         const symbol_25: string;
         export { symbol_25 as symbol };
         const name_25: string;
@@ -297,7 +298,7 @@ export namespace TOKENS {
         const referrer_15: string;
         export { referrer_15 as referrer };
     }
-    namespace stSOL {
+    export namespace ZBC {
         const symbol_26: string;
         export { symbol_26 as symbol };
         const name_26: string;
@@ -309,7 +310,7 @@ export namespace TOKENS {
         const referrer_16: string;
         export { referrer_16 as referrer };
     }
-    namespace socn {
+    export namespace wALEPH {
         const symbol_27: string;
         export { symbol_27 as symbol };
         const name_27: string;
@@ -321,7 +322,7 @@ export namespace TOKENS {
         const referrer_17: string;
         export { referrer_17 as referrer };
     }
-    namespace MAI {
+    export namespace SLCL {
         const symbol_28: string;
         export { symbol_28 as symbol };
         const name_28: string;
@@ -333,7 +334,7 @@ export namespace TOKENS {
         const referrer_18: string;
         export { referrer_18 as referrer };
     }
-    namespace acUSDC {
+    export namespace stSOL {
         const symbol_29: string;
         export { symbol_29 as symbol };
         const name_29: string;
@@ -345,7 +346,7 @@ export namespace TOKENS {
         const referrer_19: string;
         export { referrer_19 as referrer };
     }
-    namespace abBUSD {
+    export namespace socn {
         const symbol_30: string;
         export { symbol_30 as symbol };
         const name_30: string;
@@ -357,7 +358,7 @@ export namespace TOKENS {
         const referrer_20: string;
         export { referrer_20 as referrer };
     }
-    namespace saberWUSDC {
+    export namespace MAI {
         const symbol_31: string;
         export { symbol_31 as symbol };
         const name_31: string;
@@ -369,7 +370,7 @@ export namespace TOKENS {
         const referrer_21: string;
         export { referrer_21 as referrer };
     }
-    namespace USDK {
+    export namespace acUSDC {
         const symbol_32: string;
         export { symbol_32 as symbol };
         const name_32: string;
@@ -381,7 +382,7 @@ export namespace TOKENS {
         const referrer_22: string;
         export { referrer_22 as referrer };
     }
-    namespace saberDAI {
+    export namespace abBUSD {
         const symbol_33: string;
         export { symbol_33 as symbol };
         const name_33: string;
@@ -393,7 +394,7 @@ export namespace TOKENS {
         const referrer_23: string;
         export { referrer_23 as referrer };
     }
-    namespace saberBUSD {
+    export namespace saberWUSDC {
         const symbol_34: string;
         export { symbol_34 as symbol };
         const name_34: string;
@@ -405,7 +406,7 @@ export namespace TOKENS {
         const referrer_24: string;
         export { referrer_24 as referrer };
     }
-    namespace saberFRAX {
+    export namespace USDK {
         const symbol_35: string;
         export { symbol_35 as symbol };
         const name_35: string;
@@ -417,7 +418,7 @@ export namespace TOKENS {
         const referrer_25: string;
         export { referrer_25 as referrer };
     }
-    namespace WUSDT {
+    export namespace saberDAI {
         const symbol_36: string;
         export { symbol_36 as symbol };
         const name_36: string;
@@ -429,7 +430,7 @@ export namespace TOKENS {
         const referrer_26: string;
         export { referrer_26 as referrer };
     }
-    namespace USDC {
+    export namespace saberBUSD {
         const symbol_37: string;
         export { symbol_37 as symbol };
         const name_37: string;
@@ -441,7 +442,7 @@ export namespace TOKENS {
         const referrer_27: string;
         export { referrer_27 as referrer };
     }
-    namespace CASH {
+    export namespace saberFRAX {
         const symbol_38: string;
         export { symbol_38 as symbol };
         const name_38: string;
@@ -453,7 +454,7 @@ export namespace TOKENS {
         const referrer_28: string;
         export { referrer_28 as referrer };
     }
-    namespace WUSDC {
+    export namespace WUSDT {
         const symbol_39: string;
         export { symbol_39 as symbol };
         const name_39: string;
@@ -462,8 +463,10 @@ export namespace TOKENS {
         export { mintAddress_39 as mintAddress };
         const decimals_39: number;
         export { decimals_39 as decimals };
+        const referrer_29: string;
+        export { referrer_29 as referrer };
     }
-    namespace weUNI {
+    export namespace USDC {
         const symbol_40: string;
         export { symbol_40 as symbol };
         const name_40: string;
@@ -472,10 +475,10 @@ export namespace TOKENS {
         export { mintAddress_40 as mintAddress };
         const decimals_40: number;
         export { decimals_40 as decimals };
-        const tags_6: string[];
-        export { tags_6 as tags };
+        const referrer_30: string;
+        export { referrer_30 as referrer };
     }
-    namespace weSUSHI {
+    export namespace CASH {
         const symbol_41: string;
         export { symbol_41 as symbol };
         const name_41: string;
@@ -484,10 +487,10 @@ export namespace TOKENS {
         export { mintAddress_41 as mintAddress };
         const decimals_41: number;
         export { decimals_41 as decimals };
-        const tags_7: string[];
-        export { tags_7 as tags };
+        const referrer_31: string;
+        export { referrer_31 as referrer };
     }
-    namespace weAXS {
+    export namespace WUSDC {
         const symbol_42: string;
         export { symbol_42 as symbol };
         const name_42: string;
@@ -496,10 +499,8 @@ export namespace TOKENS {
         export { mintAddress_42 as mintAddress };
         const decimals_42: number;
         export { decimals_42 as decimals };
-        const tags_8: string[];
-        export { tags_8 as tags };
     }
-    namespace weSHIB {
+    export namespace weUNI {
         const symbol_43: string;
         export { symbol_43 as symbol };
         const name_43: string;
@@ -508,10 +509,10 @@ export namespace TOKENS {
         export { mintAddress_43 as mintAddress };
         const decimals_43: number;
         export { decimals_43 as decimals };
-        const tags_9: string[];
-        export { tags_9 as tags };
+        const tags_6: string[];
+        export { tags_6 as tags };
     }
-    namespace weDYDX {
+    export namespace weSUSHI {
         const symbol_44: string;
         export { symbol_44 as symbol };
         const name_44: string;
@@ -520,10 +521,10 @@ export namespace TOKENS {
         export { mintAddress_44 as mintAddress };
         const decimals_44: number;
         export { decimals_44 as decimals };
-        const tags_10: string[];
-        export { tags_10 as tags };
+        const tags_7: string[];
+        export { tags_7 as tags };
     }
-    namespace weSAND {
+    export namespace weAXS {
         const symbol_45: string;
         export { symbol_45 as symbol };
         const name_45: string;
@@ -532,10 +533,10 @@ export namespace TOKENS {
         export { mintAddress_45 as mintAddress };
         const decimals_45: number;
         export { decimals_45 as decimals };
-        const tags_11: string[];
-        export { tags_11 as tags };
+        const tags_8: string[];
+        export { tags_8 as tags };
     }
-    namespace weMANA {
+    export namespace weSHIB {
         const symbol_46: string;
         export { symbol_46 as symbol };
         const name_46: string;
@@ -544,10 +545,10 @@ export namespace TOKENS {
         export { mintAddress_46 as mintAddress };
         const decimals_46: number;
         export { decimals_46 as decimals };
-        const tags_12: string[];
-        export { tags_12 as tags };
+        const tags_9: string[];
+        export { tags_9 as tags };
     }
-    namespace CAVE {
+    export namespace weDYDX {
         const symbol_47: string;
         export { symbol_47 as symbol };
         const name_47: string;
@@ -556,10 +557,10 @@ export namespace TOKENS {
         export { mintAddress_47 as mintAddress };
         const decimals_47: number;
         export { decimals_47 as decimals };
-        const tags_13: string[];
-        export { tags_13 as tags };
+        const tags_10: string[];
+        export { tags_10 as tags };
     }
-    namespace BLOCK {
+    export namespace weSAND {
         const symbol_48: string;
         export { symbol_48 as symbol };
         const name_48: string;
@@ -568,10 +569,10 @@ export namespace TOKENS {
         export { mintAddress_48 as mintAddress };
         const decimals_48: number;
         export { decimals_48 as decimals };
-        const tags_14: string[];
-        export { tags_14 as tags };
+        const tags_11: string[];
+        export { tags_11 as tags };
     }
-    namespace SOLAR {
+    export namespace weMANA {
         const symbol_49: string;
         export { symbol_49 as symbol };
         const name_49: string;
@@ -580,10 +581,10 @@ export namespace TOKENS {
         export { mintAddress_49 as mintAddress };
         const decimals_49: number;
         export { decimals_49 as decimals };
-        const tags_15: string[];
-        export { tags_15 as tags };
+        const tags_12: string[];
+        export { tags_12 as tags };
     }
-    namespace BASIS {
+    export namespace CAVE {
         const symbol_50: string;
         export { symbol_50 as symbol };
         const name_50: string;
@@ -592,10 +593,10 @@ export namespace TOKENS {
         export { mintAddress_50 as mintAddress };
         const decimals_50: number;
         export { decimals_50 as decimals };
-        const tags_16: string[];
-        export { tags_16 as tags };
+        const tags_13: string[];
+        export { tags_13 as tags };
     }
-    namespace SOLX {
+    export namespace BLOCK {
         const symbol_51: string;
         export { symbol_51 as symbol };
         const name_51: string;
@@ -604,10 +605,10 @@ export namespace TOKENS {
         export { mintAddress_51 as mintAddress };
         const decimals_51: number;
         export { decimals_51 as decimals };
-        const tags_17: string[];
-        export { tags_17 as tags };
+        const tags_14: string[];
+        export { tags_14 as tags };
     }
-    namespace CHICKS {
+    export namespace SOLAR {
         const symbol_52: string;
         export { symbol_52 as symbol };
         const name_52: string;
@@ -616,10 +617,10 @@ export namespace TOKENS {
         export { mintAddress_52 as mintAddress };
         const decimals_52: number;
         export { decimals_52 as decimals };
-        const tags_18: string[];
-        export { tags_18 as tags };
+        const tags_15: string[];
+        export { tags_15 as tags };
     }
-    namespace GST {
+    export namespace BASIS {
         const symbol_53: string;
         export { symbol_53 as symbol };
         const name_53: string;
@@ -628,10 +629,10 @@ export namespace TOKENS {
         export { mintAddress_53 as mintAddress };
         const decimals_53: number;
         export { decimals_53 as decimals };
-        const tags_19: string[];
-        export { tags_19 as tags };
+        const tags_16: string[];
+        export { tags_16 as tags };
     }
-    namespace MEAN {
+    export namespace SOLX {
         const symbol_54: string;
         export { symbol_54 as symbol };
         const name_54: string;
@@ -640,10 +641,10 @@ export namespace TOKENS {
         export { mintAddress_54 as mintAddress };
         const decimals_54: number;
         export { decimals_54 as decimals };
-        const tags_20: string[];
-        export { tags_20 as tags };
+        const tags_17: string[];
+        export { tags_17 as tags };
     }
-    namespace MBS {
+    export namespace CHICKS {
         const symbol_55: string;
         export { symbol_55 as symbol };
         const name_55: string;
@@ -652,10 +653,10 @@ export namespace TOKENS {
         export { mintAddress_55 as mintAddress };
         const decimals_55: number;
         export { decimals_55 as decimals };
-        const tags_21: string[];
-        export { tags_21 as tags };
+        const tags_18: string[];
+        export { tags_18 as tags };
     }
-    namespace SVT {
+    export namespace GST {
         const symbol_56: string;
         export { symbol_56 as symbol };
         const name_56: string;
@@ -664,10 +665,10 @@ export namespace TOKENS {
         export { mintAddress_56 as mintAddress };
         const decimals_56: number;
         export { decimals_56 as decimals };
-        const tags_22: string[];
-        export { tags_22 as tags };
+        const tags_19: string[];
+        export { tags_19 as tags };
     }
-    namespace SLC {
+    export namespace GMT {
         const symbol_57: string;
         export { symbol_57 as symbol };
         const name_57: string;
@@ -676,10 +677,10 @@ export namespace TOKENS {
         export { mintAddress_57 as mintAddress };
         const decimals_57: number;
         export { decimals_57 as decimals };
-        const tags_23: string[];
-        export { tags_23 as tags };
+        const tags_20: string[];
+        export { tags_20 as tags };
     }
-    namespace PRISM {
+    export namespace sRLY {
         const symbol_58: string;
         export { symbol_58 as symbol };
         const name_58: string;
@@ -688,10 +689,10 @@ export namespace TOKENS {
         export { mintAddress_58 as mintAddress };
         const decimals_58: number;
         export { decimals_58 as decimals };
-        const tags_24: string[];
-        export { tags_24 as tags };
+        const tags_21: string[];
+        export { tags_21 as tags };
     }
-    namespace YFI {
+    export namespace MEAN {
         const symbol_59: string;
         export { symbol_59 as symbol };
         const name_59: string;
@@ -700,10 +701,10 @@ export namespace TOKENS {
         export { mintAddress_59 as mintAddress };
         const decimals_59: number;
         export { decimals_59 as decimals };
-        const referrer_29: string;
-        export { referrer_29 as referrer };
+        const tags_22: string[];
+        export { tags_22 as tags };
     }
-    namespace LINK {
+    export namespace MBS {
         const symbol_60: string;
         export { symbol_60 as symbol };
         const name_60: string;
@@ -712,10 +713,10 @@ export namespace TOKENS {
         export { mintAddress_60 as mintAddress };
         const decimals_60: number;
         export { decimals_60 as decimals };
-        const referrer_30: string;
-        export { referrer_30 as referrer };
+        const tags_23: string[];
+        export { tags_23 as tags };
     }
-    namespace XRP {
+    export namespace SVT {
         const symbol_61: string;
         export { symbol_61 as symbol };
         const name_61: string;
@@ -724,10 +725,10 @@ export namespace TOKENS {
         export { mintAddress_61 as mintAddress };
         const decimals_61: number;
         export { decimals_61 as decimals };
-        const referrer_31: string;
-        export { referrer_31 as referrer };
+        const tags_24: string[];
+        export { tags_24 as tags };
     }
-    namespace SUSHI {
+    export namespace SLC {
         const symbol_62: string;
         export { symbol_62 as symbol };
         const name_62: string;
@@ -736,10 +737,10 @@ export namespace TOKENS {
         export { mintAddress_62 as mintAddress };
         const decimals_62: number;
         export { decimals_62 as decimals };
-        const referrer_32: string;
-        export { referrer_32 as referrer };
+        const tags_25: string[];
+        export { tags_25 as tags };
     }
-    namespace ALEPH {
+    export namespace PRISM {
         const symbol_63: string;
         export { symbol_63 as symbol };
         const name_63: string;
@@ -748,10 +749,10 @@ export namespace TOKENS {
         export { mintAddress_63 as mintAddress };
         const decimals_63: number;
         export { decimals_63 as decimals };
-        const referrer_33: string;
-        export { referrer_33 as referrer };
+        const tags_26: string[];
+        export { tags_26 as tags };
     }
-    namespace SNY {
+    export namespace YFI {
         const symbol_64: string;
         export { symbol_64 as symbol };
         const name_64: string;
@@ -760,10 +761,10 @@ export namespace TOKENS {
         export { mintAddress_64 as mintAddress };
         const decimals_64: number;
         export { decimals_64 as decimals };
-        const referrer_34: string;
-        export { referrer_34 as referrer };
+        const referrer_32: string;
+        export { referrer_32 as referrer };
     }
-    namespace SLRS {
+    export namespace LINK {
         const symbol_65: string;
         export { symbol_65 as symbol };
         const name_65: string;
@@ -772,10 +773,10 @@ export namespace TOKENS {
         export { mintAddress_65 as mintAddress };
         const decimals_65: number;
         export { decimals_65 as decimals };
-        const referrer_35: string;
-        export { referrer_35 as referrer };
+        const referrer_33: string;
+        export { referrer_33 as referrer };
     }
-    namespace MNGO {
+    export namespace XRP {
         const symbol_66: string;
         export { symbol_66 as symbol };
         const name_66: string;
@@ -784,10 +785,10 @@ export namespace TOKENS {
         export { mintAddress_66 as mintAddress };
         const decimals_66: number;
         export { decimals_66 as decimals };
-        const referrer_36: string;
-        export { referrer_36 as referrer };
+        const referrer_34: string;
+        export { referrer_34 as referrer };
     }
-    namespace LIKE {
+    export namespace SUSHI {
         const symbol_67: string;
         export { symbol_67 as symbol };
         const name_67: string;
@@ -796,10 +797,10 @@ export namespace TOKENS {
         export { mintAddress_67 as mintAddress };
         const decimals_67: number;
         export { decimals_67 as decimals };
-        const referrer_37: string;
-        export { referrer_37 as referrer };
+        const referrer_35: string;
+        export { referrer_35 as referrer };
     }
-    namespace ORCA {
+    export namespace ALEPH {
         const symbol_68: string;
         export { symbol_68 as symbol };
         const name_68: string;
@@ -808,10 +809,10 @@ export namespace TOKENS {
         export { mintAddress_68 as mintAddress };
         const decimals_68: number;
         export { decimals_68 as decimals };
-        const referrer_38: string;
-        export { referrer_38 as referrer };
+        const referrer_36: string;
+        export { referrer_36 as referrer };
     }
-    namespace SHDW {
+    export namespace SNY {
         const symbol_69: string;
         export { symbol_69 as symbol };
         const name_69: string;
@@ -820,10 +821,10 @@ export namespace TOKENS {
         export { mintAddress_69 as mintAddress };
         const decimals_69: number;
         export { decimals_69 as decimals };
-        const referrer_39: string;
-        export { referrer_39 as referrer };
+        const referrer_37: string;
+        export { referrer_37 as referrer };
     }
-    namespace BOP {
+    export namespace SLRS {
         const symbol_70: string;
         export { symbol_70 as symbol };
         const name_70: string;
@@ -832,10 +833,10 @@ export namespace TOKENS {
         export { mintAddress_70 as mintAddress };
         const decimals_70: number;
         export { decimals_70 as decimals };
-        const referrer_40: string;
-        export { referrer_40 as referrer };
+        const referrer_38: string;
+        export { referrer_38 as referrer };
     }
-    namespace SAMO {
+    export namespace MNGO {
         const symbol_71: string;
         export { symbol_71 as symbol };
         const name_71: string;
@@ -844,10 +845,10 @@ export namespace TOKENS {
         export { mintAddress_71 as mintAddress };
         const decimals_71: number;
         export { decimals_71 as decimals };
-        const referrer_41: string;
-        export { referrer_41 as referrer };
+        const referrer_39: string;
+        export { referrer_39 as referrer };
     }
-    namespace SXP {
+    export namespace LIKE {
         const symbol_72: string;
         export { symbol_72 as symbol };
         const name_72: string;
@@ -856,10 +857,10 @@ export namespace TOKENS {
         export { mintAddress_72 as mintAddress };
         const decimals_72: number;
         export { decimals_72 as decimals };
-        const referrer_42: string;
-        export { referrer_42 as referrer };
+        const referrer_40: string;
+        export { referrer_40 as referrer };
     }
-    namespace HGET {
+    export namespace ORCA {
         const symbol_73: string;
         export { symbol_73 as symbol };
         const name_73: string;
@@ -868,10 +869,10 @@ export namespace TOKENS {
         export { mintAddress_73 as mintAddress };
         const decimals_73: number;
         export { decimals_73 as decimals };
-        const referrer_43: string;
-        export { referrer_43 as referrer };
+        const referrer_41: string;
+        export { referrer_41 as referrer };
     }
-    namespace CREAM {
+    export namespace SHDW {
         const symbol_74: string;
         export { symbol_74 as symbol };
         const name_74: string;
@@ -880,10 +881,10 @@ export namespace TOKENS {
         export { mintAddress_74 as mintAddress };
         const decimals_74: number;
         export { decimals_74 as decimals };
-        const referrer_44: string;
-        export { referrer_44 as referrer };
+        const referrer_42: string;
+        export { referrer_42 as referrer };
     }
-    namespace UBXT {
+    export namespace BOP {
         const symbol_75: string;
         export { symbol_75 as symbol };
         const name_75: string;
@@ -892,10 +893,10 @@ export namespace TOKENS {
         export { mintAddress_75 as mintAddress };
         const decimals_75: number;
         export { decimals_75 as decimals };
-        const referrer_45: string;
-        export { referrer_45 as referrer };
+        const referrer_43: string;
+        export { referrer_43 as referrer };
     }
-    namespace HNT {
+    export namespace SAMO {
         const symbol_76: string;
         export { symbol_76 as symbol };
         const name_76: string;
@@ -904,10 +905,10 @@ export namespace TOKENS {
         export { mintAddress_76 as mintAddress };
         const decimals_76: number;
         export { decimals_76 as decimals };
-        const referrer_46: string;
-        export { referrer_46 as referrer };
+        const referrer_44: string;
+        export { referrer_44 as referrer };
     }
-    namespace FRONT {
+    export namespace SXP {
         const symbol_77: string;
         export { symbol_77 as symbol };
         const name_77: string;
@@ -916,10 +917,10 @@ export namespace TOKENS {
         export { mintAddress_77 as mintAddress };
         const decimals_77: number;
         export { decimals_77 as decimals };
-        const referrer_47: string;
-        export { referrer_47 as referrer };
+        const referrer_45: string;
+        export { referrer_45 as referrer };
     }
-    namespace AKRO {
+    export namespace HGET {
         const symbol_78: string;
         export { symbol_78 as symbol };
         const name_78: string;
@@ -928,10 +929,10 @@ export namespace TOKENS {
         export { mintAddress_78 as mintAddress };
         const decimals_78: number;
         export { decimals_78 as decimals };
-        const referrer_48: string;
-        export { referrer_48 as referrer };
+        const referrer_46: string;
+        export { referrer_46 as referrer };
     }
-    namespace HXRO {
+    export namespace CREAM {
         const symbol_79: string;
         export { symbol_79 as symbol };
         const name_79: string;
@@ -940,10 +941,10 @@ export namespace TOKENS {
         export { mintAddress_79 as mintAddress };
         const decimals_79: number;
         export { decimals_79 as decimals };
-        const referrer_49: string;
-        export { referrer_49 as referrer };
+        const referrer_47: string;
+        export { referrer_47 as referrer };
     }
-    namespace CWAR {
+    export namespace UBXT {
         const symbol_80: string;
         export { symbol_80 as symbol };
         const name_80: string;
@@ -952,10 +953,10 @@ export namespace TOKENS {
         export { mintAddress_80 as mintAddress };
         const decimals_80: number;
         export { decimals_80 as decimals };
-        const tags_25: string[];
-        export { tags_25 as tags };
+        const referrer_48: string;
+        export { referrer_48 as referrer };
     }
-    namespace SONAR {
+    export namespace HNT {
         const symbol_81: string;
         export { symbol_81 as symbol };
         const name_81: string;
@@ -964,10 +965,10 @@ export namespace TOKENS {
         export { mintAddress_81 as mintAddress };
         const decimals_81: number;
         export { decimals_81 as decimals };
-        const tags_26: string[];
-        export { tags_26 as tags };
+        const referrer_49: string;
+        export { referrer_49 as referrer };
     }
-    namespace BOKU {
+    export namespace FRONT {
         const symbol_82: string;
         export { symbol_82 as symbol };
         const name_82: string;
@@ -976,10 +977,10 @@ export namespace TOKENS {
         export { mintAddress_82 as mintAddress };
         const decimals_82: number;
         export { decimals_82 as decimals };
-        const tags_27: string[];
-        export { tags_27 as tags };
+        const referrer_50: string;
+        export { referrer_50 as referrer };
     }
-    namespace MIMO {
+    export namespace AKRO {
         const symbol_83: string;
         export { symbol_83 as symbol };
         const name_83: string;
@@ -988,10 +989,10 @@ export namespace TOKENS {
         export { mintAddress_83 as mintAddress };
         const decimals_83: number;
         export { decimals_83 as decimals };
-        const tags_28: string[];
-        export { tags_28 as tags };
+        const referrer_51: string;
+        export { referrer_51 as referrer };
     }
-    namespace wbWBNB {
+    export namespace HXRO {
         const symbol_84: string;
         export { symbol_84 as symbol };
         const name_84: string;
@@ -1000,10 +1001,10 @@ export namespace TOKENS {
         export { mintAddress_84 as mintAddress };
         const decimals_84: number;
         export { decimals_84 as decimals };
-        const tags_29: string[];
-        export { tags_29 as tags };
+        const referrer_52: string;
+        export { referrer_52 as referrer };
     }
-    namespace wePEOPLE {
+    export namespace CWAR {
         const symbol_85: string;
         export { symbol_85 as symbol };
         const name_85: string;
@@ -1012,10 +1013,10 @@ export namespace TOKENS {
         export { mintAddress_85 as mintAddress };
         const decimals_85: number;
         export { decimals_85 as decimals };
-        const tags_30: string[];
-        export { tags_30 as tags };
+        const tags_27: string[];
+        export { tags_27 as tags };
     }
-    namespace DFL {
+    export namespace SONAR {
         const symbol_86: string;
         export { symbol_86 as symbol };
         const name_86: string;
@@ -1024,8 +1025,67 @@ export namespace TOKENS {
         export { mintAddress_86 as mintAddress };
         const decimals_86: number;
         export { decimals_86 as decimals };
+        const tags_28: string[];
+        export { tags_28 as tags };
+    }
+    export namespace BOKU {
+        const symbol_87: string;
+        export { symbol_87 as symbol };
+        const name_87: string;
+        export { name_87 as name };
+        const mintAddress_87: string;
+        export { mintAddress_87 as mintAddress };
+        const decimals_87: number;
+        export { decimals_87 as decimals };
+        const tags_29: string[];
+        export { tags_29 as tags };
+    }
+    export namespace MIMO {
+        const symbol_88: string;
+        export { symbol_88 as symbol };
+        const name_88: string;
+        export { name_88 as name };
+        const mintAddress_88: string;
+        export { mintAddress_88 as mintAddress };
+        const decimals_88: number;
+        export { decimals_88 as decimals };
+        const tags_30: string[];
+        export { tags_30 as tags };
+    }
+    export namespace wbWBNB {
+        const symbol_89: string;
+        export { symbol_89 as symbol };
+        const name_89: string;
+        export { name_89 as name };
+        const mintAddress_89: string;
+        export { mintAddress_89 as mintAddress };
+        const decimals_89: number;
+        export { decimals_89 as decimals };
+        const tags_31: string[];
+        export { tags_31 as tags };
+    }
+    export namespace wePEOPLE {
+        const symbol_90: string;
+        export { symbol_90 as symbol };
+        const name_90: string;
+        export { name_90 as name };
+        const mintAddress_90: string;
+        export { mintAddress_90 as mintAddress };
+        const decimals_90: number;
+        export { decimals_90 as decimals };
+        const tags_32: string[];
+        export { tags_32 as tags };
+    }
+    export namespace DFL {
+        const symbol_91: string;
+        export { symbol_91 as symbol };
+        const name_91: string;
+        export { name_91 as name };
+        const mintAddress_91: string;
+        export { mintAddress_91 as mintAddress };
+        const decimals_91: number;
+        export { decimals_91 as decimals };
         export const detailLink: string;
-        export const details: string;
         export namespace docs {
             const website: string;
         }
@@ -1035,70 +1095,10 @@ export namespace TOKENS {
             const Twitter: string;
             const Telegram: string;
         }
-        const tags_31: string[];
-        export { tags_31 as tags };
-    }
-    namespace SHILL {
-        const symbol_87: string;
-        export { symbol_87 as symbol };
-        const name_87: string;
-        export { name_87 as name };
-        const mintAddress_87: string;
-        export { mintAddress_87 as mintAddress };
-        const decimals_87: number;
-        export { decimals_87 as decimals };
-        const tags_32: string[];
-        export { tags_32 as tags };
-    }
-    namespace APT {
-        const symbol_88: string;
-        export { symbol_88 as symbol };
-        const name_88: string;
-        export { name_88 as name };
-        const mintAddress_88: string;
-        export { mintAddress_88 as mintAddress };
-        const decimals_88: number;
-        export { decimals_88 as decimals };
         const tags_33: string[];
         export { tags_33 as tags };
     }
-    namespace UNI {
-        const symbol_89: string;
-        export { symbol_89 as symbol };
-        const name_89: string;
-        export { name_89 as name };
-        const mintAddress_89: string;
-        export { mintAddress_89 as mintAddress };
-        const decimals_89: number;
-        export { decimals_89 as decimals };
-        const referrer_50: string;
-        export { referrer_50 as referrer };
-    }
-    namespace SRM {
-        const symbol_90: string;
-        export { symbol_90 as symbol };
-        const name_90: string;
-        export { name_90 as name };
-        const mintAddress_90: string;
-        export { mintAddress_90 as mintAddress };
-        const decimals_90: number;
-        export { decimals_90 as decimals };
-        const referrer_51: string;
-        export { referrer_51 as referrer };
-    }
-    namespace GENE {
-        const symbol_91: string;
-        export { symbol_91 as symbol };
-        const name_91: string;
-        export { name_91 as name };
-        const mintAddress_91: string;
-        export { mintAddress_91 as mintAddress };
-        const decimals_91: number;
-        export { decimals_91 as decimals };
-        const referrer_52: string;
-        export { referrer_52 as referrer };
-    }
-    namespace FTT {
+    export namespace SHILL {
         const symbol_92: string;
         export { symbol_92 as symbol };
         const name_92: string;
@@ -1107,10 +1107,10 @@ export namespace TOKENS {
         export { mintAddress_92 as mintAddress };
         const decimals_92: number;
         export { decimals_92 as decimals };
-        const referrer_53: string;
-        export { referrer_53 as referrer };
+        const tags_34: string[];
+        export { tags_34 as tags };
     }
-    namespace wFTT {
+    export namespace APT {
         const symbol_93: string;
         export { symbol_93 as symbol };
         const name_93: string;
@@ -1119,10 +1119,10 @@ export namespace TOKENS {
         export { mintAddress_93 as mintAddress };
         const decimals_93: number;
         export { decimals_93 as decimals };
-        const referrer_54: string;
-        export { referrer_54 as referrer };
+        const tags_35: string[];
+        export { tags_35 as tags };
     }
-    namespace MSRM {
+    export namespace UNI {
         const symbol_94: string;
         export { symbol_94 as symbol };
         const name_94: string;
@@ -1131,10 +1131,10 @@ export namespace TOKENS {
         export { mintAddress_94 as mintAddress };
         const decimals_94: number;
         export { decimals_94 as decimals };
-        const referrer_55: string;
-        export { referrer_55 as referrer };
+        const referrer_53: string;
+        export { referrer_53 as referrer };
     }
-    namespace TOMO {
+    export namespace SRM {
         const symbol_95: string;
         export { symbol_95 as symbol };
         const name_95: string;
@@ -1143,10 +1143,10 @@ export namespace TOKENS {
         export { mintAddress_95 as mintAddress };
         const decimals_95: number;
         export { decimals_95 as decimals };
-        const referrer_56: string;
-        export { referrer_56 as referrer };
+        const referrer_54: string;
+        export { referrer_54 as referrer };
     }
-    namespace KARMA {
+    export namespace GENE {
         const symbol_96: string;
         export { symbol_96 as symbol };
         const name_96: string;
@@ -1155,8 +1155,10 @@ export namespace TOKENS {
         export { mintAddress_96 as mintAddress };
         const decimals_96: number;
         export { decimals_96 as decimals };
+        const referrer_55: string;
+        export { referrer_55 as referrer };
     }
-    namespace LUA {
+    export namespace FTT {
         const symbol_97: string;
         export { symbol_97 as symbol };
         const name_97: string;
@@ -1165,10 +1167,10 @@ export namespace TOKENS {
         export { mintAddress_97 as mintAddress };
         const decimals_97: number;
         export { decimals_97 as decimals };
-        const referrer_57: string;
-        export { referrer_57 as referrer };
+        const referrer_56: string;
+        export { referrer_56 as referrer };
     }
-    namespace MATH {
+    export namespace wFTT {
         const symbol_98: string;
         export { symbol_98 as symbol };
         const name_98: string;
@@ -1177,10 +1179,10 @@ export namespace TOKENS {
         export { mintAddress_98 as mintAddress };
         const decimals_98: number;
         export { decimals_98 as decimals };
-        const referrer_58: string;
-        export { referrer_58 as referrer };
+        const referrer_57: string;
+        export { referrer_57 as referrer };
     }
-    namespace KEEP {
+    export namespace MSRM {
         const symbol_99: string;
         export { symbol_99 as symbol };
         const name_99: string;
@@ -1189,8 +1191,10 @@ export namespace TOKENS {
         export { mintAddress_99 as mintAddress };
         const decimals_99: number;
         export { decimals_99 as decimals };
+        const referrer_58: string;
+        export { referrer_58 as referrer };
     }
-    namespace SWAG {
+    export namespace TOMO {
         const symbol_100: string;
         export { symbol_100 as symbol };
         const name_100: string;
@@ -1199,8 +1203,10 @@ export namespace TOKENS {
         export { mintAddress_100 as mintAddress };
         const decimals_100: number;
         export { decimals_100 as decimals };
+        const referrer_59: string;
+        export { referrer_59 as referrer };
     }
-    namespace FIDA {
+    export namespace KARMA {
         const symbol_101: string;
         export { symbol_101 as symbol };
         const name_101: string;
@@ -1209,10 +1215,8 @@ export namespace TOKENS {
         export { mintAddress_101 as mintAddress };
         const decimals_101: number;
         export { decimals_101 as decimals };
-        const referrer_59: string;
-        export { referrer_59 as referrer };
     }
-    namespace KIN {
+    export namespace LUA {
         const symbol_102: string;
         export { symbol_102 as symbol };
         const name_102: string;
@@ -1224,7 +1228,7 @@ export namespace TOKENS {
         const referrer_60: string;
         export { referrer_60 as referrer };
     }
-    namespace MAPS {
+    export namespace MATH {
         const symbol_103: string;
         export { symbol_103 as symbol };
         const name_103: string;
@@ -1233,8 +1237,10 @@ export namespace TOKENS {
         export { mintAddress_103 as mintAddress };
         const decimals_103: number;
         export { decimals_103 as decimals };
+        const referrer_61: string;
+        export { referrer_61 as referrer };
     }
-    namespace OXY {
+    export namespace KEEP {
         const symbol_104: string;
         export { symbol_104 as symbol };
         const name_104: string;
@@ -1244,7 +1250,7 @@ export namespace TOKENS {
         const decimals_104: number;
         export { decimals_104 as decimals };
     }
-    namespace RAY {
+    export namespace SWAG {
         const symbol_105: string;
         export { symbol_105 as symbol };
         const name_105: string;
@@ -1253,10 +1259,8 @@ export namespace TOKENS {
         export { mintAddress_105 as mintAddress };
         const decimals_105: number;
         export { decimals_105 as decimals };
-        const referrer_61: string;
-        export { referrer_61 as referrer };
     }
-    namespace MNDE {
+    export namespace FIDA {
         const symbol_106: string;
         export { symbol_106 as symbol };
         const name_106: string;
@@ -1265,10 +1269,10 @@ export namespace TOKENS {
         export { mintAddress_106 as mintAddress };
         const decimals_106: number;
         export { decimals_106 as decimals };
-        const tags_34: string[];
-        export { tags_34 as tags };
+        const referrer_62: string;
+        export { referrer_62 as referrer };
     }
-    namespace PAI {
+    export namespace KIN {
         const symbol_107: string;
         export { symbol_107 as symbol };
         const name_107: string;
@@ -1277,10 +1281,10 @@ export namespace TOKENS {
         export { mintAddress_107 as mintAddress };
         const decimals_107: number;
         export { decimals_107 as decimals };
-        const referrer_62: string;
-        export { referrer_62 as referrer };
+        const referrer_63: string;
+        export { referrer_63 as referrer };
     }
-    namespace SBR {
+    export namespace MAPS {
         const symbol_108: string;
         export { symbol_108 as symbol };
         const name_108: string;
@@ -1289,10 +1293,8 @@ export namespace TOKENS {
         export { mintAddress_108 as mintAddress };
         const decimals_108: number;
         export { decimals_108 as decimals };
-        const referrer_63: string;
-        export { referrer_63 as referrer };
     }
-    namespace COPE {
+    export namespace OXY {
         const symbol_109: string;
         export { symbol_109 as symbol };
         const name_109: string;
@@ -1301,10 +1303,8 @@ export namespace TOKENS {
         export { mintAddress_109 as mintAddress };
         const decimals_109: number;
         export { decimals_109 as decimals };
-        const referrer_64: string;
-        export { referrer_64 as referrer };
     }
-    namespace STEP {
+    export namespace RAY {
         const symbol_110: string;
         export { symbol_110 as symbol };
         const name_110: string;
@@ -1313,10 +1313,10 @@ export namespace TOKENS {
         export { mintAddress_110 as mintAddress };
         const decimals_110: number;
         export { decimals_110 as decimals };
-        const referrer_65: string;
-        export { referrer_65 as referrer };
+        const referrer_64: string;
+        export { referrer_64 as referrer };
     }
-    namespace MEDIA {
+    export namespace MNDE {
         const symbol_111: string;
         export { symbol_111 as symbol };
         const name_111: string;
@@ -1325,10 +1325,10 @@ export namespace TOKENS {
         export { mintAddress_111 as mintAddress };
         const decimals_111: number;
         export { decimals_111 as decimals };
-        const referrer_66: string;
-        export { referrer_66 as referrer };
+        const tags_36: string[];
+        export { tags_36 as tags };
     }
-    namespace MER {
+    export namespace PAI {
         const symbol_112: string;
         export { symbol_112 as symbol };
         const name_112: string;
@@ -1337,10 +1337,10 @@ export namespace TOKENS {
         export { mintAddress_112 as mintAddress };
         const decimals_112: number;
         export { decimals_112 as decimals };
-        const referrer_67: string;
-        export { referrer_67 as referrer };
+        const referrer_65: string;
+        export { referrer_65 as referrer };
     }
-    namespace ROPE {
+    export namespace SBR {
         const symbol_113: string;
         export { symbol_113 as symbol };
         const name_113: string;
@@ -1349,10 +1349,10 @@ export namespace TOKENS {
         export { mintAddress_113 as mintAddress };
         const decimals_113: number;
         export { decimals_113 as decimals };
-        const referrer_68: string;
-        export { referrer_68 as referrer };
+        const referrer_66: string;
+        export { referrer_66 as referrer };
     }
-    namespace TULIP {
+    export namespace COPE {
         const symbol_114: string;
         export { symbol_114 as symbol };
         const name_114: string;
@@ -1361,8 +1361,10 @@ export namespace TOKENS {
         export { mintAddress_114 as mintAddress };
         const decimals_114: number;
         export { decimals_114 as decimals };
+        const referrer_67: string;
+        export { referrer_67 as referrer };
     }
-    namespace ATLAS {
+    export namespace STEP {
         const symbol_115: string;
         export { symbol_115 as symbol };
         const name_115: string;
@@ -1371,8 +1373,10 @@ export namespace TOKENS {
         export { mintAddress_115 as mintAddress };
         const decimals_115: number;
         export { decimals_115 as decimals };
+        const referrer_68: string;
+        export { referrer_68 as referrer };
     }
-    namespace POLIS {
+    export namespace MEDIA {
         const symbol_116: string;
         export { symbol_116 as symbol };
         const name_116: string;
@@ -1381,8 +1385,10 @@ export namespace TOKENS {
         export { mintAddress_116 as mintAddress };
         const decimals_116: number;
         export { decimals_116 as decimals };
+        const referrer_69: string;
+        export { referrer_69 as referrer };
     }
-    namespace GRAPE {
+    export namespace MER {
         const symbol_117: string;
         export { symbol_117 as symbol };
         const name_117: string;
@@ -1391,8 +1397,10 @@ export namespace TOKENS {
         export { mintAddress_117 as mintAddress };
         const decimals_117: number;
         export { decimals_117 as decimals };
+        const referrer_70: string;
+        export { referrer_70 as referrer };
     }
-    namespace LARIX {
+    export namespace ROPE {
         const symbol_118: string;
         export { symbol_118 as symbol };
         const name_118: string;
@@ -1401,8 +1409,10 @@ export namespace TOKENS {
         export { mintAddress_118 as mintAddress };
         const decimals_118: number;
         export { decimals_118 as decimals };
+        const referrer_71: string;
+        export { referrer_71 as referrer };
     }
-    namespace WOOF {
+    export namespace TULIP {
         const symbol_119: string;
         export { symbol_119 as symbol };
         const name_119: string;
@@ -1411,10 +1421,8 @@ export namespace TOKENS {
         export { mintAddress_119 as mintAddress };
         const decimals_119: number;
         export { decimals_119 as decimals };
-        const tags_35: string[];
-        export { tags_35 as tags };
     }
-    namespace SLND {
+    export namespace ATLAS {
         const symbol_120: string;
         export { symbol_120 as symbol };
         const name_120: string;
@@ -1423,10 +1431,8 @@ export namespace TOKENS {
         export { mintAddress_120 as mintAddress };
         const decimals_120: number;
         export { decimals_120 as decimals };
-        const tags_36: string[];
-        export { tags_36 as tags };
     }
-    namespace STARS {
+    export namespace POLIS {
         const symbol_121: string;
         export { symbol_121 as symbol };
         const name_121: string;
@@ -1435,10 +1441,8 @@ export namespace TOKENS {
         export { mintAddress_121 as mintAddress };
         const decimals_121: number;
         export { decimals_121 as decimals };
-        const tags_37: string[];
-        export { tags_37 as tags };
     }
-    namespace wLDO {
+    export namespace GRAPE {
         const symbol_122: string;
         export { symbol_122 as symbol };
         const name_122: string;
@@ -1448,7 +1452,7 @@ export namespace TOKENS {
         const decimals_122: number;
         export { decimals_122 as decimals };
     }
-    namespace wUST {
+    export namespace LARIX {
         const symbol_123: string;
         export { symbol_123 as symbol };
         const name_123: string;
@@ -1458,7 +1462,7 @@ export namespace TOKENS {
         const decimals_123: number;
         export { decimals_123 as decimals };
     }
-    namespace wLUNA {
+    export namespace WOOF {
         const symbol_124: string;
         export { symbol_124 as symbol };
         const name_124: string;
@@ -1467,8 +1471,10 @@ export namespace TOKENS {
         export { mintAddress_124 as mintAddress };
         const decimals_124: number;
         export { decimals_124 as decimals };
+        const tags_37: string[];
+        export { tags_37 as tags };
     }
-    namespace CMFI {
+    export namespace SLND {
         const symbol_125: string;
         export { symbol_125 as symbol };
         const name_125: string;
@@ -1477,45 +1483,99 @@ export namespace TOKENS {
         export { mintAddress_125 as mintAddress };
         const decimals_125: number;
         export { decimals_125 as decimals };
+        const tags_38: string[];
+        export { tags_38 as tags };
     }
-    namespace PSY {
+    export namespace STARS {
         const symbol_126: string;
         export { symbol_126 as symbol };
         const name_126: string;
         export { name_126 as name };
-        export const mintAddres: string;
+        const mintAddress_126: string;
+        export { mintAddress_126 as mintAddress };
         const decimals_126: number;
         export { decimals_126 as decimals };
+        const tags_39: string[];
+        export { tags_39 as tags };
     }
-    namespace UXD {
+    export namespace wLDO {
         const symbol_127: string;
         export { symbol_127 as symbol };
         const name_127: string;
         export { name_127 as name };
-        const mintAddres_1: string;
-        export { mintAddres_1 as mintAddres };
+        const mintAddress_127: string;
+        export { mintAddress_127 as mintAddress };
         const decimals_127: number;
         export { decimals_127 as decimals };
     }
-    namespace SUNNY {
+    export namespace wUST {
         const symbol_128: string;
         export { symbol_128 as symbol };
         const name_128: string;
         export { name_128 as name };
-        const mintAddres_2: string;
-        export { mintAddres_2 as mintAddres };
+        const mintAddress_128: string;
+        export { mintAddress_128 as mintAddress };
         const decimals_128: number;
         export { decimals_128 as decimals };
     }
-    namespace USDCet {
+    export namespace wLUNA {
         const symbol_129: string;
         export { symbol_129 as symbol };
         const name_129: string;
         export { name_129 as name };
-        const mintAddress_126: string;
-        export { mintAddress_126 as mintAddress };
+        const mintAddress_129: string;
+        export { mintAddress_129 as mintAddress };
         const decimals_129: number;
         export { decimals_129 as decimals };
+    }
+    export namespace CMFI {
+        const symbol_130: string;
+        export { symbol_130 as symbol };
+        const name_130: string;
+        export { name_130 as name };
+        const mintAddress_130: string;
+        export { mintAddress_130 as mintAddress };
+        const decimals_130: number;
+        export { decimals_130 as decimals };
+    }
+    export namespace PSY {
+        const symbol_131: string;
+        export { symbol_131 as symbol };
+        const name_131: string;
+        export { name_131 as name };
+        export const mintAddres: string;
+        const decimals_131: number;
+        export { decimals_131 as decimals };
+    }
+    export namespace UXD {
+        const symbol_132: string;
+        export { symbol_132 as symbol };
+        const name_132: string;
+        export { name_132 as name };
+        const mintAddres_1: string;
+        export { mintAddres_1 as mintAddres };
+        const decimals_132: number;
+        export { decimals_132 as decimals };
+    }
+    export namespace SUNNY {
+        const symbol_133: string;
+        export { symbol_133 as symbol };
+        const name_133: string;
+        export { name_133 as name };
+        const mintAddres_2: string;
+        export { mintAddres_2 as mintAddres };
+        const decimals_133: number;
+        export { decimals_133 as decimals };
+    }
+    export namespace USDCet {
+        const symbol_134: string;
+        export { symbol_134 as symbol };
+        const name_134: string;
+        export { name_134 as name };
+        const mintAddress_131: string;
+        export { mintAddress_131 as mintAddress };
+        const decimals_134: number;
+        export { decimals_134 as decimals };
     }
 }
 export const LP_TOKENS: {
