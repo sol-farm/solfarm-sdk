@@ -179,6 +179,27 @@ export const TOKENS = {
     decimals: 9,
     referrer: ''
   },
+  ZBC: {
+    symbol: 'ZBC',
+    name: 'ZBC',
+    mintAddress: 'zebeczgi5fSEtbpfQKVZKCJ3WgYXxjkMUkNNx7fLKAF',
+    decimals: 9,
+    referrer: ''
+  },
+  wALEPH: {
+    symbol: 'wALEPH',
+    name: 'wALEPH',
+    mintAddress: '3UCMiSnkcnkPE1pgQ5ggPCBv6dXgVUy16TmMUe1WpG9x',
+    decimals: 8,
+    referrer: ''
+  },
+  SLCL: {
+    symbol: 'SLCL',
+    name: 'SLCL',
+    mintAddress: 'SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV',
+    decimals: 9,
+    referrer: ''
+  },
   stSOL: {
     symbol: 'stSOL',
     name: 'stSOL',
@@ -372,7 +393,21 @@ export const TOKENS = {
     name: 'GST',
     mintAddress: 'AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB',
     decimals: 9,
-    tags: ['raydium']
+    tags: ['orca']
+  },
+  GMT: {
+    symbol: 'GMT',
+    name: 'GMT',
+    mintAddress: '7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx',
+    decimals: 9,
+    tags: ['orca']
+  },
+  sRLY: {
+    symbol: 'sRLY',
+    name: 'sRLY',
+    mintAddress: 'RLYv2ubRMDLcGG2UyvPmnPmkfuQTsMbg4Jtygc7dmnq',
+    decimals: 9,
+    tags: ['orca']
   },
   MEAN: {
     symbol: 'MEAN',
@@ -606,8 +641,6 @@ export const TOKENS = {
 
     detailLink:
       'https://raydium.medium.com/defi-land-is-launching-on-acceleraytor-8aa06caecc3c',
-    details:
-      'DeFi Land is a multi-chain agriculture simulation web game created to gamify decentralized finance. The game will have all the features that traditional platforms have, but it will be gathered all in one place. DeFi Land gamifies decentralized finance by turning investment activities into games.',
     docs: {
       website: 'https://defiland.app/'
 
