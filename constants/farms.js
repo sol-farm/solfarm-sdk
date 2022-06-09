@@ -72,7 +72,7 @@ export const FARMS = [
 
     mintAddress: '94Y3jaf96ysGqebzRP71isD7RKxmuhkyXK88b16ToJhE',
     decimals: TOKENS.BTC.decimals,
-    coins: [TOKENS.BTC, TOKENS.stSOL],
+    coins: [TOKENS.BTC, TOKENS.stSOL]
   },
 
   {
@@ -85,7 +85,7 @@ export const FARMS = [
 
     mintAddress: 'D7F986x22g9uckCbQabpcw8HuJk8zRcAteDLbcCUVjm1',
     decimals: TOKENS.whETH.decimals,
-    coins: [TOKENS.whETH, TOKENS.stSOL],
+    coins: [TOKENS.whETH, TOKENS.stSOL]
   },
   {
     symbol: 'SVT-USDC',
