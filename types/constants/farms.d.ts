@@ -787,11 +787,3 @@ export const FARMS: ({
     totalTulipEmission?: undefined;
     link?: undefined;
 })[];
-export namespace FARM_PLATFORMS {
-    const RAYDIUM: string;
-    const SABER: string;
-    const ORCA: string;
-    const TULIP: string;
-    const SOLEND: string;
-    const MANGO: string;
-}

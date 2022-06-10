@@ -4,8 +4,17 @@ import * as anchor from 'anchor18';
 import * as splToken from '@solana/spl-token';
 
 // Utils
-import { commitment, getMultipleAccountsGrouped } from '../utils/web3';
-import { FARM_PLATFORMS } from '../constants/farmConstants';
+import {
+  commitment,
+  getMultipleAccountsGrouped,
+  getOrcaVaultByMintAddress,
+  getOrcaVaultBySymbol,
+  getRaydiumVaultByMintAddress,
+  getRaydiumVaultBySymbol,
+  getSaberVaultByMintAddress,
+  getTulipVaultBySymbol
+} from '../utils';
+import { FARM_PLATFORMS } from '../constants';
 
 // // Vaults v2 Helpers
 import {
@@ -17,22 +26,10 @@ import {
   getTotalDeposited
 } from './helpers/vaultHelpers';
 
-import {
-  getRaydiumVaultByMintAddress,
-  getRaydiumVaultBySymbol
-} from '../constants/raydiumVaults';
-
 // // IDL
 import idl from '../constants/vaults_v2_idl.json';
 import config from '../constants/vaults_v2_config.json';
 import { assign, find, transform } from 'lodash';
-import {
-  getOrcaVaultByMintAddress,
-  getOrcaVaultBySymbol
-} from '../constants/orcaVaults';
-
-import { getSaberVaultByMintAddress } from '../constants/saberVaults';
-import { getTulipVaultBySymbol } from '../utils/farmUtils';
 
 export const getAutoVaultsProgramId = () => { return config.programs.vault.id; };
 
@@ -195,7 +192,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
     saberAccounts,
     saberUserBalanceAccounts
-  ] = await getMultipleAccountsGrouped(connection, publicKeys, commitment);
+  ] = await getMultipleAccountsGrouped(conn, publicKeys, commitment);
 
   // This will store all the data for the vaults and used to update the VaultStore
   const vaultsData = new Map();
@@ -576,6 +573,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
         queriedVaults.platforms[platform] = [];
       }
 
+      // eslint-disable-next-line consistent-return
       allVaults.forEach((vault) => {
         if (vault.platform !== platform) {
           return null;
@@ -606,6 +604,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   if (Array.isArray(query.vaults)) {
     queriedVaults.vaults = [];
 
+    // eslint-disable-next-line consistent-return
     allVaults.forEach((vault) => {
       const mintAddress = vault.uiConfigData.mintAddress;
 

@@ -6,30 +6,33 @@ import {
   PublicKey,
   SystemProgram
 } from '@solana/web3.js';
-import { LENDING_PROGRAM_ID, TOKEN_PROGRAM_ID } from '../constants/ids';
-import * as BufferLayout from 'buffer-layout';
-import * as Layout from '../utils/layout-from-oyster';
-import BN from 'bn.js';
 import { Token } from '@solana/spl-token';
-import { getReserveByMintAddress, getReserveByName } from '../utils/lendingUtils';
-import { commitment, getMultipleAccounts } from '../utils/web3';
+import * as BufferLayout from 'buffer-layout';
+import BN from 'bn.js';
+import { compact, concat, isEmpty, map, slice, some } from 'lodash';
 
+import * as Layout from '../utils/layout-from-oyster';
 import {
+  getReserveByMintAddress,
+  getReserveByName,
+  commitment,
+  getMultipleAccounts,
   getLendingMarketAccount,
-  getPriceFeedsForReserve
-} from '../utils/config';
-import { TOKENS } from '../constants/tokens';
-import {
+  getPriceFeedsForReserve,
   ACCOUNT_LAYOUT,
   LENDING_RESERVE_LAYOUT,
   MINT_LAYOUT,
-  WAD
-} from '../utils/layouts';
-import { TokenAmount } from '../utils/safe-math';
-import { compact, concat, isEmpty, map, slice, some } from 'lodash';
-import { LENDING_RESERVES } from '../constants/lendingReserves';
-import { getAPY, getTokenAccounts } from '../utils/farmUtils';
-import { COMPOUNDING_CYCLES } from '../constants/farmConstants';
+  WAD,
+  TokenAmount,
+  getAPY,
+  getTokenAccounts
+} from '../utils';
+import {
+  TOKENS,
+  LENDING_PROGRAM_ID,
+  TOKEN_PROGRAM_ID,
+  COMPOUNDING_CYCLES
+} from '../constants';
 
 const LendingInstruction = {
   InitLendingMarket: 0,

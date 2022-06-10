@@ -4,13 +4,14 @@ import * as anchor from '@project-serum/anchor';
 import idl from '../constants/raydium_idl.json';
 
 // Utils
-import { commitment, getMultipleAccounts } from '../utils/web3';
-import { getFarmByMintAddress } from '../utils/farmUtils';
 import {
+  commitment,
+  getMultipleAccounts,
+  getFarmByMintAddress,
   getVaultAccount,
   getVaultProgramId,
   getVaultOldInfoAccount
-} from '../utils/config';
+} from '../utils';
 import BigNumber from 'bignumber.js';
 
 /**

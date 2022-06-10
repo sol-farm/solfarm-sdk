@@ -1,8 +1,5 @@
 import { NATIVE_SOL, TOKENS } from './tokens';
-
-import { FARM_PLATFORMS } from './farms';
-
-import { find } from 'lodash';
+import { FARM_PLATFORMS } from './farmConstants';
 
 export const RAYDIUM_VAULTS = [
   {
@@ -235,13 +232,3 @@ export const RAYDIUM_VAULTS = [
     migrated: true
   }
 ];
-
-export const getRaydiumVaultBySymbol = (symbol) => {
-  return find(RAYDIUM_VAULTS, (vault) => { return vault.symbol === symbol; });
-};
-
-export const getRaydiumVaultByMintAddress = (mintAddress) => {
-  return find(RAYDIUM_VAULTS, (vault) => {
-    return vault.mintAddress === mintAddress;
-  });
-};
