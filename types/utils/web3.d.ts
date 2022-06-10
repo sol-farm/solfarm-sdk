@@ -42,4 +42,4 @@ export function getMultipleAccounts(connection: any, publicKeys: any[], commitme
  */
 export function getMultipleAccountsGrouped(connection: any, publicKeyGroupedArray: any[][], commitment: string): Promise<any[][]>;
 export const commitment: "confirmed";
-export const AccountInfoResult: any;
+export const AccountInfoResult: import("superstruct").Struct;

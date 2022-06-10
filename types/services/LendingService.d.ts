@@ -66,8 +66,8 @@ export function getBalanceForLendingReserves({ wallet, connection, reserves }: {
     wallet: any;
     reserves: Array<string>;
 }): Promise<{
-    name: any;
-    mintAddress: any;
+    name: string;
+    mintAddress: string;
     deposited: number;
 }[]>;
 /**
@@ -82,7 +82,7 @@ export function getAPYForLendingReserves({ connection, reserves }: {
     connection: any;
     reserves: Array<string>;
 }): Promise<{
-    name: any;
-    mintAddress: any;
-    lendAPY: any;
+    name: string;
+    mintAddress: string;
+    lendAPY: number;
 }[]>;

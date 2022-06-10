@@ -12,6 +12,8 @@
         // only output d.ts files
         "emitDeclarationOnly": true,
         "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
         // Types should go into this directory.
         // Removing this would place the .d.ts files
         // next to the .js files
