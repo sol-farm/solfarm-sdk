@@ -16,7 +16,6 @@ export const LENDING_RESERVES = [
     decimals: TOKENS.USDC.decimals,
 
     // decimals: 6,
-    logo: usdcLogo,
     visible: true
   },
   {
@@ -32,7 +31,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
 
     decimals: TOKENS.USDT.decimals,
-    logo: usdtLogo,
     visible: true
   },
   {
@@ -48,7 +46,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
 
     decimals: TOKENS.RAY.decimals,
-    logo: rayLogo,
     visible: true,
     borrowDisabled: true
 
@@ -69,7 +66,6 @@ export const LENDING_RESERVES = [
     decimals: NATIVE_SOL.decimals,
 
     // decimals: 6,
-    logo: solLogo,
     visible: true
   },
   {
@@ -87,7 +83,6 @@ export const LENDING_RESERVES = [
     decimals: TOKENS.MSOLRAYDIUM.decimals,
 
     // decimals: 6,
-    logo: msolLogo,
     visible: true
   },
   {
@@ -105,7 +100,6 @@ export const LENDING_RESERVES = [
     decimals: TOKENS.BTC.decimals,
 
     // decimals: 6,
-    logo: btcLogo,
     visible: true
   },
   {
@@ -120,7 +114,6 @@ export const LENDING_RESERVES = [
       '5E2FmPnj2Yrn7ZbiGLYtesHQHuUiy4hUKacr7sywcsTv',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.whETH.decimals,
-    logo: whETHLogo,
     visible: true
   },
 
@@ -136,7 +129,6 @@ export const LENDING_RESERVES = [
       '3UWp5EuVFpeTpgRRGBudDfYJtiaQWcDYVRJ7scQL4hyo',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.ETH.decimals,
-    logo: ethLogo,
     visible: true
   },
   {
@@ -151,7 +143,6 @@ export const LENDING_RESERVES = [
       '8v5hr3iXfRTEByShHbSo2yZSLNdACfMJb3aZaJF413NY',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.GMT.decimals,
-    logo: gmtLogo,
     visible: true
   },
   {
@@ -166,7 +157,6 @@ export const LENDING_RESERVES = [
       '5UPnzJVwwgffmnLGs424wBa6e4n9ggRKNe6jHrfDmeUf',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.GST.decimals,
-    logo: gstLogo,
     visible: true
   },
   {
@@ -182,7 +172,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
 
     decimals: TOKENS.SHDW.decimals,
-    logo: shdwLogo,
     visible: true,
     borrowDisabled: true
 
@@ -201,7 +190,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
 
     decimals: TOKENS.BASIS.decimals,
-    logo: basisLogo,
     visible: true,
     borrowDisabled: true
 
@@ -219,7 +207,6 @@ export const LENDING_RESERVES = [
       'DDBxVLAVVmNBkocJ8JN24n5aQz7wpyCFZhQ3MJgUvWLn',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.PRISM.decimals,
-    logo: prismLogo,
     visible: true
   },
   {
@@ -235,7 +222,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
 
     decimals: TOKENS.wALEPH.decimals,
-    logo: wAlephLogo,
     visible: true
   },
 
@@ -252,7 +238,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
 
     decimals: TOKENS.SLCL.decimals,
-    logo: SLCLLogo,
     visible: true
   },
   {
@@ -270,7 +255,6 @@ export const LENDING_RESERVES = [
     decimals: TOKENS.stSOL.decimals,
 
     // decimals: 6,
-    logo: stSolLogo,
     visible: true
   },
   {
@@ -285,7 +269,6 @@ export const LENDING_RESERVES = [
       '4R4V2LatVjWUMpNj5XtfgG4rhPWMwk2ouVyN8gXXbYME',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.SRM.decimals,
-    logo: srmLogo,
     visible: true
   },
   {
@@ -300,7 +283,6 @@ export const LENDING_RESERVES = [
       '3CpSwf5Ait6YGD9XgmGqNqj6jqEBX3PWkxYumt8fzY7L',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.DFL.decimals,
-    logo: dflLogo,
     visible: true
   },
   {
@@ -315,7 +297,6 @@ export const LENDING_RESERVES = [
       '5LrfV4Bnj1uioSKAHTbL5hTh8JTKDLBKxGFxcSDeE2se',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.ATLAS.decimals,
-    logo: atlasLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -331,7 +312,6 @@ export const LENDING_RESERVES = [
       '3x5ZLLUwreSHmdPqegC3dt8jH6TXzmqSTxc9iFnt8Y9e',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.POLIS.decimals,
-    logo: polisLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -347,7 +327,6 @@ export const LENDING_RESERVES = [
       'CQMNF7T32Tg6oryUVSptFiKb4SA4j8f48GenUC8CPcei',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.TULIP.decimals,
-    logo: tulipLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -363,7 +342,6 @@ export const LENDING_RESERVES = [
       'GzxVcw54D5ghyHSkCNbKRYBo5seUGA2fADVrQcDMBixD',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.wbWBNB.decimals,
-    logo: wbWBNBLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -379,7 +357,6 @@ export const LENDING_RESERVES = [
       'GKG693ER7e9pjB2E9DFyLZGLaoAYPhAKq7WiWCbYbxic',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.REAL.decimals,
-    logo: realLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -395,7 +372,6 @@ export const LENDING_RESERVES = [
       'CdeNCwuYtrVPT4v8FVj2BYfUnZ7cnnuGjqgw5vNqFrvj',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.CAVE.decimals,
-    logo: caveLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -411,7 +387,6 @@ export const LENDING_RESERVES = [
       'CCnBMpVNBuL42QtxP2CtQc1pUbEGSYhx6VJ3dwWqq8GF',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.SAMO.decimals,
-    logo: samoLogo,
     visible: true
   },
   {
@@ -426,7 +401,6 @@ export const LENDING_RESERVES = [
       'FKctxJ52noZmRN9uofXJi2gJy4Fk7A8d87bdaiCYi7Qu',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.STEP.decimals,
-    logo: stepLogo,
     visible: false
   },
   {
@@ -441,7 +415,6 @@ export const LENDING_RESERVES = [
       '5hGH1JPeQzzAZv7DrZNiTyvMj8GEEVQDWR4bqAFzXieu',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.ORCA.decimals,
-    logo: orcaLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -457,7 +430,6 @@ export const LENDING_RESERVES = [
       'CJ21ub2pk4VwKK2JU97hR6krbfEmvcANkBNgGAbwgvDX',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.GENE.decimals,
-    logo: geneLogo,
     visible: true
   },
   {
@@ -472,7 +444,6 @@ export const LENDING_RESERVES = [
       'Aowk2m6NCpH39oane6F2z6jf9ffVnDRqHizpYCzgoDzy',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.MBS.decimals,
-    logo: mbsLogo,
     visible: true
   },
   {
@@ -487,7 +458,6 @@ export const LENDING_RESERVES = [
       'GXVMXjDPJmJXBKz594RhBaLSW7zcxJHtzXBWAiKcWKc9',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.sRLY.decimals,
-    logo: sRLYLogo,
     visible: true
   },
   {
@@ -502,7 +472,6 @@ export const LENDING_RESERVES = [
       '9HNaGXfNef3iCeZUKCUDmuVrpoCCf3n4MbdqrbRuUxZ',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.SNY.decimals,
-    logo: snyLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -518,7 +487,6 @@ export const LENDING_RESERVES = [
       'HdxLdWVJHha1BZVw9gp8WnKgLR4q9tPgyMRim16H8U88',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.ROPE.decimals,
-    logo: ropeLogo,
     visible: false
   },
   {
@@ -533,7 +501,6 @@ export const LENDING_RESERVES = [
       'LX7xER7JXiy8KrK1NnnRN44fN7LFJay6iUqH4cXBLKu',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.COPE.decimals,
-    logo: copeLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -549,7 +516,6 @@ export const LENDING_RESERVES = [
       'DKfXtqJFy5YCD4r4Uxyjampf7p6ahmS7FuAmkRzP6QbW',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.ALEPH.decimals,
-    logo: alephLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -565,7 +531,6 @@ export const LENDING_RESERVES = [
       'DAxvxAb2K6aFadQqn1rsJphirCS6AFM7mJrApPLSgELo',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.MEDIA.decimals,
-    logo: mediaLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -581,7 +546,6 @@ export const LENDING_RESERVES = [
       'GfWjrthTwB9DHwNQirS1XfGiFcRm9Q6KrjJdGyTATjCd',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.SLRS.decimals,
-    logo: slrsLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -597,7 +561,6 @@ export const LENDING_RESERVES = [
       '3raVVLvK8V8UhxAWKdeFBPLBj8vBU3cyuJ6MpuY4Gdm1',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.LIKE.decimals,
-    logo: likeLogo,
     visible: true,
     borrowDisabled: true
   },
@@ -614,71 +577,6 @@ export const LENDING_RESERVES = [
       '4kjiXc45iZazVUtwcywgQD7GVM4K4XGqodWNzVxajgkA',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.STARS.decimals,
-    logo: starsLogo,
     visible: false
-  },
-  {
-    name: 'weUNI',
-    account: 'F3y6c19hcn91RRkqZc6BN6d2B5F9etkNks9BzUxvqc2M',
-    mintAddress: '8FU95xFJhUUkyyCLU13HSzDLs7oC4QZdXQHL6SCeab36',
-    liquiditySupplyTokenAccount: '2V9F8ywuGbbMG3oqcixR1upAvXin6bijK3qbSHnALEof',
-    liquidityFeeReceiver: 'GzSqPWwjXyssJ7wVtMgxX6NvYKJJkjf589KQJwQz2BRb',
-    collateralTokenMint: '5ece7fjw86KL8yRFCrb1SmqyvXwwy5y6wcC8G6aquodx',
-    collateralTokenSupply: 'DAmpNbLFGWZrNqsBLF7dmYMM9QMbxktQ2Y8dfx88ZVTe',
-    destinationCollateralTokenAccount:
-      'HKxr5BdAnYc6oUMra1kyEdeqMMcNsmkDnAmwUa1gi2HP',
-    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-    decimals: TOKENS.weUNI.decimals,
-    logo: weUNILogo,
-    visible: false
-  },
-  {
-    name: 'weSUSHI',
-    account: 'FEDEBKAtZzod5oXv1UkSzEeDZGsFe3DK9Wq23o6B4QVN',
-    mintAddress: 'ChVzxWRmrTeSgwd3Ui3UumcN8KX7VK3WaD4KGeSKpypj',
-    liquiditySupplyTokenAccount: 'Fcj2wrSKfQYQ4JhF9x36DE8W6uKDrjSDqfTYFZ7Lvq6H',
-    liquidityFeeReceiver: '7DgrGVCFVLoNVqQXwYhHfR5uA8TS6TiHcKNEXPdG1re8',
-    collateralTokenMint: '7iQwV8krcZRqDicFXMh7rCgExXHrZ3WQKsTJrtA4yV9M',
-    collateralTokenSupply: '8n7bsURa8dQr5TDbjvz2yUQzzLYF9B6X97HJ4x6omniY',
-    destinationCollateralTokenAccount:
-      '4bYUHj4cvyw3cjF3b4L6HcG7EiRRvfH7adiJFnHbKAYS',
-    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-    decimals: TOKENS.weSUSHI.decimals,
-    logo: weSushiLogo,
-    visible: false
-  },
-  {
-    name: 'weDYDX',
-    account: '2vzY9tJNqutsGnUwPmka3LmAEjDXJ2qKeV9fAztD7Sbo',
-    mintAddress: '4Hx6Bj56eGyw8EJrrheM6LBQAvVYRikYCWsALeTrwyRU',
-    liquiditySupplyTokenAccount: 'BmG6AWHdf68MkooJ7D43irLcdkzB9x1CuHPwG8uxvoAc',
-    liquidityFeeReceiver: 'UsNuAp58e48ohXynJyVF7EBbaZyzgCfzrgknHoAGbRL',
-    collateralTokenMint: '8gKgXXcixZm1Qtn8D4t6FDUKZRjoc51AjffFCNXTc7EV',
-    collateralTokenSupply: '2H4cED2cKubaBUHmCHS779uyMUKpfkGAFpB52VsFS7C6',
-    destinationCollateralTokenAccount:
-      '4bYUHj4cvyw3cjF3b4L6HcG7EiRRvfH7adiJFnHbKAYS',
-    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-    decimals: TOKENS.weDYDX.decimals,
-    logo: weSushiLogo,
-    visible: false
-  },
-  {
-    name: 'wUST',
-    account: '8s5Gc63C8zUYRHXxjqyyNwXzK4fqQidcjx5a43Rmf54v',
-    mintAddress: '9vMJfxuKxXBoEa7rM12mYLMwTacLMLDJqHozw96WQL8i',
-    liquiditySupplyTokenAccount: '9GYdZbvYw7tcJPEmi1yDPGV9vdxfGpAPsZa84aA7XAop',
-    liquidityFeeReceiver: '4sGKGh6R8oyTGbim6xWjQCdAmnqFn2J93DXd6dAqaQEB',
-    collateralTokenMint: '4pgVP6LAbRDaSnR3jfDSBBkUPFxYgWYNhn2L4YRKpgcW',
-    collateralTokenSupply: '8cRq7PTqrruNyBqF5JkWjkTxQdXhNYTbTRHxLv11QH9g',
-    destinationCollateralTokenAccount:
-      'A1DvMBGvbzcbEDXg1WfAndDvMAwGYLgKRjpgZ8J7dCDv',
-    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-
-    decimals: TOKENS.wUST.decimals,
-
-    // decimals: 6,
-    logo: wUSTLogo,
-    visible: true,
-    borrowDisabled: true
   }
 ];
