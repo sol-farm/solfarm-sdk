@@ -38,8 +38,8 @@ export function getMultipleAccounts(connection: any, publicKeys: any[], commitme
  * @param {Array[]} publicKeyGroupedArray - Array of array of public keys
  * @param {String} commitment
  *
- * @returns {Array[]}
+ * @returns {Promise<Array[]>}
  */
-export function getMultipleAccountsGrouped(connection: any, publicKeyGroupedArray: any[][], commitment: string): any[][];
+export function getMultipleAccountsGrouped(connection: any, publicKeyGroupedArray: any[][], commitment: string): Promise<any[][]>;
 export const commitment: "confirmed";
-export const AccountInfoResult: any;
+export const AccountInfoResult: import("superstruct").Struct;

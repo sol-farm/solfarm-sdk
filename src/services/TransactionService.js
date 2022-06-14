@@ -1,16 +1,15 @@
 import * as anchor from '@project-serum/anchor';
 import * as serumAssoToken from '@project-serum/associated-token';
-import { SYSVAR_CLOCK_PUBKEY } from '@solana/web3.js';
 import * as serum from '@project-serum/serum';
 
 // Constants
-import { TOKENS } from '../constants/tokens';
+import { TOKENS } from '../constants';
 import idl from '../constants/raydium_idl.json';
 
 // Utils
-import { commitment } from '../utils/web3';
-import { getFarmByMintAddress } from '../utils/farmUtils';
 import {
+  commitment,
+  getFarmByMintAddress,
   getFarmPoolAuthority,
   getFarmPoolId,
   getFarmProgramId,
@@ -27,7 +26,8 @@ import {
   getFarmFusion,
   getVaultTulipTokenAccount,
   getVaultOldInfoAccount
-} from '../utils/config';
+} from '../utils';
+import { SYSVAR_CLOCK_PUBKEY } from '@solana/web3.js';
 
 /**
  *

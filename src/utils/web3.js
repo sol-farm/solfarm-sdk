@@ -204,7 +204,7 @@ export async function getMultipleAccounts (connection, publicKeys, commitment) {
  * @param {Array[]} publicKeyGroupedArray - Array of array of public keys
  * @param {String} commitment
  *
- * @returns {Array[]}
+ * @returns {Promise<Array[]>}
  */
 export async function getMultipleAccountsGrouped (
   connection,

@@ -9,7 +9,6 @@ export function getReserveByName(name: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -23,7 +22,6 @@ export function getReserveByName(name: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
 };
@@ -38,7 +36,6 @@ export function getReserveByMintAddress(mintAddress: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -52,7 +49,6 @@ export function getReserveByMintAddress(mintAddress: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
 };
@@ -67,7 +63,6 @@ export function getReserveByCollateralTokenMint(collateralTokenMint: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -81,7 +76,6 @@ export function getReserveByCollateralTokenMint(collateralTokenMint: any): {
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
 };

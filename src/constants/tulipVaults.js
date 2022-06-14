@@ -1,6 +1,5 @@
 import { TOKENS } from './tokens';
-
-import { FARM_PLATFORMS } from './farms';
+import { FARM_PLATFORMS } from './farmConstants';
 
 export const TULIP_VAULTS = [
   {

@@ -9,7 +9,6 @@ export const LENDING_RESERVES: ({
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled?: undefined;
 } | {
@@ -23,7 +22,6 @@ export const LENDING_RESERVES: ({
     destinationCollateralTokenAccount: string;
     quoteTokenMint: string;
     decimals: number;
-    logo: any;
     visible: boolean;
     borrowDisabled: boolean;
 })[];

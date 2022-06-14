@@ -1,4 +1,5 @@
 import { NATIVE_SOL, TOKENS } from './tokens';
+
 export const FARMS = [
   {
     symbol: 'RAYDIUM-RAY-whETH',
@@ -978,12 +979,3 @@ export const FARMS = [
     coins: [TOKENS.ROPE, TOKENS.USDC]
   }
 ];
-
-export const FARM_PLATFORMS = {
-  RAYDIUM: 'raydium',
-  SABER: 'saber',
-  ORCA: 'orca',
-  TULIP: 'tulip',
-  SOLEND: 'solend',
-  MANGO: 'mango'
-};

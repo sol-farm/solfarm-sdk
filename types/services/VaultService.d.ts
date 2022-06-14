@@ -9,4 +9,4 @@
 export function getBalancesForAutoVaults(conn: any, wallet: any, query?: any): Promise<{
     vaults: any[];
 }>;
-export function getAutoVaultsProgramId(): any;
+export function getAutoVaultsProgramId(): string;
