@@ -27,7 +27,7 @@ export const getVaultOldInfoAccount = (name) => {
     return account.name === name;
   });
 
-  return vaultAccount?.oldInfoAccount;
+  return vaultAccount?.oldInfoAccount || vaultAccount?.infoAccount;
 };
 
 export const getVaultAccount = (name) => {
