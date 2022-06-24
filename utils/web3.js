@@ -261,9 +261,15 @@ function jsonRpcResult (resultDescription) {
   ]);
 }
 
+/**
+ *
+ * @param {*} resultDescription
+ * @returns
+ */
 function jsonRpcResultAndContext (resultDescription) {
   return jsonRpcResult({
     context: struct({
+      apiVersion: 'string?',
       slot: 'number'
     }),
     value: resultDescription

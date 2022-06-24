@@ -8,6 +8,13 @@ export function deriveVaultUserAccount (vaultAccount, authority, program) {
   );
 }
 
+export function deriveVaultDepositQueue (vaultPda, program) {
+  return anchor.web3.PublicKey.findProgramAddress(
+    [vaultPda.toBuffer(), Buffer.from('deposit_queue')],
+    program
+  );
+}
+
 export function getOrcaPeriodRate (
   globalFarm,
   totalLiquidity,

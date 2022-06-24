@@ -65,16 +65,16 @@ import {
   getVaultSerumVaultSigner
 } from '../utils/config';
 
-import { ACCOUNT_LAYOUT, LENDING_RESERVE_LAYOUT, WAD } from '../utils/layouts';
+import { ACCOUNT_LAYOUT, LENDING_OBLIGATION_LAYOUT, LENDING_OBLIGATION_LIQUIDITY, LENDING_RESERVE_LAYOUT, WAD } from '../utils/layouts';
 import { getReserveByName } from '../utils/lendingUtils';
 import leverageIdl from '../constants/leverage_idl.json';
-import _, { concat, find, findIndex, map, slice } from 'lodash';
+import { find, findIndex, get, isNil, map, slice } from 'lodash';
 import { commitment, getMultipleAccounts, sendAllTransactions, createAssociatedTokenAccount } from '../utils/web3';
 import { TOKENS } from '../constants/tokens';
 import { getFarmBySymbol, getTokenAccounts, isMintAddressExisting } from '../utils/farmUtils';
 import { FARM_PLATFORMS } from '../constants/farms';
 import { AQUAFARM_PROGRAM_ID, LIQUIDITY_POOL_PROGRAM_ID_V4, TOKEN_PROGRAM_ID } from '../constants/ids';
-import { deriveVaultUserAccount } from '../utils/vault';
+import { deriveVaultDepositQueue, deriveVaultUserAccount } from '../utils/vault';
 import { TokenAmount } from '../utils/safe-math';
 import { CLOSE_POSITION_OPTIONS } from '../constants/leverageFarmingConstants';
 import { LENDING_RESERVES } from '../constants/lendingReserves';
@@ -1162,12 +1162,217 @@ async function _swapTokens ({
   return txn;
 }
 
+// async function _addLiquidity ({
+//   connection,
+//   assetSymbol,
+//   obligationIdx,
+//   checkLpTokenAccount = false,
+//   wallet
+// }) {
+//   let anchor = anchorold;
+
+//   const walletToInitialize = {
+//       signTransaction: wallet.signTransaction,
+//       signAllTransactions: wallet.signAllTransactions,
+//       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
+//     },
+//     provider = new anchor.Provider(connection, walletToInitialize, {
+//       skipPreflight: true,
+//       preflightCommitment: commitment
+//     });
+
+//   anchor.setProvider(provider);
+
+//   // Address of the deployed program.
+//   const vaultProgramId = new anchor.web3.PublicKey(getLendingFarmProgramId());
+
+//   // Generate the program client from IDL.
+//   const vaultProgram = new anchor.Program(leverageIdl, vaultProgramId);
+
+//   const farm = getFarmBySymbol(assetSymbol);
+
+//   const [userFarm] = await findUserFarmAddress(
+//     provider.wallet.publicKey,
+//     new anchor.web3.PublicKey(getLendingFarmProgramId()),
+//     new anchor.BN(0),
+//     new anchor.BN(farm.marginIndex)
+//   );
+
+//   // console.log('user farm address', userFarm.toBase58());
+
+//   const solfarmVaultProgramId = new anchor.web3.PublicKey(
+//     farm.platform === FARM_PLATFORMS.ORCA ?
+//       getOrcaVaultProgramId() :
+//       getVaultProgramId()
+//   );
+
+//   const [leveragedFarm] = await findLeveragedFarmAddress(
+//     solfarmVaultProgramId,
+//     new anchor.web3.PublicKey(
+//       getLendingFarmAccount(assetSymbol).serum_market
+//     ),
+//     new anchor.web3.PublicKey(getLendingFarmProgramId()),
+//     new anchor.BN(farm.marginIndex)
+//   );
+
+//   const [userObligationAcct1] =
+//     await findUserFarmObligationAddress(
+//       provider.wallet.publicKey,
+//       userFarm,
+//       new anchor.web3.PublicKey(getLendingFarmProgramId()),
+//       new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+//     );
+
+//   const lendingProgramId = new anchor.web3.PublicKey(getLendingProgramId());
+
+//   const lendingMarketAccount = new anchor.web3.PublicKey(
+//     getLendingMarketAccount()
+//   );
+
+//   const [derivedLendingMarketAuthority] =
+//     await anchor.web3.PublicKey.findProgramAddress(
+//       [lendingMarketAccount.toBytes()],
+//       lendingProgramId
+//     );
+
+//   const serumMarketKey = new anchor.web3.PublicKey(
+//     getLendingFarmAccount(assetSymbol).serum_market
+//   );
+//   const serumMarketVaultSigner = new anchor.web3.PublicKey(
+//     getVaultSerumVaultSigner(assetSymbol)
+//   );
+
+//   let [obligationVaultAccount] =
+//     await findObligationVaultAddress(
+//       userFarm,
+//       new anchor.BN(obligationIdx), // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+//       new anchor.web3.PublicKey(getLendingFarmProgramId())
+//     );
+
+//   const obligationLpTokenAccount = await createAssociatedTokenAccount(
+//     provider,
+//     obligationVaultAccount,
+//     new anchor.web3.PublicKey(farm.mintAddress)
+//   );
+
+//   let dexProgramId = new anchor.web3.PublicKey(
+//     getLendingFarmAccount(assetSymbol).serum_dex_program // lendingInfo -> farm -> accounts -> serumDexProgram
+//   );
+
+//   const txn = new anchor.web3.Transaction();
+
+//   if (checkLpTokenAccount) {
+//     const [obligationLPTokenAccountInfo] = await getMultipleAccounts(
+//       connection,
+//       [obligationLpTokenAccount],
+//       commitment
+//     );
+
+//     if (!obligationLPTokenAccountInfo) {
+//       txn.add(
+//         await serumAssoToken.createAssociatedTokenAccount(
+//           provider.wallet.publicKey,
+//           obligationVaultAccount,
+//           new anchor.web3.PublicKey(farm.mintAddress)
+//         )
+//       );
+//     }
+//   }
+
+//   const [userPositionInfoAddress] = await derivePositionInfoAddress(
+//     userFarm,
+//     vaultProgramId,
+//     new anchor.BN(obligationIdx)
+//   );
+
+//   if (obligationProgress < 3) {
+//     const swapTokenTxn = await _swapTokens({
+//       wallet,
+//       connection,
+//       tokenAccounts,
+//       assetSymbol,
+//       obligationIdx
+//     });
+
+//     txn.add(swapTokenTxn);
+//   }
+
+//   txn.add(
+//     vaultProgram.instruction.addLiquidityStats(new anchor.BN(obligationIdx), {
+//       accounts: {
+//         authority: provider.wallet.publicKey,
+//         userFarm: userFarm,
+//         leveragedFarm: leveragedFarm,
+//         liquidityProgramId: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_liquidity_program
+//         ),
+//         ammId: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_amm_id
+//         ),
+//         ammAuthority: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_amm_authority
+//         ),
+//         ammOpenOrders: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_amm_open_orders
+//         ),
+//         ammQuantitiesOrTargetOrders: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(
+//             assetSymbol
+//           ).raydium_amm_quantities_or_target_orders
+//         ),
+//         lpMintAddress: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_lp_mint_address
+//         ),
+//         poolCoinTokenAccount: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_coin_token_account
+//         ),
+//         poolPcTokenAccount: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_pc_token_account
+//         ),
+//         poolWithdrawQueue: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).raydium_pool_withdraw_queue
+//         ),
+//         serumMarket: serumMarketKey,
+//         serumVaultSigner: serumMarketVaultSigner,
+//         tokenProgram: splToken.TOKEN_PROGRAM_ID,
+//         levFarmCoinTokenAccount: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).farm_base_token_account
+//         ),
+//         levFarmPcTokenAccount: new anchor.web3.PublicKey(
+//           getLendingFarmAccount(assetSymbol).farm_quote_token_account
+//         ),
+//         userLpTokenAccount: obligationLpTokenAccount,
+//         clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
+//         pythPriceAccount: new anchor.web3.PublicKey(
+//           getPriceFeedsForReserve(assetSymbol).price_account
+//         ),
+//         lendingMarketAccount: lendingMarketAccount,
+//         userFarmObligation: userObligationAcct1,
+//         derivedLendingMarketAuthority: derivedLendingMarketAuthority,
+//         lendingProgram: lendingProgramId,
+//         dexProgram: dexProgramId
+//       },
+//       remainingAccounts: [
+//         {
+//           isSigner: false,
+//           isWritable: true,
+//           pubkey: userPositionInfoAddress
+//         }
+//       ]
+//     })
+//   );
+
+//   return txn;
+// }
+
 async function _addLiquidity ({
+  wallet,
   connection,
+  tokenAccounts,
   assetSymbol,
   obligationIdx,
-  checkLpTokenAccount = false,
-  wallet
+  obligationProgress,
+  checkLpTokenAccount = false
 }) {
   let anchor = anchorold;
 
@@ -1202,8 +1407,7 @@ async function _addLiquidity ({
 
   const solfarmVaultProgramId = new anchor.web3.PublicKey(
     farm.platform === FARM_PLATFORMS.ORCA ?
-      getOrcaVaultProgramId() :
-      getVaultProgramId()
+      getOrcaVaultProgramId() : getVaultProgramId()
   );
 
   const [leveragedFarm] = await findLeveragedFarmAddress(
@@ -1216,12 +1420,12 @@ async function _addLiquidity ({
   );
 
   const [userObligationAcct1] =
-    await findUserFarmObligationAddress(
-      provider.wallet.publicKey,
-      userFarm,
-      new anchor.web3.PublicKey(getLendingFarmProgramId()),
-      new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
-    );
+      await findUserFarmObligationAddress(
+        provider.wallet.publicKey,
+        userFarm,
+        new anchor.web3.PublicKey(getLendingFarmProgramId()),
+        new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+      );
 
   const lendingProgramId = new anchor.web3.PublicKey(getLendingProgramId());
 
@@ -1230,10 +1434,10 @@ async function _addLiquidity ({
   );
 
   const [derivedLendingMarketAuthority] =
-    await anchor.web3.PublicKey.findProgramAddress(
-      [lendingMarketAccount.toBytes()],
-      lendingProgramId
-    );
+      await anchor.web3.PublicKey.findProgramAddress(
+        [lendingMarketAccount.toBytes()],
+        lendingProgramId
+      );
 
   const serumMarketKey = new anchor.web3.PublicKey(
     getLendingFarmAccount(assetSymbol).serum_market
@@ -1243,11 +1447,11 @@ async function _addLiquidity ({
   );
 
   let [obligationVaultAccount] =
-    await findObligationVaultAddress(
-      userFarm,
-      new anchor.BN(obligationIdx), // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
-      new anchor.web3.PublicKey(getLendingFarmProgramId())
-    );
+      await findObligationVaultAddress(
+        userFarm,
+        new anchor.BN(obligationIdx), // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+        new anchor.web3.PublicKey(getLendingFarmProgramId())
+      );
 
   const obligationLpTokenAccount = await createAssociatedTokenAccount(
     provider,
@@ -1285,70 +1489,170 @@ async function _addLiquidity ({
     new anchor.BN(obligationIdx)
   );
 
-  txn.add(
-    vaultProgram.instruction.addLiquidityStats(new anchor.BN(obligationIdx), {
-      accounts: {
-        authority: provider.wallet.publicKey,
-        userFarm: userFarm,
-        leveragedFarm: leveragedFarm,
-        liquidityProgramId: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_liquidity_program
-        ),
-        ammId: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_amm_id
-        ),
-        ammAuthority: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_amm_authority
-        ),
-        ammOpenOrders: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_amm_open_orders
-        ),
-        ammQuantitiesOrTargetOrders: new anchor.web3.PublicKey(
-          getLendingFarmAccount(
-            assetSymbol
-          ).raydium_amm_quantities_or_target_orders
-        ),
-        lpMintAddress: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_lp_mint_address
-        ),
-        poolCoinTokenAccount: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_coin_token_account
-        ),
-        poolPcTokenAccount: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_pc_token_account
-        ),
-        poolWithdrawQueue: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).raydium_pool_withdraw_queue
-        ),
-        serumMarket: serumMarketKey,
-        serumVaultSigner: serumMarketVaultSigner,
-        tokenProgram: splToken.TOKEN_PROGRAM_ID,
-        levFarmCoinTokenAccount: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).farm_base_token_account
-        ),
-        levFarmPcTokenAccount: new anchor.web3.PublicKey(
-          getLendingFarmAccount(assetSymbol).farm_quote_token_account
-        ),
-        userLpTokenAccount: obligationLpTokenAccount,
-        clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
-        pythPriceAccount: new anchor.web3.PublicKey(
-          getPriceFeedsForReserve(assetSymbol).price_account
-        ),
-        lendingMarketAccount: lendingMarketAccount,
-        userFarmObligation: userObligationAcct1,
-        derivedLendingMarketAuthority: derivedLendingMarketAuthority,
-        lendingProgram: lendingProgramId,
-        dexProgram: dexProgramId
-      },
-      remainingAccounts: [
-        {
-          isSigner: false,
-          isWritable: true,
-          pubkey: userPositionInfoAddress
-        }
-      ]
-    })
-  );
+  if (obligationProgress < 3) {
+    const swapTokenTxn = await _swapTokens({
+      connection,
+      wallet,
+      tokenAccounts,
+      obligationIdx,
+      assetSymbol
+    });
+
+    txn.add(swapTokenTxn);
+  }
+
+  switch (farm.platform) {
+    case FARM_PLATFORMS.RAYDIUM: {
+      txn.add(
+        vaultProgram.instruction.addLiquidityStats(new anchor.BN(obligationIdx), {
+          accounts: {
+            authority: provider.wallet.publicKey,
+            userFarm: userFarm,
+            leveragedFarm: leveragedFarm,
+            liquidityProgramId: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_liquidity_program
+            ),
+            ammId: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_amm_id
+            ),
+            ammAuthority: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_amm_authority
+            ),
+            ammOpenOrders: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_amm_open_orders
+            ),
+            ammQuantitiesOrTargetOrders: new anchor.web3.PublicKey(
+              getLendingFarmAccount(
+                assetSymbol
+              ).raydium_amm_quantities_or_target_orders
+            ),
+            lpMintAddress: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_lp_mint_address
+            ),
+            poolCoinTokenAccount: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_coin_token_account
+            ),
+            poolPcTokenAccount: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_pc_token_account
+            ),
+            poolWithdrawQueue: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).raydium_pool_withdraw_queue
+            ),
+            serumMarket: serumMarketKey,
+            serumVaultSigner: serumMarketVaultSigner,
+            tokenProgram: splToken.TOKEN_PROGRAM_ID,
+            levFarmCoinTokenAccount: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).farm_base_token_account
+            ),
+            levFarmPcTokenAccount: new anchor.web3.PublicKey(
+              getLendingFarmAccount(assetSymbol).farm_quote_token_account
+            ),
+            userLpTokenAccount: obligationLpTokenAccount,
+            clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
+            pythPriceAccount: new anchor.web3.PublicKey(
+              getPriceFeedsForReserve(assetSymbol).price_account
+            ),
+            lendingMarketAccount: lendingMarketAccount,
+            userFarmObligation: userObligationAcct1,
+            derivedLendingMarketAuthority: derivedLendingMarketAuthority,
+            lendingProgram: lendingProgramId,
+            dexProgram: dexProgramId
+          },
+          remainingAccounts: [
+            {
+              isSigner: false,
+              isWritable: true,
+              pubkey: userPositionInfoAddress
+            }
+          ]
+        })
+      );
+
+      break;
+    }
+
+    case FARM_PLATFORMS.ORCA: {
+      const [orcaVaultUserAccountAddress, orcaVaultUserAccountNonce] =
+          await deriveVaultUserAccount(
+            new anchor.web3.PublicKey(getOrcaVaultAccount(assetSymbol)),
+            obligationVaultAccount,
+            solfarmVaultProgramId
+          );
+      const vaultPdaAccount = new anchor.web3.PublicKey(
+        getVaultPdaAccount(assetSymbol)
+      );
+
+      const [vaultDepositQueue] = await deriveVaultDepositQueue(vaultPdaAccount, solfarmVaultProgramId);
+
+      const vaultAccount = new anchor.web3.PublicKey(
+        getVaultAccount(assetSymbol)
+      );
+
+      txn.add(
+        vaultProgram.instruction.orcaAddLiquidityQueue(
+          {
+            accountNonce: orcaVaultUserAccountNonce,
+            obligationIndex: new anchor.BN(obligationIdx)
+          }, {
+            accounts: {
+              authority: provider.wallet.publicKey,
+              userFarm: userFarm,
+              leveragedFarm: leveragedFarm,
+              vaultAccount: vaultAccount,
+              vaultUserAccount: orcaVaultUserAccountAddress,
+              tokenProgram: splToken.TOKEN_PROGRAM_ID,
+              rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+              vaultPda: vaultPdaAccount,
+              systemProgram: anchor.web3.SystemProgram.programId,
+              levFarmCoinTokenAccount: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).farm_base_token_account
+              ),
+              levFarmPcTokenAccount: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).farm_quote_token_account
+              ),
+              poolCoinTokenAccount: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).raydium_coin_token_account
+              ),
+              poolPcTokenAccount: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).raydium_pc_token_account
+              ),
+              liquidityProgramId: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).raydium_liquidity_program
+              ),
+              ammId: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).raydium_amm_id
+              ),
+              ammAuthority: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).raydium_amm_authority
+              ),
+              vaultDepositQueue: vaultDepositQueue,
+              lpMintAddress: new anchor.web3.PublicKey(
+                getLendingFarmAccount(assetSymbol).raydium_lp_mint_address
+              ),
+              lendingMarketAccount: lendingMarketAccount,
+              userFarmObligation: userObligationAcct1,
+              derivedLendingMarketAuthority: derivedLendingMarketAuthority,
+              lendingProgram: lendingProgramId,
+              dexProgram: dexProgramId,
+              solfarmVaultProgram: solfarmVaultProgramId,
+              obligationVaultAddress: obligationVaultAccount
+            },
+            remainingAccounts: [
+              {
+                isSigner: false,
+                isWritable: true,
+                pubkey: userPositionInfoAddress
+              }
+            ]
+          })
+      );
+
+      break;
+    }
+
+    default:
+      break;
+  }
 
   return txn;
 }
@@ -2080,9 +2384,9 @@ async function _withdrawOrcaDoubleDip ({
     tulipTokenMint = new anchor.web3.PublicKey(TOKENS.TULIP.mintAddress);
 
   const solfarmVaultProgramId = new anchor.web3.PublicKey(
-    farm.platform === FARM_PLATFORMS.ORCA
-      ? getOrcaVaultProgramId()
-      : getVaultProgramId()
+    farm.platform === FARM_PLATFORMS.ORCA ?
+      getOrcaVaultProgramId() :
+      getVaultProgramId()
   );
 
   let [userFarm] = await findUserFarmAddress(
@@ -2772,6 +3076,7 @@ async function _withdrawMarginLpTokens ({
 
 async function _removeLiquidity ({
   wallet,
+  connection,
   assetSymbol,
   obligationIdx
 }) {
@@ -2783,7 +3088,7 @@ async function _removeLiquidity ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -3004,7 +3309,7 @@ async function _swapTokensForRepaying ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -3498,6 +3803,7 @@ async function _swapTokensForRepaying ({
 }
 
 async function _repayObligationLiquidity ({
+  connection,
   wallet,
   tokenAccounts,
   assetSymbol,
@@ -3511,7 +3817,7 @@ async function _repayObligationLiquidity ({
       signAllTransactions: wallet.signAllTransactions,
       publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
     },
-    provider = new anchor.Provider(window.$web3, walletToInitialize, {
+    provider = new anchor.Provider(connection, walletToInitialize, {
       skipPreflight: true,
       preflightCommitment: commitment
     });
@@ -3624,7 +3930,7 @@ async function _repayObligationLiquidity ({
 
   if (baseToken.symbol === 'SOL') {
     const lamportsToCreateAccount =
-      await window.$web3.getMinimumBalanceForRentExemption(
+      await connection.getMinimumBalanceForRentExemption(
         ACCOUNT_LAYOUT.span,
         commitment
       );
@@ -3656,7 +3962,7 @@ async function _repayObligationLiquidity ({
 
   if (quoteToken.symbol === 'SOL') {
     const lamportsToCreateAccount =
-      await window.$web3.getMinimumBalanceForRentExemption(
+      await connection.getMinimumBalanceForRentExemption(
         ACCOUNT_LAYOUT.span,
         commitment
       );
@@ -4057,10 +4363,9 @@ async function closeMarginPosition ({
   connection,
   assetSymbol,
   obligationIdx,
-  borrows,
   selectedOption,
   partialClose,
-  onSendTransactions
+  onSendTransactions = sendAllTransactions
 } = { selectedOption: CLOSE_POSITION_OPTIONS.MINIMIZE_TRADING, partialClose: 100 }) {
   const farm = getFarmBySymbol(assetSymbol);
 
@@ -4099,14 +4404,32 @@ async function closeMarginPosition ({
 
   const { obligations } = userFarmInfo || {};
 
+  let borrows = [];
+
+  const obligationPositionState = obligations[obligationIdx].positionState;
+
+  const lendingObligationAccount = await connection.getAccountInfo(obligations[obligationIdx].obligationAccount);
+
+  let extraObligationData = lendingObligationAccount.data.slice(143, 303);
+
+  let decodedObligationAccount = LENDING_OBLIGATION_LAYOUT.decode(
+    lendingObligationAccount.data
+  );
+
+  for (let i = 0; i < decodedObligationAccount.borrowsLen; i++) {
+    borrows.push(
+      LENDING_OBLIGATION_LIQUIDITY.decode(
+        extraObligationData.slice(i * 80, (i + 1) * 80)
+      )
+    );
+  }
+
   const baseToken = farm.coins[0],
     quoteToken = farm.coins[1],
     coinReserve = getReserveByName(baseToken.symbol),
     pcReserve = getReserveByName(quoteToken.symbol);
   let coinBorrow = 0,
     pcBorrow = 0;
-
-  let obligationPositionState = obligations[obligationIdx].positionState;
 
   const { withdrawPercent } = obligations[obligationIdx];
 
@@ -4273,7 +4596,13 @@ async function closeMarginPosition ({
   }
 
   if (obligationProgress > 0 && obligationProgress < 4 && farm.platform === FARM_PLATFORMS.RAYDIUM) {
-    transactions.push(_removeLiquidity(assetSymbol, obligationIdx));
+    transactions.push(_removeLiquidity({
+      wallet,
+      connection,
+      tokenAccounts,
+      assetSymbol,
+      obligationIdx
+    }));
     extraSigners.push([]);
   }
 
@@ -4285,7 +4614,7 @@ async function closeMarginPosition ({
         tokenAccounts,
         assetSymbol,
         obligationIdx,
-        obligationBorrows,
+        obligationBorrowReserves: obligationBorrows,
         selectedOption
       })
     );
@@ -4299,11 +4628,847 @@ async function closeMarginPosition ({
       tokenAccounts,
       assetSymbol,
       obligationIdx,
-      obligationBorrows
+      obligationBorrowReserves: obligationBorrows
     });
 
     transactions.push(repayTxn);
     extraSigners.push(signer);
+  }
+
+  return Promise.all(transactions).then((fulfilledTransactions) => {
+    return onSendTransactions(
+      connection,
+      wallet,
+      fulfilledTransactions,
+      [],
+      extraSigners
+    );
+  })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+async function _topUpPosition ({
+  wallet,
+  connection,
+  tokenAccounts,
+  assetSymbol,
+  baseTokenAmount,
+  quoteTokenAmount,
+  obligationIdx
+}) {
+  let anchor = anchorold;
+
+  const walletToInitialize = {
+      signTransaction: wallet.signTransaction,
+      signAllTransactions: wallet.signAllTransactions,
+      publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
+    },
+    provider = new anchor.Provider(connection, walletToInitialize, {
+      skipPreflight: true,
+      preflightCommitment: commitment
+    }),
+    farm = getFarmBySymbol(assetSymbol),
+    baseToken = farm.coins[0], // base / coin
+    quoteToken = farm.coins[1]; // quote / pc | @to-do: change coins[0] and coins[1] to baseToken and quoteToken
+
+  anchor.setProvider(provider);
+
+  // Address of the deployed program.
+  const vaultProgramId = new anchor.web3.PublicKey(getLendingFarmProgramId());
+
+  // Generate the program client from IDL.
+  const vaultProgram = new anchor.Program(leverageIdl, vaultProgramId);
+
+  const [userFarm] = await findUserFarmAddress(
+    provider.wallet.publicKey,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(0),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  const solfarmVaultProgramId = new anchor.web3.PublicKey(
+    farm.platform === FARM_PLATFORMS.ORCA ?
+      getOrcaVaultProgramId() : getVaultProgramId()
+  );
+
+  const [leveragedFarm] = await findLeveragedFarmAddress(
+    solfarmVaultProgramId,
+    new anchor.web3.PublicKey(
+      getLendingFarmAccount(assetSymbol).serum_market
+    ),
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  const [userObligationAcct1] =
+    await findUserFarmObligationAddress(
+      provider.wallet.publicKey,
+      userFarm,
+      new anchor.web3.PublicKey(getLendingFarmProgramId()),
+      new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+    );
+
+  const lendingProgramId = new anchor.web3.PublicKey(getLendingProgramId());
+
+  const lendingMarketAccount = new anchor.web3.PublicKey(
+    getLendingMarketAccount()
+  );
+
+  const [derivedLendingMarketAuthority] =
+    await anchor.web3.PublicKey.findProgramAddress(
+      [lendingMarketAccount.toBytes()],
+      lendingProgramId
+    );
+
+  const txn = new anchor.web3.Transaction();
+
+  let coinSourceTokenAccount, pcSourceTokenAccount;
+
+  if (
+    baseToken.symbol !== 'SOL' &&
+    !isMintAddressExisting(tokenAccounts, baseToken.mintAddress)
+  ) {
+    txn.add(
+      await serumAssoToken.createAssociatedTokenAccount(
+
+        // who will pay for the account creation
+        wallet.publicKey,
+
+        // who is the account getting created for
+        wallet.publicKey,
+
+        // what mint address token is being created
+        new anchor.web3.PublicKey(baseToken.mintAddress)
+      )
+    );
+
+    coinSourceTokenAccount = await createAssociatedTokenAccount(
+      provider,
+      provider.wallet.publicKey,
+      new anchor.web3.PublicKey(baseToken.mintAddress)
+    );
+  }
+  else {
+    coinSourceTokenAccount = new anchor.web3.PublicKey(
+      tokenAccounts[baseToken.mintAddress]?.tokenAccountAddress
+    );
+  }
+
+  if (
+    quoteToken.symbol !== 'SOL' &&
+    !isMintAddressExisting(tokenAccounts, quoteToken.mintAddress)
+  ) {
+    txn.add(
+      await serumAssoToken.createAssociatedTokenAccount(
+
+        // who will pay for the account creation
+        provider.wallet.publicKey,
+
+        // who is the account getting created for
+        provider.wallet.publicKey,
+
+        // what mint address token is being created
+        new anchor.web3.PublicKey(quoteToken.mintAddress)
+      )
+    );
+
+    pcSourceTokenAccount = await createAssociatedTokenAccount(
+      provider,
+      provider.wallet.publicKey,
+      new anchor.web3.PublicKey(quoteToken.mintAddress)
+    );
+  }
+  else {
+    pcSourceTokenAccount = new anchor.web3.PublicKey(
+      tokenAccounts[quoteToken.mintAddress]?.tokenAccountAddress
+    );
+  }
+
+  let signers = [];
+
+  if (baseToken.symbol === 'SOL') {
+    const lamportsToCreateAccount =
+      await connection.getMinimumBalanceForRentExemption(
+        ACCOUNT_LAYOUT.span,
+        commitment
+      );
+
+    const newAccount = new anchor.web3.Account();
+
+    signers.push(newAccount);
+
+    coinSourceTokenAccount = newAccount.publicKey;
+    txn.add(
+      SystemProgram.createAccount({
+        fromPubkey: wallet.publicKey,
+        newAccountPubkey: coinSourceTokenAccount,
+        lamports:
+          baseTokenAmount * Math.pow(10, baseToken.decimals) +
+          lamportsToCreateAccount,
+        space: ACCOUNT_LAYOUT.span,
+        programId: TOKEN_PROGRAM_ID
+      })
+    );
+
+    txn.add(
+      splToken.Token.createInitAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        new PublicKey(TOKENS.WSOL.mintAddress),
+        coinSourceTokenAccount,
+        wallet.publicKey
+      )
+    );
+  }
+
+  if (quoteToken.symbol === 'SOL') {
+    const lamportsToCreateAccount =
+      await connection.getMinimumBalanceForRentExemption(
+        ACCOUNT_LAYOUT.span,
+        commitment
+      );
+
+    const newAccount = new anchor.web3.Account();
+
+    signers.push(newAccount);
+
+    pcSourceTokenAccount = newAccount.publicKey;
+    txn.add(
+      SystemProgram.createAccount({
+        fromPubkey: wallet.publicKey,
+        newAccountPubkey: pcSourceTokenAccount,
+        lamports:
+          quoteTokenAmount * Math.pow(10, quoteToken.decimals) +
+          lamportsToCreateAccount,
+        space: ACCOUNT_LAYOUT.span,
+        programId: TOKEN_PROGRAM_ID
+      })
+    );
+
+    txn.add(
+      splToken.Token.createInitAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        new PublicKey(TOKENS.WSOL.mintAddress),
+        pcSourceTokenAccount,
+        wallet.publicKey
+      )
+    );
+  }
+
+  const [userPositionInfoAddress] = await derivePositionInfoAddress(
+    userFarm,
+    vaultProgramId,
+    new anchor.BN(obligationIdx)
+  );
+
+  txn.add(
+    vaultProgram.instruction.topUpPositionStats(
+      new anchor.BN(baseTokenAmount * Math.pow(10, baseToken.decimals)),
+      new anchor.BN(quoteTokenAmount * Math.pow(10, quoteToken.decimals)),
+      new anchor.BN(obligationIdx),
+      {
+        accounts: {
+          authority: provider.wallet.publicKey,
+          userFarm: userFarm,
+          leveragedFarm: leveragedFarm,
+          userFarmObligation: userObligationAcct1,
+          coinSourceTokenAccount,
+          coinDestinationTokenAccount: new anchor.web3.PublicKey(
+            getLendingFarmAccount(assetSymbol).farm_base_token_account
+          ),
+          coinDepositReserveAccount: new anchor.web3.PublicKey(
+            getLendingReserve(baseToken.symbol).account
+          ),
+          pcSourceTokenAccount,
+          pcDestinationTokenAccount: new anchor.web3.PublicKey(
+            getLendingFarmAccount(assetSymbol).farm_quote_token_account
+          ),
+          pcDepositReserveAccount: new anchor.web3.PublicKey(
+            getLendingReserve(quoteToken.symbol).account
+          ),
+          coinReserveLiquidityOracle: new anchor.web3.PublicKey(
+            getPriceFeedsForReserve(baseToken.symbol).price_account
+          ),
+          pcReserveLiquidityOracle: new anchor.web3.PublicKey(
+            getPriceFeedsForReserve(quoteToken.symbol).price_account
+          ),
+          lendingMarketAccount: lendingMarketAccount,
+          derivedLendingMarketAuthority: derivedLendingMarketAuthority,
+          clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
+          tokenProgram: splToken.TOKEN_PROGRAM_ID,
+          lendingProgram: lendingProgramId
+        },
+        remainingAccounts: [
+          {
+            isSigner: false,
+            isWritable: true,
+            pubkey: userPositionInfoAddress
+          }
+        ]
+      }
+    )
+  );
+
+  if (baseToken.symbol === 'SOL') {
+    txn.add(
+      splToken.Token.createCloseAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        coinSourceTokenAccount,
+        wallet.publicKey,
+        wallet.publicKey,
+        []
+      )
+    );
+  }
+
+  if (quoteToken.symbol === 'SOL') {
+    txn.add(
+      splToken.Token.createCloseAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        pcSourceTokenAccount,
+        wallet.publicKey,
+        wallet.publicKey,
+        []
+      )
+    );
+  }
+
+  return [txn, signers];
+}
+
+async function _topUpPositionMore ({
+  wallet,
+  connection,
+  tokenAccounts,
+  assetSymbol,
+  baseTokenAmount,
+  quoteTokenAmount,
+  obligationIdx,
+  coinBorrowAmount = 0,
+  pcBorrowAmount = 0,
+  obligationBorrows
+}) {
+  let anchor = anchorold;
+
+  const walletToInitialize = {
+      signTransaction: wallet.signTransaction,
+      signAllTransactions: wallet.signAllTransactions,
+      publicKey: new anchor.web3.PublicKey(wallet.publicKey.toBase58())
+    },
+    provider = new anchor.Provider(connection, walletToInitialize, {
+      skipPreflight: true,
+      preflightCommitment: commitment
+    }),
+    farm = getFarmBySymbol(assetSymbol),
+    baseToken = farm.coins[0], // base / coin
+    quoteToken = farm.coins[1]; // quote / pc | @to-do: change coins[0] and coins[1] to baseToken and quoteToken
+
+  anchor.setProvider(provider);
+
+  // Address of the deployed program.
+  const vaultProgramId = new anchor.web3.PublicKey(getLendingFarmProgramId());
+
+  // Generate the program client from IDL.
+  const vaultProgram = new anchor.Program(leverageIdl, vaultProgramId);
+
+  const [userFarm] = await findUserFarmAddress(
+    provider.wallet.publicKey,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(0),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  const solfarmVaultProgramId = new anchor.web3.PublicKey(
+    farm.platform === FARM_PLATFORMS.ORCA ?
+      getOrcaVaultProgramId() : getVaultProgramId()
+  );
+
+  const [leveragedFarm] = await findLeveragedFarmAddress(
+    solfarmVaultProgramId,
+    new anchor.web3.PublicKey(
+      getLendingFarmAccount(assetSymbol).serum_market
+    ),
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(farm.marginIndex)
+  );
+
+  const [userObligationAcct1] =
+    await findUserFarmObligationAddress(
+      provider.wallet.publicKey,
+      userFarm,
+      new anchor.web3.PublicKey(getLendingFarmProgramId()),
+      new anchor.BN(obligationIdx) // userFarm has `numberOfObligations`, so we'll do `numberOfObligations + 1` here
+    );
+
+  const lendingProgramId = new anchor.web3.PublicKey(getLendingProgramId());
+
+  const lendingMarketAccount = new anchor.web3.PublicKey(
+    getLendingMarketAccount()
+  );
+
+  const [derivedLendingMarketAuthority] =
+    await anchor.web3.PublicKey.findProgramAddress(
+      [lendingMarketAccount.toBytes()],
+      lendingProgramId
+    );
+
+  const txn = new anchor.web3.Transaction();
+
+  let coinSourceTokenAccount, pcSourceTokenAccount;
+
+  if (
+    baseToken.symbol !== 'SOL' &&
+    !isMintAddressExisting(tokenAccounts, baseToken.mintAddress)
+  ) {
+    txn.add(
+      await serumAssoToken.createAssociatedTokenAccount(
+
+        // who will pay for the account creation
+        wallet.publicKey,
+
+        // who is the account getting created for
+        wallet.publicKey,
+
+        // what mint address token is being created
+        new anchor.web3.PublicKey(baseToken.mintAddress)
+      )
+    );
+
+    coinSourceTokenAccount = await createAssociatedTokenAccount(
+      provider,
+      provider.wallet.publicKey,
+      new anchor.web3.PublicKey(baseToken.mintAddress)
+    );
+  }
+  else {
+    coinSourceTokenAccount = new anchor.web3.PublicKey(
+      tokenAccounts[baseToken.mintAddress]?.tokenAccountAddress
+    );
+  }
+
+  if (
+    quoteToken.symbol !== 'SOL' &&
+    !isMintAddressExisting(tokenAccounts, quoteToken.mintAddress)
+  ) {
+    txn.add(
+      await serumAssoToken.createAssociatedTokenAccount(
+
+        // who will pay for the account creation
+        provider.wallet.publicKey,
+
+        // who is the account getting created for
+        provider.wallet.publicKey,
+
+        // what mint address token is being created
+        new anchor.web3.PublicKey(quoteToken.mintAddress)
+      )
+    );
+
+    pcSourceTokenAccount = await createAssociatedTokenAccount(
+      provider,
+      provider.wallet.publicKey,
+      new anchor.web3.PublicKey(quoteToken.mintAddress)
+    );
+  }
+  else {
+    pcSourceTokenAccount = new anchor.web3.PublicKey(
+      tokenAccounts[quoteToken.mintAddress]?.tokenAccountAddress
+    );
+  }
+
+  let signers = [];
+
+  if (baseToken.symbol === 'SOL') {
+    const lamportsToCreateAccount =
+      await connection.getMinimumBalanceForRentExemption(
+        ACCOUNT_LAYOUT.span,
+        commitment
+      );
+
+    const newAccount = new anchor.web3.Account();
+
+    signers.push(newAccount);
+
+    coinSourceTokenAccount = newAccount.publicKey;
+    txn.add(
+      SystemProgram.createAccount({
+        fromPubkey: wallet.publicKey,
+        newAccountPubkey: coinSourceTokenAccount,
+        lamports:
+          baseTokenAmount * Math.pow(10, baseToken.decimals) +
+          lamportsToCreateAccount,
+        space: ACCOUNT_LAYOUT.span,
+        programId: TOKEN_PROGRAM_ID
+      })
+    );
+
+    txn.add(
+      splToken.Token.createInitAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        new PublicKey(TOKENS.WSOL.mintAddress),
+        coinSourceTokenAccount,
+        wallet.publicKey
+      )
+    );
+  }
+
+  if (quoteToken.symbol === 'SOL') {
+    const lamportsToCreateAccount =
+      await connection.getMinimumBalanceForRentExemption(
+        ACCOUNT_LAYOUT.span,
+        commitment
+      );
+
+    const newAccount = new anchor.web3.Account();
+
+    signers.push(newAccount);
+
+    pcSourceTokenAccount = newAccount.publicKey;
+    txn.add(
+      SystemProgram.createAccount({
+        fromPubkey: wallet.publicKey,
+        newAccountPubkey: pcSourceTokenAccount,
+        lamports:
+          quoteTokenAmount * Math.pow(10, quoteToken.decimals) +
+          lamportsToCreateAccount,
+        space: ACCOUNT_LAYOUT.span,
+        programId: TOKEN_PROGRAM_ID
+      })
+    );
+
+    txn.add(
+      splToken.Token.createInitAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        new PublicKey(TOKENS.WSOL.mintAddress),
+        pcSourceTokenAccount,
+        wallet.publicKey
+      )
+    );
+  }
+
+  let borrowedReserves = [];
+
+  obligationBorrows.map((borrow) => {
+    if (new TokenAmount(borrow.borrowedAmountWads).isNullOrZero() === false) {
+      borrowedReserves.push(borrow.borrowReserve);
+    }
+  });
+
+  const borrowOrder = get(borrowedReserves, [0, 'mintAddress']) === baseToken.mintAddress ? 0 : 1;
+
+  const [borrowAuthorizer] =
+    await findBorrowAuthorizer(
+      lendingMarketAccount,
+      new anchor.web3.PublicKey(getLendingFarmProgramId())
+    );
+
+  const vaultAccount =
+    farm.platform === FARM_PLATFORMS.ORCA ?
+      getLendingFarmAccount(assetSymbol).vault_account : getVaultAccount(assetSymbol);
+
+  const [userPositionInfoAddress] = await derivePositionInfoAddress(
+    userFarm,
+    vaultProgramId,
+    new anchor.BN(obligationIdx)
+  );
+
+  let remainingAccounts = [
+    {
+      isSigner: false,
+      isWritable: true,
+      pubkey: userPositionInfoAddress
+    }
+  ];
+
+  const baseTokenReserve = getReserveByName(baseToken.symbol);
+  const quoteTokenReserve = getReserveByName(quoteToken.symbol);
+
+  let baseTokenDeposit = 0,
+    quoteTokenDeposit = 0,
+    coinBorrow = 0,
+    pcBorrow = 0;
+
+  try {
+    baseTokenDeposit = new anchor.BN(baseTokenAmount * Math.pow(10, baseToken.decimals));
+    quoteTokenDeposit = new anchor.BN(quoteTokenAmount * Math.pow(10, quoteToken.decimals));
+    coinBorrow = new anchor.BN(coinBorrowAmount * Math.pow(10, baseToken.decimals));
+    pcBorrow = new anchor.BN(pcBorrowAmount * Math.pow(10, quoteToken.decimals));
+  }
+  catch (e) {
+    baseTokenDeposit = new anchor.BN(baseTokenAmount).mul(new anchor.BN(Math.pow(10, baseToken.decimals)));
+    quoteTokenDeposit = new anchor.BN(quoteTokenAmount).mul(new anchor.BN(Math.pow(10, quoteToken.decimals)));
+    coinBorrow = new anchor.BN(coinBorrowAmount).mul(new anchor.BN(Math.pow(10, baseToken.decimals)));
+    pcBorrow = new anchor.BN(pcBorrowAmount).mul(new anchor.BN(Math.pow(10, quoteToken.decimals)));
+  }
+
+  txn.add(
+    vaultProgram.instruction.topUpPositionDualBorrowStats(
+      baseTokenDeposit,
+      quoteTokenDeposit,
+      coinBorrow,
+      pcBorrow,
+      new anchor.BN(obligationIdx),
+      new anchor.BN(borrowOrder),
+      {
+        accounts: {
+          authority: provider.wallet.publicKey,
+          userFarm: userFarm,
+          leveragedFarm: leveragedFarm,
+          userFarmObligation: userObligationAcct1,
+          coinSourceTokenAccount,
+          coinDestinationTokenAccount: new anchor.web3.PublicKey(
+            getLendingFarmAccount(assetSymbol).farm_base_token_account
+          ),
+          coinDepositReserveAccount: new anchor.web3.PublicKey(
+            getLendingReserve(baseToken.symbol).account
+          ),
+          pcSourceTokenAccount,
+          pcDestinationTokenAccount: new anchor.web3.PublicKey(
+            getLendingFarmAccount(assetSymbol).farm_quote_token_account
+          ),
+          pcDepositReserveAccount: new anchor.web3.PublicKey(
+            getLendingReserve(quoteToken.symbol).account
+          ),
+          coinReserveLiquidityOracle: new anchor.web3.PublicKey(
+            getPriceFeedsForReserve(baseToken.symbol).price_account
+          ),
+          pcReserveLiquidityOracle: new anchor.web3.PublicKey(
+            getPriceFeedsForReserve(quoteToken.symbol).price_account
+          ),
+          lendingMarketAccount: lendingMarketAccount,
+          borrowAuthorizer,
+          derivedLendingMarketAuthority: derivedLendingMarketAuthority,
+
+          // clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
+          tokenProgram: splToken.TOKEN_PROGRAM_ID,
+          lendingProgram: lendingProgramId,
+          coinSourceReserveLiquidityTokenAccount: new anchor.web3.PublicKey(
+            baseTokenReserve.liquiditySupplyTokenAccount
+          ),
+          coinReserveLiquidityFeeReceiver: new anchor.web3.PublicKey(
+            baseTokenReserve.liquidityFeeReceiver
+          ),
+          pcSourceReserveLiquidityTokenAccount: new anchor.web3.PublicKey(
+            quoteTokenReserve.liquiditySupplyTokenAccount
+          ),
+          pcReserveLiquidityFeeReceiver: new anchor.web3.PublicKey(
+            quoteTokenReserve.liquidityFeeReceiver
+          ),
+          lpPythPriceAccount: new anchor.web3.PublicKey(
+            getPriceFeedsForReserve(assetSymbol).price_account
+          ),
+          vaultAccount: new anchor.web3.PublicKey(vaultAccount)
+        },
+        remainingAccounts: remainingAccounts
+      }
+    )
+  );
+
+  if (baseToken.symbol === 'SOL') {
+    txn.add(
+      splToken.Token.createCloseAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        coinSourceTokenAccount,
+        wallet.publicKey,
+        wallet.publicKey,
+        []
+      )
+    );
+  }
+
+  if (quoteToken.symbol === 'SOL') {
+    txn.add(
+      splToken.Token.createCloseAccountInstruction(
+        TOKEN_PROGRAM_ID,
+        pcSourceTokenAccount,
+        wallet.publicKey,
+        wallet.publicKey,
+        []
+      )
+    );
+  }
+
+  return [txn, signers];
+}
+
+async function addCollateralPosition ({
+  wallet,
+  connection,
+  symbol,
+  obligationIdx,
+  reserveName,
+  baseTokenAmount,
+  quoteTokenAmount,
+  coinBorrowAmount,
+  pcBorrowAmount,
+  onSendTransactions = sendAllTransactions
+}) {
+  let anchor = anchorold;
+
+  let noBorrow = false;
+
+  const transactions = [];
+
+  const farmDetails = getLeverageFarmBySymbol(symbol);
+
+  // 1. Calculate userFarm using the wallet address
+  let [userFarm] = await findUserFarmAddress(
+    wallet.publicKey,
+    new anchor.web3.PublicKey(getLendingFarmProgramId()),
+    new anchor.BN(0),
+    new anchor.BN(farmDetails.marginIndex)
+  );
+
+  // 2. Fetch the data for the userFarm address
+  const provider = new anchor.Provider(connection, wallet, { skipPreflight: true });
+
+  anchor.setProvider(provider);
+
+  const tokenAccounts = await getTokenAccounts({ connection, wallet });
+
+  const userFarmData = await connection.getAccountInfo(userFarm);
+
+  const farmProgramId = new anchor.web3.PublicKey(getLendingFarmProgramId());
+
+  // Generate the program client from IDL.
+  const farmProgram = new anchor.Program(leverageIdl, farmProgramId, provider);
+
+  // 3. Decode userFarm
+  const userFarmInfo = farmProgram.coder.accounts.decode(
+    'UserFarm',
+    userFarmData?.data
+  );
+
+  const { obligations } = userFarmInfo || {};
+
+  const baseToken = farmDetails.coins[0]; // base / coin
+
+  if (reserveName === 'DEFAULT') {
+    reserveName = baseToken.symbol;
+    noBorrow = true;
+  }
+
+  // If the user didn't borrow anything then set the noBorrow to `true`
+  // Doing a Math.floor since it's possible that some fractional value might cause this condition to fail
+  // and you really can't borrow $0.9 max for eg
+  if (
+    (isNil(coinBorrowAmount) && isNil(pcBorrowAmount)) ||
+    (coinBorrowAmount <= 0 && pcBorrowAmount <= 0)
+  ) {
+    noBorrow = true;
+  }
+
+  const obligationBorrows = [];
+
+  // borrows.forEach((borrow) => {
+  //   if (new TokenAmount(borrow.borrowedAmountWads).isNullOrZero() === false) {
+  //     obligationBorrows.push(borrow.borrowReserve);
+  //   }
+  // });
+
+  const obligationPositionState = obligations[obligationIdx].positionState;
+
+  const lendingObligationAccount = await connection.getAccountInfo(obligations[obligationIdx].obligationAccount);
+
+  let extraObligationData = lendingObligationAccount.data.slice(143, 303);
+
+  let decodedObligationAccount = LENDING_OBLIGATION_LAYOUT.decode(
+    lendingObligationAccount.data
+  );
+
+  for (let i = 0; i < decodedObligationAccount.borrowsLen; i++) {
+    obligationBorrows.push(
+      LENDING_OBLIGATION_LIQUIDITY.decode(
+        extraObligationData.slice(i * 80, (i + 1) * 80)
+      )
+    );
+  }
+
+  let extraSigners = [];
+
+  let obligationProgress = 0;
+
+  if (obligationPositionState.hasOwnProperty('opened')) {
+    obligationProgress = 1;
+  }
+  else if (obligationPositionState.hasOwnProperty('topUp')) {
+    obligationProgress = 2;
+  }
+  else if (obligationPositionState.hasOwnProperty('topUpSwapped')) {
+    obligationProgress = 3;
+  }
+  else if (obligationPositionState.hasOwnProperty('topUpAddedLiquidity')) {
+    obligationProgress = 4;
+  }
+  else if (
+    obligationPositionState.hasOwnProperty('depositedOrcaAquaFarm')
+  ) {
+    obligationProgress = 5;
+  }
+
+  if (obligationProgress > 0 && obligationProgress < 2) {
+    if (noBorrow) {
+      const [topUpTxn, signer] = await _topUpPosition({
+        wallet,
+        connection,
+        tokenAccounts,
+        assetSymbol: symbol,
+        reserveName,
+        baseTokenAmount,
+        quoteTokenAmount,
+        obligationIdx,
+        obligationBorrows
+      });
+
+      transactions.push(topUpTxn);
+      extraSigners.push(signer);
+    }
+    else {
+      const [topUpTxn, signer] = await _topUpPositionMore({
+        wallet,
+        connection,
+        tokenAccounts,
+        assetSymbol: symbol,
+        reserveName,
+        baseTokenAmount,
+        quoteTokenAmount,
+        obligationIdx,
+        coinBorrowAmount,
+        pcBorrowAmount,
+        obligationBorrows
+      });
+
+      transactions.push(topUpTxn);
+      extraSigners.push(signer);
+    }
+  }
+
+  if (obligationProgress > 0 && obligationProgress < 4) {
+    transactions.push(_addLiquidity({
+      wallet,
+      connection,
+      tokenAccounts,
+      assetSymbol: symbol,
+      obligationIdx,
+      obligationProgress,
+      checkLpTokenAccount: true
+    }));
+
+    extraSigners.push([]);
+  }
+
+  if (obligationProgress > 0 && obligationProgress < 5 && farmDetails.platform === FARM_PLATFORMS.RAYDIUM) {
+    transactions.push(
+      _depositMarginLpTokens({
+        wallet,
+        connection,
+        tokenAccounts,
+        assetSymbol: symbol,
+        obligationIdx
+      })
+    );
+    extraSigners.push([]);
   }
 
   return Promise.all(transactions).then((fulfilledTransactions) => {
@@ -4319,5 +5484,6 @@ async function closeMarginPosition ({
 
 export {
   openMarginPosition,
-  closeMarginPosition
+  closeMarginPosition,
+  addCollateralPosition
 };

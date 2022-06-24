@@ -16,7 +16,8 @@ import {
 } from './services/VaultService';
 import {
   openMarginPosition,
-  closeMarginPosition
+  closeMarginPosition,
+  addCollateralPosition
 } from './services/LeverageService';
 import { FARM_PLATFORMS } from './constants/farmConstants';
 import { VAULTS } from './constants/vaults';
@@ -25,6 +26,7 @@ export {
   // Leverage
   openMarginPosition,
   closeMarginPosition,
+  addCollateralPosition,
 
   // Vaults
   depositToVault,
