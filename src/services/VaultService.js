@@ -665,6 +665,8 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   }
 
   if (query.platforms) {
+    !queriedVaults.platforms && (queriedVaults.platforms = {});
+
     query.platforms.forEach((platform) => {
       if (!isSupportedV2Platform(platform)) {
         return null;
@@ -676,7 +678,7 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
       // eslint-disable-next-line consistent-return
       allVaults.forEach((vault) => {
-        if (vault.platform !== platform) {
+        if (vault.uiConfigData.platform !== platform) {
           return null;
         }
 

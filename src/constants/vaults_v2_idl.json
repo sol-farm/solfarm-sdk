@@ -396,6 +396,64 @@
       ]
     },
     {
+      "name": "permissionedIssueShares",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultUnderlyingAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "sharesMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "receivingSharesAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "depositingUnderlyingAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "SharesArgs"
+          }
+        }
+      ]
+    },
+    {
       "name": "configureRaydiumVault",
       "accounts": [
         {
@@ -2083,7 +2141,12 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "resetPausable",
+          "type": "bool"
+        }
+      ]
     },
     {
       "name": "startMultiDepositOptimizerRebalance",
@@ -3429,11 +3492,6 @@
         },
         {
           "name": "swapDestinationTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "feeReceiver",
           "isMut": true,
           "isSigner": false
         },
@@ -5930,6 +5988,1030 @@
           "type": "u64"
         }
       ]
+    },
+    {
+      "name": "withdrawQuarryVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewarder",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "quarry",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "miner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "minerVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "sharesMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningSharesTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultWithdrawQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "receivingUnderlyingTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeDestination",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mineProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "configureAtrixVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAtrixStakerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAtrixHarvesterAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "farmAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "atrixFarmProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "dualCrop",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "sweepAtrixVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStakerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "farmAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "farmStakeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultHarvesterAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingDepositQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingCompoundQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "sharesMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "atrixFarmProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "compound",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "withdrawAtrixVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStakerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "farmAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "farmStakeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultHarvesterAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingWithdrawQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningSharesTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "sharesMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "receivingUnderlyingTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "atrixFarmProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "harvestAtrixVault",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStakerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "farmAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "farmStakeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "cropRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultHarvesterAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultRewardTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingCompoundQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeCollectorTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "sharesMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "atrixFarmProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "addAtrixLiquidity",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "protocolAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolLpTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultCoinTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPcTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingCompoundQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "atrixOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumRequestQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumEventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarketBids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarketAsks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumCoinVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumPcVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumVaultSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "atrixPoolProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumDexProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "action",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initializeStrategyAccount",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "strategyType",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "registerStrategyAccount",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "strategyAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "strategyType",
+          "type": "u64"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "executeStrategy",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "strategyAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": "StrategyExecutionArgs"
+          }
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "registerStrategyBalanceAccount",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "strategyAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyBalanceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingTokenMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "strategyType",
+          "type": "u64"
+        },
+        {
+          "name": "farmType",
+          "type": {
+            "array": [
+              "u64",
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "vaultDepositStrategyAccount",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStrategyBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "strategyAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStrategyBalanceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "strategyType",
+          "type": "u64"
+        },
+        {
+          "name": "farmType",
+          "type": {
+            "array": [
+              "u64",
+              2
+            ]
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "vaultWithdrawStrategyAccount",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStrategyBalanceAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultPda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "strategyAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyPda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultStrategyBalanceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "underlyingDepositQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "strategyType",
+          "type": "u64"
+        },
+        {
+          "name": "farmType",
+          "type": {
+            "array": [
+              "u64",
+              2
+            ]
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdrawMultiDepositOptimizerVaultToStrategy",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "multiDeposit",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "multiDepositPda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawVaultPda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "platformInformation",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "platformConfigData",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lendingProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawBurningSharesTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "strategyBalanceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "multiUnderlyingWithdrawQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "multiSharesMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawSharesMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawVaultUnderlyingDepositQueue",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "adjustSerumTradeSlippage",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "management",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumTradeAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "slippage",
+          "type": "u64"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -5960,6 +7042,179 @@
               "array": [
                 "u8",
                 919
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "BorrowLend",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "accountAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "pdaAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalDepositedBalance",
+            "type": "u64"
+          },
+          {
+            "name": "totalIssuedShares",
+            "type": "u64"
+          },
+          {
+            "name": "totalDepositedBalanceInUse",
+            "type": "u64"
+          },
+          {
+            "name": "currentIteration",
+            "type": "u64"
+          },
+          {
+            "name": "maxIterations",
+            "type": "u64"
+          },
+          {
+            "name": "configAccountIndex",
+            "type": "u64"
+          },
+          {
+            "name": "amountBorrowed",
+            "type": "u64"
+          },
+          {
+            "name": "pnlGains",
+            "type": "u64"
+          },
+          {
+            "name": "pnlLosses",
+            "type": "u64"
+          },
+          {
+            "name": "balanceAfterLastExecution",
+            "type": "u64"
+          },
+          {
+            "name": "balanceBeforeLastExecution",
+            "type": "u64"
+          },
+          {
+            "name": "addressCounter",
+            "type": "u64"
+          },
+          {
+            "name": "pdaNonce",
+            "type": "u8"
+          },
+          {
+            "name": "sourcePlatform",
+            "type": "u8"
+          },
+          {
+            "name": "destinationPlatform",
+            "type": "u8"
+          },
+          {
+            "name": "enabled",
+            "type": "bool"
+          },
+          {
+            "name": "pendingWithdraws",
+            "type": "bool"
+          },
+          {
+            "name": "buffer",
+            "type": {
+              "array": [
+                "u8",
+                512
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "StrategyBalanceAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "totalDepositedBalance",
+            "type": "u64"
+          },
+          {
+            "name": "totalIssuedShares",
+            "type": "u64"
+          },
+          {
+            "name": "strategyAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "pnlGains",
+            "type": "u64"
+          },
+          {
+            "name": "pnlLosses",
+            "type": "u64"
+          },
+          {
+            "name": "buffer",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "AtrixVaultV1",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "base",
+            "type": {
+              "defined": "VaultBaseV1"
+            }
+          },
+          {
+            "name": "atrixFarmAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultStakerAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultHarvesterAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "dualCrop",
+            "type": "u8"
+          },
+          {
+            "name": "buffer",
+            "type": {
+              "array": [
+                "u8",
+                519
               ]
             }
           }
@@ -6104,11 +7359,15 @@
             "type": "u8"
           },
           {
+            "name": "obligationAccount",
+            "type": "publicKey"
+          },
+          {
             "name": "buffer",
             "type": {
               "array": [
                 "u8",
-                256
+                224
               ]
             }
           }
@@ -6203,11 +7462,19 @@
             "type": "u64"
           },
           {
+            "name": "balanceAvailableForStrategy",
+            "type": "u64"
+          },
+          {
+            "name": "balanceInUsedByStrategy",
+            "type": "u64"
+          },
+          {
             "name": "buffer",
             "type": {
               "array": [
                 "u8",
-                272
+                256
               ]
             }
           }
@@ -6705,11 +7972,24 @@
             }
           },
           {
+            "name": "strategyCounterOne",
+            "type": "u8"
+          },
+          {
+            "name": "specialDepositorSetOne",
+            "type": {
+              "array": [
+                "publicKey",
+                3
+              ]
+            }
+          },
+          {
             "name": "buffer",
             "type": {
               "array": [
                 "u8",
-                795
+                698
               ]
             }
           }
@@ -6876,443 +8156,25 @@
       }
     },
     {
-      "name": "ModifyWhiteListArgs",
+      "name": "ConfigureAtrixVaultArgs",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "role",
+            "name": "atrixFarmAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultStakerAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "vaultHarvesterAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "dualCrop",
             "type": "u8"
-          },
-          {
-            "name": "action",
-            "type": "u8"
-          }
-        ]
-      }
-    },
-    {
-      "name": "MultiDepositRebalanceWorkloopArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "calldata",
-            "type": "bytes"
-          }
-        ]
-      }
-    },
-    {
-      "name": "AddLendingPlatformArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "programType",
-            "type": "u64"
-          },
-          {
-            "name": "oracleKeys",
-            "type": {
-              "vec": "publicKey"
-            }
-          },
-          {
-            "name": "oraclePrograms",
-            "type": {
-              "vec": "publicKey"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "ConfigureMultiDepositOptimizerArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "vaults",
-            "type": {
-              "vec": {
-                "defined": "StandaloneVaultArgs"
-              }
-            }
-          },
-          {
-            "name": "startingTargetVault",
-            "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "StandaloneVaultArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "vaultAddress",
-            "type": "publicKey"
-          },
-          {
-            "name": "programType",
-            "type": "u64"
-          },
-          {
-            "name": "programAddress",
-            "type": "publicKey"
-          },
-          {
-            "name": "sharesMint",
-            "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "StartMultiDepositRebalanceArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "removeAmount",
-            "type": "u64"
-          }
-        ]
-      }
-    },
-    {
-      "name": "OrcaAddLiqIssueSharesArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "tokenAmountA",
-            "type": "u64"
-          },
-          {
-            "name": "tokenAmountB",
-            "type": "u64"
-          },
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "WithdrawOrcaVaultArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "doubleDip",
-            "type": "bool"
-          },
-          {
-            "name": "amount",
-            "type": "u64"
-          }
-        ]
-      }
-    },
-    {
-      "name": "UpdateDepositCapArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "newCap",
-            "type": "u64"
-          }
-        ]
-      }
-    },
-    {
-      "name": "UpdateVaultFeesArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "feeMultiplier",
-            "type": "u64"
-          },
-          {
-            "name": "controllerFee",
-            "type": "u64"
-          },
-          {
-            "name": "platformFee",
-            "type": "u64"
-          },
-          {
-            "name": "withdrawFee",
-            "type": "u64"
-          },
-          {
-            "name": "depositFee",
-            "type": "u64"
-          }
-        ]
-      }
-    },
-    {
-      "name": "OrcaSwapArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "transferInAmount",
-            "type": "u64"
-          },
-          {
-            "name": "transferIn",
-            "type": "bool"
-          },
-          {
-            "name": "fullAmount",
-            "type": "bool"
-          },
-          {
-            "name": "checkSwapSkip",
-            "type": "bool"
-          },
-          {
-            "name": "doubleDip",
-            "type": "bool"
-          }
-        ]
-      }
-    },
-    {
-      "name": "NewSerumSwapArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "amount",
-            "type": "u64"
-          },
-          {
-            "name": "side",
-            "type": "u64"
-          },
-          {
-            "name": "checkSerumSwapSkip",
-            "type": "bool"
-          },
-          {
-            "name": "fullAmount",
-            "type": "bool"
-          }
-        ]
-      }
-    },
-    {
-      "name": "NewVaultArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "compoundInterval",
-            "type": "i64"
-          },
-          {
-            "name": "tag",
-            "type": {
-              "array": [
-                "u8",
-                32
-              ]
-            }
-          },
-          {
-            "name": "feeArgs",
-            "type": {
-              "defined": "InitFeeArgsV1"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "ManageVaultPausableArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "pause",
-            "type": "bool"
-          },
-          {
-            "name": "action",
-            "type": "u8"
-          },
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "NewRaydiumSwapArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "aToB",
-            "type": "bool"
-          },
-          {
-            "name": "checkSwapSkip",
-            "type": "bool"
-          },
-          {
-            "name": "fullAmount",
-            "type": "bool"
-          }
-        ]
-      }
-    },
-    {
-      "name": "ConfigureArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "swapMarkets",
-            "type": {
-              "vec": "publicKey"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "ConfigureQuarryArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "common",
-            "type": {
-              "defined": "ConfigureArgs"
-            }
-          },
-          {
-            "name": "variant",
-            "type": "u64"
-          },
-          {
-            "name": "requiresConfigDataAccount",
-            "type": "bool"
-          }
-        ]
-      }
-    },
-    {
-      "name": "UpdateArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "field",
-            "type": "string"
-          },
-          {
-            "name": "values",
-            "type": {
-              "vec": "string"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "SharesArgs",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "farmType",
-            "type": {
-              "array": [
-                "u64",
-                2
-              ]
-            }
-          },
-          {
-            "name": "amount",
-            "type": "u64"
           }
         ]
       }
@@ -7839,38 +8701,6 @@
       }
     },
     {
-      "name": "InitFeeArgsV1",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "feeMultiplier",
-            "type": "u64"
-          },
-          {
-            "name": "controllerFee",
-            "type": "u64"
-          },
-          {
-            "name": "platformFee",
-            "type": "u64"
-          },
-          {
-            "name": "withdrawFee",
-            "type": "u64"
-          },
-          {
-            "name": "depositFee",
-            "type": "u64"
-          },
-          {
-            "name": "feeWallet",
-            "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
       "name": "FeesV1",
       "type": {
         "kind": "struct",
@@ -8120,139 +8950,526 @@
       }
     },
     {
-      "name": "Side",
+      "name": "InitFeeArgsV1",
       "type": {
-        "kind": "enum",
-        "variants": [
+        "kind": "struct",
+        "fields": [
           {
-            "name": "Bid"
+            "name": "feeMultiplier",
+            "type": "u64"
           },
           {
-            "name": "Ask"
+            "name": "controllerFee",
+            "type": "u64"
+          },
+          {
+            "name": "platformFee",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawFee",
+            "type": "u64"
+          },
+          {
+            "name": "depositFee",
+            "type": "u64"
+          },
+          {
+            "name": "feeWallet",
+            "type": "publicKey"
           }
         ]
       }
     },
     {
-      "name": "ModifyWhiteListAction",
+      "name": "ModifyWhiteListArgs",
       "type": {
-        "kind": "enum",
-        "variants": [
+        "kind": "struct",
+        "fields": [
           {
-            "name": "Add"
+            "name": "role",
+            "type": "u8"
           },
           {
-            "name": "Remove"
+            "name": "action",
+            "type": "u8"
           },
           {
-            "name": "Revoke"
-          },
-          {
-            "name": "Unknown"
+            "name": "modifySpecialDepositorSet",
+            "type": "bool"
           }
         ]
       }
     },
     {
-      "name": "Farm",
+      "name": "MultiDepositRebalanceWorkloopArgs",
       "type": {
-        "kind": "enum",
-        "variants": [
+        "kind": "struct",
+        "fields": [
           {
-            "name": "Raydium",
-            "fields": [
-              {
-                "name": "name",
-                "type": {
-                  "defined": "Raydium"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Lending",
-            "fields": [
-              {
-                "name": "name",
-                "type": {
-                  "defined": "Lending"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Orca",
-            "fields": [
-              {
-                "name": "name",
-                "type": {
-                  "defined": "Orca"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Quarry",
-            "fields": [
-              {
-                "name": "name",
-                "type": {
-                  "defined": "Quarry"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Unknown",
-            "fields": [
-              {
-                "name": "name",
-                "type": {
-                  "defined": "Unknown"
-                }
-              }
-            ]
+            "name": "calldata",
+            "type": "bytes"
           }
         ]
       }
     },
     {
-      "name": "Lending",
+      "name": "AddLendingPlatformArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "programType",
+            "type": "u64"
+          },
+          {
+            "name": "oracleKeys",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "oraclePrograms",
+            "type": {
+              "vec": "publicKey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConfigureMultiDepositOptimizerArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vaults",
+            "type": {
+              "vec": {
+                "defined": "StandaloneVaultArgs"
+              }
+            }
+          },
+          {
+            "name": "startingTargetVault",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StandaloneVaultArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vaultAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "programType",
+            "type": "u64"
+          },
+          {
+            "name": "programAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "sharesMint",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StartMultiDepositRebalanceArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "removeAmount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OrcaAddLiqIssueSharesArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tokenAmountA",
+            "type": "u64"
+          },
+          {
+            "name": "tokenAmountB",
+            "type": "u64"
+          },
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawOrcaVaultArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "doubleDip",
+            "type": "bool"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateDepositCapArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "newCap",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateVaultFeesArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "feeMultiplier",
+            "type": "u64"
+          },
+          {
+            "name": "controllerFee",
+            "type": "u64"
+          },
+          {
+            "name": "platformFee",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawFee",
+            "type": "u64"
+          },
+          {
+            "name": "depositFee",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OrcaSwapArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "transferInAmount",
+            "type": "u64"
+          },
+          {
+            "name": "transferIn",
+            "type": "bool"
+          },
+          {
+            "name": "fullAmount",
+            "type": "bool"
+          },
+          {
+            "name": "checkSwapSkip",
+            "type": "bool"
+          },
+          {
+            "name": "doubleDip",
+            "type": "bool"
+          },
+          {
+            "name": "quarry",
+            "type": "bool"
+          },
+          {
+            "name": "bypassSafetyChecks",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NewSerumSwapArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "side",
+            "type": "u64"
+          },
+          {
+            "name": "checkSerumSwapSkip",
+            "type": "bool"
+          },
+          {
+            "name": "fullAmount",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NewVaultArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "compoundInterval",
+            "type": "i64"
+          },
+          {
+            "name": "tag",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "feeArgs",
+            "type": {
+              "defined": "InitFeeArgsV1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ManageVaultPausableArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pause",
+            "type": "bool"
+          },
+          {
+            "name": "action",
+            "type": "u8"
+          },
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "NewRaydiumSwapArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "aToB",
+            "type": "bool"
+          },
+          {
+            "name": "checkSwapSkip",
+            "type": "bool"
+          },
+          {
+            "name": "fullAmount",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConfigureArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "swapMarkets",
+            "type": {
+              "vec": "publicKey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConfigureQuarryArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "common",
+            "type": {
+              "defined": "ConfigureArgs"
+            }
+          },
+          {
+            "name": "variant",
+            "type": "u64"
+          },
+          {
+            "name": "requiresConfigDataAccount",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "field",
+            "type": "string"
+          },
+          {
+            "name": "values",
+            "type": {
+              "vec": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SharesArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "farmType",
+            "type": {
+              "array": [
+                "u64",
+                2
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StrategyExecutionArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "strategyType",
+            "type": "u64"
+          },
+          {
+            "name": "finalize",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Atrix",
       "type": {
         "kind": "enum",
         "variants": [
           {
-            "name": "TULIP"
+            "name": "SOLUSDC"
           },
           {
-            "name": "SOLEND"
+            "name": "GMTUSDC"
           },
           {
-            "name": "MANGO"
+            "name": "mSOLUSDC"
           },
           {
-            "name": "PORT"
+            "name": "BTCUSDC"
           },
           {
-            "name": "LARIX"
-          },
-          {
-            "name": "PARROT"
-          },
-          {
-            "name": "USDC"
-          },
-          {
-            "name": "MULTI_DEPOSIT"
-          },
-          {
-            "name": "RAY"
-          },
-          {
-            "name": "PLACEHOLDER_C"
-          },
-          {
-            "name": "PLACEHOLDER_D"
+            "name": "USDrUSDC"
           },
           {
             "name": "PLACEHOLDER_E"
@@ -8327,41 +9544,111 @@
       }
     },
     {
-      "name": "ProgramType",
+      "name": "Lending",
       "type": {
         "kind": "enum",
         "variants": [
           {
-            "name": "SplUnmodified"
+            "name": "TULIP"
           },
           {
-            "name": "SplModifiedSolend"
+            "name": "SOLEND"
           },
           {
-            "name": "MangoV3"
+            "name": "MANGO"
           },
           {
-            "name": "Unknown"
-          }
-        ]
-      }
-    },
-    {
-      "name": "RebalanceStates",
-      "type": {
-        "kind": "enum",
-        "variants": [
-          {
-            "name": "Inactive"
+            "name": "PORT"
           },
           {
-            "name": "Started"
+            "name": "LARIX"
           },
           {
-            "name": "VaultARemoved"
+            "name": "PARROT"
           },
           {
-            "name": "VaultABRebalanced"
+            "name": "USDC"
+          },
+          {
+            "name": "MULTI_DEPOSIT"
+          },
+          {
+            "name": "RAY"
+          },
+          {
+            "name": "USDT"
+          },
+          {
+            "name": "SOL"
+          },
+          {
+            "name": "PLACEHOLDER_E"
+          },
+          {
+            "name": "PLACEHOLDER_F"
+          },
+          {
+            "name": "PLACEHOLDER_G"
+          },
+          {
+            "name": "PLACEHOLDER_H"
+          },
+          {
+            "name": "PLACEHOLDER_I"
+          },
+          {
+            "name": "PLACEHOLDER_J"
+          },
+          {
+            "name": "PLACEHOLDER_K"
+          },
+          {
+            "name": "PLACEHOLDER_L"
+          },
+          {
+            "name": "PLACEHOLDER_M"
+          },
+          {
+            "name": "PLACEHOLDER_N"
+          },
+          {
+            "name": "PLACEHOLDER_O"
+          },
+          {
+            "name": "PLACEHOLDER_P"
+          },
+          {
+            "name": "PLACEHOLDER_Q"
+          },
+          {
+            "name": "PLACEHOLDER_R"
+          },
+          {
+            "name": "PLACEHOLDER_S"
+          },
+          {
+            "name": "PLACEHOLDER_T"
+          },
+          {
+            "name": "PLACEHOLDER_U"
+          },
+          {
+            "name": "PLACEHOLDER_V"
+          },
+          {
+            "name": "PLACEHOLDER_W"
+          },
+          {
+            "name": "PLACEHOLDER_X"
+          },
+          {
+            "name": "PLACEHOLDER_Y"
+          },
+          {
+            "name": "PLACEHOLDER_Z"
+          },
+          {
+            "name": "UNKNOWN"
           }
         ]
       }
@@ -8408,10 +9695,10 @@
             "name": "CMFIUSDC"
           },
           {
-            "name": "PLACEHOLDER_B"
+            "name": "stSOLwUST"
           },
           {
-            "name": "PLACEHOLDER_C"
+            "name": "sRLYSOL"
           },
           {
             "name": "PLACEHOLDER_D"
@@ -8489,54 +9776,6 @@
       }
     },
     {
-      "name": "SlippageMethod",
-      "type": {
-        "kind": "enum",
-        "variants": [
-          {
-            "name": "Ignore"
-          },
-          {
-            "name": "Percentage",
-            "fields": [
-              {
-                "name": "perc",
-                "type": "u64"
-              },
-              {
-                "name": "coin_amount_pre",
-                "type": "u64"
-              },
-              {
-                "name": "pc_amount_pre",
-                "type": "u64"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "SettleMethod",
-      "type": {
-        "kind": "enum",
-        "variants": [
-          {
-            "name": "Exact"
-          },
-          {
-            "name": "Multiplier",
-            "fields": [
-              {
-                "name": "modif",
-                "type": "i64"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
       "name": "Quarry",
       "type": {
         "kind": "enum",
@@ -8549,26 +9788,6 @@
           },
           {
             "name": "SUNNY"
-          },
-          {
-            "name": "UNKNOWN"
-          }
-        ]
-      }
-    },
-    {
-      "name": "QuarryVariant",
-      "type": {
-        "kind": "enum",
-        "variants": [
-          {
-            "name": "Vanilla"
-          },
-          {
-            "name": "Saber"
-          },
-          {
-            "name": "Sunny"
           },
           {
             "name": "UNKNOWN"
@@ -8642,7 +9861,7 @@
             "name": "POLISRAY"
           },
           {
-            "name": "PLACEHOLDER_A"
+            "name": "RAYwhETH"
           },
           {
             "name": "PLACEHOLDER_B"
@@ -8726,6 +9945,210 @@
       }
     },
     {
+      "name": "Unknown",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Uknown"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Farm",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Raydium",
+            "fields": [
+              {
+                "name": "name",
+                "type": {
+                  "defined": "Raydium"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Lending",
+            "fields": [
+              {
+                "name": "name",
+                "type": {
+                  "defined": "Lending"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Orca",
+            "fields": [
+              {
+                "name": "name",
+                "type": {
+                  "defined": "Orca"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Quarry",
+            "fields": [
+              {
+                "name": "name",
+                "type": {
+                  "defined": "Quarry"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Atrix",
+            "fields": [
+              {
+                "name": "name",
+                "type": {
+                  "defined": "Atrix"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Unknown",
+            "fields": [
+              {
+                "name": "name",
+                "type": {
+                  "defined": "Unknown"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SlippageMethod",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Ignore"
+          },
+          {
+            "name": "Percentage",
+            "fields": [
+              {
+                "name": "perc",
+                "type": "u64"
+              },
+              {
+                "name": "coin_amount_pre",
+                "type": "u64"
+              },
+              {
+                "name": "pc_amount_pre",
+                "type": "u64"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SettleMethod",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Exact"
+          },
+          {
+            "name": "Multiplier",
+            "fields": [
+              {
+                "name": "modif",
+                "type": "i64"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "StrategyType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "BorrowLend"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProgramType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "SplUnmodified"
+          },
+          {
+            "name": "SplModifiedSolend"
+          },
+          {
+            "name": "MangoV3"
+          },
+          {
+            "name": "Unknown"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RebalanceStates",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Inactive"
+          },
+          {
+            "name": "Started"
+          },
+          {
+            "name": "VaultARemoved"
+          },
+          {
+            "name": "VaultABRebalanced"
+          }
+        ]
+      }
+    },
+    {
+      "name": "QuarryVariant",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Vanilla"
+          },
+          {
+            "name": "Saber"
+          },
+          {
+            "name": "Sunny"
+          },
+          {
+            "name": "UNKNOWN"
+          }
+        ]
+      }
+    },
+    {
       "name": "Roles",
       "type": {
         "kind": "enum",
@@ -8755,12 +10178,61 @@
       }
     },
     {
-      "name": "Unknown",
+      "name": "AtrixAddLiquidityAction",
       "type": {
         "kind": "enum",
         "variants": [
           {
-            "name": "Uknown"
+            "name": "Ix1"
+          },
+          {
+            "name": "Deposit"
+          },
+          {
+            "name": "PlaceIx1"
+          },
+          {
+            "name": "PlaceIx2"
+          },
+          {
+            "name": "All"
+          },
+          {
+            "name": "UNKNOWN"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Side",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Bid"
+          },
+          {
+            "name": "Ask"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ModifyWhiteListAction",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Add"
+          },
+          {
+            "name": "Remove"
+          },
+          {
+            "name": "Revoke"
+          },
+          {
+            "name": "Unknown"
           }
         ]
       }
