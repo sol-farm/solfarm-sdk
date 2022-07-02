@@ -684,7 +684,7 @@ Fetch the total deposited balance of V2 autovaults
 - `conn: Connection` - web3 Connection object
 - `wallet: SolanaWalletAdapter | Object` - Wallet object
 - `query` - Query object [OPTIONAL]
-- `query.platforms` - Could be any of ['raydium', 'saber', 'orca']
+- `query.platforms` - Could be any of ['raydium', 'saber', 'orca', 'atrix']
 - `query.vaults` - Any supported vault symbol
 
 ### Returns

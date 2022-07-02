@@ -12,7 +12,9 @@ import {
   getRaydiumVaultByMintAddress,
   getRaydiumVaultBySymbol,
   getSaberVaultByMintAddress,
-  getTulipVaultBySymbol
+  getTulipVaultBySymbol,
+  getAtrixVaultBySymbol,
+  getAtrixVaultByMintAddress
 } from '../utils';
 import { FARM_PLATFORMS } from '../constants';
 
@@ -85,12 +87,14 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   const allOrcaVaults = getAllVaultsByPlatform(FARM_PLATFORMS.ORCA);
   const allTulipVaults = getAllVaultsByPlatform(FARM_PLATFORMS.TULIP);
   const allSaberVaults = getAllVaultsByPlatform(FARM_PLATFORMS.SABER);
+  const allAtrixVaults = getAllVaultsByPlatform(FARM_PLATFORMS.ATRIX);
 
   // All vault accounts
   const allRaydiumVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.RAYDIUM);
   const allOrcaVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.ORCA);
   const allTulipVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.TULIP);
   const allSaberVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.SABER);
+  const allAtrixVaultAccounts = getAllVaultAccounts(FARM_PLATFORMS.ATRIX);
 
   const raydiumVaultAccountPublicKeys = allRaydiumVaultAccounts.map(
     (account) => {
@@ -99,6 +103,10 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
   );
 
   const saberVaultAccountPublicKeys = allSaberVaultAccounts.map((account) => {
+    return new anchor.web3.PublicKey(account);
+  });
+
+  const atrixVaultAccountPublicKeys = allAtrixVaultAccounts.map((account) => {
     return new anchor.web3.PublicKey(account);
   });
 
@@ -114,6 +122,19 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
       return depositTrackingAccount;
     })
   );
+
+  // Deposit tracking accounts for atrix vaults
+  const atrixDepositTrackingAccounts = await Promise.all(atrixVaultAccountPublicKeys.map(
+    async (vaultAccountPublicKey) => {
+      const [depositTrackingAccount] = await deriveTrackingAddress(
+        programId,
+        vaultAccountPublicKey,
+        provider.wallet.publicKey
+      );
+
+      return depositTrackingAccount;
+    }
+  ));
 
   const orcaVaultAccountPublicKeys = allOrcaVaultAccounts.map((account) => {
     return new anchor.web3.PublicKey(account);
@@ -177,7 +198,11 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
 
     // Saber vaults
     saberVaultAccountPublicKeys,
-    saberDepositTrackingAccounts
+    saberDepositTrackingAccounts,
+
+    // Atrix Vaults
+    atrixVaultAccountPublicKeys,
+    atrixDepositTrackingAccounts
   ];
 
   const [
@@ -191,7 +216,10 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
     tulipAccounts,
 
     saberAccounts,
-    saberUserBalanceAccounts
+    saberUserBalanceAccounts,
+
+    atrixAccounts,
+    atrixUserBalanceAccounts
   ] = await getMultipleAccountsGrouped(conn, publicKeys, commitment);
 
   // This will store all the data for the vaults and used to update the VaultStore
@@ -201,7 +229,8 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
     ...allRaydiumVaultAccounts,
     ...allOrcaVaultAccounts,
     ...allSaberVaultAccounts,
-    ...allTulipVaultAccounts
+    ...allTulipVaultAccounts,
+    ...allAtrixVaultAccounts
   ].forEach((account) => {
     vaultsData.set(account, {});
   });
@@ -282,6 +311,78 @@ export async function getBalancesForAutoVaults (conn, wallet, query = {}) {
           deposited: depositedAmount
         })
       );
+    }
+    catch (e) {
+      console.error({ e });
+    }
+  }
+
+  // #endregion
+
+  // #region - ATRIX VAULTS
+  for (const [index, userBalanceAccount] of atrixUserBalanceAccounts.entries()) {
+    try {
+      const account = allAtrixVaultAccounts[index];
+
+      let decodedUserAccountInfo = {};
+
+      if (userBalanceAccount?.account?.data) {
+        decodedUserAccountInfo = program?.coder?.accounts?.decode('DepositTrackingV1',
+          userBalanceAccount?.account?.data);
+      }
+
+      vaultsData.set(account, {
+        mintAddress: allAtrixVaults[index]?.base?.underlying_mint,
+        sharesMint: allAtrixVaults[index]?.base?.shares_mint,
+        symbol: allAtrixVaults[index]?.symbol,
+        name: allAtrixVaults[index]?.name,
+        depositedBalance: decodedUserAccountInfo?.depositedBalance,
+        deposited: decodedUserAccountInfo?.depositedBalance,
+        shares: decodedUserAccountInfo?.shares,
+        lastDepositTime: decodedUserAccountInfo?.lastDepositTime
+      });
+    }
+    catch (e) {
+      console.error({ e });
+    }
+  }
+
+  for (const [index, atrixAccount] of atrixAccounts.entries()) {
+    try {
+      const account = allAtrixVaultAccounts[index];
+
+      let decodedAtrixAccountInfo = {};
+
+      if (atrixAccount?.account?.data) {
+        decodedAtrixAccountInfo = program.coder.accounts.decode('AtrixVaultV1', atrixAccount?.account?.data);
+      }
+
+      const {
+        totalDepositedBalance,
+        totalShares
+      } = decodedAtrixAccountInfo?.base || {};
+
+      const atrixVaultData = getAtrixVaultBySymbol(vaultsData.get(account)?.symbol);
+
+      const shares = vaultsData.get(account)?.shares;
+
+      let depositedAmount = getDepositedAmountForShares({
+        totalDepositedBalance,
+        totalShares,
+        sharesBalance: shares,
+        decimals: atrixVaultData?.decimals
+      });
+
+      const vaultData = vaultsData.get(account);
+
+      const uiConfigData = getAtrixVaultByMintAddress(vaultData?.mintAddress) || {};
+
+      vaultsData.set(account, assign({}, vaultData, {
+        uiConfigData,
+        totalShares,
+        totalDepositedBalance,
+        deposited: depositedAmount
+      }));
     }
     catch (e) {
       console.error({ e });
