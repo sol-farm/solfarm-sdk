@@ -4,6 +4,7 @@ import { RAYDIUM_VAULTS } from '../constants/raydiumVaults';
 import { SABER_VAULTS } from '../constants/saberVaults';
 import { ORCA_VAULTS } from '../constants/orcaVaults';
 import { TULIP_VAULTS } from '../constants/tulipVaults';
+import { ATRIX_VAULTS } from '../constants/atrixVaults';
 import { TOKEN_PROGRAM_ID } from '../constants/ids';
 import { TokenAmount } from './safe-math';
 import { COMPOUNDING_CYCLES } from '../constants/farmConstants';
@@ -80,6 +81,20 @@ export const getTulipVaultBySymbol = (symbol) => {
 
 export const getTulipVaultByMintAddress = (mintAddress) => {
   return find(TULIP_VAULTS, (vault) => {
+    return vault.mintAddress === mintAddress;
+  });
+};
+// #endregion
+
+// #region Atrix
+export const getAtrixVaultBySymbol = (symbol) => {
+  return find(ATRIX_VAULTS, (vault) => {
+    return vault.symbol === symbol;
+  });
+};
+
+export const getAtrixVaultByMintAddress = (mintAddress) => {
+  return find(ATRIX_VAULTS, (vault) => {
     return vault.mintAddress === mintAddress;
   });
 };

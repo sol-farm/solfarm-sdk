@@ -479,7 +479,8 @@ export function isSupportedV2Platform (platform) {
   return [
     FARM_PLATFORMS.SABER,
     FARM_PLATFORMS.RAYDIUM,
-    FARM_PLATFORMS.ORCA
+    FARM_PLATFORMS.ORCA,
+    FARM_PLATFORMS.ATRIX
   ].includes(platform);
 }
 

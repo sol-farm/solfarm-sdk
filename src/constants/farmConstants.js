@@ -4,14 +4,16 @@ export const FARM_PLATFORMS = {
   ORCA: 'orca',
   TULIP: 'tulip',
   SOLEND: 'solend',
-  MANGO: 'mango'
+  MANGO: 'mango',
+  ATRIX: 'atrix'
 };
 
 export const UI_CONFIG_PLATFORM_MAPPING = {
   raydium: 'raydium',
   saber: 'quarry',
   orca: 'orca',
-  tulip: 'multi_deposit_optimizer'
+  tulip: 'multi_deposit_optimizer',
+  atrix: 'atrix'
 };
 
 export const STANDALONE_VAULT_TAGS = {
