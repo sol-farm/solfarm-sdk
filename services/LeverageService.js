@@ -4129,6 +4129,7 @@ async function openMarginPosition ({
   pcBorrowAmount,
   baseTokenAmount,
   quoteTokenAmount,
+  obligationIdx = -2,
   onSendTransactions = sendAllTransactions
 }) {
   let anchor = anchorold;
@@ -4163,24 +4164,21 @@ async function openMarginPosition ({
     userFarmData?.data
   );
 
+  const tokenAccounts = await getTokenAccounts({ connection, wallet });
+
   const { obligations } = userFarmInfo || {};
 
-  let obligationIdx;
-
-  obligationIdx = findIndex(obligations, (obligation) => {
-    return (
-      obligation.positionState.hasOwnProperty('opening') ||
-      obligation.positionState.hasOwnProperty('withdrawn') ||
-      obligation.positionState.hasOwnProperty('exitingAndLiquidated')
-    );
-  });
-
-  if (obligationIdx === -1) {
-    return Promise.reject(
-      new Error(
-        'TulipProtocol~openMarginPosition: Cannot open more than 3 positions for the leverage farm'
-      )
-    );
+  if (obligationIdx === -2) {
+    obligationIdx = findIndex(obligations, (obligation) => {
+      return (
+        obligation.positionState.hasOwnProperty('opening') ||
+        obligation.positionState.hasOwnProperty('borrowed') ||
+        obligation.positionState.hasOwnProperty('swapped') ||
+        obligation.positionState.hasOwnProperty('addedLiquidity') ||
+        obligation.positionState.hasOwnProperty('withdrawn') ||
+        obligation.positionState.hasOwnProperty('exitingAndLiquidated')
+      );
+    });
   }
 
   let obligationPositionState = { opening: {} };
@@ -4193,8 +4191,6 @@ async function openMarginPosition ({
 
   let createAccounts = false;
   let extraSigners = [];
-
-  const tokenAccounts = await getTokenAccounts({ connection, wallet });
 
   if (!isUserFarmValid) {
     createAccounts = true;
@@ -4210,7 +4206,9 @@ async function openMarginPosition ({
     transactions.push(createUserFarmManagerTxn);
     extraSigners.push([]);
   }
-  else if (obligations[obligationIdx].obligationAccount.toBase58() === '11111111111111111111111111111111') {
+  else if (
+    obligations[obligationIdx].obligationAccount.toBase58() === '11111111111111111111111111111111'
+  ) {
     createAccounts = true;
 
     transactions.push(
@@ -4253,6 +4251,7 @@ async function openMarginPosition ({
 
   // console.log("$$$ progress", obligationProgress);
   if (!createAccounts && obligationProgress < 4) {
+    // console.log("$$$ create open orders");
     transactions.push(
       _createOpenOrdersAccount({
         connection,
@@ -4262,6 +4261,7 @@ async function openMarginPosition ({
         tokenAccounts
       })
     );
+
     extraSigners.push([]);
   }
   if (obligationProgress > 0 && obligationProgress < 2) {
@@ -4282,58 +4282,20 @@ async function openMarginPosition ({
     extraSigners.push(signer);
   }
 
-  if (obligationProgress > 0 && obligationProgress < 3) {
-    transactions.push(_swapTokens({
-      connection,
-      wallet,
-      tokenAccounts,
-      obligationIdx,
-      assetSymbol: symbol
-    }));
-
-    extraSigners.push([]);
-  }
-
   if (obligationProgress > 0 && obligationProgress < 4) {
     transactions.push(_addLiquidity({
-      connection,
       wallet,
+      connection,
       tokenAccounts,
+      assetSymbol: symbol,
       obligationIdx,
-      assetSymbol: symbol
+      obligationProgress,
+      checkLpTokenAccount: true
     }));
-
     extraSigners.push([]);
   }
 
-  if (getOrcaFarmDoubleDip(symbol)) {
-    if (obligationProgress > 0 && obligationProgress < 5) {
-      transactions.push(
-        _depositOrcaWithoutShares({
-          connection,
-          wallet,
-          tokenAccounts,
-          assetSymbol: symbol,
-          obligationIdx
-        })
-      );
-      extraSigners.push([]);
-    }
-
-    if (obligationProgress > 0 && obligationProgress < 6) {
-      transactions.push(
-        _depositOrcaDoubleDip({
-          connection,
-          wallet,
-          tokenAccounts,
-          assetSymbol: symbol,
-          obligationIdx
-        })
-      );
-      extraSigners.push([]);
-    }
-  }
-  else if (obligationProgress > 0 && obligationProgress < 5) {
+  if (obligationProgress > 0 && obligationProgress < 5 && farmDetails.platform === FARM_PLATFORMS.RAYDIUM) {
     transactions.push(
       _depositMarginLpTokens({
         connection,
