@@ -1,8 +1,8 @@
 {
   "name": "@tulip-protocol/platform-sdk",
-  "version": "2.0.10",
+  "version": "2.0.16",
   "description": "Tulip Protocol SDK",
-  "main": "index.js",
+  "main": "src/index.js",
   "typings": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,7 @@
     "@project-serum/associated-token": "^0.1.1",
     "@project-serum/borsh": "^0.1.1",
     "@project-serum/serum": "^0.13.33",
+    "@solana/spl-token": "^0.1.8",
     "@solana/web3.js": "^1.4.0",
     "anchor18": "npm:@project-serum/anchor@^0.18.0",
     "bignumber.js": "^9.0.1",

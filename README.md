@@ -855,7 +855,7 @@ Fetch the total deposited balance of V2 autovaults
 - `conn: Connection` - web3 Connection object
 - `wallet: SolanaWalletAdapter | Object` - Wallet object
 - `query` - Query object [OPTIONAL]
-- `query.platforms` - Could be any of ['raydium', 'saber', 'orca']
+- `query.platforms` - Could be any of ['raydium', 'saber', 'orca', 'atrix']
 - `query.vaults` - Any supported vault symbol
 
 ### Returns
@@ -890,7 +890,7 @@ const getBalanceForV2Vaults = async () => {
     vaults: [VAULTS.ORCA.ATLAS_USDC]
   };
 
-  const vaults = await getBalancesForAutoVaults(window.$web3, getStore('WalletStore').wallet, query);
+  const vaults = await getBalancesForAutoVaults(connection, getStore('WalletStore').wallet, query);
 
   return vaults;
 };
