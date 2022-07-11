@@ -15,8 +15,7 @@ import {
   findOrcaUserFarmAddress,
   findUserFarmAddress,
   findUserFarmObligationAddress,
-  getLeverageFarmBySymbol,
-  getObligationId
+  getLeverageFarmBySymbol
 } from '../utils/leverageUtils';
 
 import {
@@ -4323,17 +4322,17 @@ async function openMarginPosition ({
 async function closeMarginPosition ({
   wallet,
   connection,
-  assetSymbol,
+  symbol,
   obligationIdx,
   selectedOption,
   partialClose,
   onSendTransactions = sendAllTransactions
 } = { selectedOption: CLOSE_POSITION_OPTIONS.MINIMIZE_TRADING, partialClose: 100 }) {
-  const farm = getFarmBySymbol(assetSymbol);
+  const farm = getFarmBySymbol(symbol);
 
   let anchor = anchorold;
 
-  const farmDetails = getLeverageFarmBySymbol(assetSymbol);
+  const farmDetails = getLeverageFarmBySymbol(symbol);
 
   // 1. Calculate userFarm using the wallet address
   let [userFarm] = await findUserFarmAddress(
@@ -4507,20 +4506,20 @@ async function closeMarginPosition ({
     wallet,
     connection,
     tokenAccounts,
-    assetSymbol,
+    assetSymbol: symbol,
     obligationIdx
   }));
 
   extraSigners.push([]);
 
-  if (getOrcaFarmDoubleDip(assetSymbol)) {
+  if (getOrcaFarmDoubleDip(symbol)) {
     if (obligationProgress > 0 && obligationProgress < 2) {
       transactions.push(
         _withdrawOrcaDoubleDip({
           wallet,
           connection,
           tokenAccounts,
-          assetSymbol,
+          assetSymbol: symbol,
           obligationIdx,
           partialClose,
           selectedOption
@@ -4535,7 +4534,7 @@ async function closeMarginPosition ({
           wallet,
           connection,
           tokenAccounts,
-          assetSymbol,
+          assetSymbol: symbol,
           obligationIdx
         })
       );
@@ -4548,7 +4547,7 @@ async function closeMarginPosition ({
         wallet,
         connection,
         tokenAccounts,
-        assetSymbol,
+        assetSymbol: symbol,
         obligationIdx,
         partialClose,
         selectedOption
@@ -4562,7 +4561,7 @@ async function closeMarginPosition ({
       wallet,
       connection,
       tokenAccounts,
-      assetSymbol,
+      assetSymbol: symbol,
       obligationIdx
     }));
     extraSigners.push([]);
@@ -4574,7 +4573,7 @@ async function closeMarginPosition ({
         wallet,
         connection,
         tokenAccounts,
-        assetSymbol,
+        assetSymbol: symbol,
         obligationIdx,
         obligationBorrowReserves: obligationBorrows,
         selectedOption
@@ -4588,7 +4587,7 @@ async function closeMarginPosition ({
       wallet,
       connection,
       tokenAccounts,
-      assetSymbol,
+      assetSymbol: symbol,
       obligationIdx,
       obligationBorrowReserves: obligationBorrows
     });
@@ -4605,10 +4604,7 @@ async function closeMarginPosition ({
       [],
       extraSigners
     );
-  })
-    .catch((e) => {
-      console.error(e);
-    });
+  });
 }
 
 async function _topUpPosition ({

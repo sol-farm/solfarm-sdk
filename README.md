@@ -9,7 +9,10 @@ npm install --save @tulip-protocol/platform-sdk
 ```
 
 # Usage
-
+- [Leverage](#leverage)
+  - [openMarginPosition](#openmarginposition)
+  - [addCollateralPosition](#addcollateralposition)
+  - [closeMarginPosition](#closemarginposition)
 - [Vaults](#vaults)
   - [depositToVault](#deposittovault)
   - [withdrawFromVault](#withdrawfromvault)
@@ -21,6 +24,174 @@ npm install --save @tulip-protocol/platform-sdk
   - [withdrawLendingReserve](#withdrawlendingreserve)
   - [depositToLendingReserve - OLD](#deposittolendingreserve)
   - [withdrawFromLendingReserve - OLD](#withdrawfromlendingreserve)
+
+## Leverage
+
+## `openMarginPosition`
+Open a margin position
+
+`openMarginPosition({ connection: Connection, wallet: SolanaWalletAdapter | Object, symbol: String, coinBorrowAmount: Number, pcBorrowAmount: Number, baseTokenAmount: Number, quoteTokenAmount: Number, obligationIdx?: Number, onSendTransactions?: Function })`
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `symbol: String` - Asset symbol of leverage farm
+- `coinBorrowAmount: Number` - Coin borrow amount
+- `pcBorrowAmount: Number` - PC borrow amount
+- `baseTokenAmount: Number` - Base token amount
+- `quoteTokenAmount: Number` - Quote token amount
+- `obligationIdx?: Number` - [Optional] Obligation index for the position state
+- `onSendTransactions: Function` - [Optional] Web3 function to execute multiple transactions
+
+### Returns
+`Promise<transaction: Transaction>`
+
+### Example
+
+```javascript
+import { openMarginPosition } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `depositToVault`
+const connection = new Connection(endpoint, { commitment });
+const wallet = new SolanaWalletAdapter('', endpoint);
+
+const openMarginPositionTulipProtocol = ({
+  symbol,
+  coinBorrowAmount,
+  pcBorrowAmount,
+  baseTokenAmount,
+  quoteTokenAmount
+}) => {
+  return openMarginPosition({
+    connection,
+    wallet,
+    symbol,
+    coinBorrowAmount,
+    pcBorrowAmount,
+    baseTokenAmount,
+    quoteTokenAmount
+  });
+};
+```
+
+## `addCollateralPosition`
+Add collateral to a margin position
+
+`addCollateralPosition({ connection: Connection, wallet: SolanaWalletAdapter | Object, symbol: String, reserveName: String, coinBorrowAmount: Number, pcBorrowAmount: Number, baseTokenAmount: Number, quoteTokenAmount: Number, obligationIdx: Number, onSendTransactions?: Function })`
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `symbol: String` - Asset symbol of leverage farm
+- `reserveName: String` - Reserve name of the farm. For single borrow send symbol of borrow asset else send `DEFAULT` for dual borrow.
+- `coinBorrowAmount: Number` - Coin borrow amount
+- `pcBorrowAmount: Number` - PC borrow amount
+- `baseTokenAmount: Number` - Base token amount
+- `quoteTokenAmount: Number` - Quote token amount
+- `obligationIdx: Number` - Obligation index for the position state
+- `onSendTransactions: Function` - [Optional] Web3 function to execute multiple transactions
+
+### Returns
+`Promise<transaction: Transaction>`
+
+### Example
+
+```javascript
+import { addCollateralPosition } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `depositToVault`
+const connection = new Connection(endpoint, { commitment });
+const wallet = new SolanaWalletAdapter('', endpoint);
+
+const addCollateralPositionTulipProtocol = ({
+  symbol,
+  obligationIdx,
+  reserveName,
+  baseTokenAmount,
+  quoteTokenAmount,
+  coinBorrowAmount,
+  pcBorrowAmount
+}) => {
+  return addCollateralPosition({
+    connection,
+    wallet,
+    symbol,
+    obligationIdx,
+    reserveName,
+    baseTokenAmount,
+    quoteTokenAmount,
+    coinBorrowAmount,
+    pcBorrowAmount
+  });
+};
+```
+
+## `closeMarginPosition`
+Close off the margin position
+
+`closeMarginPosition({ connection: Connection, wallet: SolanaWalletAdapter | Object, symbol: String,  obligationIdx: Number, selectedOption: Number, partialClose: Number, onSendTransactions?: Function })`
+
+### Data Parameters
+- `connection: Connection` - web3 Connection object
+- `wallet: SolanaWalletAdapter | Object` - Wallet object
+- `symbol: String` - Asset symbol of leverage farm
+- `obligationIdx: Number` - Obligation index for the position state
+- `selectedOption: Number` - Use one of the value from `CLOSE_POSITION_OPTIONS` options
+- `partialClose: Number` - Percentage value to partial close a position from 0 - 100%. Defaults to 100.
+- `onSendTransactions: Function` - [Optional] Web3 function to execute multiple transactions
+
+CLOSE_POSITION_OPTIONS = {
+  MINIMIZE_TRADING: 10,
+  CONVERT_TO_COIN: 11,
+  CONVERT_TO_PC: 12
+};
+
+### Returns
+`Promise<transaction: Transaction>`
+
+### Example
+
+```javascript
+import { closeMarginPosition, CLOSE_POSITION_OPTIONS } from '@tulip-protocol/platform-sdk';
+import { Connection } from '@solana/web3.js';
+import SolanaWalletAdapter from '@project-serum/sol-wallet-adapter';
+
+// Boilerplate setup for web3 connection
+const endpoint = 'https://solana-api.projectserum.com';
+const commitment = 'confirmed';
+
+// Inputs taken by Tulip SDK's `depositToVault`
+const connection = new Connection(endpoint, { commitment });
+const wallet = new SolanaWalletAdapter('', endpoint);
+
+const closeMarginPositionTulipProtocol = ({
+  symbol,
+  obligationIdx,
+  selectedOption: CLOSE_POSITION_OPTIONS.MINIMIZE_TRADING,
+  partialClose: 100
+}) => {
+  return closeMarginPosition({
+    wallet,
+    connection,
+    symbol,
+    obligationIdx,
+    selectedOption,
+    partialClose
+  });
+};
+```
 
 ## Vaults
 ## `depositToVault`
