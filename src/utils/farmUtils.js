@@ -5,13 +5,9 @@ import { RAYDIUM_VAULTS } from '../constants/raydiumVaults';
 import { SABER_VAULTS } from '../constants/saberVaults';
 import { ORCA_VAULTS } from '../constants/orcaVaults';
 import { TULIP_VAULTS } from '../constants/tulipVaults';
-<<<<<<< HEAD:utils/farmUtils.js
-=======
 import { ATRIX_VAULTS } from '../constants/atrixVaults';
 import { TOKEN_PROGRAM_ID } from '../constants/ids';
->>>>>>> main:src/utils/farmUtils.js
 import { TokenAmount } from './safe-math';
-import { TOKEN_PROGRAM_ID } from '../constants/ids';
 import { COMPOUNDING_CYCLES } from '../constants/farmConstants';
 
 export const ALL_FARMS = FARMS;

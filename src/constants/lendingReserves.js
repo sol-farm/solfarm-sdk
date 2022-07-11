@@ -34,7 +34,6 @@ export const LENDING_RESERVES = [
     visible: true
   },
   {
-<<<<<<< HEAD:constants/lendingReserves.js
     name: 'SHDW',
     account: 'E22L7J4KmTLFoARUmfKtdG59jP8sUderp8CJoNvM4gk5',
     mintAddress: 'SHDWyBxihqiCj6YekG2GUr7wqKLeLAMK1gHZck9pL6y',
@@ -71,8 +70,6 @@ export const LENDING_RESERVES = [
     // whitelisted: false
   },
   {
-=======
->>>>>>> main:src/constants/lendingReserves.js
     name: 'RAY',
     account: '9Bm8d2izGsf9eT6Wr79DTnXBkW2LHYVQa57QzeoTbsAF',
     mintAddress: '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R',
@@ -122,7 +119,6 @@ export const LENDING_RESERVES = [
     decimals: TOKENS.MSOLRAYDIUM.decimals,
 
     // decimals: 6,
-<<<<<<< HEAD:constants/lendingReserves.js
     visible: true
   },
   {
@@ -241,8 +237,6 @@ export const LENDING_RESERVES = [
       '4R4V2LatVjWUMpNj5XtfgG4rhPWMwk2ouVyN8gXXbYME',
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.SRM.decimals,
-=======
->>>>>>> main:src/constants/lendingReserves.js
     visible: true
   },
   {
@@ -738,7 +732,6 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.STARS.decimals,
     visible: false
-<<<<<<< HEAD:constants/lendingReserves.js
   },
   {
     name: 'weUNI',
@@ -799,7 +792,5 @@ export const LENDING_RESERVES = [
     // decimals: 6,
     visible: true,
     borrowDisabled: true
-=======
->>>>>>> main:src/constants/lendingReserves.js
   }
 ];
