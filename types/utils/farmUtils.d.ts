@@ -43,6 +43,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -87,6 +88,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -123,6 +125,7 @@ export const ALL_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -172,6 +175,7 @@ export const ALL_FARMS: ({
         mintAddress: string;
         decimals: number;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -216,6 +220,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     dualYield: boolean;
@@ -260,6 +265,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -304,6 +310,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -354,6 +361,7 @@ export const ALL_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -418,6 +426,7 @@ export const ALL_FARMS: ({
         };
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -479,6 +488,7 @@ export const ALL_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -518,6 +528,53 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -557,6 +614,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     coins: ({
         symbol: string;
@@ -607,6 +665,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -652,6 +711,7 @@ export const ALL_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -698,6 +758,7 @@ export const ALL_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -744,6 +805,7 @@ export const ALL_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -775,6 +837,7 @@ export const ALL_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     referrer: string;
@@ -832,6 +895,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -876,6 +940,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -912,6 +977,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -961,6 +1027,7 @@ export const ALL_VAULT_FARMS: ({
         mintAddress: string;
         decimals: number;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1005,6 +1072,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     dualYield: boolean;
@@ -1049,6 +1117,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1093,6 +1162,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -1143,6 +1213,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1207,6 +1278,7 @@ export const ALL_VAULT_FARMS: ({
         };
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -1268,6 +1340,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -1307,6 +1380,53 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -1346,6 +1466,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     coins: ({
         symbol: string;
@@ -1396,6 +1517,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1441,6 +1563,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1487,6 +1610,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1533,6 +1657,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1564,6 +1689,7 @@ export const ALL_VAULT_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     referrer: string;
@@ -1621,6 +1747,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -1665,6 +1792,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -1701,6 +1829,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -1750,6 +1879,7 @@ export const LEVERAGE_FARMS: ({
         mintAddress: string;
         decimals: number;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1794,6 +1924,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     dualYield: boolean;
@@ -1838,6 +1969,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1882,6 +2014,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -1932,6 +2065,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -1996,6 +2130,7 @@ export const LEVERAGE_FARMS: ({
         };
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -2057,6 +2192,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -2096,6 +2232,53 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -2135,6 +2318,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     coins: ({
         symbol: string;
@@ -2185,6 +2369,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2230,6 +2415,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2276,6 +2462,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2322,6 +2509,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2353,6 +2541,7 @@ export const LEVERAGE_FARMS: ({
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     referrer: string;
@@ -2410,6 +2599,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -2454,6 +2644,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -2490,6 +2681,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -2539,6 +2731,7 @@ export function getFarmBySymbol(symbol: any): {
         mintAddress: string;
         decimals: number;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2583,6 +2776,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     dualYield: boolean;
@@ -2627,6 +2821,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2671,6 +2866,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -2721,6 +2917,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -2785,6 +2982,7 @@ export function getFarmBySymbol(symbol: any): {
         };
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -2846,6 +3044,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -2885,6 +3084,53 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -2924,6 +3170,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     coins: ({
         symbol: string;
@@ -2974,6 +3221,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3019,6 +3267,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3065,6 +3314,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3111,6 +3361,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3142,6 +3393,7 @@ export function getFarmBySymbol(symbol: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     referrer: string;
@@ -3199,6 +3451,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -3243,6 +3496,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     }[];
+    platform?: undefined;
     dualYield?: undefined;
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
@@ -3279,6 +3533,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -3328,6 +3583,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         mintAddress: string;
         decimals: number;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3372,6 +3628,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     dualYield: boolean;
@@ -3416,6 +3673,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3460,6 +3718,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -3510,6 +3769,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3574,6 +3834,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         };
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: ({
@@ -3635,6 +3896,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -3674,6 +3936,53 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
+    mintAddress: string;
+    decimals: number;
+    coins: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    }[];
+    dualYield?: undefined;
+    liquidityMining?: undefined;
+    totalTulipEmission?: undefined;
+    link?: undefined;
+    referrer?: undefined;
+} | {
+    symbol: string;
+    name: string;
+    coin: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    platform: string;
     mintAddress: string;
     decimals: number;
     link: string;
@@ -3713,6 +4022,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     coins: ({
         symbol: string;
@@ -3763,6 +4073,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3808,6 +4119,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3854,6 +4166,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3900,6 +4213,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         tags: string[];
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     coins: {
@@ -3931,6 +4245,7 @@ export function getFarmByMintAddress(mintAddress: any): {
         decimals: number;
         referrer: string;
     };
+    platform: string;
     mintAddress: string;
     decimals: number;
     referrer: string;
@@ -5763,5 +6078,83 @@ export function getTulipVaultByMintAddress(mintAddress: any): {
     }[];
     tags: any[];
     tag: string;
+};
+export function getAtrixVaultBySymbol(symbol: any): {
+    symbol: string;
+    name: string;
+    coin: any;
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    saber: boolean;
+    platform: string;
+    coins: any[];
+    marginIndex: number;
+    slippageWarning: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    rewardEndSlot: number;
+    tags: any[];
+};
+export function getAtrixVaultByMintAddress(mintAddress: any): {
+    symbol: string;
+    name: string;
+    coin: any;
+    pc: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    reward: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    rewardB: {
+        symbol: string;
+        name: string;
+        mintAddress: string;
+        decimals: number;
+        referrer: string;
+    };
+    mintAddress: string;
+    decimals: number;
+    dualYield: boolean;
+    liquidityMining: boolean;
+    saber: boolean;
+    platform: string;
+    coins: any[];
+    marginIndex: number;
+    slippageWarning: boolean;
+    maxPositionLimitInUsd: number;
+    link: string;
+    rewardEndSlot: number;
+    tags: any[];
 };
 export function getAPY(dailyPeriodicRate: any, numberOfPeriods: any): number;

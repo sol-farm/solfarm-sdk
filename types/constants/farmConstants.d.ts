@@ -5,12 +5,14 @@ export namespace FARM_PLATFORMS {
     const TULIP: string;
     const SOLEND: string;
     const MANGO: string;
+    const ATRIX: string;
 }
 export namespace UI_CONFIG_PLATFORM_MAPPING {
     const raydium: string;
     const saber: string;
     const orca: string;
     const tulip: string;
+    const atrix: string;
 }
 export namespace STANDALONE_VAULT_TAGS {
     const TULIP_1: string;

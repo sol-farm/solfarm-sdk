@@ -34,6 +34,42 @@ export const LENDING_RESERVES = [
     visible: true
   },
   {
+    name: 'SHDW',
+    account: 'E22L7J4KmTLFoARUmfKtdG59jP8sUderp8CJoNvM4gk5',
+    mintAddress: 'SHDWyBxihqiCj6YekG2GUr7wqKLeLAMK1gHZck9pL6y',
+    liquiditySupplyTokenAccount: '3FnPAerK36FzuHEmFmutgPg9axtE1r2uBWTShFELF4Ng',
+    liquidityFeeReceiver: 'F7VXhf6dtnepxA8CirghhfSdt1Lu55BTp8VcT6XYY3qN',
+    collateralTokenMint: 'E8oV8JywpgPxEzaugAzW4bapoN3krEFX9mCoPgvrdTXH',
+    collateralTokenSupply: '28eVN2FP7mfZHBkfZRA6GMKWwWXzkkgAShQxHVoQLvYs',
+    destinationCollateralTokenAccount:
+        '7AEQ9jGB4G7F3xx6Asg2GKTLuSYeJRywif5WfEi8uRUV',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+
+    decimals: TOKENS.SHDW.decimals,
+    visible: true,
+    borrowDisabled: true
+
+    // whitelisted: false
+  },
+  {
+    name: 'BASIS',
+    account: '7wAiwRyM66qfDrDBZD9xLii95tX47xzRPAfQiomrqrsN',
+    mintAddress: 'Basis9oJw9j8cw53oMV7iqsgo6ihi9ALw4QR31rcjUJa',
+    liquiditySupplyTokenAccount: 'CtpeTmX4BKHZJA1DVJNy9FhwNb575epA3pmBM65K4UU2',
+    liquidityFeeReceiver: '35miYa87bpPqXnaCLzjjzDLUHQ7bXMGvq1N5xazbFs8n',
+    collateralTokenMint: 'GNjwMCt8GmPwQHy45UDzeprHkSTsNQHddsWXADz1HE6H',
+    collateralTokenSupply: 'HbnyViMZsu5W1Y1xhbTaDM5BGqNVZ81jeYFHMMRgktw5',
+    destinationCollateralTokenAccount:
+        'CgTN1Ng2fzgQZxi1u6sEP8XKJ3GqCyJbmc9G6HACwJBZ',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+
+    decimals: TOKENS.BASIS.decimals,
+    visible: true,
+    borrowDisabled: true
+
+    // whitelisted: false
+  },
+  {
     name: 'RAY',
     account: '9Bm8d2izGsf9eT6Wr79DTnXBkW2LHYVQa57QzeoTbsAF',
     mintAddress: '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R',
@@ -83,6 +119,124 @@ export const LENDING_RESERVES = [
     decimals: TOKENS.MSOLRAYDIUM.decimals,
 
     // decimals: 6,
+    visible: true
+  },
+  {
+    name: 'GMT',
+    account: 'EPm5gyRafEZMHijXuyoA5imPFoEir8KsJ9fd2cyEFrPU',
+    mintAddress: '7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx',
+    liquiditySupplyTokenAccount: 'FAwuWLXEEtixroNbi1YC6MbREdaGkuqMaseZkSTbdxFN',
+    liquidityFeeReceiver: '85zBAdS1P3T1UMUKQn9G51xNF9ZwDzeA2HPbHSf7qja1',
+    collateralTokenMint: 'CEGSnMwZmF512Uva5rTiF1Gx1byMDNdT7UpD8vNXuTQJ',
+    collateralTokenSupply: 'ixT3knkW7ybW4W29BWH84kSg55jgbHsLuyZbxCtcsUi',
+    destinationCollateralTokenAccount:
+        '8v5hr3iXfRTEByShHbSo2yZSLNdACfMJb3aZaJF413NY',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.GMT.decimals,
+    visible: true
+  },
+  {
+    name: 'GST',
+    account: '9CwVAjhpKqkPA27GsikXHxQQgG3oJiiF1ybkcC1pZtGf',
+    mintAddress: 'AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB',
+    liquiditySupplyTokenAccount: '9eJaphdrHyowLgU4sf5LQTJcvF5CGUfctvUHdNZ1PJU1',
+    liquidityFeeReceiver: 'HyuzaKbBbzzmnjTi9aQw8a1s1WoDpVnMLYaCZwC7WmUH',
+    collateralTokenMint: 'Ghvf8bVnDjv1nbi9b3PjSw9iBWFy2ApmdCUgzmPFmNVi',
+    collateralTokenSupply: 'H49GEYPQusg7evSc2VtpTiYA5GWbpQ7ejpq8TikiwRQN',
+    destinationCollateralTokenAccount:
+        '5UPnzJVwwgffmnLGs424wBa6e4n9ggRKNe6jHrfDmeUf',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.GST.decimals,
+    visible: true
+  },
+  {
+    name: 'PRISM',
+    account: '5ZETtVZiqomusvAKLtCJvfKdhotc1HornaL5VF1Z2L71',
+    mintAddress: 'PRSMNsEPqhGVCH1TtWiJqPjJyh2cKrLostPZTNy1o5x',
+    liquiditySupplyTokenAccount: '3eEA9oaSmUkZTxMtN8BU6RnkxdKRaApQCDQknJasL98N',
+    liquidityFeeReceiver: '8nK9FJ6PPRYb7KEfpRukB8iWhW5Krw2feaFGvPdxowSe',
+    collateralTokenMint: '5dBFWbVzh8ez9W96krGeN2xkhuvqr6wYUfekKRydw3Jm',
+    collateralTokenSupply: 'GQRtAv3U75ftyBxY4U2WY5FfQh1xoWQ4tAhzWVTpA4u1',
+    destinationCollateralTokenAccount:
+        'DDBxVLAVVmNBkocJ8JN24n5aQz7wpyCFZhQ3MJgUvWLn',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.PRISM.decimals,
+    visible: true
+  },
+  {
+    name: 'sRLY',
+    account: '6jNicvm4rToeRe3MbkFXNmNfg8iVtZuySGJqqijsZ6j2',
+    mintAddress: 'RLYv2ubRMDLcGG2UyvPmnPmkfuQTsMbg4Jtygc7dmnq',
+    liquiditySupplyTokenAccount: '6gkCQRT8PaMjemqWEGdMxNHNfpAhhCSva959AiVxUGRa',
+    liquidityFeeReceiver: '41Qbc6RGJ2zsbAXkQoy7gXNDPmuSo9Z9PkUbALtyCuPU',
+    collateralTokenMint: 'Hjaio12SUVKzCsd7BVmTN8vz1U8CMLhY6GubhKLA5ptN',
+    collateralTokenSupply: '2ynimffX3RgGkinkHRaAxrs4yt8hj2UDxHxULmWczzyn',
+    destinationCollateralTokenAccount:
+        'GXVMXjDPJmJXBKz594RhBaLSW7zcxJHtzXBWAiKcWKc9',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.sRLY.decimals,
+    visible: true
+  },
+  {
+    name: 'wALEPH',
+    account: '7MicHAbktN1AmuuBxUGpdmb4iqeiD9GqduejMAX9g415',
+    mintAddress: '3UCMiSnkcnkPE1pgQ5ggPCBv6dXgVUy16TmMUe1WpG9x',
+    liquiditySupplyTokenAccount: '6MBECW2vo7wPHHngJDRveiYHHLehwr75iZTYteehciGe',
+    liquidityFeeReceiver: '81gtUx2z7bFThDrqa4maEj9jYKVQWr1iHxEGkCBYkpmR',
+    collateralTokenMint: 'A2AZDzmyVMkskC4DfnxwP6hbAj3D1LdSLJrpgruWEcBs',
+    collateralTokenSupply: '9bJmVy8GW9Gv8jsamAKBLQah4aVBFjvekq5nXp4dJs1U',
+    destinationCollateralTokenAccount:
+        'GTrU2d9bdXFi5hij46vVrLHPnkTHhP4BkEuSyrgqcXvw',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+
+    decimals: TOKENS.wALEPH.decimals,
+    visible: true
+  },
+
+  {
+    name: 'SLCL',
+    account: '3PP7T3RGf6UKG6BvAsQudyZg7qzPLcpmo5eeqoxENvKB',
+    mintAddress: 'SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV',
+    liquiditySupplyTokenAccount: '54HakR2HCPLPihKGj2DSGr2Kjfg6h35RyEyQeC4gMRjD',
+    liquidityFeeReceiver: '8YJ2enWhcRnWymBiokzosTw3zDohJPF6g5QmipF22mV5',
+    collateralTokenMint: 'HRPqE6u5MXAcf1VwYzqYujVYTzf3raanUGu8Dt7bBEHE',
+    collateralTokenSupply: '52F94wWztPYUedByDHCa29HFnZW6nfcX5fDcEfBPEBJH',
+    destinationCollateralTokenAccount:
+        '9MBbdLSWZzCxoDVWdxSbpUPoVqsK9XYDGECe5ZYN6hoq',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+
+    decimals: TOKENS.SLCL.decimals,
+    visible: true
+  },
+  {
+    name: 'stSOL',
+    account: 'BsCdKC2ncgS3VnuibTiA5Etx6MZGRnUL2w88iDee3A6Z',
+    mintAddress: '7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj',
+    liquiditySupplyTokenAccount: '87YN1wkWLKnWANkPAkhSq3T2xwmj3qbjudKaanCAiZNt',
+    liquidityFeeReceiver: '2NNqnU8baUcxDT3Sx2anjMGxhtHheK176FkSdCnKteDg',
+    collateralTokenMint: '27CaAiuFW3EwLcTCaiBnexqm5pxht845AHgSuq36byKX',
+    collateralTokenSupply: '7GsWR5WbuLPQTQib3pExcRrL3Jjv3xhiTTchUEYBrhfj',
+    destinationCollateralTokenAccount:
+        '7z5ZGStFQ9ijCXxqCtU4ZV64AiC11d22L1wKecvUNs4s',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+
+    decimals: TOKENS.stSOL.decimals,
+
+    // decimals: 6,
+    visible: true
+  },
+  {
+    name: 'SRM',
+    account: '9AiGVt7Qtap2ijvim4JSudDYgTrSWhwaZmKv8BWGFms9',
+    mintAddress: 'SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt',
+    liquiditySupplyTokenAccount: '93JKmnXMYHQ9KPkKRRJ5Mb7bqSv4newhDFvz9QE2suRG',
+    liquidityFeeReceiver: 'EMwowECdn8hdGf89RuyGL8cbygwa14BN9tLbYDXgMckr',
+    collateralTokenMint: '4QSK13NTKxTBExbMjHFsj3QfHBn4Hfp3DGLSba8GvFvh',
+    collateralTokenSupply: '9KJNRpfHcdBZH5tTCBsxdUQXrJitpQpmU9T7GxQTQpYK',
+    destinationCollateralTokenAccount:
+      '4R4V2LatVjWUMpNj5XtfgG4rhPWMwk2ouVyN8gXXbYME',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.SRM.decimals,
     visible: true
   },
   {
@@ -578,5 +732,65 @@ export const LENDING_RESERVES = [
     quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     decimals: TOKENS.STARS.decimals,
     visible: false
+  },
+  {
+    name: 'weUNI',
+    account: 'F3y6c19hcn91RRkqZc6BN6d2B5F9etkNks9BzUxvqc2M',
+    mintAddress: '8FU95xFJhUUkyyCLU13HSzDLs7oC4QZdXQHL6SCeab36',
+    liquiditySupplyTokenAccount: '2V9F8ywuGbbMG3oqcixR1upAvXin6bijK3qbSHnALEof',
+    liquidityFeeReceiver: 'GzSqPWwjXyssJ7wVtMgxX6NvYKJJkjf589KQJwQz2BRb',
+    collateralTokenMint: '5ece7fjw86KL8yRFCrb1SmqyvXwwy5y6wcC8G6aquodx',
+    collateralTokenSupply: 'DAmpNbLFGWZrNqsBLF7dmYMM9QMbxktQ2Y8dfx88ZVTe',
+    destinationCollateralTokenAccount:
+      'HKxr5BdAnYc6oUMra1kyEdeqMMcNsmkDnAmwUa1gi2HP',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.weUNI.decimals,
+    visible: false
+  },
+  {
+    name: 'weSUSHI',
+    account: 'FEDEBKAtZzod5oXv1UkSzEeDZGsFe3DK9Wq23o6B4QVN',
+    mintAddress: 'ChVzxWRmrTeSgwd3Ui3UumcN8KX7VK3WaD4KGeSKpypj',
+    liquiditySupplyTokenAccount: 'Fcj2wrSKfQYQ4JhF9x36DE8W6uKDrjSDqfTYFZ7Lvq6H',
+    liquidityFeeReceiver: '7DgrGVCFVLoNVqQXwYhHfR5uA8TS6TiHcKNEXPdG1re8',
+    collateralTokenMint: '7iQwV8krcZRqDicFXMh7rCgExXHrZ3WQKsTJrtA4yV9M',
+    collateralTokenSupply: '8n7bsURa8dQr5TDbjvz2yUQzzLYF9B6X97HJ4x6omniY',
+    destinationCollateralTokenAccount:
+      '4bYUHj4cvyw3cjF3b4L6HcG7EiRRvfH7adiJFnHbKAYS',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.weSUSHI.decimals,
+    visible: false
+  },
+  {
+    name: 'weDYDX',
+    account: '2vzY9tJNqutsGnUwPmka3LmAEjDXJ2qKeV9fAztD7Sbo',
+    mintAddress: '4Hx6Bj56eGyw8EJrrheM6LBQAvVYRikYCWsALeTrwyRU',
+    liquiditySupplyTokenAccount: 'BmG6AWHdf68MkooJ7D43irLcdkzB9x1CuHPwG8uxvoAc',
+    liquidityFeeReceiver: 'UsNuAp58e48ohXynJyVF7EBbaZyzgCfzrgknHoAGbRL',
+    collateralTokenMint: '8gKgXXcixZm1Qtn8D4t6FDUKZRjoc51AjffFCNXTc7EV',
+    collateralTokenSupply: '2H4cED2cKubaBUHmCHS779uyMUKpfkGAFpB52VsFS7C6',
+    destinationCollateralTokenAccount:
+      '4bYUHj4cvyw3cjF3b4L6HcG7EiRRvfH7adiJFnHbKAYS',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    decimals: TOKENS.weDYDX.decimals,
+    visible: false
+  },
+  {
+    name: 'wUST',
+    account: '8s5Gc63C8zUYRHXxjqyyNwXzK4fqQidcjx5a43Rmf54v',
+    mintAddress: '9vMJfxuKxXBoEa7rM12mYLMwTacLMLDJqHozw96WQL8i',
+    liquiditySupplyTokenAccount: '9GYdZbvYw7tcJPEmi1yDPGV9vdxfGpAPsZa84aA7XAop',
+    liquidityFeeReceiver: '4sGKGh6R8oyTGbim6xWjQCdAmnqFn2J93DXd6dAqaQEB',
+    collateralTokenMint: '4pgVP6LAbRDaSnR3jfDSBBkUPFxYgWYNhn2L4YRKpgcW',
+    collateralTokenSupply: '8cRq7PTqrruNyBqF5JkWjkTxQdXhNYTbTRHxLv11QH9g',
+    destinationCollateralTokenAccount:
+        'A1DvMBGvbzcbEDXg1WfAndDvMAwGYLgKRjpgZ8J7dCDv',
+    quoteTokenMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+
+    decimals: TOKENS.wUST.decimals,
+
+    // decimals: 6,
+    visible: true,
+    borrowDisabled: true
   }
 ];

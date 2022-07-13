@@ -1,8 +1,200 @@
 import { struct } from 'superstruct';
 import { PublicKey } from '@solana/web3.js';
-import { slice } from 'lodash';
+import { isFunction, slice } from 'lodash';
+import * as serumAssoToken from '@project-serum/associated-token';
 
 export const commitment = 'confirmed';
+
+/**
+ *
+ * @param {*} provider
+ * @param {*} owner
+ * @param {*} mint
+ * @returns
+ */
+export function createAssociatedTokenAccount (
+  provider, // payer
+  owner,
+  mint
+) {
+  return serumAssoToken.getAssociatedTokenAddress(owner, mint);
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} signedTransaction
+ * @returns
+ */
+export async function sendSignedTransaction (connection, signedTransaction, verify = true) {
+  let verifyOpts = {};
+
+  if (!verify) {
+    verifyOpts = { requireAllSignatures: false, verifySignatures: false };
+  }
+  const rawTransaction = signedTransaction.serialize(verifyOpts);
+
+  const txid = await connection.sendRawTransaction(rawTransaction, {
+    skipPreflight: true,
+    preflightCommitment: commitment
+  });
+
+  return txid;
+}
+
+export async function _sendTransaction (connection, transaction) {
+  let txId = await sendSignedTransaction(connection, transaction);
+
+  return new Promise((resolve, reject) => {
+    if (!txId) {
+      reject(new Error('Transaction not found'));
+    }
+
+    if (!isFunction(connection.onSignature)) {
+      reject(new Error('connection.onSignature is not a function'));
+    }
+
+    connection.onSignature(
+      txId,
+      (signatureResult) => {
+        if (!signatureResult.err) {
+          // success
+          resolve(txId);
+        }
+        else {
+          // failure
+          reject(signatureResult.err);
+        }
+      },
+      'confirmed'
+    );
+  });
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} signedTransactions
+ * @param {*} transactions
+ * @param {*} parentResolve
+ * @param {*} resolve
+ * @param {*} onError
+ * @returns
+ */
+export async function signTransactionsSynchronously (
+  connection,
+  signedTransactions
+) {
+  let transactionIds = [];
+
+  for (let signedTransaction of signedTransactions) {
+    // eslint-disable-next-line no-await-in-loop
+    transactionIds.push(await _sendTransaction(connection, signedTransaction));
+  }
+
+  return Promise.resolve(transactionIds);
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} wallet
+ * @param {*} transactions
+ * @param {*} signers
+ * @param {*} extraSigners
+ * @returns
+ */
+export async function signAllTransactions (
+  connection,
+  wallet,
+  transactions,
+  signers = [],
+  extraSigners = []
+) {
+  // let blockHashses = [];
+  const recentBlockhash = (await connection.getRecentBlockhash('processed'))
+    .blockhash;
+
+  const finalTransactions = [];
+
+  transactions.forEach((transaction, index) => {
+    if (transaction.instructions.length > 0) {
+      transaction.recentBlockhash = recentBlockhash;
+      transaction.setSigners(
+        wallet.publicKey,
+        ...signers.map((s) => s.publicKey)
+      );
+
+      if (extraSigners.length && extraSigners[index].length > 0) {
+        const extraSigner = extraSigners[index];
+
+        transaction.setSigners(
+          wallet.publicKey,
+          ...extraSigner.map((s) => s.publicKey)
+        );
+        transaction.partialSign(...extraSigner);
+      }
+
+      if (signers.length > 0) {
+        transaction.partialSign(...signers);
+      }
+
+      finalTransactions.push(transaction);
+    }
+  });
+
+  return wallet.signAllTransactions(finalTransactions);
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} signedTransactions
+ * @returns
+ */
+export function sendAllSignedTransactions (
+  connection,
+  signedTransactions,
+  opts = {}
+) {
+  const transactions = [];
+
+  return signTransactionsSynchronously(
+    connection,
+    signedTransactions,
+    transactions,
+    signedTransactions.length,
+    opts
+  );
+}
+
+/**
+ *
+ * @param {*} connection
+ * @param {*} wallet
+ * @param {*} transactions
+ * @param {*} signers
+ * @param {*} extraSigners
+ * @returns
+ */
+export async function sendAllTransactions (
+  connection,
+  wallet,
+  transactions,
+  signers,
+  extraSigners,
+  opts
+) {
+  const signedTransactions = await signAllTransactions(
+    connection,
+    wallet,
+    transactions,
+    signers,
+    extraSigners
+  );
+
+  return sendAllSignedTransactions(connection, signedTransactions, opts);
+}
 
 /**
  *
@@ -29,23 +221,6 @@ export async function signTransaction (connection,
   }
 
   return wallet.signTransaction(transaction);
-}
-
-/**
- *
- * @param {Object} connection
- * @param {Object} signedTransaction
- * @returns
- */
-export async function sendSignedTransaction (connection, signedTransaction) {
-  const rawTransaction = signedTransaction.serialize();
-
-  const txid = await connection.sendRawTransaction(rawTransaction, {
-    skipPreflight: true,
-    preflightCommitment: commitment
-  });
-
-  return txid;
 }
 
 /**
@@ -145,9 +320,6 @@ export async function getMultipleAccounts (connection, publicKeys, commitment) {
     const unsafeRes = await connection._rpcRequest('getMultipleAccounts', args);
     const res = GetMultipleAccountsAndContextRpcResult(unsafeRes);
 
-    // Update slot globally
-    // window.$slot = get(res, 'result.context.slot');
-
     if (res.error) {
       console.error(
         'failed to get info about accounts ' +
@@ -156,8 +328,6 @@ export async function getMultipleAccounts (connection, publicKeys, commitment) {
 
       return;
     }
-
-    // assert(typeof res.result !== 'undefined')
 
     for (const account of res.result.value) {
       let value = null;

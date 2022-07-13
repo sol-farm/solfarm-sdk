@@ -1,5 +1,6 @@
-import { find, toUpper } from 'lodash';
+import { concat, find, isNil, toUpper } from 'lodash';
 import { FARMS } from '../constants/farms';
+import { ORCA_FARMS } from '../constants/orcaFarms';
 import { RAYDIUM_VAULTS } from '../constants/raydiumVaults';
 import { SABER_VAULTS } from '../constants/saberVaults';
 import { ORCA_VAULTS } from '../constants/orcaVaults';
@@ -13,7 +14,7 @@ export const ALL_FARMS = FARMS;
 
 export const ALL_VAULT_FARMS = FARMS;
 
-export const LEVERAGE_FARMS = FARMS;
+export const LEVERAGE_FARMS = concat(FARMS, ORCA_FARMS.filter((farm) => { return !isNil(farm.marginIndex); }));
 
 // #region Farms V1
 export const getFarmBySymbol = (symbol) => {
