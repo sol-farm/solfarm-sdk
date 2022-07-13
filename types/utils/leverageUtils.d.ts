@@ -1,12 +1,4 @@
-export namespace FARM_PLATFORMS {
-    const RAYDIUM: string;
-    const SABER: string;
-    const ORCA: string;
-    const TULIP: string;
-    const SOLEND: string;
-    const MANGO: string;
-}
-export const FARMS: ({
+export function getLeverageFarmBySymbol(symbol: any): {
     symbol: string;
     name: string;
     coin: {
@@ -857,4 +849,20 @@ export const FARMS: ({
     liquidityMining?: undefined;
     totalTulipEmission?: undefined;
     link?: undefined;
-})[];
+};
+export function findUserFarmAddress(authority: any, programId: any, index: any, farm: any): Promise<[anchor.web3.PublicKey, number]>;
+export function findUserFarmManagerAddress(authority: any, programId: any, farm: any): Promise<[anchor.web3.PublicKey, number]>;
+export function findUserFarmObligationAddress(authority: any, userFarmAddr: any, lendingProgramId: any, obligationIndex: any): Promise<[anchor.web3.PublicKey, number]>;
+export function derivePositionInfoAddress(userFarmAddr: any, lendingProgramId: any, obligationIndex: any): Promise<[anchor.web3.PublicKey, number]>;
+export function findLeveragedFarmAddress(solfarmVaultProgram: any, serumMarket: any, farmProgramId: any, farm: any): Promise<[anchor.web3.PublicKey, number]>;
+export function findVaultManagerAddress(authority: any, leveragedFarmAccount: any, farmProgramId: any): Promise<[anchor.web3.PublicKey, number]>;
+export function findObligationVaultAddress(userFarmAccount: any, obligationIndex: any, farmProgramId: any): Promise<[anchor.web3.PublicKey, number]>;
+export function findBorrowAuthorizer(lendingMarket: any, sourceProgram: any): Promise<[anchor.web3.PublicKey, number]>;
+export function getDefaultSelectedCoinIndex(borrowDisabledCoinIndex: any): 1 | 0;
+export function findOrcaUserFarmAddress(globalFarm: any, owner: any, tokenProgramId: any, aquaFarmProgramId: any): Promise<[anchor.web3.PublicKey, number]>;
+export function getObligationId({ farmMintAddress, userFarmIndex, obligationIdx }: {
+    farmMintAddress: any;
+    userFarmIndex?: number;
+    obligationIdx: any;
+}): string;
+import * as anchor from "@project-serum/anchor";

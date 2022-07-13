@@ -5,3 +5,5 @@ export * from './layouts';
 export * from './lendingUtils';
 export * from './safe-math';
 export * from './web3';
+export * from './leverageUtils';
+export * from './vault';
