@@ -226,7 +226,8 @@ const depositToVault = async (
  * @param {Object} wallet Wallet object
  * @param {String} mintAddress Mint Address of the Vault
  * @param {String} authorityTokenAccount Token account address of the user corresponding to the vault
- * @param {String|Number} amount Amount to withdraw
+ * @param {String|Number} amount - [Optional] Amount to withdraw (Use this if you don't have userShares)
+ * @param {Number} userShares - [Optional] User shares to withdraw (Use this if you don't have amount)
  *
  * @returns {Promise}
  */
@@ -235,8 +236,15 @@ const withdrawFromVault = async (
   wallet,
   mintAddress,
   authorityTokenAccount,
-  amount
+  amount = 0,
+  userShares = 0
 ) => {
+  if (!amount && !userShares) {
+    return Promise.reject(
+      new Error('Please provide either amount or userShares. One of them needs to be greater than 0')
+    );
+  }
+
   const { decimals, symbol: assetSymbol } =
     getFarmByMintAddress(mintAddress) || {};
 
@@ -285,9 +293,9 @@ const withdrawFromVault = async (
   );
   const { totalVaultBalance, totalVlpShares } = vault || {};
 
-  const userInputValue = new anchor.BN(amount * Math.pow(10, decimals));
+  let userInputValue = !userShares && new anchor.BN(amount * Math.pow(10, decimals));
 
-  const withdrawAmount = userInputValue
+  const withdrawAmount = userShares || userInputValue
     .mul(totalVlpShares)
     .div(totalVaultBalance);
 

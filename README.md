@@ -293,7 +293,8 @@ Withdraw from Raydium Vault
 - `wallet: SolanaWalletAdapter | Object` - Wallet object
 - `mintAddress: String` - Mint Address of the Vault
 - `authorityTokenAccount: PublicKey` - Token account address of the user corresponding to the vault
-- `amount: String | Number` - Amount to deposit
+- `amount?: String | Number` - [Optional] Amount to withdraw (Use this if you don't have userShares)
+- `userShares?: Number` - [Optional] User shares to withdraw (Use this if you don't have amount)
 
 ### Returns
 `Promise<transaction: Transaction>`
@@ -355,6 +356,11 @@ const farmMintAddress = '2doeZGLJyACtaG9DCUyqMLtswesfje1hjNA11hMdj6YU';
 const withdrawFromTulipProtocol = async () => {
   // For example, let's hardcode the `amount` to '0.01'
   const amountToWithdraw = '0.01';
+
+  // You can also use userShares directly instead of providing an amount,
+  // and we suggest using it when you want to withdraw all the shares from a vault
+  const userShares = 0;
+
   const authorityTokenAccount = tokenAccounts[farmMintAddress].tokenAccountAddress;
 
   const transaction = await withdrawFromVault(
@@ -362,7 +368,8 @@ const withdrawFromTulipProtocol = async () => {
     wallet,
     farmMintAddress,
     authorityTokenAccount,
-    amountToWithdraw
+    amountToWithdraw,
+    userShares
   );
 
   // Let's assume this is how the function signature of
