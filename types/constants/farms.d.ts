@@ -1,11 +1,3 @@
-export namespace FARM_PLATFORMS {
-    const RAYDIUM: string;
-    const SABER: string;
-    const ORCA: string;
-    const TULIP: string;
-    const SOLEND: string;
-    const MANGO: string;
-}
 export const FARMS: ({
     symbol: string;
     name: string;

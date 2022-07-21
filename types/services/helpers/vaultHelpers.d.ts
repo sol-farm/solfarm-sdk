@@ -12,7 +12,6 @@ export function deriveSerumFeeRecipientAddress(programId: any, mint: any, tradeP
 export function deriveTrackingAddress(programId: any, vault: any, owner: any): Promise<[anchor.web3.PublicKey, number]>;
 export function deriveTrackingPdaAddress(programId: any, trackingAddress: any): Promise<[anchor.web3.PublicKey, number]>;
 export function deriveTrackingQueueAddress(programId: any, trackingPdaAddress: any): Promise<[anchor.web3.PublicKey, number]>;
-export function createAssociatedTokenAccount(provider: any, owner: any, mint: any): Promise<anchor.web3.PublicKey>;
 export function findAssociatedStakeInfoAddress(poolId: any, walletAddress: any, programId: any): Promise<anchor.web3.PublicKey>;
 export function deriveLendingPlatformAccountAddress(vaultPda: any, lendingMarket: any, programId: any): Promise<[anchor.web3.PublicKey, number]>;
 export function deriveLndingPlatformInformationAccountAddress(vault: any, index: any, programId: any): Promise<[anchor.web3.PublicKey, number]>;

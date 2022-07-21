@@ -130,14 +130,6 @@ export function deriveTrackingQueueAddress (
   );
 }
 
-export function createAssociatedTokenAccount (
-  provider, // payer
-  owner,
-  mint
-) {
-  return serumAssoToken.getAssociatedTokenAddress(owner, mint);
-}
-
 export async function findAssociatedStakeInfoAddress (
   poolId,
   walletAddress,
