@@ -1,4 +1,5 @@
 import { NATIVE_SOL, TOKENS } from './tokens';
+import { FARM_PLATFORMS } from './farmConstants';
 
 export const FARMS = [
   {
