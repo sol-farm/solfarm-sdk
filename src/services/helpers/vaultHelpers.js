@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import * as anchor from '@project-serum/anchor';
-import * as serumAssoToken from '@project-serum/associated-token';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import VAULTS_V2_CONFIG from '../../constants/vaults_v2_config.json';
 import { FARM_PLATFORMS, UI_CONFIG_PLATFORM_MAPPING } from '../../constants';
