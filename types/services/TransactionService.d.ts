@@ -20,4 +20,4 @@ export function depositToVault(conn: any, wallet: any, mintAddress: string, auth
  *
  * @returns {Promise}
  */
-export function withdrawFromVault(conn: any, wallet: any, mintAddress: string, authorityTokenAccount: string, amount: string | number, userShares: number): Promise<any>;
+export function withdrawFromVault(conn: any, wallet: any, mintAddress: string, authorityTokenAccount: string, amount?: string | number, userShares?: number): Promise<any>;
