@@ -77,12 +77,12 @@ import { find, findIndex, get, isNil, map, slice } from 'lodash';
 import { commitment, getMultipleAccounts, sendAllTransactions, createAssociatedTokenAccount } from '../utils/web3';
 import { TOKENS } from '../constants/tokens';
 import { getFarmBySymbol, getTokenAccounts, isMintAddressExisting } from '../utils/farmUtils';
-import { FARM_PLATFORMS } from '../constants/farms';
 import { AQUAFARM_PROGRAM_ID, LIQUIDITY_POOL_PROGRAM_ID_V4, TOKEN_PROGRAM_ID } from '../constants/ids';
 import { deriveVaultDepositQueue, deriveVaultUserAccount } from '../utils/vault';
 import { TokenAmount } from '../utils/safe-math';
 import { CLOSE_POSITION_OPTIONS } from '../constants/leverageFarmingConstants';
 import { LENDING_RESERVES } from '../constants/lendingReserves';
+import { FARM_PLATFORMS } from '../constants';
 
 async function _createUserFarm ({
   wallet,
