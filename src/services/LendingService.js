@@ -25,7 +25,7 @@ import {
   WAD,
   TokenAmount,
   getAPY,
-  getTokenAccounts
+  getTokenAccounts, getLendingReserve
 } from '../utils';
 import {
   TOKENS,
@@ -57,19 +57,19 @@ const LendingInstruction = {
  *
  * @description Calculates the borrow APR for the reserve
  *
+ * @param {String} name
  * @param {Number} currentUtilization
- * @param {*} ray
- * @param {*} higherMax
  *
  * @returns borrowAPR
  */
-function _calculateBorrowAPR (currentUtilization, ray, higherMax) {
-  const optimalUtilization = 50;
-  const degenUtilization = 90;
-  const minBorrowRate = 0;
-  const optimalBorrowRate = 15;
-  const degenBorrowRate = ray ? 35 : 25;
-  let maxBorrowRate = higherMax ? 150 : 100;
+function _calculateBorrowAPR (name, currentUtilization) {
+  const reserve = getLendingReserve(name);
+  const optimalUtilization = reserve.config.optimal_utilization_rate;
+  const degenUtilization = reserve.config.degen_utilization_rate;
+  const minBorrowRate = reserve.config.min_borrow_rate;
+  const optimalBorrowRate = reserve.config.optimal_borrow_rate;
+  const degenBorrowRate = reserve.config.degen_borrow_rate;
+  let maxBorrowRate = reserve.config.max_borrow_rate;
 
   let borrowAPR;
 
@@ -1046,28 +1046,8 @@ const getAPYForLendingReserves = async ({
     const utilizationRate = utilization.times(100);
 
     const borrowAPR = _calculateBorrowAPR(
+      reserve.name,
       utilizationRate.toFixed(2),
-      reserve.name === 'RAY',
-      reserve.name === 'ORCA' ||
-        reserve.name === 'whETH' ||
-        reserve.name === 'mSOL' ||
-        reserve.name === 'BTC' ||
-        reserve.name === 'GENE' ||
-        reserve.name === 'SAMO' ||
-        reserve.name === 'DFL' ||
-        reserve.name === 'CAVE' ||
-        reserve.name === 'REAL' ||
-        reserve.name === 'wbWBNB' ||
-        reserve.name === 'MBS' ||
-        reserve.name === 'SHDW' ||
-        reserve.name === 'BASIS' ||
-        reserve.name === 'ZBC' ||
-        reserve.name === 'wALEPH' ||
-        reserve.name === 'SLCL' ||
-        reserve.name === 'GST' ||
-        reserve.name === 'GMT' ||
-        reserve.name === 'PRISM' ||
-        reserve.name === 'sRLY'
     );
 
     const dailyBorrowAPR = borrowAPR / 365;
