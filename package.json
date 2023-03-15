@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx esbuild src/index.js --bundle --platform=node --target=node16.13 --outfile=build.js"
   },
   "author": "Tulip Protocol",
   "license": "ISC",
